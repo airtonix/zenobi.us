@@ -81,14 +81,16 @@ Use Ansible/Fabric to automate Provisioning and Deployment of large scale web ap
 
 # Experience
 
-## 2012-2013
-            CTO
+
+2012-2013   CTO
 			Zibmedia
 
-2011		Lead Developer
-			Urpages.com.au
+2011	    
+			Lead Developer
+	    	Urpages.com.au
 
-2010        Network Maintenance & Installations
+2010        
+			Network Maintenance & Installations
             Basic Website Training
             Youthjet
 
