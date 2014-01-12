@@ -1,0 +1,23 @@
+# Permalinks
+permalink: pretty
+
+# Server
+dest: ./_gh_pages
+build: ./_build
+root: ./
+
+# Custom vars
+version: <%= pkg.version %>
+repo: https://github.com/airtonix/zenobi.us/
+
+
+name: zenobi.us
+canonical: http://zenobi.us/
+description: Personal website of Zenobius Jiricek
+keywords: web developer in adelaide, nodejs, django, python, nginx, apache, linux
+
+social:
+    github: airtonix
+    googleplus: +zenobiusjiricek
+    twitter: airtonix
+    disqus: airtonix

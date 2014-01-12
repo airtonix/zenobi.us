@@ -1,0 +1,28 @@
+    <header class="header-11 hidden">
+      <div class="container">
+        <div class="navbar span12">
+          <div class="navbar-inner">
+            <button type="button" class="btn btn-navbar"></button>
+            <a class="brand" href="#">
+              <img src="../../common-files/icons/Infinity-Loop_2x.png" width="50" height="50" alt="">Startup</a>
+            <div class="nav-collapse collapse pull-right">
+              <ul class="nav">
+                <li class="active"><a href="#">HOME</a>
+                </li>
+                <li><a href="#">COMPANY</a>
+                </li>
+                <li><a href="#">PORTFOLIO</a>
+                </li>
+                <li><a href="#">BLOG</a>
+                </li>
+                <li><a href="#">CONTACT</a>
+                </li>
+              </ul>
+              <form class="navbar-form pull-left">
+                <a class="btn btn-primary" href="#">SIGN IN</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>

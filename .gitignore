@@ -1,0 +1,20 @@
+lib-cov
+*.csv
+.sass-cache
+.grunt
+
+*.dat
+/.tmp
+*.out
+/.grunt
+dist
+node_modules
+results
+*.gz
+logs
+pids
+*.seed
+*.pid
+npm-debug.log
+*.log
+# Cabin-specific ignored files

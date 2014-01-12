@@ -1,0 +1,6 @@
+  each post in posts
+    mixin post(post)
+    div.comments
+      a(href="#{data.baseUrl}#{post.url}#comments")
+        span.icon-bubbles
+        | Comments
