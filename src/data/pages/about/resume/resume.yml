@@ -1,0 +1,133 @@
+---
+layout: page
+sections:
+  - title: Demonstrated Skills and Abilities
+    sections:
+      - title: Web Design
+        sections: 
+          - title: Applications
+            content: Gedit, Firefox, Google Chromium, Gimp, Inkscape, Bash, Git, Hg, openSSH, Screen, Byobu, Libre/OpenOffice.org, phpMyadmin. Aptana, Eclipse, QT4 Designer, Glade3, Mono­Develop.
+          - title: Daemons
+            content: Bind9, DNServer, Apache2, MySQLd, Postgres, OpenSSHd, Samba, nfs-kernel­server, uWsgi, Nginx, Gitolite, Gitlab, Gitliab-CI
+          - title: Languages
+            content: Python 2.6, Django, HTML5, CSS3, Javascript, jQuery, AngularJS, NodeJs, Git (git-flow), JSON, MySQL, Postgres, PySide, PyGtk
+          - title: Frameworks
+            content: Django, ExpressJs, SailsJs, CompoundJs, LocomotiveJs, Laravel, Drupal, Wordpress
+
+  - title: Operations
+    content: >
+      * Monitor Server Processes,
+      * Perform backup procedures,
+      * Manage firewalls/local DNS servers/apache name based virtual­hosts.
+      * Use Ansible/Fabric to automate Provisioning and Deployment of large scale web apps
+
+  - title: Experience
+    sections:
+      - timeframe: 2012-2013
+        position: CTO
+        activities:
+          - Zibmedia
+      - timeframe: 2011
+        position: Lead Developer
+        activities:
+          - Urpages.com.au
+      - timeframe: 2010
+        position: 2010
+        activities:
+          - Network Maintenance and Installations
+          - Basic Website Training
+          - Youthjet
+      - timeframe: 2007-2009
+        position: Open Source Research And Development
+        activities: 
+          - Full­Time Self Development
+          - Community Linux Support, #ubuntu@irc.freenode.net
+      - timeframe: 2004-2007
+        position: Website Design Project Manager
+        activities:
+          - HETA
+      - timeframe: 2003-2004
+        position: Website Designer and Programmer
+        activities: 
+          - Maison Jolie
+          - SQ Design
+      - timeframe: 2002
+        position: IT Technician
+        activities: 
+          - Metro Housing 
+          - Dash Incorporated
+      - timeframe: 1999
+        position: Website Designer / Graphic Designer
+        activities:
+          - Ozglean Australia
+      - timeframe: 1998
+        position: Desktop Publisher
+        activities:
+          - Book Agencies of Adelaide
+
+  - title: Training
+    sections:
+      - timeframe: Ongoing
+        topic: Self Education
+        activities: 
+          - NodeJS
+          - GruntJs
+          - YesOD and Haskell
+      - timeframe: 2010
+        topic: Training and Education
+        activities: 
+          - > 
+            Thebarton Senior College : Information Technology (Networking)
+            * Certificate 3 ICA30105
+            * Certificate 4 ICA40405
+
+          - >
+            Work Experience
+            * Network Maintenance, Server Installation and Operation, Create
+            * Documentation, Provide Basic Web Design Training.
+      - timeframe: 2007-2009
+        topic: Open Source Research And Development
+        content: >
+              Self Development
+                  Install, implement and use all aspects of the Ubuntu Linux desktop.
+                  Examine areas that fail to provide tools for the common workplace,
+                  and explore possibilities that address those deficiencies.
+                  Develop knowledge and understanding of the Ubuntu Linux Desktop,
+                  with a view to provide help­desk support for newcomers to Linux.
+              Game Interface Design
+                  Released several add­ons and utilities for on­line games using Lua,
+                  Javascript, CSS, HTML.
+      - timeframe: 2002-2007
+        topic: Project Management
+        activities: >
+          Heta Incorporated
+          * Supervise, provide direction and maintain work­flow of Community
+          * Groups Website project at Heta Incorporated.
+          Metro Housing Advanced Website Programming
+          * Purchase and installation of computer network. Create a database user interface that works with a central server. Contains XML, XSLT, ASP, SQL, Javascript.
+
+  - title: References
+    sections: 
+      - title: Sue Rose
+        content: >
+          Chief Executive Officer
+          Heta Incorporated
+          (08) 8123 4567
+
+      - title: Micheal Yoe
+        content: > 
+          Director
+          Youthjet
+          (08) 8227 0933
+
+      - title: Markos Diamantis
+        content: >
+          Satsang Program Coordinator
+          Satsang Gangaji Network
+          (08) 8123 4567
+
+      - title: Matt Paxton
+        content: >
+          Program Director
+          Thebarton Senior College
+          matthew.paxton@thebartonsc.sa.edu.au

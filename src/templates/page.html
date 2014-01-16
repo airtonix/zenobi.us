@@ -1,0 +1,13 @@
+{% extends 'src/templates/base.html' %}
+
+{% block head %}
+	<title>{{ site.name }}</title>
+{% endblock %}
+
+{% block content %}
+	{% for section in sections %}
+		{% if section.spacer == 'before' %}<div class="delimiter-big "></div>{% endif %}
+		{% include section.partial with section.context %}
+		{% if section.spacer == 'after' %}<div class="delimiter-big "></div>{% endif %}
+	{% endfor %}
+{% endblock %}
