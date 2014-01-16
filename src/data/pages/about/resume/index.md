@@ -1,3 +1,11 @@
+# Zenobius Jiricek (Zeno)
+
+* 2 Thelma St Payneham S.A. 5070
+* [zenobius.jiricek@gmail.com](mailto://zenobius.jiricek@gmail.com)
+* [@google+](http://plus.google.com/+zenobiusjiricek)
+* [@github](http://github.com/airtonix/)
+* [@home](http://zenobi.us/)
+* [+61 451 075 636](tel://+61451075636)
 
 
 # Demonstrated Skills & Abilities
@@ -25,144 +33,177 @@ NodeJs, Git (git-flow), JSON, basic MySQL, basic Postgres, PySide, PyGtk
 
 Django, ExpressJs, SailsJs, CompoundJs, LocomotiveJs, Laravel, Drupal, Wordpress
 
+### Tools
+
+Ansible, Fabric, Grunt, Git, Ssh, SublimeText, irc
+
 ### Operations
 
-Monitor Server Processes,
-Perform backup procedures,
-Manage firewalls/local DNS servers/apache name based virtual­hosts.
-Use Ansible/Fabric to automate Provisioning and Deployment of large scale web apps
-
+* Setup and deploy network hardware
+* Monitor Server Processes,
+* Automate backup procedures,
+* Manage firewalls/local DNS servers/apache name based virtual­hosts.
+* Use Ansible/Fabric to automate Provisioning and Deployment of large scale web apps
 
 # Experience
 
+### 2012-2013
 
-2012-2013   CTO
-			Zibmedia
+CTO, Zibmedia
 
-2011	    
-			Lead Developer
-	    	Urpages.com.au
+### 2011
 
-2010        
-			Network Maintenance & Installations
-            Basic Website Training
-            Youthjet
+Lead Developer, Urpages.com.au
 
-2007-2009   Open Source Research And Development
-            Full­Time Self Development
-            Community Linux Support
-            #ubuntu@irc.freenode.net
+### 2010
 
-2004-2007   Website Design Project Manager
-            Part­Time
-            HETA
+Youthjet
 
-2003-2004   Website Designer & Programmer
-            Part­Time
-            Maison Jolie ( SQ Design )
+* Network Maintenance & Installations
+* Website Training Provider
 
-2002        IT Technician
-            Part­Time
-            Metro Housing /Dash Incorporated
+### 2007-2009
 
-1999        Website Designer / Graphic Designer
-            Contract
-            Ozglean Australia
+Open Source Research And Development
 
-1998        Desktop Publisher
-            Full­Time
-            Book Agencies of Adelaide
+* full-time Self Development
+* Community Linux Support
+* #ubuntu@irc.freenode.net
+
+### 2004-2007
+
+HETA
+
+* Website Design Project Manager
+
+### 2003-2004
+
+Website Designer & Programmer, 
+Maison Jolie ( SQ Design )
+
+### 2002
+
+IT Technician, Metro Housing /Dash Incorporated
+
+###1999
+
+Website Designer / Graphic Designer
+Ozglean Australia
+
+### 1998
+
+Desktop Publisher
+Book Agencies of Adelaide
 
 
 # Training
 
-Ongoing		Self Education
-			Learning NodeJS
-			Learning YesOD & Haskell
+### Ongoing
 
-2010        Training and Education
+Self Education
+* Learning NodeJS
+* Learning YesOD & Haskell
 
-            Thebarton Senior College : Information Technology (Networking)
-                Certificate 3 ICA30105
-                Certificate 4 ICA40405
+### 2010
 
-            Work Experience
-                Network Maintenance, Server Installation & Operation, Create
-                Documentation, Provide Basic Web Design Training.
+Training and Education
+Thebarton Senior College : Information Technology (Networking)
 
-2007-2009   Open Source Research And Development
+* Certificate 3 ICA30105
+* Certificate 4 ICA40405
 
-            Self Development
-                Install, implement and use all aspects of the Ubuntu Linux desktop.
-                Examine areas that fail to provide tools for the common workplace,
-                and explore possibilities that address those deficiencies.
-                Develop knowledge and understanding of the Ubuntu Linux Desktop,
-                with a view to provide help­desk support for newcomers to Linux.
+Work Experience
 
-            Game Interface Design
-                Released several add­ons and utilities for on­line games using Lua,
-                Javascript, CSS, HTML.
+* Network Maintenance, Server Installation & Operation, Create
+* Documentation, Provide Basic Web Design Training.
 
-2002-2007   Project Management
-                Heta Incorporated
-                    Supervise, provide direction and maintain work­flow of Community
-                    Groups Website project at Heta Incorporated.
+### 2007-2009
 
-                Metro Housing Advanced Website Programming
-                    Purchase and installation of computer network. Create a database
-                    user interface that works with a central server. Contains XML,
-                    XSLT, ASP, SQL, Javascript.
+Open Source Research And Development
 
-2001        PATDC Certificate III Basic Engineering
-                Trainee­ship under Miniskaff Pty. Ltd
+Self Development
+
+* Install, implement and use all aspects of the Ubuntu Linux desktop.
+* Examine areas that fail to provide tools for the common workplace, and explore possibilities that address those deficiencies.
+* Develop knowledge and understanding of the Ubuntu Linux * Desktop, with a view to provide help­desk support for newcomers to Linux.
+
+Game Interface Design
+
+* Released several add­ons and utilities for on­line games using Lua, Javascript, CSS, HTML.
+
+### 2002-2007
+
+Project Management, Heta Incorporated
+
+* Supervise, provide direction and maintain work­flow of Community Groups Website project at Heta Incorporated.
+
+Metro Housing
+Advanced Website Programming
+
+* Purchase and installation of computer network. Create a database user interface that works with a central server. Contains XML, XSLT, ASP, SQL, Javascript.
+
+### 2001
+
+PATDC Certificate III Basic Engineering
+
+* Trainee­ship under Miniskaff Pty. Ltd
 
 
-1998-2001   Training and Education
+### 1998-2001
 
-            Internet Programming Research & Development
-                Study and implementation of programming techniques
+Training and Education
 
-            Tafe Pre­press for Graphic Artists
-                Image scanning and preparation for offset printing.
+* Internet Programming Research & Development
+* Study and implementation of programming techniques
 
-            TAFE Website Design &amp; Coding
-                Basic site development, HTML 4.0 coding
+Tafe Pre­press for Graphic Artists
 
-1997        Desktop Publishing
+* Image scanning and preparation for offset printing.
 
-            Book Agencies of Adelaide
-                Design, layout and proofreading of custom order forms used
-                for school supplies.
+TAFE Website Design
 
-1995        Training and Education
+* Basic site development, HTML 4.0 markup
 
-            Gifted Individuals Program Year 9
-                This consisted of animation training with computer software
+### 1997
 
+Desktop Publishing
+
+* Book Agencies of Adelaide
+ * Design, layout and proofreading of custom order forms used for school supplies.
+
+### 1995
+
+* Training and Education
+ * Gifted Individuals Programme Year 9, This consisted of animation training with computer software
 
 #References
 
 ## Sue Rose
-Chief Executive Officer
-Heta Incorporated
-(08) 8123 4567
+
+* Chief Executive Officer
+* Heta Incorporated
+* (08) 8123 4567
 
 ## Micheal Yoe
-Director
-Youthjet
-(08) 8227 0933
+
+* Director
+* Youthjet
+* (08) 8227 0933
 
 ## Markos Diamantis
-Satsang Program Coordinator
-Satsang Gangaji Network
-(08) 8123 4567
+
+* Satsang Program Coordinator
+* Satsang Gangaji Network
+* (08) 8123 4567
 
 ## Matt Paxton
-Program Director
-Thebarton Senior College
-matthew.paxton@thebartonsc.sa.edu.au
 
-## Sam Jackson
-Director
-Rendai Media
-junin.toiro@gmail.com
+* Program Director
+* Thebarton Senior College
+* matthew.paxton@thebartonsc.sa.edu.au
+
+## Ben Smith
+
+* CEO, Founder
+* muvli.com, bandwax.com, gigrig.co
+* ben@muvli.com
