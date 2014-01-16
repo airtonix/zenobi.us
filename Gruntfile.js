@@ -1,13 +1,28 @@
 module.exports = function (grunt) {
-
+  var path = require('path');
   var matchdep = require('matchdep');
       matchdep.filterDev('grunt-*').forEach(grunt.loadNpmTasks)
       matchdep.filterDev('assemble-*').forEach(grunt.loadNpmTasks)
       matchdep.filterDev('assemble').forEach(grunt.loadNpmTasks)
 
+  var useminPaths = [
+        "<%= site.dest %>/{,*/}*.html",
+        "<%= site.dest %>/assets/css/*.css",
+        "<%= site.dest %>/assets/js/*.js"
+        ]
+  var assetRevPattern = {
+        files: [{
+          src: [
+            '<%= site.dest %>/assets/js/*.js',
+            '<%= site.dest %>/assets/css/*.css',
+            // '<%= site.dest %>/assets/img/*.{png,jpg,jpeg,gif,webp}',
+            // '<%= site.dest %>/assets/{,*/}fonts/*.{ttf,otf,eot,woff,svg}',
+          ]
+         }]
+      }
   grunt.util._.mixin({
     read: function(src) {
-      grunt.file.read(require('path').join('src/data', src));
+      grunt.file.read(path.join('src/data', src));
     }
   });
 
@@ -18,17 +33,13 @@ module.exports = function (grunt) {
     assemble: {
       options: {
         engine: 'swig',
-        // flatten: true,
         site: '<%= site %>',
-        // plugins: ['permalinks'],
-        // marked: {
-        //   highlight: function (code) {
-        //     return require('highlight.js').highlightAuto(code).value;
-        //   }
-        // }
-        // data: ['src/data/**/*.{json,yml}'],
+        plugins: [
+          'assemble-contrib-anchors',
+          'assemble-contrib-toc'
+        ],
         assets: 'assets',
-        helpers: ['src/extensions/**/*.js', ],
+        helpers: ['src/extensions/{,*/}*.js', ],
         layoutdir: 'src/templates/',
         layoutext: '.html'
 
@@ -38,107 +49,102 @@ module.exports = function (grunt) {
         files:[{
           expand: true,
           cwd: 'src/data/pages',
-          src: ['*.{md,markdown,yml}'],
+          src: [
+            '*.{md,markdown,yml}',
+            '{,*/}*.{md,markdown,yml}'
+          ],
           dest: '<%= site.dest %>'
         }]
-      },
+      }
 
-      // resume: {
-      //   files: {
-      //     '<%= site.build %>/resume/index.html': ['src/templates/pages/resume.html.swig']
-      //   }
-      // },
-
-      // coverletter: {
-      //   files: {
-      //     '<%= site.build %>/coverletter/index.html': ['src/templates/pages/coverletter.html.swig']
-      //   }
-      // },
-
-      // projects: {
-      //   files: {
-      //     '<%= site.build %>/projects/*': ['src/templates/projects/**/*.swig']
-      //   }
-      // },
-
-      // posts: {
-      //   files: {
-      //     '<%= site.build %>/posts/*': ['src/templates/posts/**/*.swig']
-      //   }
-      // },
-
-    },
-
-    useminPrepare: {
-      options: {
-        dest: "<%= site.dest %>",
-        root: "src"
-      },
-      html: "<%= site.dest %>/**/*.html"
     },
 
     copy: {
       dist: {
         files: [{
+          cwd: 'src/assets/',
           expand: true,
-          dest: '<%= site.dest %>/assets/',
-          src: "src/assets/**/*"
-        }]
-      }
-    },
-
-    // concat: {},
-    // imagemin: {},
-    // htmlmin: {},
-
-    rev: {
-      options: {
-        algorithm: 'md5',
-        length: 8
-      },
-      assets: {
-        files: [{
-          expand: true,
-          cwd: '<%= site.dest %>/assets/',
           src: [
             '**/*.js',
             '**/*.css',
-            '**/*.{jpg,jpeg,gif,png}',
-            '**/*.{eot,svg,ttf,woff}'
-          ]
+          ],
+          dest: '<%= site.dest %>/assets/'
+        },{
+          cwd: 'src/assets/',
+          expand: true,
+          flatten: true,
+          src: [
+            '**/fonts/*.{ttf,otf,eot,woff,svg}',
+          ],
+          dest: '<%= site.dest %>/assets/fonts/'
+        }, {
+          cwd: 'src/assets/',
+          expand: true,
+          flatten: true,
+          src: [
+            '**/*.{png,jpg,jpeg,gif,webp}',
+          ],
+          dest: '<%= site.dest %>/assets/img/'
+        }]
+      },
+      dev: {
+        files: [{
+          expand: true,
+          cwd: 'src/assets/',
+          src: [
+            '**/*.js',
+            '**/*.css',
+            '**/fonts/*.{ttf,otf,eot,woff,svg}',
+            '**/*.{png,jpg,jpeg,gif,webp}',
+          ],
+          dest: '<%= site.dest %>/assets/'
         }]
       }
     },
 
-    usemin: {
-      html: "<%= site.dest %>/**/*.html",
+    useminPrepare: {
+      src: useminPaths,
       options: {
-        assetDirs: [
-          '<%= site.dest %>',
-          '<%= site.dest %>/assets'
-        ]
+        dest: "<%= site.dest %>/",
+        root: path.join(process.cwd(), '<%= site.dest %>')
+      }
+    },
+
+    filerev: {
+      options: {
+        algorithm: 'sha1',
+        length: 7
+      },
+      assets: assetRevPattern
+    },
+
+    usemin: {
+      html: useminPaths,
+      options : {
+        assetDirs: path.join(process.cwd(), '<%= site.dest %>')
       }
     },
 
     watch: {
-      pages: {
+      assets: {
         files: [
-          'src/data/**/*',
-          'src/assets/**/*',
-          'src/templates/**/*',
-          'GruntFile.js'
+          'src/assets/{,**/}*.*',
         ],
-        tasks: ['build']
+        tasks: ['build', 'watch']
       },
-      // copy: {
-      //   files: [
-      //     'src/images/**',
-      //     'src/scripts/**',
-      //     'src/styles/**.css',
-      //     'src/styles/fonts/**'
-      //   ],
-      //   tasks: ['copy']
-      // }
+      templates: {
+        files: [
+          'src/data/{,*/}*.*',
+          'src/templates/{,*/}*.*',
+        ],
+        tasks: ['assemble', 'watch']
+      },
+      app: {
+        files: [
+          'GruntFile.js',
+        ],
+        tasks: ['dev', 'watch']
+      }
     },
 
     connect: {
@@ -155,31 +161,46 @@ module.exports = function (grunt) {
     clean: {
       dist: [
         '<%= site.dest %>',
-        '.tmp'
-        ]
+        'dest',
+        ],
+      temp: [
+        '.tmp',
+        '.grunt'
+      ]
     },
   });
 
-  grunt.registerTask('build', [
+
+  grunt.registerTask('dist', [
     'clean',
+    'copy:dist',
     'assemble',
+    'less',
     'useminPrepare',
     // 'imagemin',
     'concat',
     'cssmin',
     // 'htmlmin',
     'uglify',
-    'rev',
+    'filerev',
     'usemin'
+  ]);
+
+  grunt.registerTask('dev', [
+    'clean',
+    'copy:dev',
+    'assemble',
+    'less',
   ]);
 
   
 
   grunt.registerTask('server', [
-    'build',
-    'connect',
-    'watch'
-  ]);
+      'dev',
+      'connect',
+      'clean:temp',
+      'watch'
+    ]);
 
   grunt.registerTask('default', 'server');
 
