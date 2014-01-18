@@ -1,0 +1,12 @@
+/*
+	Project Mixins
+	css/mixins.scss
+ */
+
+@mixin vertically-center ($child: ".vcentered") {
+  display: table;
+  & > #{$child} {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}

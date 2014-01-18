@@ -1,0 +1,17 @@
+
+@mixin nav-base($height: 2em){
+	width: 100%;
+	height: $height;
+}
+
+@mixin nav-style($background: none, $border: none){
+
+}
+
+
+@if($html_classes){
+
+	header nav{
+		
+	}
+}

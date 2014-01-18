@@ -1,0 +1,37 @@
+{
+  "locals": {
+    "url": "http://zenobi.us",
+    "name": "zenobi.us",
+    "owner": "Zenobius Jiricek",
+    "description": "Ramblings of an immor(t)al demigod"
+  },
+  "plugins": [
+    "./plugins/paginator.coffee",
+    "wintersmith-browserify",
+    "wintersmith-node-sass"
+  ],
+  "require": {
+    "moment": "moment",
+    "_": "underscore",
+    "typogr": "typogr"
+  },
+  "jade": {
+    "pretty": true
+  },
+
+  "node-sass": {
+    "includePaths": [
+      "./content/vendor/bourbon/app/assets/stylesheets",
+      "./content/css/"
+    ],
+    "minify": false
+  },
+
+  "markdown": {
+    "smartLists": true,
+    "smartypants": true
+  },
+  "paginator": {
+    "perPage": 3
+  }
+}
