@@ -1,0 +1,47 @@
+nap  = require 'nap'
+path = require 'path'
+
+module.exports = (env, callback) ->
+  preview = 'preview' == env.mode
+  roots =
+    contents: env.config.contents
+    output: env.config.output
+
+  # Reading config from wintersmith config object (config.json)
+  napCfg = env.config.nap
+
+  # prefix with location of `contents` directory
+  for ext of napCfg.assets
+    for section of napCfg.assets[ext]
+      for index of napCfg.assets[ext][section]
+        napCfg.assets[ext][section][index] = roots.contents + napCfg.assets[ext][section][index]
+
+  # Setting various `nap` configs
+  napCfg.appDir    = env.workDir
+  napCfg.mode      = if preview then 'development' else 'production'
+  napCfg.publicDir = if preview then roots.contents else roots.output
+
+  # Instantiate nap!
+  nap napCfg
+  
+  if preview # development
+    # Refer to https://github.com/etabits/wintersmith-nap/pull/3#issuecomment-31646159
+    createNapWrapper = (ext) ->
+      (section) ->
+        output = nap[ext] section
+        env.logger.info(output)
+        output #.replace(/\/assets\/contents\//g, '/')
+
+    env.locals.nap = {}
+    env.locals.nap.css = createNapWrapper 'css'
+    env.locals.nap.js = createNapWrapper 'js'
+    env.locals.nap.jst = createNapWrapper 'jst'
+
+    # we're done
+    callback()
+
+  else # production
+    env.locals.nap = nap
+
+    env.logger.info('nap.package()...')
+    nap.package(callback)

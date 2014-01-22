@@ -1,0 +1,14 @@
+extends layout
+
+block header
+
+block content
+	.hero
+		.cell
+			img.avatar(src="http://placehold.it/256x256")
+
+			ul.button-group.simple-outline
+				each key, item in contents.pages
+					li
+						a.button(href=item.url)= item
+

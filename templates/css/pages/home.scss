@@ -1,0 +1,13 @@
+body#home{
+	.hero{
+		.avatar{
+			@include box-shadow((0 0 0px 5px #fff, 0 0 0 10px #ddd));
+			@include border-radius(50%);
+			margin: 0 auto 3em;
+			display: block;
+		}
+		.button-group li a.button{
+			font-weight: bold !important;
+		}
+	}
+}
