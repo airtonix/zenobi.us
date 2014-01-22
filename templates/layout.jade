@@ -1,6 +1,7 @@
 doctype html
 block vars
 	- var bodyclass = null;
+include mixins
 html(lang='en')
 	head
 		block head
@@ -13,34 +14,43 @@ html(lang='en')
 			link(rel='alternate', href=locals.url+'/feed.xml', type='application/rss+xml', title=locals.description)
 			link(rel='stylesheet', media="print", href='/css/print.css')
 			link(rel='stylesheet', media="screen, projector", href='/css/screen.css')
+		script(type='text/javascript', src='/vendor/modernizr/modernizr.js')
 
-	body(class=bodyclass)
+	body(id=page.metadata.title)
 
 		header.header
-			div.content-wrap
-				block header
-					nav.top-bar.hide-for-print(data-topbar)
+			block header
+				nav.top-bar.hide-for-print(data-topbar)
+					ul.title-area
+						li.name
+							h1
+								a= locals.name
+						li.toggle-topbar.menu-icon
+							a(href="#") Menu
 
-						ul.title-area
-							li.name
-								h1
-									a= locals.name
-							li.toggle-topbar.menu-icon
-								a(href="#") Menu
-
-						section.top-bar-section
-							ul.right
-								each _, item in contents.pages
-									li
-										a(href="#")= item
-
+					section.top-bar-section
+						ul.right
+							+dropdown-menu()
 		div#content
-			div.content-wrap
-				block content
-					h2 Welcome to zombocom!
+			block content
 
-		footer
-			div.content-wrap
+		footer#site-footer
+
+			div.row
 				block footer
 					section.copy
 						p &copy; #{ new Date().getFullYear() } #{ locals.owner }
+
+		script(src='/vendor/jquery/jquery.js')
+		script(src='/vendor/fastclick/lib/fastclick.js')
+
+		script.
+			;(function(){
+				"use strict";
+				$(function(){
+						$(".toggle-topbar").on('mouseup touchend', function(){
+							$(this).parents('nav').toggleClass("expanded")
+						})
+
+					});
+			})();

@@ -6,7 +6,9 @@
     "wintersmith-browserify": "~0.2.4",
     "wintersmith-nap": "~0.2.1",
     "wintersmith-node-sass": "~0.1.0",
-    "wintersmith": "~2.0.9"
+    "wintersmith": "~2.0.9",
+    "wintersmith-data-json": "0.0.5",
+    "nap": "~0.7.15"
   },
   "repository": "none"
 }

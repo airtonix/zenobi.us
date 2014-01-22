@@ -66,10 +66,32 @@ $fg-max-columns: 12;          // Total Columns For Main Container
 
 
 /*
-
+	Body
  */
-$body-bg: $peter-river;
+$body-bg: #fff;
 $body-font-color: #222;
 $body-font-family: "Monsterrat", Arial, sans-serif;
 $body-font-weight: normal;
 $body-font-style: normal;
+
+
+/*
+Topbar
+ */
+$topbar-bg-color: #fff;
+
+$topbar-link-color: #999;
+$topbar-link-color-hover: #333;
+$topbar-link-color-active: #ace;
+
+$topbar-link-bg-hover: #eee  ;
+
+$topbar-dropdown-bg: #fff;
+$topbar-dropdown-link-color: #fff;
+$topbar-dropdown-link-bg: #333;
+$topbar-arrows: false;
+
+$topbar-menu-link-color: #999;
+$topbar-menu-icon-color: #999;
+$topbar-menu-link-color-toggled: #888;
+$topbar-menu-icon-color-toggled: #888;

@@ -1,17 +1,28 @@
-
-@mixin nav-base($height: 2em){
+header nav.top-bar{
+	position: absolute;
 	width: 100%;
-	height: $height;
-}
+	.toggle-topbar.menu-icon{
+		@include radius(2px);
+		@include box-shadow(0 1px 0 #eee);
+		border: 1px solid #ccc;
+		padding:0 1em 0 1em;
+		text-align: left;
+		&:after{
+			margin-right: 1em;
+		}
+	}
 
-@mixin nav-style($background: none, $border: none){
+	&.expanded{
+		.toggle-topbar.menu-icon{
+			border-color:white;
+			@include box-shadow(none);
+		}
 
-}
-
-
-@if($html_classes){
-
-	header nav{
-		
+		.top-bar-section{
+			overflow: auto;
+			margin-bottom: 1em;
+			border-bottom: 1px solid #ccc;
+			@include box-shadow(0 5px 9px 0px rgba(black, 0.1))
+		}
 	}
 }

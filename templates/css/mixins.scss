@@ -3,10 +3,26 @@
 	css/mixins.scss
  */
 
-@mixin vertically-center ($child: ".vcentered") {
+@mixin vertically-align ($child: ".cell", $alignment: middle) {
   display: table;
   & > #{$child} {
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: $alignment;
   }
+}
+
+@mixin box-shadow($values){
+	@if $experimental{
+		-webkit-box-shadow: $values;
+		-moz-box-shadow: $values;
+	}
+	box-shadow: $values;
+}
+
+@mixin border-radius($radius){
+	@if $experimental{
+		-webkit-border-radius: $radius;
+		-moz-border-radius: $radius;
+	}	
+	border-radius: $radius;
 }

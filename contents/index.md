@@ -1,3 +1,4 @@
 ---
-view: index.jade
+title: home
+template: home.jade
 ---
