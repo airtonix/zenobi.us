@@ -1,0 +1,17 @@
+extends layout
+
+block append vars
+	- bodyclass = 'page'
+
+block prepend title
+	| #{ page.title + " - "}
+
+block content
+	.row
+		.large-12.columns
+			h1= page.title
+
+			article.article
+				section.content!= typogr(page.html).typogrify()
+				//- section.content!= page.html
+

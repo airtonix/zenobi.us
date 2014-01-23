@@ -1,5 +1,6 @@
 ---
-view: none
+template: page.jade
+title: About
 ---
 
 I primarily work with [Django][1], [Tastypie][2] and [AngularJS][3].

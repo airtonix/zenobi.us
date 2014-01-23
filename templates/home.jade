@@ -5,10 +5,10 @@ block header
 block content
 	.hero
 		.cell
-			img.avatar(src="http://placehold.it/256x256")
+			a(href="#{url}"): img.avatar(src="http://placehold.it/256x256")
 
 			ul.button-group.simple-outline
-				each key, item in contents.pages
-					li
-						a.button(href=item.url)= item
+				li: a.button(href="/about/") about
+				li: a.button(href="/projects/") projects
+				li: a.button(data-modal='.contact-form') contact
 

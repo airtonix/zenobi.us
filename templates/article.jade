@@ -1,32 +1,21 @@
-
 extends layout
 
 block append vars
-  - bodyclass = 'article-detail'
+	- bodyclass = 'article-detail'
 
 block prepend title
-  | #{ page.title + " - "}
+	| #{ page.title + " - "}
 
 block header
-  include author
-  h1= page.title
-  p.author
-    | #{ "Written by " }
-    mixin author(page.metadata.author)
+	include author
+	h1= page.title
+	p.author
+		| #{ "Written by " }
+		mixin author(page.metadata.author)
 
 block content
-  article.article
-    section.content!= typogr(page.html).typogrify()
+	article.article
+		section.content!= typogr(page.html).typogrify()
 
 block prepend footer
-  section.about
-    != contents.about['index.md'].html
-
-  div.nav
-    if prevPage
-      a(href=prevPage.url) « Newer
-    else
-      a(href='/archive.html') « Archives
-    if nextPage
-      a(href=nextPage.url) Next page »
-
+	include partial/post-footer

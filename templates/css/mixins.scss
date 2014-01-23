@@ -3,6 +3,8 @@
 	css/mixins.scss
  */
 
+$prefixes: webkit moz ms o;
+
 @mixin vertically-align ($child: ".cell", $alignment: middle) {
   display: table;
   & > #{$child} {
@@ -25,4 +27,18 @@
 		-moz-border-radius: $radius;
 	}	
 	border-radius: $radius;
+}
+
+@mixin experimental($attribute, $value){
+	@each $prefix in $prefixes{
+		-#{$prefix}-#{$attribute}: $value;
+	}
+	#{$attribute}: $value;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
 }

@@ -1,10 +1,28 @@
 ;(function(){
 
 	'use strict';
+	
+	window.addEventListener('load', function(){
+		var $ = require('../vendor/jquery/jquery');
+		require('../vendor/jquery.avgrund/jquery.avgrund')($);
 
-	var models = require("app/models.js");
-	var controllers = require("app/controllers.js");
-	var views = require("app/views.js");
+		$(function(){
+			$('[data-modal]').each(function(){
+				var $source = $(this).data('modal');
+				console.log($source)
+				$(this).avgrund({
+					holderClass: 'modal',
+					showClose: true,
+					showCloseText: 'close',
+					onBlurContainer: '.container',
+					template: $($source)
+				});
+			});
 
+			$(".toggle-topbar").on('mouseup touchend', function(){
+				$(this).parents('nav').toggleClass("expanded")
+			});
+		});
 
+	}, false);
 })();

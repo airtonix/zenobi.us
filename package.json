@@ -8,7 +8,9 @@
     "wintersmith-node-sass": "~0.1.0",
     "wintersmith": "~2.0.9",
     "wintersmith-data-json": "0.0.5",
-    "nap": "~0.7.15"
+    "nap": "~0.7.15",
+    "jquery.avgrund": "~1.2.0",
+    "jquery-browserify": "~1.8.1"
   },
   "repository": "none"
 }

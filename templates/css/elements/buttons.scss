@@ -1,3 +1,16 @@
+@mixin button-style-simple(){
+	background: none;
+	border: 2px solid #ddd;
+	color: #999;
+	text-transform: uppercase;
+	font-size: 10px;
+	border-right: none;
+	&:hover{
+		background: #eee;
+		color: #333;
+	}
+}
+
 ul.button-group{
 	clear:both;
 	display: inline-block;
@@ -5,16 +18,7 @@ ul.button-group{
 	&.simple-outline{
 		li{
 			a.button{
-				background: none;
-				border: 2px solid #ddd;
-				color: #999;
-				text-transform: uppercase;
-				font-size: 10px;
-				border-right: none;
-				&:hover{
-					background: #eee;
-					color: #333;
-				}
+				@include button-style-simple();
 			}
 
 			&:last-child{
@@ -24,5 +28,16 @@ ul.button-group{
 			}
 
 		}
+	}
+}
+
+.button, button{
+	&.simple-outline{
+		@include button-style-simple();
+	}
+
+	&.button-block{
+		width: 100%;
+		display: block;
 	}
 }
