@@ -2,13 +2,14 @@ lib-cov
 *.csv
 .sass-cache
 .grunt
-
+build
+dist
 *.dat
 /.tmp
 *.out
 /.grunt
-dist
 node_modules
+src/contents/vendor
 results
 *.gz
 logs

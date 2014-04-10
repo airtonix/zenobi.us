@@ -1,0 +1,22 @@
+/*
+	Project Mixins
+	css/mixins.scss
+ */
+
+$prefixes: webkit moz ms o;
+
+@mixin vertically-align ($child: ".cell", $alignment: middle) {
+  display: table;
+  & > #{$child} {
+    display: table-cell;
+    vertical-align: $alignment;
+  }
+}
+
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}

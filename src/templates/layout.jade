@@ -1,0 +1,49 @@
+doctype html
+html(lang='en')
+	head
+		block head
+			meta(charset='utf-8')
+			meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+			meta(name='viewport', content='width=device-width')
+			title= locals.name
+			link(rel='alternate', href=locals.url+'/feed.xml', type='application/rss+xml', title=locals.description)
+			link(rel='stylesheet', media="print", href='/css/print.css')
+			link(rel='stylesheet', media="screen, projector", href='/css/screen.css')
+
+	body(id=page.metadata.title)
+
+		header.header
+			block header
+				nav.top-bar.hide-for-print(data-topbar)
+					ul.title-area
+						li.name
+							h1
+								a(href="#{locals.url}")= locals.name
+						li.toggle-topbar.menu-icon
+							a(href="#") Menu
+
+					section.top-bar-section
+						ul.right
+							li: a(href='/about/') About
+							li: a(href='/articles/') Articles
+							li: a(href='/projects/') Projects
+							li: a(data-modal='.contact-form') Contact
+
+		article#content
+			block content
+
+		footer#site-footer
+			div.row
+				block footer
+					section.copy
+						p &copy; #{ new Date().getFullYear() } #{ locals.owner }
+
+		.contact-form.hide
+			h4.text-centered Send me a message
+				small.block I'll get back to you
+			form(method='post', action='').contact
+				input(name='email', type='email', placeholder='your email')
+				textarea(name='message', placeholder='a message to me...').vertical
+				button(type='submit').button send
+
+		script(data-main='/js/boot.js', src='/vendor/requirejs/require.js')
