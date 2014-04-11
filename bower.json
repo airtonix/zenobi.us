@@ -22,6 +22,7 @@
     "modernizr": "~2.7.1",
     "requirejs": "~2.1.10",
     "bourbon": "git://github.com/thoughtbot/bourbon.git#=3.1.8",
-    "foundation": "~5.2.2"
+    "foundation": "~5.2.2",
+    "zepto": "~1.1.3"
   }
 }

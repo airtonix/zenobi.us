@@ -1,3 +1,4 @@
+_ = require 'lodash'
 
 module.exports = (env, callback) ->
   ### Paginator plugin. Defaults can be overridden in config.json
@@ -36,20 +37,19 @@ module.exports = (env, callback) ->
     getView: -> (env, locals, contents, templates, callback) ->
       # simple view to pass articles and pagenum to the paginator template
       # note that this function returns a funciton
-
       # get the pagination template
       template = templates[options.template]
       if not template?
         return callback new Error "unknown paginator template '#{ options.template }'"
 
       # setup the template context
-      ctx = {@articles, @prevPage, @nextPage}
+      context = {@articles, @prevPage, @nextPage}
 
       # extend the template context with the enviroment locals
-      env.utils.extend ctx, locals
+      env.utils.extend context, locals
 
       # finally render the template
-      template.render ctx, callback
+      template.render context, callback
 
   # register a generator, 'paginator' here is the content group generated content will belong to
   # i.e. contents._.paginator

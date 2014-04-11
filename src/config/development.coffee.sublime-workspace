@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Stat",
+				"StaticPlugin"
+			],
+			[
 				"font",
 				"font-weight"
 			],
@@ -407,22 +411,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/C/Users/zenobius/Dev/zenobi.us/app.coffee",
-			"settings":
-			{
-				"buffer_size": 651,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "production.coffee",
-			"settings":
-			{
-				"buffer_size": 152,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -431,16 +419,16 @@
 		"selected_items":
 		[
 			[
-				"save",
-				"Project: Save As"
+				"ren",
+				"File: Rename"
 			],
 			[
 				"trail",
 				"Trailing Spaces: Delete Trailing Spaces"
 			],
 			[
-				"ren",
-				"File: Rename"
+				"save",
+				"Project: Save As"
 			],
 			[
 				"dele",
@@ -584,24 +572,58 @@
 	},
 	"file_history":
 	[
-		"/C/Users/zenobius/Dev/zenobi.us/src/config/test.json",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/home.jade",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/config.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/colours/desaturated-sun-skin.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/elements/links.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/layout.jade",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/elements.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/package.json",
+		"/C/Users/zenobius/Dev/zenobi.us/src/tests/routes.js",
+		"/C/Users/zenobius/.profile",
+		"/C/Users/zenobius/.npmrc",
+		"/C/Users/zenobius/.bashrc",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/elements/nav.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/elements/headings.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/fonts.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/pages/base.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/elements/avgrund.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/elements/buttons.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/pages/home.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/contents/js/application.coffee",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/colours/orange-autum.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/contents/js/boot.coffee",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/article.jade",
+		"/C/Users/zenobius/Dev/zenobi.us/src/contents/css/screen.scss",
+		"/C/Users/zenobius/Dev/zenobi.us/src/templates/css/mixins.scss",
 		"/C/Users/zenobius/Dev/zenobi.us/src/config/base.coffee",
-		"/C/Users/zenobius/Dev/zenobi.us/src/config/production.coffee",
+		"/C/Users/zenobius/Applications/cmder/vendor/msysgit/git-bash.bat",
+		"/C/Users/zenobius/Applications/cmder/vendor/init.bat",
+		"/C/Program Files (x86)/Git/etc/profile",
+		"/C/Program Files (x86)/Git/share/antiword/8859-5.txt",
+		"/C/Users/zenobius/Dev/zenobi.us/node_modules/.bin/bower",
+		"/C/Users/zenobius/Dev/zenobi.us/.bowerrc",
+		"/C/Users/zenobius/Dev/zenobi.us/src/plugins/static/index.coffee",
+		"/C/Users/zenobius/Dev/zenobi.us/node_modules/wintersmith/src/core/content.coffee",
+		"/C/Users/zenobius/Dev/zenobi.us/node_modules/wintersmith/lib/core/content.js",
+		"/C/Users/zenobius/Dev/zenobi.us/node_modules/wintersmith/lib/core/server.js",
+		"/C/Users/zenobius/Dev/zenobi.us/app.coffee",
 		"/C/Users/zenobius/Dev/zenobi.us/src/config/development.coffee",
+		"/C/Users/zenobius/Dev/zenobi.us/node_modules/wintersmith/src/core/environment.coffee",
+		"/C/Users/zenobius/Dev/zenobi.us/env.exe.stackdump",
+		"/C/Users/zenobius/Dev/zenobi.us/src/plugins/package.coffee",
+		"/C/Users/zenobius/Dev/zenobi.us/src/config/test.json",
+		"/C/Users/zenobius/Dev/zenobi.us/src/config/production.coffee",
 		"/C/Users/zenobius/Dev/zenobi.us/src/config/production.json",
 		"/C/Program Files/nodejs/npm.cmd",
 		"/C/Program Files/nodejs/npm",
-		"/C/Users/zenobius/Dev/zenobi.us/src/templates/home.jade",
-		"/C/Users/zenobius/Dev/zenobi.us/app.coffee",
 		"/C/Users/zenobius/Dev/zenobi.us/src/config/development.json",
 		"/C/Users/zenobius/Dev/zenobi.us/bower.json",
-		"/C/Users/zenobius/Dev/zenobi.us/package.json",
 		"/C/Users/zenobius/Dev/zenobi.us/Gruntfile.coffee",
 		"/C/Users/zenobius/Dev/zenobi.us/server.coffee",
 		"/C/Users/zenobius/Dev/zenobi.us/server",
 		"/C/Users/zenobius/Dev/zenobi.us/config.json",
 		"/C/Program Files/nodejs/nodevars.bat",
-		"/C/Users/zenobius/Dev/zenobi.us/src/templates/layout.jade",
 		"/C/Users/zenobius/Dev/zenobi.us/npm-debug.log",
 		"/C/Users/zenobius/Dev/epochdb/src/templates/css/pages/base.scss",
 		"/C/Users/zenobius/Dev/epochdb/src/templates/css/elements/nav.scss",
@@ -610,9 +632,6 @@
 		"/C/Users/zenobius/Dev/epochdb/src/contents/api/item/data.json",
 		"/C/Users/zenobius/Dev/epochdb/src/contents/api/recipe/data.json",
 		"/C/Users/zenobius/Dev/epochdb/src/contents/js/directives/calculator.js",
-		"/C/Users/zenobius/.bashrc",
-		"/C/Users/zenobius/Applications/cmder/vendor/init.bat",
-		"/C/Users/zenobius/Applications/cmder/vendor/msysgit/git-bash.bat",
 		"/C/Users/zenobius/Dev/epochdb/src/contents/api/area/data.json",
 		"/C/Users/zenobius/Dev/epochdb/src/contents/js/directives/search.coffee",
 		"/C/Users/zenobius/Dev/epochdb/src/contents/js/templates/partial/search.jade",
@@ -680,42 +699,11 @@
 		"/C/Users/zenobius/.virtualenvs/misago/Lib/site-packages/markdown/extensions/fenced_code.py",
 		"/C/Users/zenobius/Dev/forumdjango/manage.py",
 		"/C/Users/zenobius/Dev/forumdjango/forumdjango/templates/base.html",
-		"/C/Users/zenobius/Dev/forumdjango/forumdjango/settings.py",
-		"/C/Users/zenobius/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
-		"/C/Users/zenobius/Dev/forumdjango/forumdjango/urls.py",
-		"/C/Users/zenobius/.ssh/config",
-		"/C/Users/zenobius/Dev/github-tiddly/Gruntfile.coffee",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/templates/partial/swipable-pane-container.jade",
-		"/C/Users/zenobius/Downloads/Internode_invoice_36.txt",
-		"/C/Users/zenobius/Dev/epochdb/src/templates/css/fonts.scss",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/directives.js",
-		"/C/Users/zenobius/AppData/Roaming/Sublime Text 3/Settings/SideBarEnhancements.json",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/vendor/angular-route-segment/src/route-segment.js",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/resources/craftables.js",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/directives/site.js",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/templates/pages/credit.jade",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/templates/pages/about.jade",
-		"/C/Users/zenobius/Dev/epochdb/src/templates/css/elements/toc.scss",
-		"/C/Users/zenobius/Dev/epochdb/src/templates/css/vendor/foundation/_settings.scss",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/templates/partial/table-of-contents.jade",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/templates/pages/contribute.jade",
-		"/C/Users/zenobius/Dev/epochdb/src/templates/css/colors/flatui.scss",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/directives/scrollspy.js",
-		"/C/Users/zenobius/Dev/epochdb/src/templates/css/elements.scss",
-		"/C/Users/zenobius/Dev/epochdb/src/plugins/package.coffee",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/templates/partial/icon-bubble.jade",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/directives/wintersmith.js",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/directives/assets.js",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/js/templates/partial/tabs.jade",
-		"/C/Users/zenobius/Dev/epochdb/src/templates/css/elements/hero.scss",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/api/recipes/data.json",
-		"/C/Users/zenobius/Dev/epochdb/src/contents/css/screen.scss",
-		"/C/Users/zenobius/Dev/epochdb/src/templates/css/mixins.scss",
-		"/C/Users/zenobius/Dev/epochdb/src/templates/css/elements/headings.scss"
+		"/C/Users/zenobius/Dev/forumdjango/forumdjango/settings.py"
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -1005,65 +993,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/C/Users/zenobius/Dev/zenobi.us/app.coffee",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 651,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								271,
-								271
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "production.coffee",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 152,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1147,7 +1078,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 291.0,
+	"side_bar_width": 236.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -1,4 +1,8 @@
 doctype html
+
+block vars
+	- bodyclass = 'page'
+
 html(lang='en')
 	head
 		block head
@@ -7,10 +11,10 @@ html(lang='en')
 			meta(name='viewport', content='width=device-width')
 			title= locals.name
 			link(rel='alternate', href=locals.url+'/feed.xml', type='application/rss+xml', title=locals.description)
-			link(rel='stylesheet', media="print", href='/css/print.css')
-			link(rel='stylesheet', media="screen, projector", href='/css/screen.css')
+			link(rel='stylesheet', media="print", href='/assets/css/print.css')
+			link(rel='stylesheet', media="screen, projector", href='/assets/css/screen.css')
 
-	body(id=page.metadata.title)
+	body(id=page.metadata.title, class=bodyclass)
 
 		header.header
 			block header
@@ -18,25 +22,29 @@ html(lang='en')
 					ul.title-area
 						li.name
 							h1
-								a(href="#{locals.url}")= locals.name
+								a(href="#{locals.url}")=site.name
 						li.toggle-topbar.menu-icon
 							a(href="#") Menu
 
 					section.top-bar-section
 						ul.right
+							unless page.metadata
+								li: a(href='/') Home
 							li: a(href='/about/') About
 							li: a(href='/articles/') Articles
 							li: a(href='/projects/') Projects
-							li: a(data-modal='.contact-form') Contact
+							li: a(href='/contact/') Contact
 
 		article#content
 			block content
 
 		footer#site-footer
-			div.row
+			.row
 				block footer
 					section.copy
-						p &copy; #{ new Date().getFullYear() } #{ locals.owner }
+						p &copy; #{ new Date().getFullYear() } #{ site.owner }
+			.row
+				pre= pageJson
 
 		.contact-form.hide
 			h4.text-centered Send me a message
@@ -46,4 +54,4 @@ html(lang='en')
 				textarea(name='message', placeholder='a message to me...').vertical
 				button(type='submit').button send
 
-		script(data-main='/js/boot.js', src='/vendor/requirejs/require.js')
+		script(data-main='/assets/js/boot.js', src='/assets/vendor/requirejs/require.js')

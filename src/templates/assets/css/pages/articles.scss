@@ -1,0 +1,19 @@
+body.article,
+body.page{
+
+	#page-header{
+		@media #{$small-up} {
+			min-height: 4em;
+		}
+		@media #{$medium-up} {
+			min-height: 10em;
+			display: table;
+			& > * {
+				display: table-cell;
+				vertical-align: bottom;
+				border-bottom: 0.2em solid $primary-tint;
+			}
+		}
+
+	}
+}

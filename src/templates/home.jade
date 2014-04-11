@@ -3,11 +3,16 @@ extends layout
 block header
 
 block content
-	.hero
+	header.hero.vertical
 		.cell
-			a(href="#{url}"): img.avatar(src="http://placehold.it/256x256/")
+			a.avatar(href="#{url}")
+				img.cube(src="/assets/img/cube-blue.png")
+				img.shadow(src="/assets/img/shadow.png")
+			h1=site.name
 
-			ul.button-group.simple-outline
+	.hero.horzitonal#below-the-fold
+		.cell
+			ul.button-group.simple-outline.vertical-small.horizontal-landscape
 				li: a.button(href="/about/") about
 				li: a.button(href="/projects/") projects
 				li: a.button(href='/articles/') Articles

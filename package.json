@@ -17,13 +17,16 @@
     "type": "git",
     "url": "http://github.com/airtonix/zenobi.us.git"
   },
-  "main": "index.js",
+  "main": "app.coffee",
   "scripts": {
-    "test": "",
-    "start": "./node_modules/.bin/coffee ./app.coffee",
-    "post-install": "bower install"
+    "test": "mocha -u tdd",
+    "start": "coffee ./app.coffee",
+    "prepublish": "./node_modules/.bin/bower install"
   },
-  "dependencies": {
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon": "*",
     "moment": "2.3.x",
     "underscore": "1.4.x",
     "typogr": "0.5.x",

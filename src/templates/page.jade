@@ -7,11 +7,14 @@ block prepend title
 	| #{ page.title + " - "}
 
 block content
-	.row
-		.large-12.columns
-			h1= page.title
+	.row#page-header
+		h1.large-6.large-centered.columns
+			block content-title
+				= page.title
 
-			article.article
-				section.content!= typogr(page.html).typogrify()
-				//- section.content!= page.html
+	.row
+		.large-6.large-centered.columns
+			block content-html
+				article.article
+					section.content!= typogr(page.html).typogrify()
 

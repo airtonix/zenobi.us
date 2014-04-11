@@ -1,0 +1,78 @@
+body#home{
+
+	@media #{$small-up} {
+		header.hero {
+			min-height: 10em;
+			@include background( linear-gradient($base 10%, $primary-tint ));
+			.avatar{
+				display: none;
+			}
+		}
+		.hero#below-the-fold{
+			position: relative;
+			min-height: 5em;
+			height: 100%;
+
+			&:before{
+				content: '';
+				z-index: 0;
+				height: 100%;
+				width: 100%;
+				display: block;
+				position: absolute;
+				@media #{$small-up} {
+					@include background(radial-gradient(80% 35% at 50% 0%, shade($primary-tint, 10%), transparent));
+				}
+			}
+
+			&:after{
+				content: "";
+				width: 100%;
+				height: 1px;
+				display: block;
+				position: relative;
+			}
+
+			.button-group li a.button{
+				font-size: 12px;
+				font-weight: bold !important;
+			}
+
+		}
+	}
+
+	@media #{$medium-up} {
+
+		header.hero {
+			text-align: center;
+			display: table;
+			.avatar {
+				margin: 0 auto 3em;
+				display: block;
+				position: relative;
+				height: 100%;
+				width: 100%;
+
+				.cube, .shadow {
+					position: absolute;
+					left: 0;
+				}
+				.cube{
+					z-index: 2;
+					bottom: 2em;
+				}
+				.shadow{
+					z-index: 1;
+					bottom: 0;
+				}
+			}
+
+			h1, h1.site-name{
+				text-transform: lowercase;
+			}
+		}
+
+
+	}
+
+}

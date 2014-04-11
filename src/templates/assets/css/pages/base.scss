@@ -4,7 +4,7 @@
 
  */
 
-html, body{
+html, body {
 	height: 100%;
 	min-height: 100%;
 }
@@ -13,19 +13,23 @@ body {
 	margin: 0;
 	padding: 0;
 
-	font-family: 'Montserrat';
+	$buffer: rem-calc(128-$topbar-height);
 
-	@import "css/elements";
+	[data-topbar] {
+		&.expanded{
+			z-index: 10;
+		}
+	}
 
-	#content{
+	#content {
 		min-height: 100%;
 		height: 100%;
-		margin-bottom: -(rem-calc(250)) ;
+		margin-bottom: -(rem-calc(128-$topbar-height)-3em);
 		padding-top: 3em;
 	}
 
 	#site-footer {
-		min-height: rem-calc(250-$topbar-height);
+		min-height: rem-calc(128-$topbar-height);
 		color: $firm;
 		text-align: center;
 	}
@@ -33,11 +37,11 @@ body {
 	/*
 		AVgrund Override
 	 */
-
-	.avgrund-overlay{
+	.avgrund-overlay {
 		background: rgba(shade($base, 20%), 0.2);
 	}
-	.avgrund-popin{
+
+	.avgrund-popin {
 		overflow: visible;
 		background: $firm;
 		min-height: 25em;
@@ -45,7 +49,7 @@ body {
 			color: $firm;
 		}
 		form.contact {
-			input, textarea{
+			input, textarea {
 				color: $firm;
 				background: transparent;
 				border: none;
@@ -54,11 +58,11 @@ body {
 					color: desaturate($firm, 20%);
 				}
 			}
-			textarea{
+			textarea {
 				min-height: 15em;
 				max-height: 15em;
 			}
-			button[type='submit']{
+			button[type='submit'] {
 				position: absolute;
 				bottom: -1.5em;
 				left: 5%;

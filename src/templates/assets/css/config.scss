@@ -3,7 +3,7 @@ $include-print-styles: true;
 $include-html-global-classes: $include-html-classes;
 // $include-html-top-bar-classes: true;
 
-@import "./colours/desaturated-sun-skin.scss";
+@import "colours/white-blue.scss";
 
 /* Grid */
 $fg-column: 60px;             // Column Width
@@ -11,7 +11,7 @@ $fg-gutter: 25px;             // Gutter Width
 $fg-max-columns: 12;          // Total Columns For Main Container
 
 
-$body-font-family: "Monsterrat", Arial, sans-serif;
+$body-font-family: 'Montserrat', Arial, sans-serif;
 $body-font-weight: normal;
 $body-font-style: normal;
 

@@ -9,7 +9,7 @@ dist
 *.out
 /.grunt
 node_modules
-src/contents/vendor
+src/contents/assets/vendor
 results
 *.gz
 logs

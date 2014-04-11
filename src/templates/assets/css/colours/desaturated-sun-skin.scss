@@ -7,11 +7,14 @@ $scarlet-gum: #552E54;
 /*
  Main Colors
  */
+@import "bourbon/app/assets/stylesheets/functions/_tint-shade.scss";
 $base: $tonys-pink;
 $firm: $kimberly;
 
-$link-color: $firm;
-$link-hover-color: tint($firm, 20%);
+$link-color: darken($firm, 10%);
+$link-hover-color: white;
+$link-active-color: shade($firm, 20%);
+$link-visited-color: shade($firm, 20%);
 
 $primary-border-color: $firm;
 $secondary-border-color: desaturate($firm, 20%);

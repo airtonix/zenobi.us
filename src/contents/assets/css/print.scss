@@ -1,0 +1,14 @@
+@import "fonts.scss";
+@import "config.scss";
+@import "foundation/scss/normalize.scss";
+@import "bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "mixins.scss";
+
+body{
+	background: white;
+	color: #999;
+
+	h1,h2,h3,h4,h5{
+		color: #666;
+	}
+}
