@@ -26,23 +26,6 @@ module.exports = (grunt) ->
         options:
           base: '.'
 
-    wintersmith:
-      production:
-        options:
-          action: "build"
-          config: './config.production.json'
-
-      test:
-        options:
-          action: "build"
-          config: './config.test.json'
-
-      preview:
-        options:
-          action: "preview"
-          config: './config.development.json'
-
-
     copy:
       build:
         files: [
@@ -167,6 +150,17 @@ module.exports = (grunt) ->
       dist:
         src: ["<%= paths.dist %>"]
 
+    filerev_assets:
+      dist:
+        options:
+          prettyPrint: 8
+          dest: "<%= paths.dist %>/js/templates/map.json"
+          patterns: [
+            [ /dist\\/g, "" ]
+            [ /\\/g, "/" ]
+          ]
+    # "
+
     bump:
       options:
         files: ['package.json', 'bower.json'],
@@ -183,23 +177,34 @@ module.exports = (grunt) ->
         tag: "<%= pkg.version %>"
       src: ['**']
 
-
-    filerev_assets:
-      dist:
+    wintersmith:
+      preview:
         options:
-          prettyPrint: 8
-          dest: "<%= paths.dist %>/js/templates/map.json"
-          patterns: [
-            [ /dist\\/g, "" ]
-            [ /\\/g, "/" ]
-          ]
-    # "
+          mode: 'preview'
+      build:
+        options:
+          mode: 'build'
+          async: true
 
-  grunt.registerTask "default", ["wintersmith:preview"]
+
+  grunt.registerMultiTask "wintersmith", "loads wintersmith", () ->
+    async = @async()
+    if @data.options.async
+      @data.options.async = async
+    grunt.log.writeln "Running Wintersmith: ", @target
+
+    klass = require './app.coffee'
+    wintersmith = new klass(@data.options)
+    wintersmith.start()
+
+
+  grunt.registerTask "default", [
+    "wintersmith:preview"
+  ]
 
   grunt.registerTask "test", [
     'clean:all'
-    'wintersmith:test'
+    'shell:build'
 
     'copy'
     'html2js:test'
@@ -211,11 +216,11 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'build', [
     'clean:all'
-    'wintersmith:production'
+    'shell:build'
 
     'copy'
     'html2js:dist'
-    'requirejs:test'
+    'requirejs:dist'
     'filerev'
     'userev'
     'clean:build'
