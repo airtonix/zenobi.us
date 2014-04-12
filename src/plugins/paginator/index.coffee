@@ -2,7 +2,7 @@ _ = require 'lodash'
 
 module.exports = (env, callback) ->
   ### Articles plugin. Defaults can be overridden in config.json
-      e.g. "articles": {"perPage": 10} ###
+      e.g. "paginator": {"perPage": 10} ###
 
   defaults =
     template: 'index.jade' # template that renders pages
@@ -12,9 +12,11 @@ module.exports = (env, callback) ->
     perPage: 2 # number of articles per page
 
   # assign defaults any option not set in the config file
-  options = env.config.articles or {}
+  options = env.config.paginator or {}
   for key, value of defaults
     options[key] ?= defaults[key]
+
+  console.log "options", options
 
   getMonthName = (index) ->
     # takes a number, returns the equivliant julian calendar month

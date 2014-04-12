@@ -8,13 +8,12 @@ block content-title
 	| Archive
 
 block content-html
-	section#article-archive
-		dl
-			- each Months, Year in env.helpers.getArticleTimeline(contents)
-				dt.year-label=Year
-				dd.year-list: dl
-					- each Articles, Month in Months
-						dt.month-label=Month
-						dd.month-list: ul
-							- each Article in Articles
-								li.article-label: a(href=Article.url)= Article.title
+	section#article-archive: dl
+		- each Months, Year in env.helpers.getArticleTimeline(contents)
+			dt.year-label=Year
+			dd.year-list: dl
+				- each Articles, Month in Months
+					dt.month-label=Month
+					dd.month-list: ul
+						- each Article in Articles
+							li.article-label: a(href=Article.url)= Article.title
