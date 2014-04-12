@@ -13,11 +13,11 @@ module.exports =
 
   plugins:  [
     "./src/plugins/pkginfo"
-    "./src/plugins/paginator"
     "wintersmith-coffee"
     "wintersmith-jade"
     "wintersmith-node-sass"
     "wintersmith-data-json"
+    "./src/plugins/paginator"
   ]
 
   static:

@@ -8,34 +8,13 @@ block content-title
 	| Archive
 
 block content-html
-	- var archives = _.chain(env.helpers.getArticles(contents)).groupBy(function(item) {
-	-	 return item.date.getFullYear()
-	- }).value()
-
-	- for (var archive in archives) {
-	-	archives[archive] = _.groupBy(archives[archive], function(item){return item.date.getMonth();})
-	- }
-
-	- var month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
-	section.archive
-
+	section#article-archive
 		dl
-		- var yearsK = _.chain(archives).keys().reverse().value()
-		- for(var year in yearsK)
-			- months = archives[yearsK[year]]
-			- var yearHeight = lineHeight * _.reduce(months, function(memo,month) { return memo + month.length; }, 0);
-
-			dt.year-label=yearsK[year]
-			dd
-				dl
-					- var monthsK = _.chain(months).keys().reverse().value()
-					- for(month in monthsK){
-						- var monthHeight = lineHeight * months[monthsK[month]].length
-
-						dt.month-label=month_names[monthsK[month]]
-						dd
-							ul
-								each item in months[monthsK[month]]
-									li: a(href=item.url)=item.title
-					- }
+			- each Months, Year in env.helpers.getArticleTimeline(contents)
+				dt.year-label=Year
+				dd.year-list: dl
+					- each Articles, Month in Months
+						dt.month-label=Month
+						dd.month-list: ul
+							- each Article in Articles
+								li.article-label: a(href=Article.url)= Article.title
