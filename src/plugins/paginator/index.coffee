@@ -16,8 +16,6 @@ module.exports = (env, callback) ->
   for key, value of defaults
     options[key] ?= defaults[key]
 
-  console.log "options", options
-
   getMonthName = (index) ->
     # takes a number, returns the equivliant julian calendar month
     strings = [

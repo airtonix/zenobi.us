@@ -1,11 +1,8 @@
 extends page
 
 block append vars
-	- page = { metadata: { title: "Articles" } }
-	- bodyclass = 'article-list'
-
-block content-title
-	| Archive
+	- page = { metadata: {title: "Articles"} }
+	- bodyclass = 'page article-list'
 
 block content-html
 	section#article-archive: dl

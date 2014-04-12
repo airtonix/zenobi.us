@@ -1,17 +1,20 @@
 body.article,
+body.article-list,
 body.page{
 
 	#page-header{
+		width: 100%;
+		text-align: center;
 		@media #{$small-up} {
 			min-height: 4em;
 		}
 		@media #{$medium-up} {
 			min-height: 10em;
+			margin-bottom: 1em;
 			display: table;
 			& > * {
 				display: table-cell;
 				vertical-align: bottom;
-				border-bottom: 0.2em solid $primary-tint;
 			}
 		}
 

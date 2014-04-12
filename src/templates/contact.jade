@@ -2,7 +2,7 @@ extends page
 
 block append content-html
 	.row
-		form.column.large-6.large-centered(action="http://mailjs.herokuapp.com/message?token=TOKEN", method="post")
+		form.column.large-12.large-centered(action="http://mailjs.herokuapp.com/message?token=TOKEN", method="post")
 			input(name="name", type="text", placeholder="your name")
 			input(name="email", type="email", placeholder="your email")
 			textarea(name="message", placeholder="your message", rows=7)
