@@ -95,6 +95,11 @@ module.exports = (env, callback) ->
 
     # find all articles
     articles = getArticles contents
+    results = {pages:{}}
+
+    if !articles.length
+      callback null, results
+      return false
 
     # populate pages
     numPages = Math.ceil articles.length / options.perPage
@@ -110,13 +115,12 @@ module.exports = (env, callback) ->
 
     # create the object that will be merged with the content tree (contents)
     # do _not_ modify the tree directly inside a generator, consider it read-only
-    rv = {pages:{}}
     for page in pages
-      rv.pages["#{ page.pageNum }.page"] = page # file extension is arbitrary
-    rv['index.page'] = pages[0] # alias for first page
+      results.pages["#{ page.pageNum }.page"] = page # file extension is arbitrary
+    results['index.page'] = pages[0] # alias for first page
 
     # callback with the generated contents
-    callback null, rv
+    callback null, results
 
   # add the article helper to the environment so we can use it later
   env.helpers.getArticles = getArticles
