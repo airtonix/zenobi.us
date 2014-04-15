@@ -18,6 +18,7 @@ module.exports =
     "wintersmith-node-sass"
     "wintersmith-data-json"
     "./src/plugins/paginator"
+    "./src/plugins/utils"
   ]
 
   static:

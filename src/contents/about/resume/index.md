@@ -1,56 +1,63 @@
-# Zenobius Jiricek (Zeno)
+---
+template: page.jade
+title: Resume
+type: article
+private: true
+toc: true
+---
 
-* 2 Thelma St Payneham S.A. 5070
-* [zenobius.jiricek@gmail.com](mailto://zenobius.jiricek@gmail.com)
+## Zenobius Jiricek (Zeno)
+
+* [@home](http://zenobi.us/)
+* [@contact](http://zenobi.us/contact/)
 * [@google+](http://plus.google.com/+zenobiusjiricek)
 * [@github](http://github.com/airtonix/)
-* [@home](http://zenobi.us/)
-* [+61 451 075 636](tel://+61451075636)
+* [@twitter](http://twitter.com/airtonix/)
 
+### Skillset
 
-# Demonstrated Skills & Abilities
+#### Web Development
 
-## Web Design
+* Develop reusable project skeletons
+* Create development and deployment workflow tools with Grunt and Fabric
+* Create architecture configuration manifests with Ansible
 
-### Applications
+*Applications*
 
-Gedit, Firefox, Google Chromium, Gimp, Inkscape, Bash, Git,
-Hg, openSSH, Screen, Byobu, Libre/OpenOffice.org, phpMyadmin.
-Aptana, Eclipse, QT4 Designer, Glade3, Mono­Develop.
+* Sublime Text 3, Bash, Git, Ssh, Grunt, Bower, Chrome
+* Ansible, Fabric, VirtualENV, Pip, Nave
+* Firefox, Epiphany, Gimp, Inkscape, Quassel, Hangouts, Skype
 
-## Daemons
+*Daemons*
 
-Bind9, DNServer, Apache2, MySQLd, Postgres,
-OpenSSHd, Samba, nfs­-kernel­server, uWsgi, Nginx,
-Gitolite, Gitlab, Gitliab-CI
+* Bind9, Nginx, Uwsgi, Postgres, OpenSSHd, NodeJs
+* Samba, nfs­kernel­server, Gitolite, Gitlab, Gitliab-CI, ZFS, Upstart
 
-### Languages
+*Languages*
 
-Python 2.6, Django, HTML5, CSS3, Javascript, jQuery, AngularJS,
-NodeJs, Git (git-flow), JSON, basic MySQL, basic Postgres, PySide, PyGtk
+* Scss, Javascript, CoffeeScript, JSON, HTML5, CSS3, Jade, Haml
+* Python 2.6, basic MySQL, basic Postgres, Bash, Lua, PHP
 
-### Frameworks
+*Frameworks*
 
-Django, ExpressJs, SailsJs, CompoundJs, LocomotiveJs, Laravel, Drupal, Wordpress
+* AngularJS
+* Django, ExpressJs, SailsJs, CompoundJs, LocomotiveJs, Laravel
+* PySide, PyGtk
 
-### Tools
-
-Ansible, Fabric, Grunt, Nose, DjangoTests, Karma, Mocha, Vows, Git, Ssh, SublimeText, irc
-
-### Operations
+#### Operations
 
 * Setup and deploy network hardware
-* Monitor Server Processes,
-* Automate backup procedures,
+* Monitor Server Processes
+* Automate backup procedures
 * Manage firewalls/local DNS servers/apache name based virtual­hosts.
 * Use Ansible/Fabric to automate Provisioning and Deployment of large scale web apps
 * Compile User-stories, map out milestones and build tests to describe functionality.
 
-# Experience
+### Experience
 
-### 2012-2013
+##### 2012-2013
 
-CTO & Product Design, Zibmedia
+**CTO & Product Design, Zibmedia**
 
 * Team manager tasked with organising copywriting, quality control, online marketing and design
 * Organised Chef and Puppet to automate deployment and configuration of all the workstations
@@ -61,9 +68,9 @@ CTO & Product Design, Zibmedia
 	* Django with the RESTful backend (tastypie * guardianpie)
 
 
-### 2011
+##### 2011
 
-Lead Developer, Urpages.com.au
+**Lead Developer, Urpages.com.au**
 
 * Refactored the code base of the flagship product (urpages.com.au) in order to become deployable by automated tools like Fabric and (indirectly) Jenkins.
 * Championed the use of bitbucket issue tickets for our products amongst entire staff seeking to contribute
@@ -74,73 +81,73 @@ Lead Developer, Urpages.com.au
 * Built custom CRM from scratch using Django and Bootstrap
 
 
-### 2010
+##### 2010
 
-Youthjet
+**Youthjet**
 
 * Network Maintenance & Installations
-	* Setup and deploy Ubuntu NetworkBoot Server and Zentyal Gateway  
+	* Setup and deploy Ubuntu NetworkBoot Server and Zentyal Gateway
 * Website Training Provider
 	* Provide basic introduction to website creation to small groups of migrants
 
-### 2007-2009
+##### 2007-2009
 
-Open Source Research And Development
+**Open Source Research And Development**
 
 * Full-time Self Development
 	* Explore "best practice" use and maintenance of Linux based operating systems
 	* Explored common software roles and their software solutions (Zentyal, Cobbler, Chef, Foreman, Django)
 * Community Linux Support
-    * #ubuntu@irc.freenode.net
+    * ubuntu@irc.freenode.net
 
 
-### 2004-2007
+##### 2004-2007
 
-HETA
+**HETA**
 
 * Website Design Project Manager
 	* Introduced the use of Wordpress, Drupal and Plain PHP
-	* Championed the principle of minimal remote ineraction, develop locally, deploy fast. 
+	* Championed the principle of minimal remote ineraction, develop locally, deploy fast.
 	* Supervise, provide direction and maintain work­flow of Community Groups Website project.
 * Metro Housing
 	* Purchase and installation of computer network. Create a database user interface that works with a central server. Contains XML, XSLT, ASP, SQL, Javascript.
 
 
-### 2003-2004
+##### 2003-2004
 
-Maison Jolie ( SQ Design )
+**Maison Jolie ( SQ Design )**
 
-* Website Designer & Programmer, 
+* Website Designer & Programmer,
 	* Develop online shop
 
 
-### 2002
+##### 2002
 
 IT Technician, Metro Housing /Dash Incorporated
 
 
-###1999
+##### 1999
 
 Website Designer / Graphic Designer
 Ozglean Australia
 
-### 1998
+##### 1998
 
 Desktop Publisher
 Book Agencies of Adelaide
 
 
-# Training
+## Training
 
-### Ongoing
+**Ongoing**
 
 * Self Education
 	* Learning NodeJS
 	* Learning YesOD & Haskell
-	* Explore the limitations of RAD with Wordpress and Drupal 
+	* Explore the limitations of RAD with Wordpress and Drupal
 	* Explore replacing Wordpress with Ghost.
 
-### 2010
+##### 2010
 
 * Thebarton Senior College : Information Technology (Networking)
 	* Certificate 3 ICA30105
@@ -151,57 +158,35 @@ Book Agencies of Adelaide
 	* Network Maintenance, Server Installation & Operation, Create
 	* Documentation, Provide Basic Web Design Training.
 
-### 2007-2009
+##### 2007-2009
 
-Open Source Research And Development
+**Open Source Research And Development**
 
 * Self Development
 	* Install, implement and use all aspects of the Ubuntu Linux desktop.
 	* Examine areas that fail to provide tools for the common workplace, and explore possibilities that address those deficiencies.
 	* Develop knowledge and understanding of the Ubuntu Linux * Desktop, with a view to provide help­desk support for newcomers to Linux.
 
-Game Interface Design
+**Game Interface Design**
 
 * Personal Development
 	* Released several add­ons and utilities for on­line games using Lua, Javascript, CSS, HTML.
 
-### 2002-2007
+##### 2002-2007
 
 * Heta Incorporated
 	* Project Management
 * Metro Housing
 	* Advanced Website Programming
 
+## References
 
-#References
-
-## Vincent Brown
+#### Vincent Brown
 
 * Vintuitive
 
-## Ben Smith
+#### Ben Smith
 
 * CEO, Founder
 * muvli.com, bandwax.com, gigrig.co
 * ben@muvli.com
-
-
-
-## Sue Rose
-
-* Chief Executive Officer
-* Heta Incorporated
-* (08) 8123 4567
-
-## Micheal Yoe
-
-* Director
-* Youthjet
-* (08) 8227 0933
-
-## Matt Paxton
-
-* Program Director
-* Thebarton Senior College
-* matthew.paxton@thebartonsc.sa.edu.au
-

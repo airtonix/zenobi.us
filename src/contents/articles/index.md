@@ -1,4 +1,4 @@
 ---
-title: articles
+title: Articles
 template: archive.jade
 ---

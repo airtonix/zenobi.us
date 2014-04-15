@@ -21,7 +21,10 @@ html body header nav.top-bar{
 		.top-bar-section{
 			overflow: auto;
 			margin-bottom: 1em;
-			border-bottom: 1px solid $topbar-bg-color;
+			border-bottom: 1px solid darken($topbar-bg-color, 5%);
+			ul{
+
+			}
 		}
 	}
 }

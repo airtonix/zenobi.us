@@ -1,4 +1,5 @@
 extends layout
+include mixins
 
 block append vars
 	- bodyclass = 'page'
@@ -7,14 +8,20 @@ block prepend title
 	| #{ page.title + " - "}
 
 block content
-	#page-header
-		h1
-			block content-title
-				= page.metadata.title
+	#page-header.row
+		.large-8.columns(class=page.parent?"large-push-4":"")
+			h1
+				block content-title
+					= page.metadata.title
 
 	.row
-		.large-6.large-centered.columns
-			block content-html
-				article.article
-					section.content!= typogr(page.html).typogrify()
+		.large-8.columns.content(class=page.parent?"large-push-4":"")
+			if page.html
+				block content-html
+					article.article
+						section.content!= typogr(page.html).typogrify()
+
+		if page.parent && !page.metadata.hideChildren
+			.large-4.pull-8.columns.aside
+				+subtree(page.parent)
 

@@ -1,6 +1,23 @@
+
+@include keyframes(floating-cube) {
+    from { bottom: 5%; }
+    50% { bottom: 8%; }
+    to { bottom: 5%; }
+}
+
+@include keyframes(blurring-shadow) {
+    from { opacity: 1; }
+    25% { opacity: 0.3; }
+    45% { opacity: 0.2; }
+    65% { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+
 body#home{
 
 	@media #{$small-up} {
+
 		header.hero {
 			min-height: 10em;
 			@include background( linear-gradient($base 10%, $primary-tint ));
@@ -8,8 +25,9 @@ body#home{
 				display: none;
 			}
 		}
+
 		.hero#below-the-fold{
-			position: relative;
+			// position: relative;
 			min-height: 5em;
 			height: 100%;
 
@@ -20,9 +38,8 @@ body#home{
 				width: 100%;
 				display: block;
 				position: absolute;
-				@media #{$small-up} {
-					@include background(radial-gradient(80% 35% at 50% 0%, shade($primary-tint, 10%), transparent));
-				}
+				@include background(radial-gradient(20em 3px at 50% 0%, white, transparent), radial-gradient(30em 35% at 50% 0%, shade($primary-tint, 10%), $primary-tint));
+
 			}
 
 			&:after{
@@ -39,6 +56,7 @@ body#home{
 			}
 
 		}
+
 	}
 
 	@media #{$medium-up} {
@@ -46,11 +64,16 @@ body#home{
 		header.hero {
 			text-align: center;
 			display: table;
+			height: 50%;
+			.cell{
+				height: 100%;
+				display: inline-block;
+			}
 			.avatar {
 				margin: 0 auto 3em;
 				display: block;
 				position: relative;
-				height: 100%;
+				height: 20em;
 				width: 100%;
 
 				.cube, .shadow {
@@ -60,10 +83,19 @@ body#home{
 				.cube{
 					z-index: 2;
 					bottom: 2em;
+					bottom: 10%;
+					@include animation-name(floating-cube);
+					@include animation-duration(3s);
+					@include animation-iteration-count(infinite);
+					@include animation-delay(0);
 				}
 				.shadow{
 					z-index: 1;
 					bottom: 0;
+					@include animation-name(blurring-shadow);
+					@include animation-duration(3s);
+					@include animation-iteration-count(infinite);
+					@include animation-delay(0);
 				}
 			}
 

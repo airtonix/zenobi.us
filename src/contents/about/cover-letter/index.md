@@ -1,11 +1,17 @@
+---
+template: page.jade
+title: Cover Letter
+type: article
+private: true
+---
+
 # Zenobius Jiricek (Zeno)
 
-* 2 Thelma St Payneham S.A. 5070
-* [zenobius.jiricek@gmail.com](mailto://zenobius.jiricek@gmail.com)
+* [@contact](http://zenobi.us/contact/)
 * [@google+](http://plus.google.com/+zenobiusjiricek)
 * [@github](http://github.com/airtonix/)
+* [@twitter](http://twitter.com/airtonix/)
 * [@home](http://zenobi.us/)
-* [+61 451 075 636](tel://+61451075636)
 
 To whom it may concern,
 

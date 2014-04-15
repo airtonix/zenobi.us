@@ -4,19 +4,25 @@ body.page{
 
 	#page-header{
 		width: 100%;
-		text-align: center;
-		@media #{$small-up} {
-			min-height: 4em;
-		}
+		min-height: 4em;
+
 		@media #{$medium-up} {
-			min-height: 10em;
+			height: 10em;
 			margin-bottom: 1em;
-			display: table;
-			& > * {
+
+			.columns {
 				display: table-cell;
 				vertical-align: bottom;
+				height: 10em;
 			}
 		}
+	}
 
+	.aside {
+		border-right: 0.2em solid $primary-tint;
+		.subtree {
+			list-style: none;
+			text-align: right;
+		}
 	}
 }

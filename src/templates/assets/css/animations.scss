@@ -1,0 +1,52 @@
+.animation-floating{
+    @include animation(Floating, 3s, ease-in-out, 0, infinite);
+}
+
+.animation-blurring{
+    @include animation(Blurring, 3s, ease-in-out, 0, infinite);
+}
+
+.animation-blurring-reversed{
+    @include animation(BlurringReversed, 3s, ease-in-out, 0, infinite);
+}
+.animation-floating{
+    @include animation(Floating, 3s, ease-in-out, 0, infinite);
+}
+.animation-floating-cube{
+    @include animation(FloatingCube, 3s, ease-in-out, 0, infinite);
+}
+.animation-floating-cube-shadow{
+    @include animation(FloatingCubeShadow, 3s, ease-in-out, 0, infinite);
+}
+
+@include keyframes(Blurring) {
+    // from { @include filter(blur(0px)); }
+    // 65% { @include filter(blur(10px)); }
+    // to { @include filter(blur(0px)); }
+}
+
+@include keyframes(BlurringReversed) {
+    // from { @include filter(blur(5px)); }
+    // 65% { @include filter(blur(0px)); }
+    // to { @include filter(blur(5px)); }
+}
+
+
+@include keyframes(Floating) {
+    from { @include transform(translate(0, 0px)); }
+    65% { @include transform(translate(0, 15px)); }
+    to { @include transform(translate(0, -0px)); }
+}
+
+@include keyframes(FloatingCube) {
+    from { top: -5%; }
+    50% { top: -10%; }
+    to { top: -5%; }
+}
+
+@include keyframes(FloatingCubeShadow) {
+    from { opacity: 1; }
+    60% { opacity: 0.4; }
+    75% { opacity: 0.4; }
+    to { opacity: 1; }
+}

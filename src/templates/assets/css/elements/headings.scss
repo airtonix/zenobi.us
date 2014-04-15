@@ -14,4 +14,14 @@ html body {
 			}
 		}
 	}
+
+	h1, h2 {
+		color: $firm;
+	}
+	h3 {
+		color: tint($firm, 20%);
+	}
+	h4 {
+		color: $tarawera;
+	}
 }

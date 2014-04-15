@@ -1,0 +1,14 @@
+
+mixin subtree(tree)
+	- var subtree = _.omit(tree, 'index.md')
+		ul.subtree
+			li: a(href="../"): em.icon-left
+			if _.keys(subtree).length
+			- each item, key in subtree
+				li: a(href=item.index.url)= key
+
+mixin debug(label, data)
+	if env.config.mode='preview'
+		.debug.row
+			h4=label
+			pre=env.helpers.toJson(data)
