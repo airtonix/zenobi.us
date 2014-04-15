@@ -1,6 +1,6 @@
 ---
 title: Projects
-template: projects.jade
+template: page.jade
 ---
 
 test

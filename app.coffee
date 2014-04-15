@@ -1,10 +1,12 @@
 wintersmith = require "wintersmith"
 path = require 'path'
+_ = require 'lodash'
 
 class Application
 	wintersmith: null
 
 	constructor: (@options) ->
+		console.log @options
 		@configPath = "./src/config/#{@options.mode}.coffee"
 		@config = require @configPath
 		@wintersmith = wintersmith @config
@@ -16,11 +18,10 @@ class Application
 			if error
 				throw error;
 			console.log 'Done!'
-			if @options.async
-				@options.async()
+			if not _.isNull self.options.async
+				self.options.async()
 
 	preview: () ->
-		self = @
 		@wintersmith.preview (error, server) ->
 			if error
 				throw error
@@ -32,8 +33,8 @@ class Application
 			if error
 				throw error
 			console.log 'Contents loaded!'
-			if @options.async
-				@options.async()
+			if self.options.async
+				self.options.async()
 
 	help: () ->
 		console.log "Require argument"

@@ -5,10 +5,11 @@ block header
 block content
 	header.hero.vertical
 		.cell
-			a.avatar(href="#{url}")
-				img.cube(src="/assets/img/cube-blue.png")
-				img.shadow(src="/assets/img/shadow.png")
-			h1=site.name
+			a.link(href="#{url}")
+				.avatar
+					img.cube(src="/assets/img/cube-blue.png")
+					img.shadow(src="/assets/img/shadow.png")
+				h1=site.name
 
 	.hero.horzitonal#below-the-fold
 		.cell

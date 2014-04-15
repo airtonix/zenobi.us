@@ -4,6 +4,7 @@ title: Resume
 type: article
 private: true
 toc: true
+pdf-download: true
 ---
 
 ## Zenobius Jiricek (Zeno)

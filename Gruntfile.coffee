@@ -24,7 +24,7 @@ module.exports = (grunt) ->
 
       dist:
         options:
-          base: '.'
+          base: '<%= paths.dist %>'
 
     copy:
       build:
@@ -33,12 +33,11 @@ module.exports = (grunt) ->
           cwd: '<%= paths.build %>'
           dest: '<%= paths.dist %>/'
           src: [
-            'index.html',
-            'api/**/*.json',
-            'img/**/*.{jpg,jpeg,gif,png,webp}',
-            'fonts/**/*.{ttf,eot,otf,woff,svg}',
-            'css/**/*.css',
-            '!**/vendor/**/*.*'
+            '**/*.html',
+            'assets/img/**/*.{jpg,jpeg,gif,png,webp}',
+            'assets/fonts/**/*.{ttf,eot,otf,woff,svg}',
+            'assets/css/**/*.css',
+            '!assets/vendor/**/*.*'
           ]
         ]
 
@@ -69,9 +68,9 @@ module.exports = (grunt) ->
       options:
         wrap: true
         almond: true
-        mainConfigFile: "<%= paths.build %>/js/boot.js"
+        mainConfigFile: "<%= paths.build %>/assets/js/boot.js"
         name: 'boot'
-        out: "<%= paths.dist %>/js/application.js"
+        out: "<%= paths.dist %>/assets/js/application.js"
         replaceRequireScript: [
           files: ['<%= paths.dist %>/index.html']
           module: 'js/boot',
@@ -138,9 +137,8 @@ module.exports = (grunt) ->
         src: [
           "./*",
           "!./{src,node_modules}",
-          "!./{package.json,.bowerrc,bower.json}",
-          "!./config.*",
-          "!./Gruntfile.coffee",
+          "!./{package.json,.bowerrc,bower.json,.gitignore}",
+          "!./{Gruntfile,app}.coffee",
           "!./readme.md"
         ]
 
@@ -203,23 +201,15 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask "test", [
-    'clean:all'
-    'shell:build'
-
-    'copy'
-    'html2js:test'
-    'requirejs:test'
-    'filerev'
-    'userev'
+    'build'
     'connect:dist'
   ]
 
   grunt.registerTask 'build', [
     'clean:all'
-    'shell:build'
-
+    'wintersmith:build'
     'copy'
-    'html2js:dist'
+    # 'html2js:dist'
     'requirejs:dist'
     'filerev'
     'userev'

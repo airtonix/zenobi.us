@@ -46,6 +46,7 @@ module.exports =
       "src/contents/assets/vendor"
       "src/contents/assets/vendor/bourbon/app/assets/stylesheets"
       "src/contents/assets/vendor/foundation/scss"
+      "src/contents/assets/vendor/foundation/scss/foundation/components"
     ]
     minify:  false
 

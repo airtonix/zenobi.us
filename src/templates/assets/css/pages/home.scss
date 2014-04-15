@@ -1,8 +1,8 @@
 
 @include keyframes(floating-cube) {
-    from { bottom: 5%; }
-    50% { bottom: 8%; }
-    to { bottom: 5%; }
+    from { bottom: 1em; }
+    50% { bottom: 1.5em; }
+    to { bottom: 1em; }
 }
 
 @include keyframes(blurring-shadow) {
@@ -19,10 +19,44 @@ body#home{
 	@media #{$small-up} {
 
 		header.hero {
-			min-height: 10em;
+			min-height: 5em;
+			text-align: center;
+
 			@include background( linear-gradient($base 10%, $primary-tint ));
-			.avatar{
-				display: none;
+			.link{
+				display: inline-block;
+			}
+			h1, h1.site-name{
+				text-transform: lowercase;
+			}
+			.avatar {
+				margin: 0 auto;
+				display: block;
+				position: relative;
+				height: 9em;
+				width: 100%;
+
+				.cube, .shadow {
+					position: absolute;
+					left: 0;
+					max-width: 10em;
+				}
+				.cube{
+					z-index: 2;
+					bottom: 2em;
+					@include animation-name(floating-cube);
+					@include animation-duration(3s);
+					@include animation-iteration-count(infinite);
+					@include animation-delay(0);
+				}
+				.shadow{
+					z-index: 1;
+					bottom: 0em;
+					@include animation-name(blurring-shadow);
+					@include animation-duration(3s);
+					@include animation-iteration-count(infinite);
+					@include animation-delay(0);
+				}
 			}
 		}
 
@@ -69,39 +103,7 @@ body#home{
 				height: 100%;
 				display: inline-block;
 			}
-			.avatar {
-				margin: 0 auto 3em;
-				display: block;
-				position: relative;
-				height: 20em;
-				width: 100%;
 
-				.cube, .shadow {
-					position: absolute;
-					left: 0;
-				}
-				.cube{
-					z-index: 2;
-					bottom: 2em;
-					bottom: 10%;
-					@include animation-name(floating-cube);
-					@include animation-duration(3s);
-					@include animation-iteration-count(infinite);
-					@include animation-delay(0);
-				}
-				.shadow{
-					z-index: 1;
-					bottom: 0;
-					@include animation-name(blurring-shadow);
-					@include animation-duration(3s);
-					@include animation-iteration-count(infinite);
-					@include animation-delay(0);
-				}
-			}
-
-			h1, h1.site-name{
-				text-transform: lowercase;
-			}
 		}
 
 

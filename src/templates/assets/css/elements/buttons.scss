@@ -9,7 +9,7 @@ $all-borders: (top, right, bottom, left);
 
 	@each $edge in $all-borders{
 		@if $edge in $borders{
-			border-#{$edge}: 0.2em solid $border;
+			border-#{$edge}: $button-border-width solid $border;
 		}
 		@else{
 			border-#{$edge}: none;
@@ -34,7 +34,7 @@ $all-borders: (top, right, bottom, left);
 		&:not(:last-child) {
 			a.button {
 				border-bottom: none;
-				border-right: 2px solid $primary-border-color;
+				border-right: $button-border-width solid $primary-border-color;
 			}
 		}
 	}
@@ -53,7 +53,7 @@ $all-borders: (top, right, bottom, left);
 		}
 		&:last-child {
 			a.button {
-				border-right: 2px solid $primary-border-color;
+				border-right: $button-border-width solid $primary-border-color;
 			}
 		}
 	}
