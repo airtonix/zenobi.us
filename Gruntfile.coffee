@@ -33,13 +33,16 @@ module.exports = (grunt) ->
           cwd: '<%= paths.build %>'
           dest: '<%= paths.dist %>/'
           src: [
-            '**/*.html',
-            'assets/img/**/*.{jpg,jpeg,gif,png,webp}',
-            'assets/fonts/**/*.{ttf,eot,otf,woff,svg}',
-            'assets/css/**/*.css',
+            '**/*.html'
+            'assets/img/**/*.{jpg,jpeg,gif,png,webp}'
+            'assets/fonts/**/*.{ttf,eot,otf,woff,svg}'
+            'assets/css/**/*.css'
             '!assets/vendor/**/*.*'
           ]
         ]
+      config:
+        src:'./CNAME'
+        dest: '<%= paths.dist %>/CNAME'
 
     html2js:
       options:
@@ -98,11 +101,11 @@ module.exports = (grunt) ->
           cwd: '<%= paths.dist %>'
           dest: '<%= paths.dist %>'
           src: [
-            'js/application.js',
-            'js/**/*.html',
-            'img/**/*.{jpg,jpeg,gif,png,webp}',
-            'css/**/*.css',
-            'fonts/**/*.{ttf,eot,otf,woff,svg}',
+            'js/application.js'
+            'js/**/*.html'
+            'img/**/*.{jpg,jpeg,gif,png,webp}'
+            'css/**/*.css'
+            'fonts/**/*.{ttf,eot,otf,woff,svg}'
             'api/**/*.json'
           ]
         ]
@@ -135,11 +138,12 @@ module.exports = (grunt) ->
     clean:
       all:
         src: [
-          "./*",
-          "!./{src,node_modules}",
-          "!./{package.json,.bowerrc,bower.json,.gitignore}",
-          "!./{Gruntfile,app}.coffee",
+          "./*"
+          "!./{src,node_modules}"
+          "!./{package.json,.bowerrc,bower.json,.gitignore}"
+          "!./{Gruntfile,app}.coffee"
           "!./readme.md"
+          "!./CNAME"
         ]
 
       build:
@@ -161,10 +165,10 @@ module.exports = (grunt) ->
 
     bump:
       options:
-        files: ['package.json', 'bower.json'],
-        updateConfigs: ['pkg', 'bower'],
-        commit: true,
-        createTag: true,
+        files: ['package.json', 'bower.json']
+        updateConfigs: ['pkg', 'bower']
+        commit: true
+        createTag: true
         push: true
         pushTo: 'origin develop'
 
@@ -217,8 +221,8 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask "deploy", [
-    'bump:patch',
-    'build',
-    'gh-pages',
+    'bump:patch'
+    'build'
+    'gh-pages'
     'clean'
   ]
