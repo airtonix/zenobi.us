@@ -77,6 +77,11 @@ html body{
 			@media #{$small-only and $portrait} {
 				@include vertical-button-group();
 			}
+			@media #{$small-up} {
+				&.vertical{
+					@include vertical-button-group();
+				}
+			}
 
 			@media #{$small-only and $landscape} {
 				@include horizontal-button-group();

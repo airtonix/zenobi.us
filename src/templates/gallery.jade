@@ -1,0 +1,7 @@
+extends page
+
+block append content-html
+	- var gallery = _.omit(page.parent, 'index.md')
+	ul.small-block-grid-2.large-block-grid-4
+		each image, filename in gallery
+			li: img.th(src="/"+image.filepath.relative)

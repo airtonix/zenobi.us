@@ -80,14 +80,16 @@ body#home{
 	}
 
 	@media #{$medium-up} {
-
+		article{ display: table; height: 100%;}
 		header.hero {
 			text-align: center;
-			display: table;
 			height: 50%;
+			display: table;
+
 			.cell{
 				height: 100%;
-				display: inline-block;
+				display: table-cell;
+				vertical-align: bottom;
 			}
 
 		}

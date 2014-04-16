@@ -1,11 +1,14 @@
 
 mixin subtree(tree)
-	- var subtree = _.omit(tree, 'index.md')
-		ul.subtree
-			li: a(href="../"): em.icon-left
-			if _.keys(subtree).length
-			- each item, key in subtree
+	- var tree = _.omit(tree, 'index.md');
+	ul.side-nav.large-vertical
+		li: a(href="../"): em.icon-left Up
+
+		if _.keys(tree).length
+		- each item, key in tree
+			if item.index
 				li: a(href=item.index.url)= key
+
 
 mixin debug(label, data)
 	if env.config.mode='preview'

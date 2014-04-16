@@ -2,13 +2,13 @@ nav.top-bar.hide-for-print(data-topbar)
 	ul.title-area
 		li.name
 			h1
-				a(href="#{locals.url}")=site.name
+				a(href="#{site.url}")=site.name
 		li.toggle-topbar.menu-icon
 			a(href="#") Menu
 
 	section.top-bar-section
 		ul.right
-			unless page.metadata
+			unless page.parent
 				li: a(href='/') Home
 			li: a(href='/about/') About
 			li: a(href='/articles/') Articles

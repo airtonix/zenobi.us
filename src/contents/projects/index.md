@@ -3,4 +3,4 @@ title: Projects
 template: page.jade
 ---
 
-test
+Collection of all my works to date.

@@ -1,4 +1,11 @@
 extends page
 
-block content-html
-	+subtree(page.parent)
+block content
+	#page-header.row
+		.large-8.columns(class=page.parent?"large-push-4":"")
+			h1
+				block content-title
+					= page.metadata.title
+	.row
+		.large-8.large-centered.columns.content
+			+subtree(page.parent)

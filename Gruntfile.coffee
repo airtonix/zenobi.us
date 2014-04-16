@@ -75,9 +75,9 @@ module.exports = (grunt) ->
         name: 'boot'
         out: "<%= paths.dist %>/assets/js/application.js"
         replaceRequireScript: [
-          files: ['<%= paths.dist %>/index.html']
-          module: 'js/boot',
-          modulePath: './js/application'
+          files: ['<%= paths.dist %>/**/*.html']
+          module: '/assets/js/boot'
+          modulePath: '/assets/js/application',
         ]
 
       test:
@@ -201,6 +201,7 @@ module.exports = (grunt) ->
 
 
   grunt.registerTask "default", [
+    "clean"
     "wintersmith:preview"
   ]
 
@@ -213,7 +214,6 @@ module.exports = (grunt) ->
     'clean:all'
     'wintersmith:build'
     'copy'
-    # 'html2js:dist'
     'requirejs:dist'
     'filerev'
     'userev'

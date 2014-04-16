@@ -2,8 +2,10 @@ base = require './base'
 _ = require 'lodash'
 
 config =
-  locals:
-    url: "http://nova.zenobi.us:8000"
-  logging: 'verbose'
+	locals:
+		site:
+			url: "http://nova.jiricek.info:8000"
+		analytics: null
+	logging: 'verbose'
 
 module.exports = _.merge base, config

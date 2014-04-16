@@ -25,6 +25,7 @@ I like to keep art and design for myself, It's such a personal thing that I find
 
 If you feel like asking me a technical question I'd be happy to either give you my advice/opinon or if I'm not able to give you an answer I'll more than likely know someone who can.
 
+![My Workstation](./workstation.png "My Workstation")
 
 [1]: http://djangoproject.com/
 [2]: https://github.com/toastdriven/django-tastypie/
