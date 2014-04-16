@@ -6,10 +6,10 @@
 }
 
 @include keyframes(blurring-shadow) {
-    from { opacity: 1; }
-    25% { opacity: 0.3; }
-    45% { opacity: 0.2; }
-    65% { opacity: 0.3; }
+    from { opacity: 1; @include transform(scale(1)); }
+    55% { opacity: 0.3; }
+    65% { opacity: 0.2; @include transform(scale(0.9)); -webkit-filter: blur(2px); }
+    70% { opacity: 0.3; }
     to { opacity: 1; }
 }
 
@@ -17,12 +17,11 @@
 body#home{
 
 	@media #{$small-up} {
-
+		background: $base;
 		header.hero {
 			min-height: 5em;
 			text-align: center;
 
-			@include background( linear-gradient($base 10%, $primary-tint ));
 			.link{
 				display: inline-block;
 			}
@@ -39,13 +38,14 @@ body#home{
 				.cube, .shadow {
 					position: absolute;
 					left: 0;
-					max-width: 10em;
+					width: 100%;
 				}
 				.cube{
 					z-index: 2;
 					bottom: 2em;
 					@include animation-name(floating-cube);
 					@include animation-duration(3s);
+					@include animation-timing-function(ease-in-out);
 					@include animation-iteration-count(infinite);
 					@include animation-delay(0);
 				}
@@ -54,6 +54,7 @@ body#home{
 					bottom: 0em;
 					@include animation-name(blurring-shadow);
 					@include animation-duration(3s);
+					@include animation-timing-function(ease-in-out);
 					@include animation-iteration-count(infinite);
 					@include animation-delay(0);
 				}
@@ -64,25 +65,10 @@ body#home{
 			// position: relative;
 			min-height: 5em;
 			height: 100%;
-
-			&:before{
-				content: '';
-				z-index: 0;
-				height: 100%;
-				width: 100%;
-				display: block;
-				position: absolute;
-				@include background(radial-gradient(20em 3px at 50% 0%, white, transparent), radial-gradient(30em 35% at 50% 0%, shade($primary-tint, 10%), $primary-tint));
-
-			}
-
-			&:after{
-				content: "";
-				width: 100%;
-				height: 1px;
-				display: block;
-				position: relative;
-			}
+			min-height: 20em;
+			position: relative;
+			$corner-width: 512px;
+			$corner-angle: 35deg;
 
 			.button-group li a.button{
 				font-size: 12px;
