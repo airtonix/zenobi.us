@@ -4942,6 +4942,26 @@ html body h4 {
 
 html body .text-centered {
   text-align: center; }
+@media only screen and (min-width:40.063em) {
+  html body .large-right {
+    float: right; }
+  html body .large-left {
+    float: left; }
+  html body .large-centered {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    float: none; } }
+@media only screen {
+  html body .small-right {
+    float: right; }
+  html body .small-left {
+    float: left; }
+  html body .small-centered {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    float: none; } }
 
 html body header nav.top-bar {
   position: absolute;
@@ -5003,6 +5023,15 @@ html body ul.button-group {
       html body ul.button-group.simple-outline li a.button {
         width: 100%; }
       html body ul.button-group.simple-outline li:not(:last-child) a.button {
+        border-bottom: none;
+        border-right: 2px solid #526368; } }
+  @media only screen {
+    html body ul.button-group.simple-outline.vertical li {
+      clear: both;
+      width: 100%; }
+      html body ul.button-group.simple-outline.vertical li a.button {
+        width: 100%; }
+      html body ul.button-group.simple-outline.vertical li:not(:last-child) a.button {
         border-bottom: none;
         border-right: 2px solid #526368; } }
   @media only screen and (orientation: landscape) {
@@ -5249,15 +5278,18 @@ body.article .aside, body.article-list .aside, body.page .aside {
 
 @-webkit-keyframes blurring-shadow {
   from {
-    opacity: 1; }
+    opacity: 1;
+    -webkit-transform: scale(1); }
 
-  25% {
+  55% {
     opacity: 0.3; }
 
-  45% {
-    opacity: 0.2; }
-
   65% {
+    opacity: 0.2;
+    -webkit-transform: scale(0.9);
+    -webkit-filter: blur(2px); }
+
+  70% {
     opacity: 0.3; }
 
   to {
@@ -5265,15 +5297,18 @@ body.article .aside, body.article-list .aside, body.page .aside {
 
 @-moz-keyframes blurring-shadow {
   from {
-    opacity: 1; }
+    opacity: 1;
+    -moz-transform: scale(1); }
 
-  25% {
+  55% {
     opacity: 0.3; }
 
-  45% {
-    opacity: 0.2; }
-
   65% {
+    opacity: 0.2;
+    -moz-transform: scale(0.9);
+    -webkit-filter: blur(2px); }
+
+  70% {
     opacity: 0.3; }
 
   to {
@@ -5281,15 +5316,18 @@ body.article .aside, body.article-list .aside, body.page .aside {
 
 @-o-keyframes blurring-shadow {
   from {
-    opacity: 1; }
+    opacity: 1;
+    -o-transform: scale(1); }
 
-  25% {
+  55% {
     opacity: 0.3; }
 
-  45% {
-    opacity: 0.2; }
-
   65% {
+    opacity: 0.2;
+    -o-transform: scale(0.9);
+    -webkit-filter: blur(2px); }
+
+  70% {
     opacity: 0.3; }
 
   to {
@@ -5297,96 +5335,96 @@ body.article .aside, body.article-list .aside, body.page .aside {
 
 @keyframes blurring-shadow {
   from {
-    opacity: 1; }
+    opacity: 1;
+    transform: scale(1); }
 
-  25% {
+  55% {
     opacity: 0.3; }
 
-  45% {
-    opacity: 0.2; }
-
   65% {
+    opacity: 0.2;
+    transform: scale(0.9);
+    -webkit-filter: blur(2px); }
+
+  70% {
     opacity: 0.3; }
 
   to {
     opacity: 1; } }
 
 @media only screen {
-  body#home header.hero {
-    min-height: 5em;
-    text-align: center;
-    background: -webkit-linear-gradient( #ffffff 10%, #f5f7f7);
-    background: linear-gradient( #ffffff 10%, #f5f7f7); }
-    body#home header.hero .link {
-      display: inline-block; }
-    body#home header.hero h1, body#home header.hero h1.site-name {
-      text-transform: lowercase; }
-    body#home header.hero .avatar {
-      margin: 0 auto;
-      display: block;
-      position: relative;
-      height: 9em;
-      width: 100%; }
-      body#home header.hero .avatar .cube, body#home header.hero .avatar .shadow {
-        position: absolute;
-        left: 0;
-        max-width: 10em; }
-      body#home header.hero .avatar .cube {
-        z-index: 2;
-        bottom: 2em;
-        -webkit-animation-name: floating-cube;
-        -moz-animation-name: floating-cube;
-        animation-name: floating-cube;
-        -webkit-animation-duration: 3s;
-        -moz-animation-duration: 3s;
-        animation-duration: 3s;
-        -webkit-animation-iteration-count: infinite;
-        -moz-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
-        -webkit-animation-delay: 0;
-        -moz-animation-delay: 0;
-        animation-delay: 0; }
-      body#home header.hero .avatar .shadow {
-        z-index: 1;
-        bottom: 0em;
-        -webkit-animation-name: blurring-shadow;
-        -moz-animation-name: blurring-shadow;
-        animation-name: blurring-shadow;
-        -webkit-animation-duration: 3s;
-        -moz-animation-duration: 3s;
-        animation-duration: 3s;
-        -webkit-animation-iteration-count: infinite;
-        -moz-animation-iteration-count: infinite;
-        animation-iteration-count: infinite;
-        -webkit-animation-delay: 0;
-        -moz-animation-delay: 0;
-        animation-delay: 0; }
-  body#home .hero#below-the-fold {
-    min-height: 5em;
-    height: 100%; }
-    body#home .hero#below-the-fold:before {
-      content: '';
-      z-index: 0;
+  body#home {
+    background: white; }
+    body#home header.hero {
+      min-height: 5em;
+      text-align: center; }
+      body#home header.hero .link {
+        display: inline-block; }
+      body#home header.hero h1, body#home header.hero h1.site-name {
+        text-transform: lowercase; }
+      body#home header.hero .avatar {
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        height: 9em;
+        width: 100%; }
+        body#home header.hero .avatar .cube, body#home header.hero .avatar .shadow {
+          position: absolute;
+          left: 0;
+          width: 100%; }
+        body#home header.hero .avatar .cube {
+          z-index: 2;
+          bottom: 2em;
+          -webkit-animation-name: floating-cube;
+          -moz-animation-name: floating-cube;
+          animation-name: floating-cube;
+          -webkit-animation-duration: 3s;
+          -moz-animation-duration: 3s;
+          animation-duration: 3s;
+          -webkit-animation-timing-function: ease-in-out;
+          -moz-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+          -webkit-animation-iteration-count: infinite;
+          -moz-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+          -webkit-animation-delay: 0;
+          -moz-animation-delay: 0;
+          animation-delay: 0; }
+        body#home header.hero .avatar .shadow {
+          z-index: 1;
+          bottom: 0em;
+          -webkit-animation-name: blurring-shadow;
+          -moz-animation-name: blurring-shadow;
+          animation-name: blurring-shadow;
+          -webkit-animation-duration: 3s;
+          -moz-animation-duration: 3s;
+          animation-duration: 3s;
+          -webkit-animation-timing-function: ease-in-out;
+          -moz-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+          -webkit-animation-iteration-count: infinite;
+          -moz-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+          -webkit-animation-delay: 0;
+          -moz-animation-delay: 0;
+          animation-delay: 0; }
+    body#home .hero#below-the-fold {
+      min-height: 5em;
       height: 100%;
-      width: 100%;
-      display: block;
-      position: absolute;
-      background: -webkit-radial-gradient( 50% 0%,   20em 3px, #ffffff, transparent), -webkit-radial-gradient( 50% 0%,   30em 35%, #dcdede, #f5f7f7);
-      background: radial-gradient(  20em 3px at  50% 0%, #ffffff, transparent), radial-gradient(  30em 35% at  50% 0%, #dcdede, #f5f7f7); }
-    body#home .hero#below-the-fold:after {
-      content: "";
-      width: 100%;
-      height: 1px;
-      display: block;
+      min-height: 20em;
       position: relative; }
-    body#home .hero#below-the-fold .button-group li a.button {
-      font-size: 12px;
-      font-weight: bold !important; } }
+      body#home .hero#below-the-fold .button-group li a.button {
+        font-size: 12px;
+        font-weight: bold !important; } }
 @media only screen and (min-width:40.063em) {
+  body#home article {
+    display: table;
+    height: 100%; }
   body#home header.hero {
     text-align: center;
-    display: table;
-    height: 50%; }
+    height: 50%;
+    display: table; }
     body#home header.hero .cell {
       height: 100%;
-      display: inline-block; } }
+      display: table-cell;
+      vertical-align: bottom; } }
