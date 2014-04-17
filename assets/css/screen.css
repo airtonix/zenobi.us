@@ -4981,6 +4981,8 @@ html body header nav.top-bar {
     overflow: auto;
     margin-bottom: 1em;
     border-bottom: 1px solid #e7ecec; }
+html body article .side-nav {
+  text-align: right; }
 
 html body .hero {
   width: 100%;
