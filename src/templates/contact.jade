@@ -1,17 +1,15 @@
 extends page
 
 block append content-html
-	.row.hide
-		form.column.large-12.large-centered(action="http://mailjs.herokuapp.com/message?token=TOKEN", method="post")
-			input(name="name", type="text", placeholder="your name")
-			input(name="email", type="email", placeholder="your email")
-			textarea(name="message", placeholder="your message", rows=7)
-			input.button.simple-outline.small(type="submit")
 	.row
-		.small-6.small-centered.column
-			ul.button-group.simple-outline
-				li: a.button.small(href='mailto:its@zenobi.us') Email
-				li: a.button.small(href='http://plus.google.com/+zenobiusjiricek/') Google Plus
-				li: a.button.small(href="tel:+61451075636") Call Me
-					em.icon-phone
-
+		form(data-mandrill='contact-form').column.large-12.large-centered
+			input#name(name="name", type="text", placeholder="your name")
+			input#email(name="email", type="email", placeholder="your email")
+			textarea#message(name="message", placeholder="your message", rows=7)
+			button.button.simple-outline.small(type="submit") Send
+	.row
+		ul.button-group.simple-outline
+			li: a.button.small(href='mailto:its@zenobi.us') Email
+			li: a.button.small(href='http://plus.google.com/+zenobiusjiricek/') Google Plus
+			li: a.button.small(href="tel:+61451075636") Call Me
+				em.icon-phone

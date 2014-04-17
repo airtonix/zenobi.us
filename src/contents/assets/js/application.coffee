@@ -1,10 +1,10 @@
 require [
-	'zepto'
 	'lodash'
+	'jquery'
 	'fastclick'
 	'./topbar'
 	'./contact'
-	], ($, _, fastclick) ->
+	], (_, $, fastclick) ->
 
 		window.addEventListener 'load', (Event) ->
 			fastclick.attach document.body

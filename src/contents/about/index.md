@@ -4,9 +4,9 @@ title: About
 type: article
 ---
 
-I primarily work with [Django][1], [Tastypie][2] and [AngularJS][3].
+I primarily work with [Django][1], [Tastypie][2], [NodeJs][32], [ExpressJs][33] and [AngularJS][3].
 
-Since 2006, I've moved to using Linux based operating systems (mostly [Ubuntu][4]), where I like to make use of server side technolgies like [Postgres][5], [Redis][6], [uWsgi][7], [Nginx][8], [Ansible][9] and [OpenSsh][10]. On the desktop I'm fairly proficient with [W.I.N.E.][11] and [Winetricks][12] which allows me to play pretty much all the triple A game titles.
+Since 2006, I've moved to using Linux based operating systems (mostly [Ubuntu][4]), where I like to make use of server side technolgies like [Postgres][5], [Redis][6], [uWsgi][7], [Nginx][8], [Ansible][9] and [OpenSsh][10].
 
 
 ### Development Philopshy
@@ -25,7 +25,7 @@ I like to keep art and design for myself, It's such a personal thing that I find
 
 If you feel like asking me a technical question I'd be happy to either give you my advice/opinon or if I'm not able to give you an answer I'll more than likely know someone who can.
 
-![My Workstation](./workstation.png "My Workstation")
+![My Workstation](./workstation.jpg "My Workstation")
 
 [1]: http://djangoproject.com/
 [2]: https://github.com/toastdriven/django-tastypie/
@@ -58,3 +58,5 @@ If you feel like asking me a technical question I'd be happy to either give you 
 [29]: http://heroku.com/
 [30]: http://mandrill.com/
 [31]: https://aws.amazon.com/ec2/
+[32]: http://nodejs.org/
+[33]: http://expressjs.com/‎

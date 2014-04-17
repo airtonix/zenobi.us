@@ -1,6 +1,6 @@
 require [
 	'lodash'
-	'zepto'
+	'jquery'
 	], (_, $) ->
 
 		#
