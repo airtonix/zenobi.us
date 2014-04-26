@@ -5134,24 +5134,34 @@ html body header nav.top-bar {
       overflow: auto;
       margin-bottom: 1em;
       border-bottom: 1px solid #e7ecec; }
-@media only screen and (max-width: 40em) {
-  html body article .side-nav {
-    z-index: 100;
-    position: absolute;
-    top: 0.5em;
-    left: 0;
+html body article #page-content .aside {
+  width: 3em; }
+html body article #page-content .toc {
+  width: 3em;
+  z-index: 100;
+  position: absolute;
+  top: 0.5em;
+  right: 0;
+  min-height: 2em; }
+  html body article #page-content .toc .link {
     width: 3em;
-    min-height: 2em; }
-    html body article .side-nav .link {
-      width: 3em;
-      height: 3em;
-      background-color: white;
-      padding: 0.8em;
-      display: block; }
-    html body article .side-nav .toggle {
+    height: 3em;
+    background-color: white;
+    padding: 0.8em;
+    display: block; }
+  html body article #page-content .toc > ul {
+    text-align: right; }
+@media only screen {
+  html body article #page-content {
+    position: relative; }
+    html body article #page-content .aside {
+      position: absolute;
+      top: 0;
+      left: 0; }
+    html body article #page-content .toc .toggle {
       cursor: inherit;
       color: #f5f7f7; }
-    html body article .side-nav > ul {
+    html body article #page-content .toc > ul {
       display: none;
       text-align: right;
       background: #f5f7f7;
@@ -5161,13 +5171,29 @@ html body header nav.top-bar {
       min-width: 10em;
       text-align: left;
       padding: 1em; }
-    html body article .side-nav.enabled .toggle {
+    html body article #page-content .toc.enabled .toggle {
       color: #526368;
       cursor: pointer; }
-    html body article .side-nav.enabled.expanded .toggle {
+    html body article #page-content .toc.enabled.expanded .toggle {
       background: #f5f7f7; }
-    html body article .side-nav.enabled.expanded > ul {
+    html body article #page-content .toc.enabled.expanded > ul {
       display: block; } }
+@media only screen and (min-width:64.063em) {
+  html body article #page-content .aside {
+    width: 13em;
+    height: 100%; }
+    html body article #page-content .aside .toc {
+      width: 100%; }
+      html body article #page-content .aside .toc .link {
+        float: right;
+        clear: both; }
+      html body article #page-content .aside .toc .toggle {
+        background-color: #f5f7f7; }
+      html body article #page-content .aside .toc > ul {
+        position: static;
+        float: right;
+        display: block;
+        text-align: right; } }
 
 html body .hero {
   width: 100%;
@@ -5386,12 +5412,6 @@ body.page #page-content .content {
 @media only screen {
   body.page #page-content .content {
     padding-left: 4em; } }
-@media only screen and (min-width:40.063em) {
-  body.page #page-content .aside {
-    border-right: 0.2em solid #f5f7f7; }
-    body.page #page-content .aside .subtree {
-      list-style: none;
-      text-align: right; } }
 
 
 html body#Contact #contact-form .modal {
