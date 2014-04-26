@@ -1,48 +1,51 @@
 extends page
 
-block append content-html
-			dl.sub-nav
-				dd: a(href='http://plus.google.com/+zenobiusjiricek/')
-					em.icon-2x.icon-googleplus-rect
-					br
-					| google+
-				dd: a(href='http://twitter.com/airtonix/')
-					em.icon-2x.icon-twitter
-					br
-					| twitter
-				dd: a(href='http://au.linkedin.com/in/zenobiusjiricek')
-					em.icon-2x.icon-linkedin
-					br
-					| linkedin
-				dd: a(href='tel:+61451075636')
-					em.icon-2x.icon-mobile
-					br
-					| phone
+block aside-html
 
-			#contact-form.column.large-12.large-centered
-				form
-					input#name(name="name", type="text", placeholder="your name")
-					input#email(name="email", type="email", placeholder="your email")
-					textarea#message(name="message", placeholder="your message", rows=7)
-					button.button.simple-outline.small(type="submit") Send
+block content-html
+	.text-centered
+		ul.methods.small-block-grid-2.large-block-grid-4
+			li: a(href='http://plus.google.com/+zenobiusjiricek/')
+				em.icon-2x.icon-googleplus-rect
+				br
+				| google+
+			li: a(href='http://twitter.com/airtonix/')
+				em.icon-2x.icon-twitter
+				br
+				| twitter
+			li: a(href='http://au.linkedin.com/in/zenobiusjiricek')
+				em.icon-2x.icon-linkedin
+				br
+				| linkedin
+			li: a(href='tel:+61451075636')
+				em.icon-2x.icon-mobile
+				br
+				| phone
 
-				.modal.success
-					.cell
-						em.icon-paper-plane
-						h5 Your message has been sent.
-						button.button.simple-outline.small Ok
+	#contact-form.column.large-12.large-centered
+		form
+			input#name(name="name", type="text", placeholder="your name")
+			input#email(name="email", type="email", placeholder="your email")
+			textarea#message(name="message", placeholder="your message", rows=7)
+			button.button.simple-outline.small(type="submit") Send
+
+		.modal.success
+			.cell
+				em.icon-paper-plane
+				h5 Your message has been sent.
+				button.button.simple-outline.small Ok
 
 
-				.modal.sending
-					.cell
-						em.icon-cloud
-						h5 Sending
+		.modal.sending
+			.cell
+				em.icon-cloud
+				h5 Sending
 
-				.modal.error
-					.cell
-						em.icon-fire
-						h5 Error
-							small Something went wrong whilst sending your message.
-						button.button.simple-outline.small Ok
+		.modal.error
+			.cell
+				em.icon-fire
+				h5 Error
+					small Something went wrong whilst sending your message.
+				button.button.simple-outline.small Ok
 
 

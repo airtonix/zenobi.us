@@ -13,6 +13,7 @@ $light-blue: #ACD6E5;
 $base: $white;
 $firm: $fiord;
 $primary-tint: lighten($fiord, 60%);
+$secondary-tint: lighten($fiord, 20%);
 
 $link-color: darken($portage, 10%);
 $link-hover-color: tint($portage, 10%);

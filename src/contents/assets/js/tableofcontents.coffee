@@ -1,23 +1,18 @@
-require [
+define [
 	'lodash'
 	'jquery'
-	], (_, $) ->
+	'./plugin'
+	], (_, $, Plugin) ->
 
-		class MobileTableOfContents
+		class TableOfContents extends Plugin
 			items: []
+			routes: "!/contact"
 			defaults:
 				selector: "[data-table-of-contents]"
 				headings: "h2,h3,h4,h5"
 				toggleSelector: '.toggle'
 
-			constructor: (@options) ->
-				$ document
-					.ready () =>
-						_.extend @, @defaults, @options
-						@buildTable()
-						@run()
-
-			buildTable: ->
+			build: ->
 				$(@selector).each (index, item) =>
 					self = $ item
 					self.contents = $ self.data('tableOfContents')
@@ -30,6 +25,7 @@ require [
 
 					if !headings.length
 						self.list.remove()
+						self.toggle.remove()
 
 					else
 						self.addClass 'enabled'
@@ -44,5 +40,4 @@ require [
 					item.toggle.on 'click', ->
 						item.toggleClass 'expanded'
 
-
-		new MobileTableOfContents
+		return TableOfContents

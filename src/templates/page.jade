@@ -1,5 +1,4 @@
 extends layout
-include mixins
 
 block append vars
 	- bodyclass = 'page'
@@ -15,10 +14,13 @@ block content
 
 	block content-body
 		#page-content.row
-			.side-nav.toc(data-table-of-contents="#page-content > .content")
-				a.link(href="../"): span.icon-left-open-outline
-				.link.toggle: span.icon-flow-split
 			.large-8.columns.large-centered.content
 				block content-html
 					if page.html
 						!= typogr(page.html).typogrify()
+
+			.large-4.columns.aside
+				block aside-html
+					.side-nav.toc(data-table-of-contents="#page-content > .content")
+						a.link(href="../"): span.icon-left-open-outline
+						.link.toggle: span.icon-flow-split

@@ -1,0 +1,5 @@
+mixin debug(label, data)
+	if env.config.mode='preview'
+		.debug.row
+			h4=label
+			pre=env.helpers.toJson(data)

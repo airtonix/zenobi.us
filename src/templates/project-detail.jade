@@ -1,4 +1,5 @@
 extends article
+include mixins/gallery
 
 block prepend content-html
 	.project-meta
@@ -10,8 +11,4 @@ block prepend content-html
 
 block append content-html
 	if page.metadata.gallery
-		- var pattern = RegExp(/^(.*\.(|gif|jpg|png)$)/i);
-		- var images = _.pick(page.parent, function(value, key){ return false });
-		- console.log(images)
-		each filename, image in images
-			img(src=filename)
+		+gallery()

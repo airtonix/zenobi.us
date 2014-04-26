@@ -9,4 +9,4 @@ require [
 
 			constructor: (@options) ->
 
-		new StickyElement
+		return StickyElement

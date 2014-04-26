@@ -1,14 +1,26 @@
-require [
+define [
 	'lodash'
 	'jquery'
-	], (_, $) ->
+	'./plugin'
+	], (_, $, Plugin) ->
 
-		#
-		# Topbar
-		#
-		topbar = $("[data-topbar]")
-		topbarToggle = $("[data-topbar] .toggle-topbar")
-		topbarSection = $("[data-topbar] .top-bar-section")
+		class TopBar extends Plugin
+			items: []
+			defaults:
+				events: 'click'
+				toggleClass: 'expanded'
+				selectors:
+					topbar: "[data-topbar]"
+					toggle: ".toggle-topbar"
+					section: ".top-bar-section"
 
-		topbarToggle.on 'click', (Event) ->
-			topbar.toggleClass 'expanded'
+			build: () ->
+				topbar = $ @selectors.topbar
+				topbar.toggle = topbar.find @selectors.toggle
+				topbar.section = topbar.find @selectors.section
+				@items.push topbar
+
+			run: () ->
+				for item in @items
+					item.toggle.on @events, (Event) =>
+						item.toggleClass @toggleClass

@@ -1,5 +1,12 @@
 html body#Contact{
-
+	#page-content {
+		.methods {
+			display: inline-block;
+			a { color: $secondary-tint; }
+			a:hover { color: $link-hover-color; }
+		}
+		& > .content { padding: 0; }
+	}
 	#contact-form{
 
 		.modal {

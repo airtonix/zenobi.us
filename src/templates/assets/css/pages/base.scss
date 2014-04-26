@@ -111,15 +111,7 @@ body.page {
 				padding-left: 4em;
 			}
 		}
-		@media #{$medium-up} {
-			.aside {
-				border-right: 0.2em solid $primary-tint;
-				.subtree {
-					list-style: none;
-					text-align: right;
-				}
-			}
-		}
+
 
 	}
 

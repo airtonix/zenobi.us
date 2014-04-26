@@ -185,9 +185,9 @@ module.exports = (grunt) ->
       options:
         files: ['package.json', 'bower.json']
         updateConfigs: ['pkg', 'bower']
-        commit: true
-        createTag: true
-        push: true
+        commit: false
+        createTag: false
+        push: false
         pushTo: 'origin develop'
 
     "gh-pages":

@@ -31,14 +31,17 @@ html body {
 	}
 
 	article {
-		.side-nav {
 
-			@media #{$small-only} {
+		#page-content {
+			.aside {
+				width: 3em;
+			}
+			.toc {
+				width: 3em;
 				z-index: 100;
 				position: absolute;
 				top: 0.5em;
-				left: 0;
-				width: 3em;
+				right: 0;
 				min-height: 2em;
 
 				.link {
@@ -47,34 +50,84 @@ html body {
 					background-color: white;
 					padding: 0.8em;
 					display: block;
-				}
-				.toggle {
-					cursor: inherit;
-					color: $primary-tint;
-				}
-				& > ul {
-					display: none;
-					text-align: right;
-					background: $primary-tint;
 					position: relative;
-					top: -3em;
-					left: 3em;
-					min-width: 10em;
-					text-align: left;
-					padding: 1em;
+					z-index: 100;
 				}
 
-				&.enabled {
+				& > ul {
+					text-align: right;
+				}
+			}
+
+			@media #{$small-up} {
+				position: relative;
+				.aside {
+					position: absolute;
+					top: 0;
+					left: 0;
+				}
+
+				.toc {
+
 					.toggle {
-						color: $firm;
-						cursor: pointer;
+						cursor: inherit;
+						color: $primary-tint;
 					}
-					&.expanded {
+
+					& > ul {
+						display: none;
+						text-align: right;
+						background: $primary-tint;
+						position: relative;
+						top: -3em;
+						left: 3em;
+						min-width: 10em;
+						text-align: left;
+						padding: 1em;
+					}
+
+					&.enabled {
 						.toggle {
-							background: $primary-tint;
+							color: $firm;
+							cursor: pointer;
+						}
+						&.expanded {
+							$border: darken($primary-tint, 10%);
+							.toggle {
+								border-top: 1px solid $border;
+								border-left: 1px solid $border;
+								border-bottom: 1px solid $border;
+								background: $primary-tint;
+							}
+							& > ul {
+								border: 1px solid $border;
+								margin-left: -1px;
+								display: inline-block;
+							}
+						}
+					}
+				}
+
+			}
+
+			@media #{$large-up} {
+				.aside {
+					width: 13em;
+					height: 100%;
+					.toc {
+						width: 100%;
+						.link {
+							float: right;
+							clear: both;
+						}
+						.toggle {
+							background-color: $primary-tint;
 						}
 						& > ul {
+							position: static;
+							float: right;
 							display: block;
+							text-align: right;
 						}
 					}
 				}

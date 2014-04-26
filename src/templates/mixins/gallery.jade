@@ -1,0 +1,6 @@
+mixin gallery(root)
+	- var root = root || page.parent.img
+	- var gallery = _.omit(root, 'index.md')
+	ul.small-block-grid-2.large-block-grid-4
+		each image, filename in gallery
+			li: img.th(src="/"+image.filepath.relative.replace(/\\/g, '/'))

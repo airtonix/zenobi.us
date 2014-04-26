@@ -1,4 +1,3 @@
-
 mixin subtree(tree, leafClass)
 	- leafClass = leafClass || ''
 	- var tree = _.omit(tree, 'index.md');
@@ -7,10 +6,3 @@ mixin subtree(tree, leafClass)
 	- each item, key in tree
 		if item.index
 			li: a(class=leafClass, href=item.index.url)= key
-
-
-mixin debug(label, data)
-	if env.config.mode='preview'
-		.debug.row
-			h4=label
-			pre=env.helpers.toJson(data)

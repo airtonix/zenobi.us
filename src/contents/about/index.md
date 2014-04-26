@@ -17,7 +17,7 @@ I'm greatly impressed with [Git-flow][23], [Github][24], [Gitlab][25], [GitlabCI
 
 A lot of my experience with highly available and horizontally scalable web applications comes from working with [Amazon EC2][31], [Postgresql][5], [Django][1], [Nginx][8] and [uWsgi][7].
 
-### Desgin and Artwork
+### Design and Artwork
 
 I like to keep art and design for myself, It's such a personal thing that I find many people appreciate it as long as they aren't paying for it. In any case... you can checkout the sketches on my [google+ profile][22]
 
