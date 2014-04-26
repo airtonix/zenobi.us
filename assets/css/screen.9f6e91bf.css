@@ -5148,7 +5148,9 @@ html body article #page-content .toc {
     height: 3em;
     background-color: white;
     padding: 0.8em;
-    display: block; }
+    display: block;
+    position: relative;
+    z-index: 100; }
   html body article #page-content .toc > ul {
     text-align: right; }
 @media only screen {
@@ -5175,9 +5177,14 @@ html body article #page-content .toc {
       color: #526368;
       cursor: pointer; }
     html body article #page-content .toc.enabled.expanded .toggle {
+      border-top: 1px solid #d9e0e0;
+      border-left: 1px solid #d9e0e0;
+      border-bottom: 1px solid #d9e0e0;
       background: #f5f7f7; }
     html body article #page-content .toc.enabled.expanded > ul {
-      display: block; } }
+      border: 1px solid #d9e0e0;
+      margin-left: -1px;
+      display: inline-block; } }
 @media only screen and (min-width:64.063em) {
   html body article #page-content .aside {
     width: 13em;
@@ -5414,6 +5421,14 @@ body.page #page-content .content {
     padding-left: 4em; } }
 
 
+html body#Contact #page-content .methods {
+  display: inline-block; }
+  html body#Contact #page-content .methods a {
+    color: #83979d; }
+  html body#Contact #page-content .methods a:hover {
+    color: #34b0e4; }
+html body#Contact #page-content > .content {
+  padding: 0; }
 html body#Contact #contact-form .modal {
   position: fixed;
   top: 0;
