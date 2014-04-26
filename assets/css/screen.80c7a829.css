@@ -5,8 +5,8 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @font-face {
   font-family: 'fontello';
-  src: url('../font/fontello.eot?45714980');
-  src: url('../font/fontello.eot?45714980#iefix') format('embedded-opentype'), url('../font/fontello.woff?45714980') format('woff'), url('../font/fontello.ttf?45714980') format('truetype'), url('../font/fontello.svg?45714980#fontello') format('svg');
+  src: url('../font/fontello.06ec5c90.eot?45714980');
+  src: url('../font/fontello.06ec5c90.eot?45714980#iefix') format('embedded-opentype'), url('../font/fontello.5fb69579.woff?45714980') format('woff'), url('../font/fontello.890411fa.ttf?45714980') format('truetype'), url('../font/fontello.f32f6da6.svg?45714980#fontello') format('svg');
   font-weight: normal;
   font-style: normal; }
 
@@ -16,7 +16,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?45714980#fontello') format('svg');
+    src: url('../font/fontello.f32f6da6.svg?45714980#fontello') format('svg');
   }
 }
 */
@@ -5125,15 +5125,49 @@ html body header nav.top-bar {
     text-align: left; }
     html body header nav.top-bar .toggle-topbar.menu-icon:after {
       margin-right: 1em; }
-  html body header nav.top-bar.expanded .toggle-topbar.menu-icon {
-    border-color: #f5f7f7;
-    box-shadow: none; }
-  html body header nav.top-bar.expanded .top-bar-section {
-    overflow: auto;
-    margin-bottom: 1em;
-    border-bottom: 1px solid #e7ecec; }
-html body article .side-nav {
-  text-align: right; }
+  html body header nav.top-bar.expanded {
+    z-index: 10; }
+    html body header nav.top-bar.expanded .toggle-topbar.menu-icon {
+      border-color: #f5f7f7;
+      box-shadow: none; }
+    html body header nav.top-bar.expanded .top-bar-section {
+      overflow: auto;
+      margin-bottom: 1em;
+      border-bottom: 1px solid #e7ecec; }
+@media only screen and (max-width: 40em) {
+  html body article .side-nav {
+    z-index: 100;
+    position: absolute;
+    top: 0.5em;
+    left: 0;
+    width: 3em;
+    min-height: 2em; }
+    html body article .side-nav .link {
+      width: 3em;
+      height: 3em;
+      background-color: white;
+      padding: 0.8em;
+      display: block; }
+    html body article .side-nav .toggle {
+      cursor: inherit;
+      color: #f5f7f7; }
+    html body article .side-nav > ul {
+      display: none;
+      text-align: right;
+      background: #f5f7f7;
+      position: relative;
+      top: -3em;
+      left: 3em;
+      min-width: 10em;
+      text-align: left;
+      padding: 1em; }
+    html body article .side-nav.enabled .toggle {
+      color: #526368;
+      cursor: pointer; }
+    html body article .side-nav.enabled.expanded .toggle {
+      background: #f5f7f7; }
+    html body article .side-nav.enabled.expanded > ul {
+      display: block; } }
 
 html body .hero {
   width: 100%;
@@ -5318,12 +5352,7 @@ html, body {
 
 body {
   margin: 0;
-  padding: 0;
-  /*
-		AVgrund Override
-	 */ }
-  body [data-topbar].expanded {
-    z-index: 10; }
+  padding: 0; }
   body #content {
     display: inline-block;
     min-height: 100%;
@@ -5336,58 +5365,34 @@ body {
     text-align: center; }
     body #site-footer > .row:before {
       border-top: 1px solid #f5f7f7; }
-  body .avgrund-overlay {
-    background: rgba(204, 204, 204, 0.2); }
-  body .avgrund-popin {
-    overflow: visible;
-    background: #526368;
-    min-height: 25em; }
-    body .avgrund-popin h1, body .avgrund-popin h2, body .avgrund-popin h3, body .avgrund-popin h4, body .avgrund-popin h5 {
-      color: #526368; }
-    body .avgrund-popin h1 small, body .avgrund-popin h2 small, body .avgrund-popin h3 small, body .avgrund-popin h4 small, body .avgrund-popin h5 small {
-      color: #526368; }
-    body .avgrund-popin form.contact input, body .avgrund-popin form.contact textarea {
-      color: #526368;
-      background: transparent;
-      border: none; }
-      body .avgrund-popin form.contact input ::-webkit-input-placeholder, body .avgrund-popin form.contact textarea ::-webkit-input-placeholder {
-        color: #5d5d5d; }
-      body .avgrund-popin form.contact input :-moz-placeholder, body .avgrund-popin form.contact textarea :-moz-placeholder {
-        color: #5d5d5d; }
-      body .avgrund-popin form.contact input ::-moz-placeholder, body .avgrund-popin form.contact textarea ::-moz-placeholder {
-        color: #5d5d5d; }
-      body .avgrund-popin form.contact input :-ms-input-placeholder, body .avgrund-popin form.contact textarea :-ms-input-placeholder {
-        color: #5d5d5d; }
-    body .avgrund-popin form.contact textarea {
-      min-height: 15em;
-      max-height: 15em; }
-    body .avgrund-popin form.contact button[type='submit'] {
-      position: absolute;
-      bottom: -1.5em;
-      left: 5%;
-      width: 90%;
-      border: none;
-      background: #526368;
-      border: 2px solid #526368;
-      color: white;
-      margin: 0 auto; }
 
-body.article #page-header, body.article-list #page-header, body.page #page-header {
+body.page #page-header {
   width: 100%;
   min-height: 4em; }
   @media only screen and (min-width:40.063em) {
-    body.article #page-header, body.article-list #page-header, body.page #page-header {
+    body.page #page-header {
       height: 10em;
       margin-bottom: 1em; }
-      body.article #page-header .columns, body.article-list #page-header .columns, body.page #page-header .columns {
+      body.page #page-header .columns {
         display: table-cell;
         vertical-align: bottom;
-        height: 10em; } }
-body.article .aside, body.article-list .aside, body.page .aside {
-  border-right: 0.2em solid #f5f7f7; }
-  body.article .aside .subtree, body.article-list .aside .subtree, body.page .aside .subtree {
-    list-style: none;
-    text-align: right; }
+        height: 10em;
+        width: 62.5rem; } }
+body.page #page-content .content {
+  text-align: left; }
+@media only screen and (max-width: 40em) {
+  body.page #page-content {
+    position: relative; } }
+@media only screen {
+  body.page #page-content .content {
+    padding-left: 4em; } }
+@media only screen and (min-width:40.063em) {
+  body.page #page-content .aside {
+    border-right: 0.2em solid #f5f7f7; }
+    body.page #page-content .aside .subtree {
+      list-style: none;
+      text-align: right; } }
+
 
 html body#Contact #contact-form .modal {
   position: fixed;
