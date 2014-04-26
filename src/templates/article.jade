@@ -1,18 +1,14 @@
 extends page
+include mixins/author
 
 block append vars
 	- bodyclass = 'page article-detail'
 
-block content-title
-	include partial/author
-	!= page.title
-	small.author
-		| #{ "Written by " }
-		mixin author(page.metadata.author)
-
-block content-html
-	article.article
-		section.content!= typogr(page.html).typogrify()
+block append content-title
+	if page.metadata.author
+		small.author
+			| #{ "Written by " }
+			mixin author(page.metadata.author)
 
 block prepend footer
 	include partial/post-footer

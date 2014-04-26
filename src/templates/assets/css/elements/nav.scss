@@ -1,4 +1,5 @@
 html body {
+
 	header nav.top-bar{
 		position: absolute;
 		width: 100%;
@@ -14,6 +15,8 @@ html body {
 		}
 
 		&.expanded{
+			z-index: 10;
+
 			.toggle-topbar.menu-icon{
 				border-color: $topbar-menu-border-color;
 				@include box-shadow(none);
@@ -29,7 +32,56 @@ html body {
 
 	article {
 		.side-nav {
-			text-align: right;
+
+			@media #{$small-only} {
+				z-index: 100;
+				position: absolute;
+				top: 0.5em;
+				left: 0;
+				width: 3em;
+				min-height: 2em;
+
+				.link {
+					width: 3em;
+					height: 3em;
+					background-color: white;
+					padding: 0.8em;
+					display: block;
+				}
+				.toggle {
+					cursor: inherit;
+					color: $primary-tint;
+				}
+				& > ul {
+					display: none;
+					text-align: right;
+					background: $primary-tint;
+					position: relative;
+					top: -3em;
+					left: 3em;
+					min-width: 10em;
+					text-align: left;
+					padding: 1em;
+				}
+
+				&.enabled {
+					.toggle {
+						color: $firm;
+						cursor: pointer;
+					}
+					&.expanded {
+						.toggle {
+							background: $primary-tint;
+						}
+						& > ul {
+							display: block;
+						}
+					}
+				}
+			}
+
 		}
+
 	}
+
 }

@@ -13,48 +13,21 @@ pdf-download: true
 * [@contact](http://zenobi.us/contact/)
 * [@google+](http://plus.google.com/+zenobiusjiricek)
 * [@github](http://github.com/airtonix/)
+* [@linkedin](http://au.linkedin.com/in/zenobiusjiricek‎)
 * [@twitter](http://twitter.com/airtonix/)
 
-### Skillset
-
-#### Web Development
-
-* Develop reusable project skeletons
-* Create development and deployment workflow tools with Grunt and Fabric
-* Create architecture configuration manifests with Ansible
-
-*Applications*
-
-* Sublime Text 3, Bash, Git, Ssh, Grunt, Bower, Chrome
-* Ansible, Fabric, VirtualENV, Pip, Nave
-* Firefox, Epiphany, Gimp, Inkscape, Quassel, Hangouts, Skype
-
-*Daemons*
-
-* Bind9, Nginx, Uwsgi, Postgres, OpenSSHd, NodeJs
-* Samba, nfs­kernel­server, Gitolite, Gitlab, Gitliab-CI, ZFS, Upstart
-
-*Languages*
-
-* Scss, Javascript, CoffeeScript, JSON, HTML5, CSS3, Jade, Haml
-* Python 2.6, basic MySQL, basic Postgres, Bash, Lua, PHP
-
-*Frameworks*
-
-* AngularJS
-* Django, ExpressJs, SailsJs, CompoundJs, LocomotiveJs, Laravel
-* PySide, PyGtk
-
-#### Operations
-
-* Setup and deploy network hardware
-* Monitor Server Processes
-* Automate backup procedures
-* Manage firewalls/local DNS servers/apache name based virtual­hosts.
-* Use Ansible/Fabric to automate Provisioning and Deployment of large scale web apps
-* Compile User-stories, map out milestones and build tests to describe functionality.
 
 ### Experience
+
+##### 2013-Present
+
+**Co-Founder and CTO of Gigrig**
+
+**Frontend Developer for Muvli**
+
+* Develop frontend design using AngularJs and Ratchet
+* Prototype RESTful api using Apiary
+
 
 ##### 2012-2013
 
@@ -67,7 +40,6 @@ pdf-download: true
 * Plan & Develop several new products: Jobsite, Zibcode, Jetts
 	* Used AngularJS for the entire frontend
 	* Django with the RESTful backend (tastypie * guardianpie)
-
 
 ##### 2011
 
@@ -138,11 +110,52 @@ Desktop Publisher
 Book Agencies of Adelaide
 
 
-## Training
+### Skillset
+
+#### Web Development
+
+* Develop reusable project skeletons
+* Create development and deployment workflow tools with Grunt and Fabric
+* Create architecture configuration manifests with Ansible
+
+*Applications*
+
+* Sublime Text 3, Bash, Git, Ssh, Grunt, Bower, Chrome
+* Ansible, Fabric, VirtualENV, Pip, Nave
+* Firefox, Epiphany, Gimp, Inkscape, Quassel, Hangouts, Skype
+
+*Daemons*
+
+* Bind9, Nginx, Uwsgi, Postgres, OpenSSHd, MongoDb
+* Samba, nfs­kernel­server, Gitolite, Gitlab, Gitliab-CI, ZFS, Upstart
+
+*Languages*
+
+* Scss, Javascript, CoffeeScript, JSON, HTML5, CSS3, Jade, Haml
+* Python 2.6, NodeJs, basic MySQL, basic Postgres, Bash, Lua, PHP
+
+*Frameworks*
+
+* AngularJS
+* Django, ExpressJs, SailsJs, CompoundJs, LocomotiveJs, Laravel
+* PySide, PyGtk
+
+#### Operations
+
+* Setup and deploy network hardware
+* Monitor Server Processes
+* Automate backup procedures
+* Manage firewalls/local DNS servers/apache name based virtual­hosts.
+* Use Ansible/Fabric to automate Provisioning and Deployment of large scale web apps
+* Compile User-stories, map out milestones and build tests to describe functionality.
+
+
+### Training
 
 **Ongoing**
 
 * Self Education
+	* Development and Deployment
 	* Learning NodeJS
 	* Learning YesOD & Haskell
 	* Explore the limitations of RAD with Wordpress and Drupal
@@ -180,7 +193,8 @@ Book Agencies of Adelaide
 * Metro Housing
 	* Advanced Website Programming
 
-## References
+
+### References
 
 #### Vincent Brown
 

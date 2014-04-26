@@ -1,9 +1,17 @@
-extends page
+extends article
 
-block append content-html
+block prepend content-html
 	.project-meta
 		dl
 			dt homepage
 			dd: a(href=page.metadata.homepage)=page.metadata.homepage
 			dt repo
 			dd: a(href=page.metadata.repo)=page.metadata.repo
+
+block append content-html
+	if page.metadata.gallery
+		- var pattern = RegExp(/^(.*\.(|gif|jpg|png)$)/i);
+		- var images = _.pick(page.parent, function(value, key){ return false });
+		- console.log(images)
+		each filename, image in images
+			img(src=filename)

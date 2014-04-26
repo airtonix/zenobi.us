@@ -2,3 +2,4 @@
 	block footer
 		section.copy
 			p &copy; #{ new Date().getFullYear() } #{ site.owner }
+			p: small v#{ pkg.npm.version } ( #{ new Date().toJSON().slice(0,10) } )

@@ -1,6 +1,6 @@
 ---
 title: Websites
-template: page.jade
+template: directory.jade
 ---
 
 Websites I've been involved with/created/developed.

@@ -109,6 +109,48 @@
       "src": "typicons"
     },
     {
+      "uid": "d611dd319d8c13b4551dc5bd85c1bdfd",
+      "css": "twitter-1",
+      "code": 59457,
+      "src": "brandico"
+    },
+    {
+      "uid": "70cdf244c51630e09038659d1dcbee87",
+      "css": "vimeo",
+      "code": 59458,
+      "src": "brandico"
+    },
+    {
+      "uid": "626fb97a7c0c0db53a1853fb9e96e223",
+      "css": "googleplus-rect",
+      "code": 59459,
+      "src": "brandico"
+    },
+    {
+      "uid": "24d1008bf15b6c02a5e7a6af026987dd",
+      "css": "github-text",
+      "code": 59460,
+      "src": "brandico"
+    },
+    {
+      "uid": "4a0bb1ac004980bb3837560d4c9e8cee",
+      "css": "github-1",
+      "code": 59461,
+      "src": "brandico"
+    },
+    {
+      "uid": "5a00c877da3f63d37cdc021815e3f5a9",
+      "css": "skype-1",
+      "code": 59462,
+      "src": "brandico"
+    },
+    {
+      "uid": "542e3f055aaa4ddfb9ab3e00397db47f",
+      "css": "linkedin",
+      "code": 59463,
+      "src": "brandico"
+    },
+    {
       "uid": "572c9ded6a688698dc275b30ff30fefa",
       "css": "music",
       "code": 59393,

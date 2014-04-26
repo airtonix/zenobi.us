@@ -1,28 +1,4 @@
 body.article,
-body.article-list,
-body.page{
+body.article-list{
 
-	#page-header{
-		width: 100%;
-		min-height: 4em;
-
-		@media #{$medium-up} {
-			height: 10em;
-			margin-bottom: 1em;
-
-			.columns {
-				display: table-cell;
-				vertical-align: bottom;
-				height: 10em;
-			}
-		}
-	}
-
-	.aside {
-		border-right: 0.2em solid $primary-tint;
-		.subtree {
-			list-style: none;
-			text-align: right;
-		}
-	}
 }

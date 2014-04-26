@@ -5,7 +5,7 @@ require [
 
 		class MandrillContactForm
 			options:
-				selector: "[data-mandrill='contact-form']"
+				selector: "#contact-form"
 				event: "submit"
 				endpoint: "https://mandrillapp.com/api/1.0/messages/send.json"
 				apikey: "oMstGBYNlE0KhW0DEd8Wdg"
@@ -13,7 +13,7 @@ require [
 
 			constructor: ->
 				@form = $(@options.selector)
-				@form.on @options.event, (event) =>
+				@form.find("form").on @options.event, (event) =>
 					event.preventDefault()
 					payload =
 						key: @options.apikey
@@ -30,7 +30,22 @@ require [
 							]
 							headers:
 								"Reply-To": @form.find('#email').val()
-					$.post @options.endpoint, payload, (response) ->
-						console.log response
+
+					@form.ajaxSend =>
+						@form.removeClass 'error success'
+						@form.addClass 'sending'
+					$.post @options.endpoint, payload
+						.done (response) =>
+							@form.removeClass 'error sending'
+							@form.addClass 'success'
+						.fail (response) =>
+							@form.removeClass 'sending success'
+							@form.addClass 'error'
+
+
+				@form.find '.modal button'
+					.on 'click', (event) =>
+						console.log "click"
+						@form.removeClass 'error success sending'
 
 		new MandrillContactForm

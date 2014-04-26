@@ -1,6 +1,6 @@
 ---
 title: Django Applications
-template: page.jade
+template: directory.jade
 ---
 
 A collection of Plugable Django Applications I've developed and released as opensource.

@@ -4,6 +4,7 @@ require [
 	'fastclick'
 	'./topbar'
 	'./contact'
+	'./sidebar'
 	], (_, $, fastclick) ->
 
 		window.addEventListener 'load', (Event) ->

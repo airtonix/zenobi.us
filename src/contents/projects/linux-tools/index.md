@@ -1,6 +1,6 @@
 ---
 title: Linux Tools
-template: page.jade
+template: directory.jade
 ---
 
 Collection of linux system and development tools

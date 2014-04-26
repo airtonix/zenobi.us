@@ -7,7 +7,7 @@ module.exports = (grunt) ->
   @paths =
     build: "build"
     dist: "dist"
-    src: "./"
+    src: "src"
 
   grunt.initConfig
 
@@ -34,10 +34,10 @@ module.exports = (grunt) ->
           dest: '<%= paths.dist %>/'
           src: [
             '**/*.html'
-            'assets/img/**/*.{jpg,jpeg,gif,png,webp}'
-            'assets/fonts/**/*.{ttf,eot,otf,woff,svg}'
+            '**/*.{jpg,jpeg,gif,png,webp}'
+            'assets/font/**/*.{ttf,eot,otf,woff,svg}'
             'assets/css/**/*.css'
-            '!assets/vendor/**/*.*'
+            '!assets/vendor/**/*'
           ]
         ]
       config:
@@ -88,6 +88,24 @@ module.exports = (grunt) ->
         options:
           optimize: "uglify"
 
+    fontello:
+      options:
+        config: "<%= paths.src %>/contents/assets/font/fontello.json"
+        scss: true
+        force: true
+        zip: "./.grunt/fontello"
+
+      build:
+        options:
+          fonts: "<%= paths.build %>/assets/font"
+          styles: "<%= paths.build %>/assets/css/font"
+
+      dev:
+        options:
+          fonts: "<%= paths.src %>/contents/assets/font"
+          styles: "<%= paths.src %>/templates/assets/css/font"
+
+
     filerev:
       options:
         encoding: 'utf8',
@@ -101,12 +119,11 @@ module.exports = (grunt) ->
           cwd: '<%= paths.dist %>'
           dest: '<%= paths.dist %>'
           src: [
-            'js/application.js'
-            'js/**/*.html'
-            'img/**/*.{jpg,jpeg,gif,png,webp}'
-            'css/**/*.css'
-            'fonts/**/*.{ttf,eot,otf,woff,svg}'
-            'api/**/*.json'
+            'assets/js/application.js'
+            'assets/js/**/*.html'
+            '**/*.{jpg,jpeg,gif,png,webp}'
+            'assets/css/**/*.css'
+            'assets/font/**/*.{ttf,eot,otf,woff,svg}'
           ]
         ]
 
@@ -115,23 +132,24 @@ module.exports = (grunt) ->
         hash: /([a-f0-9]{8})\.[a-z]+$/
 
       application:
-        src: '<%= paths.dist %>/js/*.js'
+        src: '<%= paths.dist %>/assets/js/*.js'
         options:
           patterns:
             'Data': /(api\/.*\/[\w\d-]*\.json)/
             'Img': /(img\/[\w\d-]*\.(png|jpg|jpeg|gif))/
 
       styles:
-        src: '<%= paths.dist %>/css/*.css'
+        src: '<%= paths.dist %>/assets/css/*.css'
         options:
           patterns:
             'Img': /(img\/[\w\d-]*\.(png|jpg|jpeg|gif))/
-            'Font': /(fonts\/[\w\d-]*\.(eot|ttf|otf|woff|svg))/
+            'Font': /(font\/[\w\d-]*\.(eot|ttf|otf|woff|svg))/
 
       index:
-        src: '<%= paths.dist %>/index.html'
+        src: '<%= paths.dist %>/**/*.html'
         options:
           patterns:
+            'Img': /(img\/[\w\d-]*\.(png|jpg|jpeg|gif))/
             'Css': /(css\/[\w\d-]*\.css)/
             'Js': /(js\/[\w\d-]*\.js)/
 

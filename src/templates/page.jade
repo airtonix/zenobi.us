@@ -8,20 +8,17 @@ block prepend title
 	| #{ page.title + " - "}
 
 block content
-	#page-header.row
-		.large-8.columns(class=page.parent?"large-push-4":"")
-			h1
-				block content-title
-					= page.metadata.title
+	block content-title
+		#page-header.row
+			.large-8.columns.large-centered
+				h1= page.metadata.title
 
-	.row
-		.large-8.columns.content(class=page.parent?"large-push-4":"")
-			if page.html
+	block content-body
+		#page-content.row
+			.side-nav.toc(data-table-of-contents="#page-content > .content")
+				a.link(href="../"): span.icon-left-open-outline
+				.link.toggle: span.icon-flow-split
+			.large-8.columns.large-centered.content
 				block content-html
-					article.article
-						section.content!= typogr(page.html).typogrify()
-
-		if page.parent && !page.metadata.hideChildren
-			.large-4.pull-8.columns.aside
-				+subtree(page.parent)
-
+					if page.html
+						!= typogr(page.html).typogrify()

@@ -1,5 +1,5 @@
 ---
-template: page.jade
+template: project-detail.jade
 title: Zibcode
 ---
 

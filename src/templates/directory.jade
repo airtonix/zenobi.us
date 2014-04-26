@@ -1,0 +1,8 @@
+extends page
+
+block content-body
+	#page-content.row
+		.large-8.columns.large-centered.small-centered
+			!= typogr(page.html).typogrify()
+			ul.button-group.simple-outline.vertical
+				+subtree(page.parent, 'button')

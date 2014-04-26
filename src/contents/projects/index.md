@@ -1,6 +1,6 @@
 ---
 title: Projects
-template: page.jade
+template: directory.jade
 ---
 
 Collection of all my works to date.
