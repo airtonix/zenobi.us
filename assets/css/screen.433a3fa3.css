@@ -5,8 +5,8 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @font-face {
   font-family: 'fontello';
-  src: url('../font/fontello.06ec5c90.eot?45714980');
-  src: url('../font/fontello.06ec5c90.eot?45714980#iefix') format('embedded-opentype'), url('../font/fontello.5fb69579.woff?45714980') format('woff'), url('../font/fontello.890411fa.ttf?45714980') format('truetype'), url('../font/fontello.f32f6da6.svg?45714980#fontello') format('svg');
+  src: url('../font/fontello.2a61eb9c.eot?8369911');
+  src: url('../font/fontello.2a61eb9c.eot?8369911#iefix') format('embedded-opentype'), url('../font/fontello.5ef374a7.woff?8369911') format('woff'), url('../font/fontello.42c84eb2.ttf?8369911') format('truetype'), url('../font/fontello.7fa6d7e2.svg?8369911#fontello') format('svg');
   font-weight: normal;
   font-style: normal; }
 
@@ -16,11 +16,11 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.f32f6da6.svg?45714980#fontello') format('svg');
+    src: url('../font/fontello.7fa6d7e2.svg?8369911#fontello') format('svg');
   }
 }
 */
-[class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="icon-"]:before, html body div.lightbox-background:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
   font-weight: normal;
@@ -52,6 +52,34 @@
   content: '\e802'; }
 
 /* '' */
+.icon-cancel-outline:before {
+  content: '\e849'; }
+
+/* '' */
+.icon-cancel:before {
+  content: '\e84a'; }
+
+/* '' */
+.icon-cancel-circled-outline:before, html body div.lightbox-background:before {
+  content: '\e84b'; }
+
+/* '' */
+.icon-cancel-circled:before {
+  content: '\e84c'; }
+
+/* '' */
+.icon-link-outline:before {
+  content: '\e84e'; }
+
+/* '' */
+.icon-headphones:before {
+  content: '\e848'; }
+
+/* '' */
+.icon-left-open-outline:before {
+  content: '\e83d'; }
+
+/* '' */
 .icon-left-open:before {
   content: '\e83e'; }
 
@@ -172,10 +200,10 @@
   content: '\e817'; }
 
 /* '' */
-.icon-photo:before {
-  content: '\e818'; }
+.icon-picture:before {
+  content: '\e84d'; }
 
-/* '' */
+/* '' */
 .icon-attach:before {
   content: '\e81b'; }
 
@@ -188,10 +216,10 @@
   content: '\e81f'; }
 
 /* '' */
-.icon-left-open-outline:before {
-  content: '\e83d'; }
+.icon-tag:before {
+  content: '\e823'; }
 
-/* '' */
+/* '' */
 .icon-thumbs-up:before {
   content: '\e822'; }
 
@@ -328,10 +356,10 @@
   content: '\e815'; }
 
 /* '' */
-.icon-tag:before {
-  content: '\e823'; }
+.icon-photo:before {
+  content: '\e818'; }
 
-/* '' */
+/* '' */
 /*
  Main Colors
  */
@@ -5078,12 +5106,14 @@ html body h1, html body h2, html body h3, html body h4, html body h5 {
   color: #526368; }
   html body h1 small.block, html body h2 small.block, html body h3 small.block, html body h4 small.block, html body h5 small.block {
     display: block;
-    line-height: 1; }
+    line-height: 1;
+    color: #83979d; }
 html body h1 small, html body h2 small, html body h3 small, html body h4 small, html body h5 small {
   color: #526368; }
   html body h1 small small.block, html body h2 small small.block, html body h3 small small.block, html body h4 small small.block, html body h5 small small.block {
     display: block;
-    line-height: 1; }
+    line-height: 1;
+    color: #83979d; }
 html body h1, html body h2 {
   color: #526368; }
 html body h3 {
@@ -5116,7 +5146,8 @@ html body .text-centered {
 
 html body header nav.top-bar {
   position: absolute;
-  width: 100%; }
+  width: 100%;
+  z-index: 200; }
   html body header nav.top-bar .toggle-topbar.menu-icon {
     border-radius: 2px;
     box-shadow: 0 1px 0 #f5f7f7;
@@ -5151,8 +5182,10 @@ html body article #page-content .toc {
     display: block;
     position: relative;
     z-index: 100; }
-  html body article #page-content .toc > ul {
-    text-align: right; }
+  html body article #page-content .toc > ul, html body article #page-content .toc > ol {
+    text-align: right;
+    list-style-type: disc;
+    list-style-position: inside; }
 @media only screen {
   html body article #page-content {
     position: relative; }
@@ -5163,16 +5196,18 @@ html body article #page-content .toc {
     html body article #page-content .toc .toggle {
       cursor: inherit;
       color: #f5f7f7; }
-    html body article #page-content .toc > ul {
+    html body article #page-content .toc > ul, html body article #page-content .toc > ol {
       display: none;
       text-align: right;
       background: #f5f7f7;
       position: relative;
       top: -3em;
       left: 3em;
-      min-width: 10em;
+      min-width: 18em;
+      width: 100%;
       text-align: left;
-      padding: 1em; }
+      padding: 1em;
+      direction: ltr; }
     html body article #page-content .toc.enabled .toggle {
       color: #526368;
       cursor: pointer; }
@@ -5181,13 +5216,13 @@ html body article #page-content .toc {
       border-left: 1px solid #d9e0e0;
       border-bottom: 1px solid #d9e0e0;
       background: #f5f7f7; }
-    html body article #page-content .toc.enabled.expanded > ul {
+    html body article #page-content .toc.enabled.expanded > ul, html body article #page-content .toc.enabled.expanded > ol {
       border: 1px solid #d9e0e0;
       margin-left: -1px;
       display: inline-block; } }
 @media only screen and (min-width:64.063em) {
   html body article #page-content .aside {
-    width: 13em;
+    min-width: 13em;
     height: 100%; }
     html body article #page-content .aside .toc {
       width: 100%; }
@@ -5196,11 +5231,17 @@ html body article #page-content .toc {
         clear: both; }
       html body article #page-content .aside .toc .toggle {
         background-color: #f5f7f7; }
-      html body article #page-content .aside .toc > ul {
+      html body article #page-content .aside .toc > ul, html body article #page-content .aside .toc > ol {
+        direction: rtl;
+        left: inherit;
         position: static;
         float: right;
         display: block;
-        text-align: right; } }
+        text-align: right; }
+      html body article #page-content .aside .toc.expanded .toggle, html body article #page-content .aside .toc.expanded > ul, html body article #page-content .aside .toc.expanded > ol {
+        border: none;
+        margin-left: inherit;
+        display: block; } }
 
 html body .hero {
   width: 100%;
@@ -5371,6 +5412,85 @@ html body .debug pre {
   height: 20em;
   overflow-y: scroll; }
 
+html body img.th {
+  box-shadow: 0 0 1px 0 #83979d; }
+  html body img.th:hover {
+    box-shadow: 0 0 2px 0 #526368; }
+html body img.lightbox-image {
+  -webkit-cursor: zoom-in;
+  -moz-cursor: zoom-in;
+  cursor: zoom-in;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1; }
+  html body img.lightbox-image.lightbox-image-animate {
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: 250ms;
+    -moz-transition-duration: 250ms;
+    transition-duration: 250ms;
+    -webkit-transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    z-index: 1010;
+    position: relative;
+    box-shadow: none; }
+  html body img.lightbox-image.lightbox-image-opened {
+    -webkit-cursor: zoom-out;
+    -moz-cursor: zoom-out;
+    cursor: zoom-out;
+    border: none;
+    border-top-left-radius: 0.1em;
+    border-top-right-radius: 0.1em;
+    border-bottom-left-radius: 0.1em;
+    border-bottom-right-radius: 0.1em; }
+html body div.lightbox-background {
+  -webkit-cursor: zoom-out;
+  -moz-cursor: zoom-out;
+  cursor: zoom-out;
+  -webkit-transition: opacity 250ms ease-in-out;
+  -moz-transition: opacity 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out;
+  background: black;
+  z-index: 500;
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0; }
+  html body div.lightbox-background:before {
+    background: rgba(0, 0, 0, 0.5);
+    height: 2em;
+    width: 100%;
+    color: white;
+    position: absolute;
+    bottom: 0em;
+    left: 0em;
+    line-height: 2;
+    z-index: 2000;
+    font-size: 2em; }
+  html body div.lightbox-background.lightbox-background-show {
+    z-index: 400;
+    opacity: 0.95;
+    visibility: visible; }
+  html body div.lightbox-background.lightbox-background-close {
+    visibility: visible;
+    cursor: auto; }
+html body a.lightbox-previous, html body a.lightbox-next {
+  position: fixed;
+  display: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  top: 50%;
+  z-index: 2;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center; }
+
 /*
 	Project Page Specific Style Imports
  */
@@ -5429,7 +5549,7 @@ html body#Contact #page-content .methods {
     color: #34b0e4; }
 html body#Contact #page-content > .content {
   padding: 0; }
-html body#Contact #contact-form .modal {
+html body#Contact [data-contact-form] ~ .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -5439,19 +5559,19 @@ html body#Contact #contact-form .modal {
   box-shadow: 0 0 1px #eeeeee;
   display: none;
   z-index: 10; }
-  html body#Contact #contact-form .modal .cell {
+  html body#Contact [data-contact-form] ~ .modal .cell {
     display: table-cell;
     vertical-align: middle;
     text-align: center; }
-    html body#Contact #contact-form .modal .cell [class^="icon-"] {
+    html body#Contact [data-contact-form] ~ .modal .cell [class^="icon-"] {
       font-size: 5em; }
-    html body#Contact #contact-form .modal .cell h5 {
+    html body#Contact [data-contact-form] ~ .modal .cell h5 {
       margin-top: 1em; }
-      html body#Contact #contact-form .modal .cell h5 small {
+      html body#Contact [data-contact-form] ~ .modal .cell h5 small {
         display: block;
         line-height: 1;
         margin-top: 1em; }
-html body#Contact #contact-form.success .modal.success, html body#Contact #contact-form.error .modal.error, html body#Contact #contact-form.sending .modal.sending {
+html body#Contact [data-contact-form].success ~ .modal.success, html body#Contact [data-contact-form].error ~ .modal.error, html body#Contact [data-contact-form].sending ~ .modal.sending {
   display: table; }
 
 @-webkit-keyframes floating-cube {
