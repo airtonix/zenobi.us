@@ -3,4 +3,5 @@ mixin gallery(root)
 	- var gallery = _.omit(root, 'index.md')
 	ul.small-block-grid-2.large-block-grid-4
 		each image, filename in gallery
-			li: img.th(src="/"+image.filepath.relative.replace(/\\/g, '/'))
+			- var image = "/"+image.filepath.relative.replace(/\\/g, '/')
+			li: img.th(src=image, data-image-large=image, data-max-width="1024", data-max-height="768")

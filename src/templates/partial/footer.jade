@@ -1,5 +1,5 @@
 .row
 	block footer
 		section.copy
-			p &copy; #{ new Date().getFullYear() } #{ site.owner }
+			p &copy; #{ new Date().getFullYear() } #{ site.owner.name }
 			p: small v#{ pkg.npm.version } ( #{ new Date().toJSON().slice(0,10) } )

@@ -11,10 +11,9 @@ pdf-download: true
 
 * [@home](http://zenobi.us/)
 * [@contact](http://zenobi.us/contact/)
-* [@google+](http://plus.google.com/+zenobiusjiricek)
 * [@github](http://github.com/airtonix/)
+* [@google+](http://plus.google.com/+zenobiusjiricek)
 * [@linkedin](http://au.linkedin.com/in/zenobiusjiricek‎)
-* [@twitter](http://twitter.com/airtonix/)
 
 
 ### Experience

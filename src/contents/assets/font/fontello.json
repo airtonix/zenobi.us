@@ -13,6 +13,48 @@
       "src": "fontawesome"
     },
     {
+      "uid": "6a7ed3214c9049148cbdb01825e5efc2",
+      "css": "picture",
+      "code": 59469,
+      "src": "typicons"
+    },
+    {
+      "uid": "24aba8757d4a7b49568c98a577a85df3",
+      "css": "cancel-outline",
+      "code": 59465,
+      "src": "typicons"
+    },
+    {
+      "uid": "1dq4tek4k8ea7zlj4kc3w83itnutaxg5",
+      "css": "cancel",
+      "code": 59466,
+      "src": "typicons"
+    },
+    {
+      "uid": "517522647a556192fbc78aa391b7b0c2",
+      "css": "cancel-circled-outline",
+      "code": 59467,
+      "src": "typicons"
+    },
+    {
+      "uid": "3327862df439988139b61814143b7a42",
+      "css": "cancel-circled",
+      "code": 59468,
+      "src": "typicons"
+    },
+    {
+      "uid": "3562ca2f2f16f6629b5ffabfe3cfa5a7",
+      "css": "link-outline",
+      "code": 59470,
+      "src": "typicons"
+    },
+    {
+      "uid": "e5297b06d9300be7e7c347f78a9b8b61",
+      "css": "headphones",
+      "code": 59464,
+      "src": "typicons"
+    },
+    {
       "uid": "d4ebe676479ff9cb41c7797f003aa54d",
       "css": "left-open-outline",
       "code": 59453,

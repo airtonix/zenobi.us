@@ -3,6 +3,7 @@ html body {
 	header nav.top-bar{
 		position: absolute;
 		width: 100%;
+		z-index: 200;
 		.toggle-topbar.menu-icon{
 			@include radius(2px);
 			@include box-shadow(0 1px 0 $topbar-menu-border-color);
@@ -54,9 +55,13 @@ html body {
 					z-index: 100;
 				}
 
-				& > ul {
+				& > ul,
+				& > ol {
 					text-align: right;
+					list-style-type: disc;
+					list-style-position: inside;
 				}
+
 			}
 
 			@media #{$small-up} {
@@ -74,16 +79,19 @@ html body {
 						color: $primary-tint;
 					}
 
-					& > ul {
+					& > ul ,
+					& > ol {
 						display: none;
 						text-align: right;
 						background: $primary-tint;
 						position: relative;
 						top: -3em;
 						left: 3em;
-						min-width: 10em;
+						min-width: 18em;
+						width: 100%;
 						text-align: left;
 						padding: 1em;
+						direction:ltr;
 					}
 
 					&.enabled {
@@ -99,7 +107,8 @@ html body {
 								border-bottom: 1px solid $border;
 								background: $primary-tint;
 							}
-							& > ul {
+							& > ul ,
+							& > ol {
 								border: 1px solid $border;
 								margin-left: -1px;
 								display: inline-block;
@@ -112,7 +121,7 @@ html body {
 
 			@media #{$large-up} {
 				.aside {
-					width: 13em;
+					min-width: 13em;
 					height: 100%;
 					.toc {
 						width: 100%;
@@ -123,11 +132,24 @@ html body {
 						.toggle {
 							background-color: $primary-tint;
 						}
-						& > ul {
+						& > ul ,
+						& > ol {
+							direction:rtl;
+							left: inherit;
 							position: static;
 							float: right;
 							display: block;
 							text-align: right;
+						}
+
+						&.expanded {
+							.toggle,
+							& > ul,
+							& > ol {
+								border: none;
+								margin-left: inherit;
+								display: block;
+							}
 						}
 					}
 				}

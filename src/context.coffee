@@ -3,8 +3,11 @@ module.exports =
 		url: "http://zenobi.us"
 		baseUrl:  "/"
 		name:  "zenobi.us"
-		owner:  "Zenobius Jiricek"
-		description:  "Ramblings of an immor(t)al demigod"
+		byline: "Web Developer"
+		owner:
+			name: "Zenobius Jiricek"
+			email: "its@zenobi.us"
+
 	analytics:
 		google:
 			code: 'UA-43586909-1'

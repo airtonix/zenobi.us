@@ -88,6 +88,34 @@ html body{
 			}
 
 		}
+		
+		&.no-outline {
+			li a.button {
+				@include button-style-simple();
+				border: none;
+			}
+			@media #{$small-only and $portrait} {
+				li {
+					clear: both;
+					width: 100%;
+					a.button {
+						width: 100%;
+						border: none;
+					}
+				} 
+			}
+			@media #{$small-only and $landscape} {
+
+				li {
+					clear: none;
+					width: auto;
+					a.button {
+						width: auto;
+					}
+				}
+			}
+
+		}
 
 	}
 

@@ -1,4 +1,4 @@
-html body#Contact{
+html body#Contact {
 	#page-content {
 		.methods {
 			display: inline-block;
@@ -7,9 +7,10 @@ html body#Contact{
 		}
 		& > .content { padding: 0; }
 	}
-	#contact-form{
 
-		.modal {
+	[data-contact-form] {
+
+		& ~ .modal {
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -19,10 +20,6 @@ html body#Contact{
 			box-shadow: 0 0 1px #eee;
 			display: none;
 			z-index: 10;
-
-			// @include border-top-radius(4px);
-			// @include border-bottom-radius(4px);
-			// @include transform( translateX(-50%) translateY(-50%) );
 
 			.cell {
 				display: table-cell;
@@ -47,9 +44,9 @@ html body#Contact{
 
 		}
 
-		&.success .modal.success,
-		&.error .modal.error,
-		&.sending .modal.sending {
+		&.success ~ .modal.success,
+		&.error ~ .modal.error,
+		&.sending ~ .modal.sending {
 			display: table;
 		}
 

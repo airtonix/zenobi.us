@@ -21,6 +21,6 @@ block content
 
 			.large-4.columns.aside
 				block aside-html
-					.side-nav.toc(data-table-of-contents="#page-content > .content")
-						a.link(href="../"): span.icon-left-open-outline
-						.link.toggle: span.icon-flow-split
+					.side-nav.toc(data-toc, data-content="#page-content > .content", data-toggle=".toggle")
+						a.link(href="../", title="Back"): span.icon-left-open-outline
+						a.link.toggle(title="Table of contents"): span.icon-flow-split

@@ -7,9 +7,10 @@ block content
 		.cell
 			a.link(href="#{url}")
 				.avatar
+					img.shadow(src="/assets/img/cube-shadow.png")
 					img.cube(src="/assets/img/cube-blue.png")
-					img.shadow(src="/assets/img/shadow.png")
 				h1=site.name
+					small.block=site.byline
 
 	.hero.horzitonal#below-the-fold
 		.cell

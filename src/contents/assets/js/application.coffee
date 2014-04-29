@@ -2,24 +2,27 @@ require [
 	'lodash'
 	'jquery'
 	'fastclick'
+	'./lightbox'
 	'./topbar'
 	'./contact'
 	'./tableofcontents'
-	], (_, $, Fastclick, TopBar, ContactForm, TableOfContents) ->
+	], (_, $, Fastclick, Lightbox) ->
 
 		window.addEventListener 'load', (Event) ->
 			Fastclick.attach document.body
 
-		$ document
-			.ready () ->
-				new TopBar
-				new ContactForm
-					apikey: "oMstGBYNlE0KhW0DEd8Wdg"
-					endpoint: "https://mandrillapp.com/api/1.0/messages/send.json"
-					recipents: [
-						email: "its@zenobi.us"
-						name: "Zenobius Jiricek"
-						type: 'to'
-					]
-				new TableOfContents
-				return
+		(($, window) ->
+
+			$(".top-bar").topbar()
+			$("[data-toc]").tableOfContents()
+			$("[data-contact-form]").contactForm
+				recipents: [
+					email: "its@zenobi.us"
+					name: "Zenobius Jiricek"
+					type: 'to'
+				]
+				new Lightbox($ 'img')
+
+			return
+
+		) window.jQuery, window

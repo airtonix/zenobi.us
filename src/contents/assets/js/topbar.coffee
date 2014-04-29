@@ -2,25 +2,17 @@ define [
 	'lodash'
 	'jquery'
 	'./plugin'
-	], (_, $, Plugin) ->
+	], (_, $, sumatra) ->
 
-		class TopBar extends Plugin
-			items: []
-			defaults:
-				events: 'click'
-				toggleClass: 'expanded'
-				selectors:
-					topbar: "[data-topbar]"
-					toggle: ".toggle-topbar"
-					section: ".top-bar-section"
+		sumatra.export 'topbar', ->
 
-			build: () ->
-				topbar = $ @selectors.topbar
-				topbar.toggle = topbar.find @selectors.toggle
-				topbar.section = topbar.find @selectors.section
-				@items.push topbar
+			class TopBar extends sumatra.Plugin
+				action: 'click'
+				defaults:
+					class: 'expanded'
+					selector: '.toggle-topbar'
 
-			run: () ->
-				for item in @items
-					item.toggle.on @events, (Event) =>
-						item.toggleClass @toggleClass
+				bindEvents: ->
+					@element.delegate @options.selector, @action, (Event) =>
+						Event.preventDefault()
+						@element.toggleClass @options.class

@@ -2,42 +2,37 @@ define [
 	'lodash'
 	'jquery'
 	'./plugin'
-	], (_, $, Plugin) ->
+	], (_, $, sumatra) ->
 
-		class TableOfContents extends Plugin
-			items: []
-			routes: "!/contact"
-			defaults:
-				selector: "[data-table-of-contents]"
-				headings: "h2,h3,h4,h5"
-				toggleSelector: '.toggle'
+		sumatra.export 'tableOfContents', ->
+			class TableOfContents extends sumatra.Plugin
+				action: 'click'
+				defaults:
+					template: "<ol class='side-nav'></ol>"
+					headings: "h2,h3,h4,h5,h6"
+					toggle: '.toggle'
+					content: '.content'
 
-			build: ->
-				$(@selector).each (index, item) =>
-					self = $ item
-					self.contents = $ self.data('tableOfContents')
-					self.list = $ """<ul class='side-nav'></ul>"""
-					self.toggle = self.find @toggleSelector
+				initialize: ->
+					@contents = $ @options.content
+					@toggle = @element.find @options.toggle
+					@list = $ @options.template
+					@headings = @contents.find @options.headings
+					@element.append @list
 
-					self.append self.list
-
-					headings = self.contents.find(@headings)
-
-					if !headings.length
-						self.list.remove()
-						self.toggle.remove()
+					if @headings.length > 0
+						@element.addClass 'enabled'
+						@headings.each (index, item) =>
+							heading = $ item
+							@list.append $ "<li><a href='##{heading.attr('id')}'>#{heading.text()}</a></li>"
 
 					else
-						self.addClass 'enabled'
-						headings.each (index, item) ->
-							heading = $ item
-							self.list.append """<li><a href='##{heading.attr "id"}'>#{heading.text()}</li>"""
+						@list.remove()
+						@toggle.remove()
 
-					@items.push self
+				bindEvents: ->
+					if @element.hasClass 'enabled'
+						@toggle.on @action, =>
+							@element.toggleClass 'expanded'
 
-			run: ->
-				for item in @items when item.hasClass('enabled')
-					item.toggle.on 'click', ->
-						item.toggleClass 'expanded'
-
-		return TableOfContents
+			return TableOfContents

@@ -7,5 +7,8 @@ config =
 			url: "http://nova.jiricek.info:8000"
 		analytics: null
 	logging: 'verbose'
+	ignore: [
+		"**/.*.tmp"
+	]
 
 module.exports = _.merge base, config
