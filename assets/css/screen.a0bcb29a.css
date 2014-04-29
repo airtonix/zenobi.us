@@ -5303,6 +5303,31 @@ html body ul.button-group {
         border-right: inherit; }
       html body ul.button-group.simple-outline li:last-child a.button {
         border-right: 2px solid #526368; } }
+  html body ul.button-group.no-outline li a.button {
+    background: none;
+    border-top: 2px solid #526368;
+    border-right: 2px solid #526368;
+    border-bottom: 2px solid #526368;
+    border-left: 2px solid #526368;
+    color: #526368;
+    text-transform: uppercase;
+    border: none; }
+    html body ul.button-group.no-outline li a.button:hover {
+      background: transparent;
+      color: #83979d; }
+  @media only screen and (orientation: portrait) {
+    html body ul.button-group.no-outline li {
+      clear: both;
+      width: 100%; }
+      html body ul.button-group.no-outline li a.button {
+        width: 100%;
+        border: none; } }
+  @media only screen and (orientation: landscape) {
+    html body ul.button-group.no-outline li {
+      clear: none;
+      width: auto; }
+      html body ul.button-group.no-outline li a.button {
+        width: auto; } }
 html body .button.simple-outline, html body button.simple-outline {
   background: none;
   border-top: 2px solid #526368;
@@ -5424,6 +5449,7 @@ html body img.lightbox-image {
   background-size: cover;
   opacity: 1; }
   html body img.lightbox-image.lightbox-image-animate {
+    z-index: 1010;
     -webkit-transition-property: -webkit-transform;
     -moz-transition-property: -moz-transform;
     transition-property: transform;
@@ -5433,14 +5459,13 @@ html body img.lightbox-image {
     -webkit-transition-timing-function: ease-in-out;
     -moz-transition-timing-function: ease-in-out;
     transition-timing-function: ease-in-out;
-    z-index: 1010;
-    position: relative;
     box-shadow: none; }
   html body img.lightbox-image.lightbox-image-opened {
+    position: relative;
+    border: none;
     -webkit-cursor: zoom-out;
     -moz-cursor: zoom-out;
     cursor: zoom-out;
-    border: none;
     border-top-left-radius: 0.1em;
     border-top-right-radius: 0.1em;
     border-bottom-left-radius: 0.1em;
@@ -5479,17 +5504,36 @@ html body div.lightbox-background {
   html body div.lightbox-background.lightbox-background-close {
     visibility: visible;
     cursor: auto; }
+  html body div.lightbox-background a.lightbox-previous, html body div.lightbox-background a.lightbox-next {
+    display: block; }
 html body a.lightbox-previous, html body a.lightbox-next {
   position: fixed;
   display: none;
-  width: 16px;
-  height: 16px;
+  width: 5em;
+  height: 100%;
   margin-top: -8px;
-  top: 50%;
-  z-index: 2;
+  top: 0;
+  z-index: 2000;
   background-size: 100%;
   background-repeat: no-repeat;
-  background-position: center center; }
+  background-position: center center;
+  color: white;
+  vertical-align: middle;
+  text-align: center; }
+  html body a.lightbox-previous [class^="icon-"], html body a.lightbox-next [class^="icon-"] {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    font-size: 2em; }
+html body a.lightbox-next {
+  right: 0; }
+html body a.lightbox-previous {
+  left: 0; }
 
 /*
 	Project Page Specific Style Imports
