@@ -5144,6 +5144,13 @@ html body .text-centered {
     text-align: center;
     float: none; } }
 
+html body footer .sub-nav {
+  text-align: center;
+  display: inline-block; }
+  html body footer .sub-nav li {
+    display: inline;
+    float: inherit;
+    line-height: 3; }
 html body header nav.top-bar {
   position: absolute;
   width: 100%;
@@ -5156,15 +5163,13 @@ html body header nav.top-bar {
     text-align: left; }
     html body header nav.top-bar .toggle-topbar.menu-icon:after {
       margin-right: 1em; }
-  html body header nav.top-bar.expanded {
-    z-index: 10; }
-    html body header nav.top-bar.expanded .toggle-topbar.menu-icon {
-      border-color: #f5f7f7;
-      box-shadow: none; }
-    html body header nav.top-bar.expanded .top-bar-section {
-      overflow: auto;
-      margin-bottom: 1em;
-      border-bottom: 1px solid #e7ecec; }
+  html body header nav.top-bar.expanded .toggle-topbar.menu-icon {
+    border-color: #f5f7f7;
+    box-shadow: none; }
+  html body header nav.top-bar.expanded .top-bar-section {
+    overflow: auto;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #e7ecec; }
 html body article #page-content .aside {
   width: 3em; }
 html body article #page-content .toc {
@@ -5183,9 +5188,9 @@ html body article #page-content .toc {
     position: relative;
     z-index: 100; }
   html body article #page-content .toc > ul, html body article #page-content .toc > ol {
-    text-align: right;
-    list-style-type: disc;
-    list-style-position: inside; }
+    text-align: right; }
+  html body article #page-content .toc.sticky {
+    position: fixed; }
 @media only screen {
   html body article #page-content {
     position: relative; }
@@ -5219,7 +5224,9 @@ html body article #page-content .toc {
     html body article #page-content .toc.enabled.expanded > ul, html body article #page-content .toc.enabled.expanded > ol {
       border: 1px solid #d9e0e0;
       margin-left: -1px;
-      display: inline-block; } }
+      display: inline-block; }
+    html body article #page-content .toc.sticky {
+      position: fixed; } }
 @media only screen and (min-width:64.063em) {
   html body article #page-content .aside {
     min-width: 13em;
@@ -5245,7 +5252,7 @@ html body article #page-content .toc {
 
 html body .hero {
   width: 100%;
-  min-height: 35em;
+  min-height: 4em;
   text-align: center; }
   html body .hero .cell {
     padding: 1em; }
@@ -5354,89 +5361,6 @@ code, pre {
   display: inline-block;
   white-space: pre-wrap; }
 
-html, body {
-  height: 100%;
-  overflow: auto; }
-
-.avgrund-popin {
-  position: absolute;
-  padding: 10px;
-  overflow: hidden;
-  visibility: hidden;
-  opacity: 0;
-  top: 50%;
-  left: 50%;
-  z-index: 1000;
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  -o-transform: scale(0.8);
-  transform: scale(0.8); }
-
-.avgrund-overlay {
-  width: 100%;
-  position: relative;
-  top: -1500px;
-  left: 0;
-  z-index: 101;
-  visibility: hidden;
-  opacity: 0; }
-
-body.avgrund-ready, .avgrund-ready .avgrund-popin, .avgrund-ready .avgrund-overlay {
-  -webkit-transform-origin: 50% 50%;
-  -moz-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
-  -o-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-  -webkit-transition: 0.3s all ease-out;
-  -moz-transition: 0.3s all ease-out;
-  transition: 0.3s all ease-out; }
-
-.avgrund-popin.stack {
-  -webkit-transform: scale(1.5);
-  -moz-transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  -o-transform: scale(1.5);
-  transform: scale(1.5); }
-
-body.avgrund-active {
-  -webkit-transform: scale(0.9);
-  -moz-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  -o-transform: scale(0.9);
-  transform: scale(0.9);
-  overflow: hidden;
-  /* Optional close button styles */ }
-  body.avgrund-active .avgrund-popin {
-    visibility: visible;
-    opacity: 1;
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1); }
-  body.avgrund-active .avgrund-overlay {
-    visibility: visible;
-    opacity: 0.9;
-    height: 20000px; }
-  body.avgrund-active .avgrund-popin.stack {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    transform: scale(1.1); }
-  body.avgrund-active .avgrund-blur {
-    filter: blur(1px); }
-  body.avgrund-active .avgrund-close {
-    display: block;
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 13px;
-    text-decoration: none;
-    text-transform: uppercase;
-    position: absolute;
-    top: 6px;
-    right: 10px; }
-
 html body .debug pre {
   height: 20em;
   overflow-y: scroll; }
@@ -5445,6 +5369,25 @@ html body img.th {
   box-shadow: 0 0 1px 0 #83979d; }
   html body img.th:hover {
     box-shadow: 0 0 2px 0 #526368; }
+  html body img.th.circular, html body img.th.rounded, html body img.th.round {
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%; }
+  html body img.th.medium {
+    width: 75%;
+    height: 75%; }
+  html body img.th.small {
+    width: 50%;
+    height: 50%; }
+  html body img.th.tiny {
+    width: 25%;
+    height: 25%; }
+  html body img.th.center {
+    display: block;
+    margin: 0 auto; }
+  html body img.th.centered, html body img.th.left, html body img.th.right {
+    margin: 2em; }
 html body img.lightbox-image {
   -webkit-cursor: zoom-in;
   -moz-cursor: zoom-in;
@@ -5547,24 +5490,21 @@ html body a.lightbox-previous {
 	css/pages/base.scss
 
  */
-html, body {
-  height: 100%;
-  min-height: 100%; }
-
 body {
   margin: 0;
   padding: 0; }
-  body #content {
+  body article#content {
     display: inline-block;
     min-height: 100%;
     width: 100%;
-    margin-bottom: -rem-calc(128 - $topbar-height) -3em;
-    padding-top: 3em; }
-  body #site-footer {
+    padding-top: 4em;
+    padding-bottom: 5.1875rem; }
+  body footer#site-footer {
+    margin-top: -5.1875rem;
     min-height: 5.1875rem;
     color: #526368;
     text-align: center; }
-    body #site-footer > .row:before {
+    body footer#site-footer > .row:before {
       border-top: 1px solid #f5f7f7; }
 
 body.page #page-header {
@@ -5589,15 +5529,15 @@ body.page #page-content .content {
     padding-left: 4em; } }
 
 
-html body#Contact #page-content .methods {
+html body#contact #page-content .methods {
   display: inline-block; }
-  html body#Contact #page-content .methods a {
+  html body#contact #page-content .methods a {
     color: #83979d; }
-  html body#Contact #page-content .methods a:hover {
+  html body#contact #page-content .methods a:hover {
     color: #34b0e4; }
-html body#Contact #page-content > .content {
+html body#contact #page-content > .content {
   padding: 0; }
-html body#Contact [data-contact-form] ~ .modal {
+html body#contact form ~ .modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -5607,19 +5547,19 @@ html body#Contact [data-contact-form] ~ .modal {
   box-shadow: 0 0 1px #eeeeee;
   display: none;
   z-index: 10; }
-  html body#Contact [data-contact-form] ~ .modal .cell {
+  html body#contact form ~ .modal .cell {
     display: table-cell;
     vertical-align: middle;
     text-align: center; }
-    html body#Contact [data-contact-form] ~ .modal .cell [class^="icon-"] {
+    html body#contact form ~ .modal .cell [class^="icon-"] {
       font-size: 5em; }
-    html body#Contact [data-contact-form] ~ .modal .cell h5 {
+    html body#contact form ~ .modal .cell h5 {
       margin-top: 1em; }
-      html body#Contact [data-contact-form] ~ .modal .cell h5 small {
+      html body#contact form ~ .modal .cell h5 small {
         display: block;
         line-height: 1;
         margin-top: 1em; }
-html body#Contact [data-contact-form].success ~ .modal.success, html body#Contact [data-contact-form].error ~ .modal.error, html body#Contact [data-contact-form].sending ~ .modal.sending {
+html body#contact form.success ~ .modal.success, html body#contact form.error ~ .modal.error, html body#contact form.sending ~ .modal.sending {
   display: table; }
 
 @-webkit-keyframes floating-cube {
