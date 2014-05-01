@@ -24,7 +24,7 @@ define [
 						@element.addClass 'enabled'
 						@headings.each (index, item) =>
 							heading = $ item
-							@list.append $ "<li><a href='##{heading.attr('id')}'>#{heading.text()}</a></li>"
+							@list.append $ "<li class='#{heading.get(0).nodeName.toLowerCase()}'><a href='##{heading.attr('id')}'>#{heading.html()}</a></li>"
 
 					else
 						@list.remove()
