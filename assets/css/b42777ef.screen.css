@@ -5189,6 +5189,11 @@ html body article #page-content .toc {
     z-index: 100; }
   html body article #page-content .toc > ul, html body article #page-content .toc > ol {
     text-align: right; }
+    html body article #page-content .toc > ul li.h3 small.block, html body article #page-content .toc > ul li.h4 small.block, html body article #page-content .toc > ul li.h5 small.block, html body article #page-content .toc > ul li.h6 small.block, html body article #page-content .toc > ol li.h3 small.block, html body article #page-content .toc > ol li.h4 small.block, html body article #page-content .toc > ol li.h5 small.block, html body article #page-content .toc > ol li.h6 small.block {
+      clear: both;
+      display: block;
+      font-size: 0.8em;
+      color: #83979d; }
   html body article #page-content .toc.sticky {
     position: fixed; }
 @media only screen {
