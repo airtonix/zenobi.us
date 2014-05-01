@@ -4,10 +4,18 @@ block append vars
 	- bodyclass = 'page article-detail'
 
 block append content-title
+	- page.metadata.subtitle = moment.utc(page.metadata.date).format('DD. MMMM YYYY')
 	if page.metadata.author
 		small.author
 			| #{ "Written by " }
 			mixin author(page.metadata.author)
 
-block prepend footer
+block prepend content-html
+	if page.metadata.tags
+		#article-tags.row
+			ul.sub-nav.centered
+				each tag in page.metadata.tags.split(",")
+					li.label.secondary.radius=tag
+
+block append content
 	include partial/post-footer

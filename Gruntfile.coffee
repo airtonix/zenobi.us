@@ -106,6 +106,37 @@ module.exports = (grunt) ->
           styles: "<%= paths.src %>/templates/assets/css/font"
 
 
+    useminPrepare:
+      dist:
+        src: ['<%= paths.dist %>/**/*.html']
+
+    rev:
+      dist:
+        files:
+          src: [
+            '<%= paths.dist %>/assets/js/{,*/}*.js'
+            '<%= paths.dist %>/assets/css/{,*/}*.css'
+            '<%= paths.dist %>/assets/font/{,*/}*.{ttf,eot,otf,woff,svg}'
+            '<%= paths.dist %>/{,**/}**.{png,jpg,jpeg,gif,webp,svg}'
+          ]
+
+    usemin:
+      options:
+        assetsDirs: [
+          '<%= paths.dist %>/**/*'
+          '<%= paths.dist %>/'
+        ]
+        patterns:
+          html: [
+            [/(js\/[\w\d-]*\.js)/g, "Replacing javascript link"]
+            [/(css\/[\w\d-]*\.css)/g, "Replacing stylesheet link"]
+            [/(img\/[\w\d-]*\.(png|jpeg|jpg|gif))/g, "Replacing image link"]
+          ]
+
+      html: ['<%= paths.dist %>/**/*.html']
+      css: ['<%= paths.dist %>/assets/css/**/*.css']
+      
+
     filerev:
       options:
         encoding: 'utf8',
@@ -121,7 +152,7 @@ module.exports = (grunt) ->
           src: [
             'assets/js/application.js'
             'assets/js/**/*.html'
-            '**/*.{jpg,jpeg,gif,png,webp}'
+            '**/**.{jpg,jpeg,gif,png,webp}'
             'assets/css/**/*.css'
             'assets/font/**/*.{ttf,eot,otf,woff,svg}'
           ]
@@ -129,7 +160,7 @@ module.exports = (grunt) ->
 
     userev:
       options:
-        hash: /([a-f0-9]{8})\.[a-z]+$/
+        hash: /(\.[a-f0-9]{8})\.[a-z]+$/
 
       application:
         src: '<%= paths.dist %>/assets/js/*.js'
@@ -149,7 +180,7 @@ module.exports = (grunt) ->
         src: '<%= paths.dist %>/**/*.html'
         options:
           patterns:
-            'Img': /(img\/[\w\d-]*\.(png|jpg|jpeg|gif))/
+            'Img': /(img\/[\w\d-]*\.(png|jpeg|jpg|gif))/
             'Css': /(css\/[\w\d-]*\.css)/
             'Js': /(js\/[\w\d-]*\.js)/
 
@@ -170,16 +201,6 @@ module.exports = (grunt) ->
       dist:
         src: ["<%= paths.dist %>"]
 
-    filerev_assets:
-      dist:
-        options:
-          prettyPrint: 8
-          dest: "<%= paths.dist %>/js/templates/map.json"
-          patterns: [
-            [ /dist\\/g, "" ]
-            [ /\\/g, "/" ]
-          ]
-    # "
 
     bump:
       options:
@@ -211,7 +232,7 @@ module.exports = (grunt) ->
     async = @async()
     if @data.options.async
       @data.options.async = async
-    grunt.log.writeln "Running Wintersmith: ", @target
+    grunt.log.writeln "Running Wintersmith: ", @target, @data
 
     klass = require './app.coffee'
     wintersmith = new klass(@data.options)
@@ -233,8 +254,9 @@ module.exports = (grunt) ->
     'wintersmith:build'
     'copy'
     'requirejs:dist'
-    'filerev'
-    'userev'
+    'useminPrepare:dist'
+    'rev:dist'
+    'usemin'
     'clean:build'
   ]
 

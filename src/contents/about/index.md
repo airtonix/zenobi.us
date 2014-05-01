@@ -2,16 +2,21 @@
 template: page.jade
 title: About
 type: article
+icon: graduation-cap
+banner: ./img/zenobius-jiricek.jpg
+bannerClass: rounded centered small
 ---
 
 
 I'm in Adelaide, Australia, born in Sydney.
 
-- willing move to Melbourne.
-- Prefer to remote (Skype, Google Hangouts, Chat, Trello, Github/Bitbucket Issue Tickets, etc)
-- willing to negotiate on acceptable salary/rates
+- Willing to relocate.
+- Prefer to work remotely (Skype, Google Hangouts, Chat, Trello, Github/Bitbucket Issue Tickets, etc)
+- Open to negotiation on acceptable salary/rates
+
 
 ## Me
+
 - 13yrs hand coding HTML, CSS & Javascript.
 - 6yrs Utilising Git.
 - 4yrs experience with Python and Django.
@@ -30,9 +35,7 @@ I'm in Adelaide, Australia, born in Sydney.
 
 ## Contact Me
 
-* form :
-    http://zenobi.us/contact/
-* g+ :
-    http://plus.google.com/+zenobiusjiricek/
-* email :
-    its@zenobi.us
+* [Contact Form](http://zenobi.us/contact/)
+* [Google+](http://plus.google.com/+zenobiusjiricek/)
+* [Email](mailto:its@zenobi.us)
+

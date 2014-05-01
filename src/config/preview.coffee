@@ -6,7 +6,7 @@ config =
 		site:
 			url: "http://nova.jiricek.info:8000"
 		analytics: null
-	logging: 'verbose'
+
 	ignore: [
 		"**/.*.tmp"
 	]

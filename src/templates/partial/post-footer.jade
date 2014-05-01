@@ -1,8 +1,13 @@
-div.nav
-	if prevPage
-		a(href=prevPage.url) Newer
-	else
-		a(href='/archive/') Archives
+.row
+	.large-12.columns.small-centered
+		ul.sub-nav
+			if prevPage
+				li: a(href=prevPage.url)
+					span.icon-left-open
 
-	if nextPage
-		a(href=nextPage.url) Next page
+			li: a(href="../")
+				span.icon-flow-merge
+
+			if nextPage
+				li: a(href=nextPage.url)
+					span.icon-right-open

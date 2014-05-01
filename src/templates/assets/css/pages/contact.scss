@@ -1,4 +1,4 @@
-html body#Contact {
+html body#contact {
 	#page-content {
 		.methods {
 			display: inline-block;
@@ -8,7 +8,7 @@ html body#Contact {
 		& > .content { padding: 0; }
 	}
 
-	[data-contact-form] {
+	form {
 
 		& ~ .modal {
 			position: fixed;

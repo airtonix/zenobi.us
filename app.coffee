@@ -4,53 +4,35 @@ _ = require 'lodash'
 
 class Application
 	wintersmith: null
+	defaults:
+		mode: 'preview'
+	options: {}
 
-	constructor: (@options) ->
-		console.log @options
+	constructor: (options) ->
+		@options = _.merge @defaults, options
 		@configPath = "./src/config/#{@options.mode}.coffee"
 		@config = require @configPath
 		@wintersmith = wintersmith @config
-		console.log "Wintersmith loaded: #{@configPath}"
 
-	build: () ->
-		self = @
-		@wintersmith.build (error) ->
-			if error
-				throw error;
-			console.log 'Done!'
-			if not _.isNull self.options.async
-				self.options.async()
-
-	preview: () ->
-		@wintersmith.preview (error, server) ->
-			if error
-				throw error
-			console.log 'Server running!'
-
-	load: () ->
-		self = @
-		@wintersmith.load (error, result) ->
-			if error
-				throw error
-			console.log 'Contents loaded!'
-			if self.options.async
-				self.options.async()
-
+	go: (error) =>
+		if error
+			throw error
+		if @options.async?
+			@options.async()
+		
 	help: () ->
 		console.log "Require argument"
-		if @options.async
+		if @options.async?
 			@options.async()
 
 	start: () ->
-		console.log "#{@options.mode} Requested"
 		switch @options.mode
-			when "build" then @build()
-			when "preview" then @preview()
-			when "load" then @load()
+			when "build" then @wintersmith.build @go
+			when "preview" then @wintersmith.preview @go
+			when "load" then @wintersmith.load @go
 			else @help()
 
-
-if not module.parent
+if !module.parent
 	app = new Application(process.argv.slice 2)
 	app.start()
 else

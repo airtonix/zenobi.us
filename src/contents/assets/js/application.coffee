@@ -5,6 +5,7 @@ require [
 	'./lightbox'
 	'./topbar'
 	'./contact'
+	'./sticky'
 	'./tableofcontents'
 	], (_, $, Fastclick, Lightbox) ->
 
@@ -12,17 +13,20 @@ require [
 			Fastclick.attach document.body
 
 		(($, window) ->
+			$ document
+				.ready ->
 
-			$(".top-bar").topbar()
-			$("[data-toc]").tableOfContents()
-			$("[data-contact-form]").contactForm
-				recipents: [
-					email: "its@zenobi.us"
-					name: "Zenobius Jiricek"
-					type: 'to'
-				]
-				new Lightbox($ 'img')
+					$("[data-top-bar]").topbar()
+					$("[data-toc]").tableOfContents()
+					$("[data-contact-form]").contactForm
+						recipents: [
+							email: "its@zenobi.us"
+							name: "Zenobius Jiricek"
+							type: 'to'
+						]
+					new Lightbox($ 'img')
+					$("[data-sticky]").sticky()
 
-			return
+					return
 
 		) window.jQuery, window

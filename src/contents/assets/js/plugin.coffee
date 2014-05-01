@@ -6,14 +6,16 @@ define [
     class @Plugin
       action: null
       defaults: {}
+      name: null
 
       constructor: (current_element, index_of_query, init_options) ->
+        @name = @constructor.name.toLowerCase()
         @element = $ current_element
         @index = index_of_query
         @options = _.extend @defaults, init_options
         @options = _.extend @options, @element.data() or {}
         @initialize() and @bindEvents()
-        @element.addClass "#{@constructor.name.toLowerCase()}-enabled"
+        @element.addClass "#{@name}-enabled"
 
       initialize: ->
         true

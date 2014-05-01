@@ -1,4 +1,13 @@
 body.article,
-body.article-list{
+body.article-list,
+body.article-detail {
 
+    #article-tags .sub-nav  {
+        text-align: center;
+        li {
+            float: none;
+            display: inline-block;
+        }
+    }
 }
+

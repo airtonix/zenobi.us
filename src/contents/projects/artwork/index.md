@@ -1,6 +1,7 @@
 ---
 title: Artwork
-template: gallery.jade
-----
+template: directory.jade
+icon: pencil
+---
 
-Collection of sketches
+Something I used to spend a lot of time doing in my youth.

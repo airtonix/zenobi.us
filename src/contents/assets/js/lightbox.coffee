@@ -24,9 +24,9 @@ define [
                     next.click => @show(true)
                     @icons.push next
 
-                $(window).resize => @collapse(false)
-                $(window).scroll => @collapse(true) if Math.abs($(window).scrollTop() - @scroll_top || $(window).scrollTop()) > @padding
-                $(window).keyup @keyup
+                $(window).on "resize.#{@name}", => @collapse(false)
+                $(window).on "scroll.#{@name}", => @collapse(true) if Math.abs($(window).scrollTop() - @scroll_top || $(window).scrollTop()) > @padding
+                $(window).on "keyup.#{@name}", @keyup
 
             keyup: (event) =>
                 @collapse(true) if event.keyCode == 27

@@ -1,0 +1,9 @@
+mixin repo(data)
+    .project-meta
+        dl
+            if data.homepage
+                dt homepage
+                dd: a(href=data.homepage)=data.homepage
+            if data.repo
+                dt repo
+                dd: a(href=data.repo)=data.repo

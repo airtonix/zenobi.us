@@ -1,13 +1,49 @@
 
 html body {
 
-	img.th {
+	img.th,
+	img.banner {
 		@include box-shadow(0 0 1px 0 $secondary-tint);
 		&:hover{
 			@include box-shadow(0 0 2px 0 $firm);
 		}
-	}
+		
+		&.circular,
+		&.rounded,
+		&.round {
+			@include border-top-radius(50%);
+			@include border-bottom-radius(50%);
+		}
+		
+		&.medium {
+			width: 75%;
+			height: 75%;
+		}
 
+		&.small {
+			width: 50%;
+			height: 50%;
+		}
+
+		&.tiny {
+			width: 25%;
+			height: 25%;
+		}
+		
+
+		&.left,
+		&.right {
+			margin: 2em;
+		}
+		&.centered {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	img.banner {
+		clear: both;
+		display: block;
+	}
 	img.lightbox-image {
 		@include prefixer(cursor, zoom-in, webkit moz spec);
 		background-repeat: no-repeat;

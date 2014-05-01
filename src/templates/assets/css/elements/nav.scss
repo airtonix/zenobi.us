@@ -1,5 +1,17 @@
 html body {
-
+	footer {
+		.sub-nav {
+			text-align: center;
+			display: inline-block;
+			li {
+				display: inline;
+				float: inherit;
+				line-height: 3;
+				
+			}
+		}
+	}
+	
 	header nav.top-bar{
 		position: absolute;
 		width: 100%;
@@ -16,7 +28,6 @@ html body {
 		}
 
 		&.expanded{
-			z-index: 10;
 
 			.toggle-topbar.menu-icon{
 				border-color: $topbar-menu-border-color;
@@ -58,8 +69,10 @@ html body {
 				& > ul,
 				& > ol {
 					text-align: right;
-					list-style-type: disc;
-					list-style-position: inside;
+				}
+				
+				&.sticky {
+					position: fixed;
 				}
 
 			}
@@ -115,6 +128,11 @@ html body {
 							}
 						}
 					}
+
+					&.sticky {
+						position: fixed;
+					}
+
 				}
 
 			}

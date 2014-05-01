@@ -4,14 +4,13 @@ block append vars
 	- bodyclass = 'page'
 
 block prepend title
-	| #{ page.title + " - "}
+	| #{ (page&&page.title?page.title + " - ":"").toLowerCase()}
 
 block content
-	block content-title
-		#page-header.row
-			.large-8.columns.large-centered
-				h1= page.metadata.title
-
+	#page-header.row
+		block content-title
+			include partial/page-header
+		
 	block content-body
 		#page-content.row
 			.large-8.columns.large-centered.content
@@ -21,6 +20,6 @@ block content
 
 			.large-4.columns.aside
 				block aside-html
-					.side-nav.toc(data-toc, data-content="#page-content > .content", data-toggle=".toggle")
+					.side-nav.toc(data-toc, data-content="#page-content > .content", data-toggle=".toggle", data-sticky)
 						a.link(href="../", title="Back"): span.icon-left-open-outline
 						a.link.toggle(title="Table of contents"): span.icon-flow-split

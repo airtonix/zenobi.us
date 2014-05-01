@@ -105,8 +105,10 @@ html body{
 				} 
 			}
 			@media #{$small-only and $landscape} {
-
+				text-align: center;
 				li {
+					float: none;
+					display: inline;
 					clear: none;
 					width: auto;
 					a.button {
