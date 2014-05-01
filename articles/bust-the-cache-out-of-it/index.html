@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>bust the cache out of it - zenobi.us
+    </title>
+    <link rel="alternate" href="http://zenobi.us/feed.xml" type="application/rss+xml" title="zenobi.us">
+    <link rel="stylesheet" media="print" href="/assets/css/20565d61.print.css">
+    <link rel="stylesheet" media="screen, projector" href="/assets/css/14b3ecef.screen.css">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', "UA-43586909-1", "zenobi.us");
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body id="bust-the-cache-out-of-it" class="page article-detail">
+    <header class="header">
+      <nav data-top-bar data-toggle=".toggle-topbar" data-event="click" class="top-bar hide-for-print">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="http://zenobi.us">zenobi.us</a></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+        </ul>
+        <section class="top-bar-section">
+          <ul class="right">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/articles/">Articles</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </section>
+      </nav>
+    </header>
+    <article id="content">
+      <div id="page-header" class="row">
+        <div class="large-8 columns large-centered hero vertical">
+          <h1 class="icon-cloud">Bust the cache out of it<small class="block"></small>
+          </h1>
+        </div>
+      </div>
+      <div id="page-content" class="row">
+        <div class="large-8 columns large-centered content">
+          <div id="article-tags" class="row">
+            <ul class="sub-nav centered">
+              <li class="label secondary radius">nodejs</li>
+              <li class="label secondary radius"> grunt</li>
+              <li class="label secondary radius"> usemin</li>
+              <li class="label secondary radius"> cache busting</li>
+            </ul>
+          </div><p>This will be a short one, the topic of cache busting isn’t new, it’s covered by a wide range of articles. What I’ll cover here is the basics and how I tackled a particular&nbsp;scenario.</p>
+<hr>
+<h2 id="why-cache-busting-">Why cache&nbsp;busting?</h2>
+<p>It’s a strategy made popular due to how the majority of the www internet works, a story told with two major&nbsp;actors:</p>
+<ul>
+<li>Caching Proxies, many of which exist between your browser and the websites you&nbsp;visit.</li>
+<li>Your Browser: nuff&nbsp;said.</li>
+</ul>
+<p>Many of them are configured in different ways, but mostly they exist to alleviate the amount of data being moved around at the&nbsp;extremities.</p>
+<p>The affects on websites isn’t apparent until you try to update some external asset files (images, javascript, stylehseets, fonts, etc). When people visit your site in the initial version their browser and all the caching proxies saved copies of the assets. When you updated those assets, your browser and the caching proxies only determine if they need to get a new copy based on a few bits of meta data (most of which the average webserver doesn’t deliver). The end result is that your website starts having problems due to incorrect stylesheets, scripts and&nbsp;fonts.</p>
+<h2 id="an-initial-strategy">An initial&nbsp;strategy</h2>
+<p>One of the first solutions to show up in response to this was to simply put a <span class="caps">GET</span> parameter after any asset you linked to&nbsp;: </p>
+<pre><code class="lang-html"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://some.website.com/static/image/logo.png?cachebust={% now %}"</span>&gt;</span>
+</code></pre>
+<p>Here in this example, I’m using preprocessed html templating language <code>jinja</code>. Simply inserting the current timestamp as a query param helps to fool some caching proxies and browsers to fetch the file again. They do this because they think the resource is&nbsp;dynamic.</p>
+<p>The problem with this is that some proxies and browsers ignore this and serve the same file&nbsp;again.</p>
+<h2 id="a-strategy-robust">A strategy,&nbsp;robust</h2>
+<p>People with more perseverance sought a more robust strategy, one that would guarantee the correct file is&nbsp;delivered.</p>
+<p>It starts with the idea that your assets only change if you push new assets into the deployment workflow, so if they’re not changing between deployments and the proxy servers are ignoring <span class="caps">GET</span> parameters, then why don’t we change the file name each deployment only if the file&nbsp;changes?</p>
+<p>This is the goal of <code>grunt-usemin</code> and <code>grunt-rev</code>, two tools used with the Grunt task&nbsp;runner.</p>
+<h3 id="peculiar-problem-of-relative-paths">Peculiar problem of relative&nbsp;paths</h3>
+<p>The situation is that some of my pages in this website have images generated from something that looks at a directory and says “alrght, lets make a collection of images”, other pages I point at the image myself in the markdown. Sometimes it’s relative pathing, sometimes&nbsp;absolute.</p>
+<p>By default <code>grunt-usemin</code> only operates on absolute paths, assuming you’ll be keeping all your assets in a common&nbsp;location.</p>
+<p>To get all your files revved I ended up with the following&nbsp;: </p>
+<pre><code class="lang-coffeescript">
+    <span class="attribute">useminPrepare</span>:
+      <span class="attribute">dist</span>:
+        <span class="attribute">src</span>: [<span class="string">'&lt;%= paths.dist %&gt;/**/*.html'</span>]
+
+    <span class="attribute">rev</span>:
+      <span class="attribute">dist</span>:
+        <span class="attribute">files</span>:
+          <span class="attribute">src</span>: [
+            <span class="string">'&lt;%= paths.dist %&gt;/assets/js/{,*/}*.js'</span>
+            <span class="string">'&lt;%= paths.dist %&gt;/assets/css/{,*/}*.css'</span>
+            <span class="string">'&lt;%= paths.dist %&gt;/assets/font/{,*/}*.{ttf,eot,otf,woff,svg}'</span>
+            <span class="string">'&lt;%= paths.dist %&gt;/{,**/}**.{png,jpg,jpeg,gif,webp,svg}'</span>
+          ]
+
+    <span class="attribute">usemin</span>:
+      <span class="attribute">options</span>:
+        <span class="attribute">assetsDirs</span>: [
+          <span class="string">'&lt;%= paths.dist %&gt;/**/*'</span>
+          <span class="string">'&lt;%= paths.dist %&gt;/'</span>
+        ]
+        <span class="attribute">patterns</span>:
+          <span class="attribute">html</span>: [
+            [<span class="regexp">/(js\/[\w\d-]*\.js)/g</span>, <span class="string">"Replacing javascript link"</span>]
+            [<span class="regexp">/(css\/[\w\d-]*\.css)/g</span>, <span class="string">"Replacing stylesheet link"</span>]
+            [<span class="regexp">/(img\/[\w\d-]*\.(png|jpeg|jpg|gif))/g</span>, <span class="string">"Replacing image link"</span>]
+          ]
+
+      <span class="attribute">html</span>: [<span class="string">'&lt;%= paths.dist %&gt;/**/*.html'</span>]
+      <span class="attribute">css</span>: [<span class="string">'&lt;%= paths.dist %&gt;/assets/css/**/*.css'</span>]
+</code></pre>
+<p>I believe the important parts are&nbsp;: </p>
+<ul>
+<li><p><em>useminPrepare.dist.src</em>
+: Nothing occurs without this… pretty standard stuff, it just points useminPrepare at the collection of files to operate&nbsp;on.</p>
+</li>
+<li><p><em>rev.dist.files.src -&gt; last item</em>
+: Need to be able to act on any image, regardless of where it&nbsp;is.</p>
+</li>
+<li><p><em>usemin.options.patterns.html</em>
+: This overrides the default matching and applies simple pattern matching of my own that allows for matching relative paths, as long as they start with <code>img/</code>.</p>
+</li>
+</ul>
+<p><em>Is it perfect?</em>
+  : problaby&nbsp;not.</p>
+<p><em>Does it work?</em>
+  :&nbsp;yes.</p>
+<p><em>What do I think can be improved?</em>
+  :remove the need to be in an <code>img</code> folder.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Without cache busting, your life as a web developer is considerably more stressful. Phone calls, tickets, whispers you shouldn’t have to deal with, they all start hanging on your&nbsp;shoulders.</p>
+
+        </div>
+        <div class="large-4 columns aside">
+          <div data-toc data-content="#page-content &gt; .content" data-toggle=".toggle" data-sticky class="side-nav toc"><a href="../" title="Back" class="link"><span class="icon-left-open-outline"></span></a><a title="Table of contents" class="link toggle"><span class="icon-flow-split"></span></a></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns small-centered">
+          <ul class="sub-nav">
+            <li><a href="../"><span class="icon-flow-merge"></span></a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+    <footer id="site-footer">
+      <div class="row">
+        <section class="text-centered copy">
+          <p>&copy; 2014 Zenobius Jiricek</p>
+          <ul class="sub-nav">
+            <li><a href="http://github.com/airtonix/"><span class="icon-github"></span></a></li>
+            <li><a href="http://plus.google.com/zenobiusjiricek/"><span class="icon-googleplus-rect"></span></a></li>
+            <li><a href="http://au.linkedin.com/in/zenobiusjiricek"><span class="icon-linkedin"></span></a></li>
+            <li><a href="http://twitter.com/airtonix"><span class="icon-twitter"></span></a></li>
+            <li><a href="tel://+61451075636"><span class="icon-phone"></span></a></li>
+            <li><a href="http://zenobi.us/contact/"><span class="icon-inbox"></span></a></li>
+          </ul>
+          <p><small>v0.0.40 ( 2014-05-01 )</small></p>
+        </section>
+      </div>
+    </footer>
+    <script src="/assets/js/1931f0b9.application.js"></script>
+  </body>
+</html>
