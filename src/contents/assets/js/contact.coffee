@@ -15,15 +15,46 @@ define [
 					tags: [ 'contact-form' ]
 					recipents: []
 					headers: {}
+				
+				field: (name, value) =>
+					field = @element.find("[name='#{name}']")
+					if not field
+						throw new Error "Missing form field #{name}"
+					if value?
+						return field.val(value)
+					return field.val()
+						
+				initialize: ->
+					if not @modeIs('build')
+						@field 'to', 'em@a.il'
+						@field 'name', 'Ema il'
+						@field 'message', 'Message'
+					super()
+
+				pending: () ->
+					@element.removeClass 'error success'
+					@element.addClass 'sending'
+
+				send: (data) ->
+					$.post @options.endpoint, payload
+						.done @success
+						.fail @failure
+
+				success: (response) =>
+					@element.removeClass 'error sending'
+					@element.addClass 'success'
+
+				failure: (response) =>
+					@element.removeClass 'sending success'
+					@element.addClass 'error'
 
 				perform: (Event) =>
-
 					Event.preventDefault()
 
 					from_subject = @options.subject
-					from_message = @element.find('#message').val()
-					from_email = @element.find('#email').val()
-					from_name =  @element.find('#name').val()
+					from_message = @field 'message'
+					from_email = @field 'email'
+					from_name =  @field 'from'
 					headers =
 						"Reply-To": from_email
 
@@ -38,18 +69,14 @@ define [
 							to: @options.recipents
 							headers: _.extend headers, @options.headers or {}
 
-					@element.ajaxSend =>
-						@element.removeClass 'error success'
-						@element.addClass 'sending'
+					@element.ajaxSend @pending
 
-					console.log @options
-
-					$.post @options.endpoint, payload
-
-						.done (response) =>
-							@element.removeClass 'error sending'
-							@element.addClass 'success'
-
-						.fail (response) =>
-							@element.removeClass 'sending success'
-							@element.addClass 'error'
+					if @options.apikey and @modeIs('build')
+						@send payload
+					else
+						_.chain [@pending, @failure, @success]
+							.map (item) =>
+								item.apply(@)
+						
+					@
+							
