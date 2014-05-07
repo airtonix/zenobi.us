@@ -2,12 +2,12 @@
 	block footer
 		section.text-centered.copy
 			p &copy; #{ new Date().getFullYear() } #{ site.owner.name }
-			ul.sub-nav
+			ul.sub-nav.centered
 				li: a(href="http://github.com/airtonix/"): span.icon-github
 				li: a(href="http://plus.google.com/zenobiusjiricek/"): span.icon-googleplus-rect
 				li: a(href="http://au.linkedin.com/in/zenobiusjiricek"): span.icon-linkedin
 				li: a(href="http://twitter.com/airtonix"): span.icon-twitter
-				li: a(href="tel://+61451075636"): span.icon-phone
+				li: a(href="tel://+61451075636"): span.icon-mobile
 				li: a(href="#{site.url}/contact/"): span.icon-inbox
 
 			p: small v#{ pkg.npm.version } ( #{ new Date().toJSON().slice(0,10) } )
