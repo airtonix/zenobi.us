@@ -1,4 +1,4 @@
-nav.top-bar.hide-for-print(data-top-bar, data-toggle='.toggle-topbar', data-event='click')
+nav.top-bar.hide-for-print(data-module='top-bar', data-toggle='.toggle-topbar', data-event='click')
 	ul.title-area
 		li.name
 			h1
@@ -8,7 +8,7 @@ nav.top-bar.hide-for-print(data-top-bar, data-toggle='.toggle-topbar', data-even
 
 	section.top-bar-section
 		ul.right
-			li: a(href='/about/') About
-			li: a(href='/articles/') Articles
-			li: a(href='/projects/') Projects
-			li: a(href='/contact/') Contact
+			li: a(data-action='click', data-emit='.top-bar:close', href='/about/') About
+			li: a(data-action='click', data-emit='.top-bar:close', href='/articles/') Articles
+			li: a(data-action='click', data-emit='.top-bar:close', href='/projects/') Projects
+			li: a(data-action='click', data-emit='.top-bar:close', href='/contact/') Contact

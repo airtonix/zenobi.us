@@ -1,8 +1,8 @@
 base = require './base'
 _ = require 'lodash'
 
-config =
-	locals:
+module.exports = _.merge base, 
+	locals: _.merge base.locals, 
 		site:
 			url: "http://nova.jiricek.info:8000"
 		analytics: null
@@ -10,5 +10,3 @@ config =
 	ignore: [
 		"**/.*.tmp"
 	]
-
-module.exports = _.merge base, config

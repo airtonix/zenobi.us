@@ -1,9 +1,9 @@
 module.exports =
-  locals: require '../context'
+  locals: require './locals'
   port: 8000
   contents: "./src/contents/"
   templates: "./src/templates"
-
+  
   ignore: [
     "*/test"
     "*/test/*"

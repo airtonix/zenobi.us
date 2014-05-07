@@ -4,7 +4,7 @@ title: About
 type: article
 icon: graduation-cap
 banner: ./img/zenobius-jiricek.jpg
-bannerClass: rounded centered small
+bannerClass: rounded centered tiny
 ---
 
 

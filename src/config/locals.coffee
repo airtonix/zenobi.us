@@ -1,4 +1,5 @@
 module.exports =
+	mode: null
 	site:
 		url: "http://zenobi.us"
 		baseUrl:  "/"

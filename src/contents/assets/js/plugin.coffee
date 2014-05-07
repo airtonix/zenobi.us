@@ -8,6 +8,15 @@ define [
       defaults: {}
       name: null
 
+      mode = _.memoize () ->
+        $ "meta[name='mode']"
+          .attr('content')
+
+      modeIs: (query) =>
+        if query?
+          return query is mode()
+        mode()
+
       constructor: (current_element, index_of_query, init_options) ->
         @name = @constructor.name.toLowerCase()
         @element = $ current_element

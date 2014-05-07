@@ -15,7 +15,13 @@ define [
 					tags: [ 'contact-form' ]
 					recipents: []
 					headers: {}
-				
+
+				bindEvents: ->
+					super()
+
+					@element.bind 'reset', =>
+						@element.removeClass 'error success sending'
+
 				field: (name, value) =>
 					field = @element.find("[name='#{name}']")
 					if not field
@@ -26,7 +32,7 @@ define [
 						
 				initialize: ->
 					if not @modeIs('build')
-						@field 'to', 'em@a.il'
+						@field 'email', 'em@a.il'
 						@field 'name', 'Ema il'
 						@field 'message', 'Message'
 					super()
@@ -78,5 +84,4 @@ define [
 							.map (item) =>
 								item.apply(@)
 						
-					@
 							

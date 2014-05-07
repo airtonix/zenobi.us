@@ -16,3 +16,6 @@ define [
 					@element.delegate @options.selector, @action, (Event) =>
 						Event.preventDefault()
 						@element.toggleClass @options.class
+
+					@element.on 'close', =>
+						@element.removeClass @options.class

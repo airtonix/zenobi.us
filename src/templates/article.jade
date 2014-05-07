@@ -13,9 +13,12 @@ block append content-title
 block prepend content-html
 	if page.metadata.tags
 		#article-tags.row
-			ul.sub-nav.centered
+			ul.sub-nav.centered.icon-tag
 				each tag in page.metadata.tags.split(",")
-					li.label.secondary.radius=tag
+					li.secondary.radius=tag
+
+block append content-html
+	#disqus_thread(data-action="load", data-emit="disqus-threads-loaded")
 
 block append content
 	include partial/post-footer

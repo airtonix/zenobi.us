@@ -1,7 +1,9 @@
 base = require './base'
 _ = require 'lodash'
 
-config =
+module.exports = _.merge base,
 	output: "./build"
-
-module.exports = _.merge base, config
+    locals: _.merge base.locals,
+        mandril:
+            apikey: 'oMstGBYNlE0KhW0DEd8Wdg'
+            endpoint: 'https://mandrillapp.com/api/1.0/messages/send.json'

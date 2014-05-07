@@ -22,6 +22,10 @@ body {
 		width: 100%;
 		padding-top: 4em;
 		padding-bottom: rem-calc(128-$topbar-height);
+		
+		#article-tags {
+			padding-left: 2em;
+		}
 	}
 
 	footer#site-footer {

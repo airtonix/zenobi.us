@@ -9,8 +9,6 @@ define [
 
 			class Sticky extends sumatra.Plugin
 				action: null
-				defaults:
-					selector: ".sticky"
 
 				initialize: ->
 					@marker = $ "<span class='sticky-marker'>"

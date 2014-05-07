@@ -1,13 +1,13 @@
 html body {
-	footer {
-		.sub-nav {
+
+	.sub-nav {
+		&.centered {
 			text-align: center;
 			display: inline-block;
 			li {
 				display: inline;
 				float: inherit;
 				line-height: 3;
-				
 			}
 		}
 	}
@@ -116,7 +116,6 @@ html body {
 						width: 100%;
 						text-align: left;
 						padding: 1em;
-						direction:ltr;
 					}
 
 					&.enabled {

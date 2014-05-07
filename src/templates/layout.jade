@@ -11,13 +11,14 @@ html(lang='en')
 			meta(charset='utf-8')
 			meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
 			meta(name='viewport', content='width=device-width')
+			meta(name='mode', content=mode)
 			title
 				block title
 					!=site.name
 			link(rel='alternate', href=site.url+'/feed.xml', type='application/rss+xml', title=site.name)
 			link(rel='stylesheet', media="print", href='/assets/css/print.css')
 			link(rel='stylesheet', media="screen, projector", href='/assets/css/screen.css')
-
+			
 			include partial/analytics
 
 	body(id=getMeta(page,'title').slugify(), class=bodyclass)

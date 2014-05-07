@@ -6,6 +6,8 @@ require [
 	'./topbar'
 	'./contact'
 	'./sticky'
+	'./modal'
+	'./events'
 	'./tableofcontents'
 	], (_, $, Fastclick, Lightbox) ->
 
@@ -15,17 +17,18 @@ require [
 		(($, window) ->
 			$ document
 				.ready ->
-
-					$("[data-top-bar]").topbar()
-					$("[data-toc]").tableOfContents()
-					$("[data-contact-form]").contactForm
+					$(document).events()
+					$("[data-module='top-bar']").topbar()
+					$("[data-module='toc']").tableOfContents()
+					$("[data-module='contact-form']").contactForm
 						recipents: [
 							email: "its@zenobi.us"
 							name: "Zenobius Jiricek"
 							type: 'to'
 						]
 					new Lightbox($ 'img')
-					$("[data-sticky]").sticky()
+					$("[data-module='sticky']").sticky()
+					$("[data-module='modal']").modal()
 
 					return
 

@@ -23,28 +23,31 @@ block content-html
 				| phone
 
 	.column.large-12.large-centered
-		form(data-contact-form, data-apikey="oMstGBYNlE0KhW0DEd8Wdg", data-endpoint="https://mandrillapp.com/api/1.0/messages/send.json")
-			input#name(name="name", type="text", placeholder="your name", required)
-			input#email(name="email", type="email", placeholder="your email", required)
-			textarea#message(name="message", placeholder="your message", rows=7, required)
+		form(data-action="submit",
+			 data-module="contact-form",
+			 data-apikey=mandril?mandril.apikey:'',
+			 data-endpoint=mandril?mandril.endpoint:'')
+			input(name="name", type="text", placeholder="your name", required)
+			input(name="email", type="email", placeholder="your email", required)
+			textarea(name="message", placeholder="your message", rows=7, required)
 			button.button.simple-outline.small(type="submit") Send
 
-		.modal.success
+		.modal.success(data-module='modal')
 			.cell
 				em.icon-paper-plane
 				h5 Your message has been sent.
-				button.button.simple-outline.small Ok
+				button.button.simple-outline.small(data-action='click', data-emit='[data-module="contact-form"]:reset') Ok
 
-		.modal.sending
+		.modal.sending(data-module='modal')
 			.cell
 				em.icon-cloud
 				h5 Sending
 
-		.modal.error
+		.modal.error(data-module='modal')
 			.cell
 				em.icon-fire
 				h5 Error
 					small Something went wrong whilst sending your message.
-				button.button.simple-outline.small Ok
+				button.button.simple-outline.small(data-action='click', data-emit='[data-module="contact-form"]:reset')  Ok
 
 
