@@ -5527,15 +5527,17 @@ body {
     min-height: 100%;
     width: 100%;
     padding-top: 4em;
-    padding-bottom: 5.1875rem; }
+    padding-bottom: 13em; }
     body article#content #article-tags {
       padding-left: 2em; }
   body footer#site-footer {
-    margin-top: -5.1875rem;
+    margin-top: -13em;
     min-height: 5.1875rem;
     color: #526368;
     text-align: center; }
-    body footer#site-footer > .row:before {
+    body footer#site-footer:before {
+      content: "";
+      width: 100%;
       border-top: 1px solid #f5f7f7; }
 
 body.page #page-header {
@@ -5747,8 +5749,6 @@ html body#contact form.success ~ .modal.success, html body#contact form.error ~ 
           -moz-animation-delay: 0;
           animation-delay: 0; }
     body#home .hero#below-the-fold {
-      min-height: 5em;
-      height: 100%;
       min-height: 20em;
       position: relative; }
       body#home .hero#below-the-fold .button-group li a.button {
