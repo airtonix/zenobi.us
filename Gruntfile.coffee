@@ -230,7 +230,6 @@ module.exports = (grunt) ->
     async = @async()
     if @data.options.async
       @data.options.async = async
-    grunt.log.writeln "Running Wintersmith: ", @target, @data
 
     klass = require './app.coffee'
     wintersmith = new klass(@data.options)

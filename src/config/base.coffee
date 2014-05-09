@@ -12,7 +12,7 @@ module.exports =
   ]
 
   plugins: [
-    "./src/plugins/pkginfo"
+    "./src/plugins/requirejs"
     "./src/plugins/pkginfo"
     "./src/plugins/helpers"
     "./src/plugins/blog"
