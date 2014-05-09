@@ -10,7 +10,7 @@ class Application
 
 	constructor: (options) ->
 		@options = _.merge @defaults, options
-		@configPath = "./src/config/#{@options.mode}.coffee"
+		@configPath = "./config/#{@options.mode}.coffee"
 		@config = _.merge require(@configPath),
 			locals:
 				mode: @options.mode
@@ -30,6 +30,7 @@ class Application
 	start: ->
 		switch @options.mode
 			when "build" then @wintersmith.build @go
+			when "test" then @wintersmith.build @go
 			when "preview" then @wintersmith.preview @go
 			when "load" then @wintersmith.load @go
 			else @help()

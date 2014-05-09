@@ -1,3 +1,6 @@
+#
+# Default Template Context
+#
 module.exports =
 	mode: null
 	site:

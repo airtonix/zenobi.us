@@ -1,8 +1,8 @@
 module.exports =
   locals: require './locals'
   port: 8000
-  contents: "./src/contents/"
-  templates: "./src/templates"
+  contents: "src/contents/"
+  templates: "src/templates"
   
   ignore: [
     "*/test"
@@ -12,18 +12,15 @@ module.exports =
   ]
 
   plugins: [
-    "./src/plugins/requirejs"
     "./src/plugins/pkginfo"
     "./src/plugins/helpers"
     "./src/plugins/blog"
+    "wintersmith-mounter"
     "wintersmith-coffee"
     "wintersmith-jade"
     "wintersmith-node-sass"
     "wintersmith-data-json"
   ]
-
-  static:
-    'assets/vendor/**/*': "./bower_components"
 
   require:
     _: "underscore"
@@ -31,6 +28,11 @@ module.exports =
     typogr: "typogr"
     util: "util"
     path: "path"
+
+  mounter:
+    mounts:
+      '/vendor/':
+        src: './bower_components'
 
   blog:
     archive:
@@ -51,7 +53,7 @@ module.exports =
     minify: false
     includePaths: [
       "src/contents/assets/css"
-      "src/templates/assets/css"
+      "src/assets/scss"
       "bower_components/"
       "bower_components/bourbon/app/assets/stylesheets"
       "bower_components/foundation/scss"

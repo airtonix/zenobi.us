@@ -5,7 +5,10 @@ module.exports = _.merge base,
 	locals: _.merge base.locals, 
 		site:
 			url: "http://nova.jiricek.info:8000"
-		analytics: null
+		analytics:
+			"google":
+				"code": 'UA-TEST-0'
+				"domain": 'nova.jiricek.info'
 
 	ignore: [
 		"**/.*.tmp"

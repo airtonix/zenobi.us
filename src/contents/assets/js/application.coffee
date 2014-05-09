@@ -1,6 +1,7 @@
 require [
 	'lodash'
 	'jquery'
+	'google-analytics'
 	'fastclick'
 	'./lightbox'
 	'./topbar'
@@ -9,7 +10,8 @@ require [
 	'./modal'
 	'./events'
 	'./tableofcontents'
-	], (_, $, Fastclick, Lightbox) ->
+	'scout'
+	], (_, $, Analytics, Fastclick, Lightbox) ->
 
 		window.addEventListener 'load', (Event) ->
 			Fastclick.attach document.body
@@ -17,6 +19,14 @@ require [
 		(($, window) ->
 			$ document
 				.ready ->
+					Analytics 'create',
+						$("meta[name='analytics:google:code']").attr 'content'
+						$("meta[name='analytics:google:domain']").attr 'content'
+
+					Analytics 'send', 'pageview'
+
+
+					$.scout()
 					$(document).events()
 					$("[data-module='top-bar']").topbar()
 					$("[data-module='toc']").tableOfContents()
@@ -29,6 +39,9 @@ require [
 					new Lightbox($ 'img')
 					$("[data-module='sticky']").sticky()
 					$("[data-module='modal']").modal()
+
+
+
 
 					return
 

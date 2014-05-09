@@ -224,6 +224,10 @@ module.exports = (grunt) ->
         options:
           mode: 'build'
           async: true
+      test:
+        options:
+          mode: 'test'
+          async: true
 
 
   grunt.registerMultiTask "wintersmith", "loads wintersmith", () ->
@@ -231,7 +235,7 @@ module.exports = (grunt) ->
     if @data.options.async
       @data.options.async = async
 
-    klass = require './app.coffee'
+    klass = require './src/app'
     wintersmith = new klass(@data.options)
     wintersmith.start()
 
@@ -242,13 +246,13 @@ module.exports = (grunt) ->
   ]
 
   grunt.registerTask "test", [
-    'build'
+    'clean:all'
+    'wintersmith:test'
+    'compile'
     'connect:dist'
   ]
 
-  grunt.registerTask 'build', [
-    'clean:all'
-    'wintersmith:build'
+  grunt.registerTask 'compile', [
     'copy'
     'requirejs:dist'
     'useminPrepare:dist'
@@ -259,7 +263,9 @@ module.exports = (grunt) ->
 
   grunt.registerTask "deploy", [
     'bump:patch'
-    'build'
+    'clean:all'
+    'wintersmith:build'
+    'compile'
     'gh-pages'
     'clean'
   ]

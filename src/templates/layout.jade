@@ -12,6 +12,9 @@ html(lang='en')
 			meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
 			meta(name='viewport', content='width=device-width')
 			meta(name='mode', content=mode)
+			if analytics
+				meta(name='analytics:google:code', content=analytics.google.code)
+				meta(name='analytics:google:domain', content=analytics.google.domain)
 			title
 				block title
 					!=site.name
@@ -19,8 +22,6 @@ html(lang='en')
 			link(rel='stylesheet', media="print", href='/assets/css/print.css')
 			link(rel='stylesheet', media="screen, projector", href='/assets/css/screen.css')
 			
-			include partial/analytics
-
 	body(id=getMeta(page,'title').slugify(), class=bodyclass)
 
 		header.header
@@ -35,4 +36,4 @@ html(lang='en')
 				include partial/footer
 
 		block js
-			include partial/js
+			script(data-main='/assets/js/boot', src='/vendor/requirejs/require.js')
