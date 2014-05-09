@@ -26,6 +26,40 @@ module.exports = (grunt) ->
         options:
           base: '<%= paths.dist %>'
 
+    fontello:
+      options:
+        config: "<%= paths.src %>/contents/assets/font/fontello.json"
+        scss: true
+        force: true
+        zip: "./.grunt/fontello"
+
+      build:
+        options:
+          fonts: "<%= paths.build %>/assets/font"
+          styles: "<%= paths.build %>/assets/css/font"
+
+      dev:
+        options:
+          fonts: "<%= paths.src %>/contents/assets/font"
+          styles: "<%= paths.src %>/templates/assets/css/font"
+
+    clean:
+      all:
+        src: [
+          "./*"
+          "!./{src,node_modules,bower_components}"
+          "!./{package.json,.bowerrc,bower.json,.gitignore}"
+          "!./{Gruntfile,app}.coffee"
+          "!./readme.md"
+          "!./CNAME"
+        ]
+
+      build:
+        src: ["<%= paths.build %>"]
+
+      dist:
+        src: ["<%= paths.dist %>"]
+
     copy:
       build:
         files: [
@@ -87,24 +121,6 @@ module.exports = (grunt) ->
       dist:
         options:
           optimize: "uglify"
-
-    fontello:
-      options:
-        config: "<%= paths.src %>/contents/assets/font/fontello.json"
-        scss: true
-        force: true
-        zip: "./.grunt/fontello"
-
-      build:
-        options:
-          fonts: "<%= paths.build %>/assets/font"
-          styles: "<%= paths.build %>/assets/css/font"
-
-      dev:
-        options:
-          fonts: "<%= paths.src %>/contents/assets/font"
-          styles: "<%= paths.src %>/templates/assets/css/font"
-
 
     useminPrepare:
       dist:
@@ -183,24 +199,6 @@ module.exports = (grunt) ->
             'Img': /(img\/[\w\d-]*\.(png|jpeg|jpg|gif))/
             'Css': /(css\/[\w\d-]*\.css)/
             'Js': /(js\/[\w\d-]*\.js)/
-
-    clean:
-      all:
-        src: [
-          "./*"
-          "!./{src,node_modules}"
-          "!./{package.json,.bowerrc,bower.json,.gitignore}"
-          "!./{Gruntfile,app}.coffee"
-          "!./readme.md"
-          "!./CNAME"
-        ]
-
-      build:
-        src: ["<%= paths.build %>"]
-
-      dist:
-        src: ["<%= paths.dist %>"]
-
 
     bump:
       options:

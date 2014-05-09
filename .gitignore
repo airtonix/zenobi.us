@@ -9,7 +9,8 @@ dist
 *.out
 /.grunt
 node_modules
-src/contents/assets/vendor
+bower_components
+/.test
 results
 *.gz
 logs

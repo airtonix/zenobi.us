@@ -13,6 +13,7 @@ module.exports =
 
   plugins: [
     "./src/plugins/pkginfo"
+    "./src/plugins/pkginfo"
     "./src/plugins/helpers"
     "./src/plugins/blog"
     "wintersmith-coffee"
@@ -47,15 +48,15 @@ module.exports =
     pretty: true
 
   'node-sass':
+    minify: false
     includePaths: [
       "src/contents/assets/css"
       "src/templates/assets/css"
-      "src/contents/assets/vendor"
-      "src/contents/assets/vendor/bourbon/app/assets/stylesheets"
-      "src/contents/assets/vendor/foundation/scss"
-      "src/contents/assets/vendor/foundation/scss/foundation/components"
+      "bower_components/"
+      "bower_components/bourbon/app/assets/stylesheets"
+      "bower_components/foundation/scss"
+      "bower_components/foundation/scss/foundation/components"
     ]
-    minify: false
 
   markdown:
     smartLists: true
