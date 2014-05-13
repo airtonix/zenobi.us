@@ -1,0 +1,12 @@
+each article in articles
+  article.article.intro
+    header
+      p.date
+        span= moment.utc(article.date).format('DD. MMMM YYYY')
+      h2
+        a(href=article.url)= article.title
+    section.content
+      | { typogr(article.intro).typogrify() }
+      if article.hasMore
+        p.more
+          a(href=article.url) more
