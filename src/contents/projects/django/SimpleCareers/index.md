@@ -1,6 +1,6 @@
 ---
 title: Simple Careers
-template: project-detail.jade
+template: project.jade
 tags: Vancancies, Human Resources, Jobs Available, Jobs Board
 repo: git://github.com/airtonix/django-simple-careers.git
 homepage: https://github.com/airtonix/django-simple-careers

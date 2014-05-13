@@ -1,6 +1,6 @@
 ---
 title: Tasty Social Pie
-template: project-detail.jade
+template: project.jade
 homepage: https://github.com/airtonix/tasty-social-pie
 repo: git://github.com/airtonix/tasty-social-pie.git
 ---

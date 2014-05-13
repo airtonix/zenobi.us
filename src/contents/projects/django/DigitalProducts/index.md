@@ -1,6 +1,6 @@
 ---
 title: Django Digital Products
-template: project-detail.jade
+template: project.jade
 tags: digital downloads, ecommerce
 repo: git://github.com/airtonix/django-shop-digitalproducts.git
 homepage: https://github.com/airtonix/django-shop-digitalproducts

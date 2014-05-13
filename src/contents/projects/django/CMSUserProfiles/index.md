@@ -1,6 +1,6 @@
 ---
 title: DjangoCms User Profiles
-template: project-detail.jade
+template: project.jade
 tags: cms-plugin
 repo: git://github.com/airtonix/cmsplugin-userprofile.git
 homepage: https://github.com/airtonix/cmsplugin-userprofile

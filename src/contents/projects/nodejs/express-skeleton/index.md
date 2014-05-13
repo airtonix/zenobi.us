@@ -1,6 +1,6 @@
 ---
 title: ExpressJs Project Skeleton
-template: project-detail.jade
+template: project.jade
 repo: git://github.com/airtonix/nodejs-express-skeleton.git
 homepage: https://github.com/airtonix/nodejs-express-skeleton
 ---

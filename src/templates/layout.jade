@@ -13,8 +13,9 @@ html(lang='en')
 			meta(name='viewport', content='width=device-width')
 			meta(name='mode', content=mode)
 			if analytics
-				meta(name='analytics:google:code', content=analytics.google.code)
-				meta(name='analytics:google:domain', content=analytics.google.domain)
+				each data, name in analytics
+					meta(name='analytics-#{name}-code', content=data.code)
+					meta(name='analytics-#{name}-domain', content=data.domain)
 			title
 				block title
 					!=site.name

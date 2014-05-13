@@ -1,6 +1,6 @@
 ---
 title: Mummy Management Command
-template: project-detail.jade
+template: project.jade
 tags: testing, mockups, management command
 homepage: http://github.com/airtonix/django-mummy-command/
 repo: git://github.com/airtonix/django-mummy-command.git

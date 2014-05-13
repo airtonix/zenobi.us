@@ -1,66 +1,72 @@
 module.exports =
-  locals: require './locals'
-  port: 8000
-  contents: "src/contents/"
-  templates: "src/templates"
-  
-  ignore: [
-    "*/test"
-    "*/test/*"
-    "**/test/"
-    "**/test/*"
-  ]
+	locals: require './locals'
+	port: 8000
+	contents: "src/contents/"
+	templates: "src/templates"
 
-  plugins: [
-    "./src/plugins/pkginfo"
-    "./src/plugins/helpers"
-    "./src/plugins/blog"
-    "wintersmith-mounter"
-    "wintersmith-coffee"
-    "wintersmith-jade"
-    "wintersmith-node-sass"
-    "wintersmith-data-json"
-  ]
+	ignore: [
+		"*/test"
+		"*/test/*"
+		"**/test/"
+		"**/test/*"
+	]
 
-  require:
-    _: "underscore"
-    moment: "moment"
-    typogr: "typogr"
-    util: "util"
-    path: "path"
+	plugins: [
+		"./src/plugins/pkginfo"
+		"./src/plugins/helpers"
+		"./src/plugins/blog"
+		"wintersmith-mounter"
+		"wintersmith-coffee"
+		"wintersmith-jade"
+		"wintersmith-node-sass"
+		"wintersmith-data-json"
+	]
 
-  mounter:
-    mounts:
-      '/vendor/':
-        src: './bower_components'
+	require:
+		_: "underscore"
+		moment: "moment"
+		typogr: "typogr"
+		util: "util"
+		path: "path"
 
-  blog:
-    archive:
-      root: 'articles'
-      first: 'index.html'
-      perPage: 2
-      template: 'archive.jade'
-      filenameTemplate: 'page/:page/index.html'
+	mounter:
+		mounts:
+			'/vendor/':
+				src: './bower_components'
 
-    article:
-      template: 'article.jade'
-      filenameTemplate: '/:year/:month/:day/:file/index.html'
+	templateGroups:
+		rules: [
+			template: 'article.jade',
+			pattern: '^articles/.*\.(md|json|yml)$'
+		]
 
-  jade:
-    pretty: true
+	blog:
+		archive:
+			root: 'articles'
+			first: 'index.html'
+			perPage: 2
+			template: 'archive.jade'
+			filenameTemplate: 'page/:page/index.html'
 
-  'node-sass':
-    minify: false
-    includePaths: [
-      "src/contents/assets/css"
-      "src/assets/scss"
-      "bower_components/"
-      "bower_components/bourbon/app/assets/stylesheets"
-      "bower_components/foundation/scss"
-      "bower_components/foundation/scss/foundation/components"
-    ]
+		article:
+			template: 'article.jade'
+			filenameTemplate: '/:year/:month/:day/:file/index.html'
 
-  markdown:
-    smartLists: true
-    smartypants: true
+	jade:
+		pretty: true
+
+	'node-sass':
+		minify: false
+		includePaths: [
+			"src/contents/assets/css"
+			"src/assets/scss"
+			"bower_components/"
+			"bower_components/bourbon/app/assets/stylesheets"
+			"bower_components/foundation/scss"
+			"bower_components/foundation/scss/foundation/components"
+		]
+
+	markdown:
+		smartLists: true
+		smartypants: true
 

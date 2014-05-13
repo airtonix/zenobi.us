@@ -1,6 +1,6 @@
 ---
 title: Avahi Aliases
-template: project-detail.jade
+template: project.jade
 tags: dns, avahi, mdns, local dev
 repo: git://github.com/airtonix/avahi-aliases.git
 homepage: https://github.com/airtonix/avahi-aliases

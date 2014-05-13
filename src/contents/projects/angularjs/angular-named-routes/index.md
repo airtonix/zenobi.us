@@ -1,6 +1,6 @@
 ---
 title: Angular Named Routes
-template: project-detail.jade
+template: project.jade
 tags: routes
 homepage: http://github.com/airtonix/angular-named-routes/
 repo: git://github.com/airtonix/angular-named-routes.git

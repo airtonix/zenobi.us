@@ -1,6 +1,6 @@
 ---
 title: Project Portfolio
-template: project-detail.jade
+template: project.jade
 tags: content plugin
 repo: git://github.com/airtonix/django-project-portfolio.git
 homepage: https://github.com/airtonix/django-project-portfolio

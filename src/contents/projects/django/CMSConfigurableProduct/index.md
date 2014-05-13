@@ -1,6 +1,6 @@
 ---
 title: DjangoCms Configurable Product
-template: project-detail.jade
+template: project.jade
 tags: cms-plugin, shop-plugin, admin-ui
 repo: git://github.com/airtonix/cmsplugin-configurableproduct.git
 homepage: https://github.com/airtonix/cmsplugin-configurableproduct

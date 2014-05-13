@@ -1,6 +1,6 @@
 ---
 title: Guardian Pie
-template: project-detail.jade
+template: project.jade
 tags: RESTful api, Authentication, Authorisation, Granular Permissions
 repo: git://github.com/airtonix/django-guardianpie.git
 homepage: https://github.com/airtonix/django-guardianpie

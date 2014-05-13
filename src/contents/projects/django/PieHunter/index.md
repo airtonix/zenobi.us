@@ -1,6 +1,6 @@
 ---
 title: Pie Hunter
-template: project-detail.jade
+template: project.jade
 tags: RESTful api, Convention over Configuration
 repo: git://github.com/airtonix/django-piehunter.git
 homepage: https://github.com/airtonix/django-piehunter

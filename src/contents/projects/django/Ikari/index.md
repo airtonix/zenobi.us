@@ -1,6 +1,6 @@
 ---
 title: Guardian Pie
-template: project-detail.jade
+template: project.jade
 tags: Custom Domains
 repo: git://github.com/airtonix/django-ikari.git
 homepage: https://github.com/airtonix/django-ikari

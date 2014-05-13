@@ -1,5 +1,5 @@
 ---
-template: project-detail.jade
+template: project.jade
 title: Muvli
 homepage: http://muvli.com
 ---

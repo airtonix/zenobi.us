@@ -20,8 +20,8 @@ require [
 			$ document
 				.ready ->
 					Analytics 'create',
-						$("meta[name='analytics:google:code']").attr 'content'
-						$("meta[name='analytics:google:domain']").attr 'content'
+						$("meta[name='analytics.google.code']").attr 'content',
+						$("meta[name='analytics.google.domain']").attr 'content'
 
 					Analytics 'send', 'pageview'
 
@@ -39,9 +39,6 @@ require [
 					new Lightbox($ 'img')
 					$("[data-module='sticky']").sticky()
 					$("[data-module='modal']").modal()
-
-
-
 
 					return
 

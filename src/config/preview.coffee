@@ -6,9 +6,9 @@ module.exports = _.merge base,
 		site:
 			url: "http://nova.jiricek.info:8000"
 		analytics:
-			"google":
-				"code": 'UA-TEST-0'
-				"domain": 'nova.jiricek.info'
+			google:
+				code: 'UA-TEST-0'
+				domain: 'nova.jiricek.info'
 
 	ignore: [
 		"**/.*.tmp"

@@ -1,6 +1,6 @@
 ---
 title: Puraibeto
-template: project-detail.jade
+template: project.jade
 tags: Private File Downloads
 repo: git://github.com/airtonix/django-puraibeto.git
 homepage: https://github.com/airtonix/django-puraibeto

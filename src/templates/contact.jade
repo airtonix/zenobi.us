@@ -27,11 +27,12 @@ block content-html
 			 data-action="submit",
 			 data-module="contact-form",
 			 data-apikey=mandril?mandril.apikey:'',
-			 data-endpoint=mandril?mandril.endpoint:'')
+			 data-endpoint=mandril?mandril.endpoint:'',
+			 data-scout-event='submit')
 			input(name="name", type="text", placeholder="your name", required)
 			input(name="email", type="email", placeholder="your email", required)
 			textarea(name="message", placeholder="your message", rows=7, required)
-			button.button.simple-outline.small(type="submit", data-scout-event='submit') Send
+			button.button.simple-outline.small(type="submit") Send
 
 		.modal.success(data-module='modal')
 			.cell

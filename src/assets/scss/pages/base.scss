@@ -95,7 +95,7 @@ body.page {
 			min-height: 10em;
 			margin-bottom: 1em;
 
-			.columns {
+			& > .columns {
 				display: table-cell;
 				vertical-align: bottom;
 				min-height: 10em;

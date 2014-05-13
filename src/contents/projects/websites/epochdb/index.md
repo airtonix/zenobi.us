@@ -1,5 +1,5 @@
 ---
-template: project-detail.jade
+template: project.jade
 title: EpochDB
 homepage: http://airtonix.github.io/epochdb
 repo: git://github.com/airtonix/epochdb.git

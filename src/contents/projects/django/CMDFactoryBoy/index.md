@@ -1,6 +1,6 @@
 ---
 title: Factory Boy Management Command
-template: project-detail.jade
+template: project.jade
 tags: testing, mockups, management command
 homepage: http://github.com/airtonix/factory-boy-command/
 repo: git://github.com/airtonix/factory-boy-command.git

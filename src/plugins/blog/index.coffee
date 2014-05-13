@@ -54,6 +54,7 @@ module.exports = (env, done) ->
 	paginator_defaults =
 		title: "Articles"
 		root: 'articles'
+		mount: 'archive'
 		filename: 'archive'
 		first: 'index.html'
 		perPage: 2
@@ -65,17 +66,17 @@ module.exports = (env, done) ->
 
 
 	class PaginatorPage extends env.plugins.Page
-		page:
-			metadata:
-				title: paginator_options.title
+		defaultMeta =
+			title: paginator_options.title
 
 		constructor: (@pageNum, @totalPages, @articles) ->
-			@page.metadata = _.extend @page.metadata, 
-				subtitle: "page #{@pageNum} of #{@totalPages}"
+			metadata = _.extend defaultMeta, 
+				subtitle: ""
 				paginator: 
-					root: [paginator_options.root, paginator_options.first].join("/")
-					current: @pageNum
+					index: @pageNum
 					total: @totalPages
+
+			super(null, metadata)
 
 		getFilename: ->
 			output = [
@@ -94,7 +95,7 @@ module.exports = (env, done) ->
 				return callback new Error "unknown articles template '#{ paginator_options.template }'"
 
 			# setup the template context
-			context = {@articles, @prevPage, @nextPage, @page}
+			context = {@articles, @prevPage, @nextPage, page: @}
 			# extend the template context with the enviroment locals
 			env.utils.extend context, locals
 
@@ -121,31 +122,30 @@ module.exports = (env, done) ->
 
 		# create the object that will be merged with the content tree (contents)
 		# do _not_ modify the tree directly inside a generator, consider it read-only
-		archive =
-			pages: {}
+		archive = {}
+		out = archive["#{paginator_options.mount}"] = {}
 
 		for page in pages
-			archive.pages["#{ page.pageNum }.page"] = page # file extension is arbitrary
-		archive['index.page'] = pages[0] # alias for first page
+			out["#{ page.pageNum }.page"] = page # file extension is arbitrary
 
 		# callback with the generated contents
 		callback null, archive
 
 
-	post_defaults =
-		template: "post.jade"
-		root: "articles"
+	# post_defaults =
+	# 	template: "article.jade"
+	# 	root: "articles"
 
-	post_options = _.extend post_defaults, env.config.blog.post
+	# post_options = _.extend post_defaults, env.config.blog.post
 
-	class BlogpostPage extends env.plugins.MarkdownPage
+	# class BlogpostPage extends env.plugins.MarkdownPage
 
-		getTemplate: ->
-			@metadata.template or post_options.template or super()
+	# 	getTemplate: ->
+	# 		@metadata.template or post_options.template or super()
 
-		getFilenameTemplate: ->
-			@metadata.filenameTemplate or post_options.filenameTemplate or super()
+	# 	getFilenameTemplate: ->
+	# 		@metadata.filenameTemplate or post_options.filenameTemplate or super()
 
-	env.registerContentPlugin 'posts', "#{post_options.root}**/*.*(markdown|mkd|md)", BlogpostPage
+	# env.registerContentPlugin 'posts', "#{post_options.root}**/*.*(markdown|mkd|md)", BlogpostPage
 
 	done()

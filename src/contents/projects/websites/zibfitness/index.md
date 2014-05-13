@@ -1,5 +1,5 @@
 ---
-template: project-detail.jade
+template: project.jade
 title: ZibFitness
 gallery: true
 homepage: http://zibfitness.com

@@ -1,6 +1,6 @@
 ---
 title: DjangoCms Embeded Menu
-template: project-detail.jade
+template: project.jade
 tags: cms-plugin
 repo: git://github.com/airtonix/cmsplugin-embedded-menu.git
 homepage: https://github.com/airtonix/cmsplugin-embedded-menu

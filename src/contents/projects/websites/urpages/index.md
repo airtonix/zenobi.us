@@ -1,5 +1,5 @@
 ---
-template: project-detail.jade
+template: project.jade
 title: URpages
 gallery: true
 homepage: http://urpages.com.au
