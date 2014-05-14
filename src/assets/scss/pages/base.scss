@@ -91,9 +91,44 @@ body.page {
 		width: 100%;
 		min-height: 4em;
 
-		@media #{$medium-up} {
+		@media #{$small-up} {
+			.hero {
+				text-align: inherit;
+				h1 {
+					margin-left: 1.4em;
+					&:before{
+						float: left;
+						margin-left: -1.5em;
+						line-height: 1.4;
+					}
+
+					
+				}
+			}
+		}
+
+		@media #{$medium} {
+			.hero h1 {
+				&:before {
+					margin-right: 0.4em;
+				}
+
+			}
+		}
+
+		@media #{$large-up} {
 			min-height: 10em;
 			margin-bottom: 1em;
+
+			.hero h1{
+				text-align: center;
+				&:before {
+					display: block;
+					clear: both;
+					width: 100%;
+					margin: 0 auto;
+				}
+			}
 
 			& > .columns {
 				display: table-cell;
