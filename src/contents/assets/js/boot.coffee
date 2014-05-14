@@ -1,20 +1,20 @@
+vendorPath = '../../vendor/'
+
 require.config
 	paths:
-		'jquery': '/vendor/jquery/dist/jquery.min'
-		'lodash': '/vendor/lodash/dist/lodash.underscore.min'
-		'fastclick': '/vendor/fastclick/lib/fastclick'
-		'marked': '/vendor/marked/lib/marked'
-		'underscore-query': '/vendor/underscore-query/underscore-query'
-		'scout': '/vendor/Scout/jquery.fs.scout'
-		'google-analytics': '//www.google-analytics.com/analytics'
+		'jquery': "#{vendorPath}jquery/dist/jquery.min"
+		'lodash': "#{vendorPath}lodash/dist/lodash.underscore.min"
+		'fastclick': "#{vendorPath}fastclick/lib/fastclick"
+		'scout': "#{vendorPath}Scout/jquery.fs.scout"
+		'google-analytics': "//www.google-analytics.com/analytics"
 		'application': './application'
 
 	shim :
 		'lodash': exports: '_'
 		'jquery': exports: '$'
-		'underscore-query': deps: [ 'lodash']
-		'scout': deps: ['jquery', 'google-analytics']
 		'google-analytics': exports: 'ga'
+		'scout': deps: ['jquery', 'google-analytics']
+		'application': deps: ['lodash', 'jquery', 'scout']
 
 	# this is only for local development, never rely on this
 	# in production.

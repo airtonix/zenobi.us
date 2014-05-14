@@ -1,6 +1,6 @@
 {
   "name": "ZenobiusJiricek-Person-Website",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "homepage": "https://github.com/airtonix/zenobi.us",
   "authors": [
     "Zenobius Jiricek <airtonix@gmail.com>"
@@ -26,5 +26,8 @@
     "jquery": "~2.1.0",
     "fastclick": "~1.0.1",
     "Scout": "~3.1.4"
+  },
+  "devDependencies": {
+    "requirejs-google-analytics": "~0.1.11"
   }
 }

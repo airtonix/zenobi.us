@@ -102,32 +102,27 @@ module.exports = (grunt) ->
         dest: '<%= paths.build %>/js/templates.js'
 
     requirejs:
-      options:
-        wrap: true
-        almond: true
-        mainConfigFile: "<%= paths.build %>/assets/js/boot.js"
-        name: 'boot'
-        out: "<%= paths.dist %>/assets/js/application.js"
-        replaceRequireScript: [
-          files: ['<%= paths.dist %>/**/*.html']
-          module: '/assets/js/boot'
-          modulePath: '/assets/js/application',
-        ]
-
-      test:
+      compile:
         options:
-          optimize: "none"
-
-      dist:
-        options:
+          wrap: true
+          almond: true
+          mainConfigFile: "<%= paths.build %>/assets/js/boot.js"
+          name: 'boot'
+          out: "<%= paths.dist %>/assets/js/application.js"
           optimize: "uglify"
+          replaceRequireScript: [
+            files: ['<%= paths.dist %>/**/*.html']
+            module: '/assets/js/boot'
+            modulePath: '/assets/js/application',
+          ]
+
 
     useminPrepare:
-      dist:
+      compile:
         src: ['<%= paths.dist %>/**/*.html']
 
     rev:
-      dist:
+      compile:
         files:
           src: [
             '<%= paths.dist %>/assets/js/{,*/}*.js'
@@ -254,9 +249,9 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'compile', [
     'copy'
-    'requirejs:dist'
-    'useminPrepare:dist'
-    'rev:dist'
+    'requirejs:compile'
+    'useminPrepare:compile'
+    'rev:compile'
     'usemin'
     'clean:build'
   ]

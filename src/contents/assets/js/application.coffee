@@ -11,7 +11,7 @@ require [
 	'./events'
 	'./tableofcontents'
 	'scout'
-	], (_, $, Analytics, Fastclick, Lightbox) ->
+	], (_, $, ga, Fastclick, Lightbox) ->
 
 		window.addEventListener 'load', (Event) ->
 			Fastclick.attach document.body
@@ -19,11 +19,11 @@ require [
 		(($, window) ->
 			$ document
 				.ready ->
-					Analytics 'create',
+					ga 'create',
 						$("meta[name='analytics.google.code']").attr 'content',
 						$("meta[name='analytics.google.domain']").attr 'content'
 
-					Analytics 'send', 'pageview'
+					ga 'send', 'pageview'
 
 
 					$.scout()
