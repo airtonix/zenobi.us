@@ -81,6 +81,23 @@ html body {
 							color: $secondary-tint;
 						}
 					}
+
+					li.h3 {
+						text-indent: 1em;
+					}
+					li.h4,
+					li.h5,
+					li.h6 {
+						text-indent: 1.5em;
+						font-size: 80%;
+						opacity: 0.8;
+					}
+					li.h5 {
+						text-indent: 2em;
+					}
+					li.h6 {
+						text-indent: 2.2em;
+					}
 				}
 				
 				&.sticky {
