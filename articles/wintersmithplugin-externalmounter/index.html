@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
     <meta name="mode" content="build">
-    <title>projects - zenobi.us
+    <title>wintersmith plugin. mounter - zenobi.us
     </title>
     <link rel="alternate" href="http://zenobi.us/feed.xml" type="application/rss+xml" title="zenobi.us">
     <link rel="stylesheet" media="print" href="/assets/css/20565d61.print.css">
@@ -20,7 +20,7 @@
       ga('send', 'pageview');
     </script>
   </head>
-  <body id="projects" class="page">
+  <body id="wintersmith-plugin.-mounter" class="page article-detail">
     <header class="header">
       <nav data-module="top-bar" data-toggle=".toggle-topbar" data-event="click" class="top-bar hide-for-print">
         <ul class="title-area">
@@ -42,21 +42,73 @@
     <article id="content">
       <div id="page-header" class="row">
         <div class="large-8 columns large-centered hero vertical">
-          <h1 class="icon-beaker">Projects<small class="block"></small>
+          <h1 class="icon-doc">Wintersmith Plugin. Mounter<small class="block"></small>
           </h1>
         </div>
       </div>
       <div id="page-content" class="row">
-        <div class="large-8 columns large-centered small-centered"><p>Collection of all my works to&nbsp;date.</p>
+        <div class="large-8 columns large-centered content">
+          <div id="article-tags" class="row">
+            <ul class="sub-nav centered icon-tag">
+              <li class="secondary radius">nodejs</li>
+              <li class="secondary radius"> wintersmith</li>
+              <li class="secondary radius"> plugin</li>
+            </ul>
+          </div><p>So I’ve just created a plugin for wintersmith, aimed at utilising my <code>bower_components</code> from outside
+my contents&nbsp;directory.</p>
+<pre><code class="lang-shell">project
+    bower_components
+    node_modules
+    src
+        assets
+            scss
+        config
+        contents
+            articles
+            etc
+            ...
+            index.md
+        plugins
+        templates
+        tests
+        app.coffee
+    CNAME
+    Gruntfile.coffee
+    bower.json
+    package.json
+    readme.md
+</code></pre>
+<p>At first I was just putting <code>bower_components</code> directly inside my <code>project/src/contents/assets/vendor/</code>
+and while this might be tenable for bower, it wasn’ scalable. There might be&nbsp;more.</p>
+<h3 id="installation">Installation</h3>
+<pre><code>npm install wintersmith-mounter
+</code></pre><h3 id="configuration">Configuration</h3>
+<p>in your configuration file, describe the path you wish to mount external content at&nbsp;: </p>
+<pre><code class="lang-yaml">
+  ...
 
-          <ul class="button-group no-outline">
-            <li><a href="../" class="button"><em class="icon-left-open"></em></a></li>
-            <li><a href="/projects/angularjs/" class="button">angularjs</a></li>
-            <li><a href="/projects/django/" class="button">django</a></li>
-            <li><a href="/projects/linux-tools/" class="button">linux-tools</a></li>
-            <li><a href="/projects/nodejs/" class="button">nodejs</a></li>
-            <li><a href="/projects/artwork/" class="button">artwork</a></li>
-            <li><a href="/projects/websites/" class="button">websites</a></li>
+  mounter:
+    mounts:
+      &#39;/assets/vendor/&#39;: 
+        src: &#39;./bower_components&#39;
+
+  ...
+</code></pre>
+<p>Now, any content inside <code>./bower_components</code> will be available in your templates, 
+javascript or stylesheets under <code>/assets/vendor/</code></p>
+<h3 id="contributing">Contributing</h3>
+<p>Feel free to submit bug reports, pull requests over at <a href="http://github.com/airtonix/wintersmith-mounter">http://github.com/airtonix/wintersmith-mounter</a></p>
+
+          <div id="disqus_thread" data-action="load" data-emit="disqus-threads-loaded"></div>
+        </div>
+        <div class="large-4 columns aside">
+          <div data-module="toc" data-content="#page-content &gt; .content" data-toggle=".toggle" data-sticky class="side-nav toc"><a href="../" title="Back" class="link"><span class="icon-left-open-outline"></span></a><a title="Table of contents" class="link toggle"><span class="icon-flow-split"></span></a></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns small-centered">
+          <ul class="sub-nav centered">
+            <li><a href="../"><span class="icon-flow-merge"></span></a></li>
           </ul>
         </div>
       </div>
