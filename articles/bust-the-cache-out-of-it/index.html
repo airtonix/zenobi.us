@@ -9,7 +9,7 @@
     </title>
     <link rel="alternate" href="http://zenobi.us/feed.xml" type="application/rss+xml" title="zenobi.us">
     <link rel="stylesheet" media="print" href="/assets/css/20565d61.print.css">
-    <link rel="stylesheet" media="screen, projector" href="/assets/css/2cbb7589.screen.css">
+    <link rel="stylesheet" media="screen, projector" href="/assets/css/97c8eb32.screen.css">
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -41,7 +41,7 @@
     </header>
     <article id="content">
       <div id="page-header" class="row">
-        <div class="large-8 columns large-centered hero vertical">
+        <div class="large-8 columns hero vertical">
           <h1 class="icon-cloud">Bust the cache out of it<small class="block"></small>
           </h1>
         </div>
@@ -57,7 +57,7 @@
             </ul>
           </div><p>This will be a short one, the topic of cache busting isn’t new, it’s covered by a wide range of articles. What I’ll cover here is the basics and how I tackled a particular&nbsp;scenario.</p>
 <hr>
-<h2 id="why-cache-busting-">Why cache&nbsp;busting?</h2>
+<h3 id="why-cache-busting-">Why cache&nbsp;busting?</h3>
 <p>It’s a strategy made popular due to how the majority of the www internet works, a story told with two major&nbsp;actors:</p>
 <ul>
 <li>Caching Proxies, many of which exist between your browser and the websites you&nbsp;visit.</li>
@@ -65,17 +65,17 @@
 </ul>
 <p>Many of them are configured in different ways, but mostly they exist to alleviate the amount of data being moved around at the&nbsp;extremities.</p>
 <p>The affects on websites isn’t apparent until you try to update some external asset files (images, javascript, stylehseets, fonts, etc). When people visit your site in the initial version their browser and all the caching proxies saved copies of the assets. When you updated those assets, your browser and the caching proxies only determine if they need to get a new copy based on a few bits of meta data (most of which the average webserver doesn’t deliver). The end result is that your website starts having problems due to incorrect stylesheets, scripts and&nbsp;fonts.</p>
-<h2 id="an-initial-strategy">An initial&nbsp;strategy</h2>
+<h3 id="an-initial-strategy">An initial&nbsp;strategy</h3>
 <p>One of the first solutions to show up in response to this was to simply put a <span class="caps">GET</span> parameter after any asset you linked to&nbsp;: </p>
 <pre><code class="lang-html"><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"http://some.website.com/static/image/logo.png?cachebust={% now %}"</span>&gt;</span>
 </code></pre>
 <p>Here in this example, I’m using preprocessed html templating language <code>jinja</code>. Simply inserting the current timestamp as a query param helps to fool some caching proxies and browsers to fetch the file again. They do this because they think the resource is&nbsp;dynamic.</p>
 <p>The problem with this is that some proxies and browsers ignore this and serve the same file&nbsp;again.</p>
-<h2 id="a-strategy-robust">A strategy,&nbsp;robust</h2>
+<h3 id="a-strategy-robust">A strategy,&nbsp;robust</h3>
 <p>People with more perseverance sought a more robust strategy, one that would guarantee the correct file is&nbsp;delivered.</p>
 <p>It starts with the idea that your assets only change if you push new assets into the deployment workflow, so if they’re not changing between deployments and the proxy servers are ignoring <span class="caps">GET</span> parameters, then why don’t we change the file name each deployment only if the file&nbsp;changes?</p>
 <p>This is the goal of <code>grunt-usemin</code> and <code>grunt-rev</code>, two tools used with the Grunt task&nbsp;runner.</p>
-<h3 id="peculiar-problem-of-relative-paths">Peculiar problem of relative&nbsp;paths</h3>
+<h4 id="peculiar-problem-of-relative-paths">Peculiar problem of relative&nbsp;paths</h4>
 <p>The situation is that some of my pages in this website have images generated from something that looks at a directory and says “alrght, lets make a collection of images”, other pages I point at the image myself in the markdown. Sometimes it’s relative pathing, sometimes&nbsp;absolute.</p>
 <p>By default <code>grunt-usemin</code> only operates on absolute paths, assuming you’ll be keeping all your assets in a common&nbsp;location.</p>
 <p>To get all your files revved I ended up with the following&nbsp;: </p>
@@ -122,19 +122,21 @@
 : This overrides the default matching and applies simple pattern matching of my own that allows for matching relative paths, as long as they start with <code>img/</code>.</p>
 </li>
 </ul>
+<h3 id="conclusion">Conclusion</h3>
 <p><em>Is it perfect?</em>
   : problaby&nbsp;not.</p>
 <p><em>Does it work?</em>
   :&nbsp;yes.</p>
 <p><em>What do I think can be improved?</em>
   :remove the need to be in an <code>img</code> folder.</p>
-<h2 id="conclusion">Conclusion</h2>
 <p>Without cache busting, your life as a web developer is considerably more stressful. Phone calls, tickets, whispers you shouldn’t have to deal with, they all start hanging on your&nbsp;shoulders.</p>
 
-          <div id="disqus_thread" data-action="load" data-emit="disqus-threads-loaded"></div>
+          <h3>Comments</h3>
+          <div id="disqus_thread" data-module="disqus-comments-widget" data-shortname="zenobiusjiricek" data-disqus-indentifier="2014-05-01/bust-the-cache-out-of-it" data-action="load" data-emit="disqus-threads-loaded"></div>
+          <noscript>Please enable JavaScript to view the<a href="//disqus.com/?ref_noscript">comments powered by Disqus</a></noscript>
         </div>
         <div class="large-4 columns aside">
-          <div data-module="toc" data-content="#page-content &gt; .content" data-toggle=".toggle" data-sticky class="side-nav toc"><a href="../" title="Back" class="link"><span class="icon-left-open-outline"></span></a><a title="Table of contents" class="link toggle"><span class="icon-flow-split"></span></a></div>
+          <div data-module="toc sticky" data-content="#page-content &gt; .content" data-toggle=".toggle" class="side-nav toc"><a href="../" title="Back" class="link"><span class="icon-left-open-outline"></span></a><a title="Table of contents" class="link toggle"><span class="icon-flow-split"></span></a></div>
         </div>
       </div>
       <div class="row">
@@ -157,10 +159,10 @@
             <li><a href="tel://+61451075636"><span class="icon-mobile"></span></a></li>
             <li><a href="http://zenobi.us/contact/"><span class="icon-inbox"></span></a></li>
           </ul>
-          <p><small>v0.0.44 ( 2014-05-14 )</small></p>
+          <p><small>v0.0.47 ( 2014-05-15 )</small></p>
         </section>
       </div>
     </footer>
-    <script src="/assets/js/d5e8eb02.application.js"></script>
+    <script src="/assets/js/cb7c950e.application.js"></script>
   </body>
 </html>

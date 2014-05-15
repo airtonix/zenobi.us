@@ -5090,7 +5090,10 @@ th.hide-for-touch {
 	Project Mixins
 	css/mixins.scss
  */
-html body form textarea.vertical {
+html #content form textarea, html #content form input, body #content form textarea, body #content form input {
+  box-shadow: none;
+  border: 2px solid #526368; }
+html #content form textarea.vertical, body #content form textarea.vertical {
   resize: vertical; }
 
 html body a {
@@ -5189,21 +5192,13 @@ html body article #page-content .toc {
     z-index: 100; }
   html body article #page-content .toc > ul, html body article #page-content .toc > ol {
     text-align: right; }
-    html body article #page-content .toc > ul li.h3 small.block, html body article #page-content .toc > ul li.h4 small.block, html body article #page-content .toc > ul li.h5 small.block, html body article #page-content .toc > ul li.h6 small.block, html body article #page-content .toc > ol li.h3 small.block, html body article #page-content .toc > ol li.h4 small.block, html body article #page-content .toc > ol li.h5 small.block, html body article #page-content .toc > ol li.h6 small.block {
-      clear: both;
-      display: block;
-      font-size: 0.8em;
-      color: #83979d; }
-    html body article #page-content .toc > ul li.h3, html body article #page-content .toc > ol li.h3 {
-      text-indent: 1em; }
-    html body article #page-content .toc > ul li.h4, html body article #page-content .toc > ul li.h5, html body article #page-content .toc > ul li.h6, html body article #page-content .toc > ol li.h4, html body article #page-content .toc > ol li.h5, html body article #page-content .toc > ol li.h6 {
-      text-indent: 1.5em;
-      font-size: 80%;
-      opacity: 0.8; }
-    html body article #page-content .toc > ul li.h5, html body article #page-content .toc > ol li.h5 {
-      text-indent: 2em; }
-    html body article #page-content .toc > ul li.h6, html body article #page-content .toc > ol li.h6 {
-      text-indent: 2.2em; }
+    html body article #page-content .toc > ul li, html body article #page-content .toc > ol li {
+      list-style: none; }
+      html body article #page-content .toc > ul li small.block, html body article #page-content .toc > ol li small.block {
+        clear: both;
+        display: block;
+        font-size: 0.8em;
+        color: #83979d; }
   html body article #page-content .toc.sticky {
     position: fixed; }
 @media only screen {
@@ -5227,6 +5222,9 @@ html body article #page-content .toc {
       width: 100%;
       text-align: left;
       padding: 1em; }
+    html body article #page-content .toc li ul, html body article #page-content .toc li ol {
+      margin: 0;
+      margin-left: 0.75em; }
     html body article #page-content .toc.enabled .toggle {
       color: #526368;
       cursor: pointer; }
@@ -5259,6 +5257,9 @@ html body article #page-content .toc {
         float: right;
         display: block;
         text-align: right; }
+      html body article #page-content .aside .toc li ul, html body article #page-content .aside .toc li ol {
+        margin-left: 0;
+        margin-right: 0.75em; }
       html body article #page-content .aside .toc.expanded .toggle, html body article #page-content .aside .toc.expanded > ul, html body article #page-content .aside .toc.expanded > ol {
         border: none;
         margin-left: inherit;
@@ -5553,10 +5554,30 @@ body {
 body.page #page-header {
   width: 100%;
   min-height: 4em; }
+  @media only screen {
+    body.page #page-header .hero {
+      text-align: inherit; }
+      body.page #page-header .hero h1 {
+        margin-left: 1.4em; }
+        body.page #page-header .hero h1:before {
+          float: left;
+          margin-left: -1.5em;
+          line-height: 1.4; } }
   @media only screen and (min-width:40.063em) {
+    body.page #page-header .hero h1:before {
+      margin-right: 0.4em; } }
+  @media only screen and (min-width:64.063em) {
     body.page #page-header {
       min-height: 10em;
       margin-bottom: 1em; }
+      body.page #page-header .hero h1 {
+        text-align: center;
+        margin: 0 auto; }
+        body.page #page-header .hero h1:before {
+          display: block;
+          clear: both;
+          width: 100%;
+          margin: 0 auto; }
       body.page #page-header > .columns {
         display: table-cell;
         vertical-align: bottom;
@@ -5572,10 +5593,13 @@ body.page #page-content .content {
     padding-left: 4em; } }
 
 body.article #article-tags .sub-nav, body.article-list #article-tags .sub-nav, body.article-detail #article-tags .sub-nav {
-  text-align: center; }
+  margin-top: 1em; }
+  body.article #article-tags .sub-nav:before, body.article-list #article-tags .sub-nav:before, body.article-detail #article-tags .sub-nav:before {
+    float: left; }
   body.article #article-tags .sub-nav li, body.article-list #article-tags .sub-nav li, body.article-detail #article-tags .sub-nav li {
-    float: none;
-    display: inline-block; }
+    float: left;
+    display: inline-block;
+    line-height: 1; }
 
 html body#contact #page-content .methods {
   display: inline-block; }
@@ -5716,8 +5740,8 @@ html body#contact form.success ~ .modal.success, html body#contact form.error ~ 
         margin: 0 auto;
         display: block;
         position: relative;
-        height: 9em;
-        width: 100%; }
+        height: 12em;
+        width: 12em; }
         body#home header.hero .avatar .cube, body#home header.hero .avatar .shadow {
           position: absolute;
           left: 0;
