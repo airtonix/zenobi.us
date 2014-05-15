@@ -1,0 +1,17 @@
+extends page
+
+block append vars
+	- bodyclass = 'page article-list'
+
+block content-title
+	include partial/article-list-header
+
+block aside-html
+
+block content-html
+	.large-4.columns.large-centered
+		+pagination(page, contents.archive)
+
+	section#article-archive(data-module='disqus-comments-count', data-shortname=disqus.shortname||'')
+		include partial/article-list
+

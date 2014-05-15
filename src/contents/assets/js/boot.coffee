@@ -1,19 +1,16 @@
-vendorPath = '../../vendor/'
-
 require.config
 	paths:
-		'jquery': "#{vendorPath}jquery/dist/jquery.min"
-		'lodash': "#{vendorPath}lodash/dist/lodash.underscore.min"
-		'fastclick': "#{vendorPath}fastclick/lib/fastclick"
-		'scout': "#{vendorPath}Scout/jquery.fs.scout"
-		'google-analytics': "//www.google-analytics.com/analytics"
+		'jquery': "../../vendor/jquery/dist/jquery.min"
+		'lodash': "../../vendor/lodash/dist/lodash.underscore.min"
+		'fastclick': "../../vendor/fastclick/lib/fastclick"
+		'scout': "../../vendor/Scout/jquery.fs.scout"
 		'application': './application'
 
 	shim :
 		'lodash': exports: '_'
 		'jquery': exports: '$'
 		'google-analytics': exports: 'ga'
-		'scout': deps: ['jquery', 'google-analytics']
+		'scout': deps: ['jquery']
 		'application': deps: ['lodash', 'jquery', 'scout']
 
 	# this is only for local development, never rely on this

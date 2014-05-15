@@ -2,12 +2,18 @@ body.article,
 body.article-list,
 body.article-detail {
 
-    #article-tags .sub-nav  {
-        text-align: center;
-        li {
-            float: none;
-            display: inline-block;
-        }
-    }
+	#article-tags {
+		.sub-nav  {
+			&:before {
+				float: left;
+			}
+			margin-top: 1em;
+			li {
+				float: left;
+				display: inline-block;
+				line-height: 1;
+			}
+		}
+	}
 }
 

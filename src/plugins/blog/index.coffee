@@ -2,6 +2,7 @@ _ = require 'lodash'
 util = require 'util'
 path = require 'path'
 
+
 module.exports = (env, done) ->
 	preview = env.mode == 'preview'
 
@@ -132,20 +133,13 @@ module.exports = (env, done) ->
 		callback null, archive
 
 
-	# post_defaults =
-	# 	template: "article.jade"
-	# 	root: "articles"
+	class BlogPage extends env.plugins.MarkdownPage
 
-	# post_options = _.extend post_defaults, env.config.blog.post
+		getSlug: ->
+			moment(@metadata.date).format('YYYY-MM-DD')+"/"+@metadata.title.slugify()
 
-	# class BlogpostPage extends env.plugins.MarkdownPage
 
-	# 	getTemplate: ->
-	# 		@metadata.template or post_options.template or super()
+	env.registerContentPlugin 'articles', '**/articles/**/*.*(markdown|mkd|md)', BlogPage
 
-	# 	getFilenameTemplate: ->
-	# 		@metadata.filenameTemplate or post_options.filenameTemplate or super()
-
-	# env.registerContentPlugin 'posts', "#{post_options.root}**/*.*(markdown|mkd|md)", BlogpostPage
 
 	done()

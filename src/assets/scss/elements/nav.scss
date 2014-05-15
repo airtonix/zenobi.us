@@ -69,11 +69,8 @@ html body {
 				& > ul,
 				& > ol {
 					text-align: right;
-					
-					li.h3,
-					li.h4,
-					li.h5,
-					li.h6 {
+					li {
+						list-style: none;
 						small.block {
 							clear: both;
 							display: block;
@@ -82,24 +79,9 @@ html body {
 						}
 					}
 
-					li.h3 {
-						text-indent: 1em;
-					}
-					li.h4,
-					li.h5,
-					li.h6 {
-						text-indent: 1.5em;
-						font-size: 80%;
-						opacity: 0.8;
-					}
-					li.h5 {
-						text-indent: 2em;
-					}
-					li.h6 {
-						text-indent: 2.2em;
-					}
 				}
-				
+
+
 				&.sticky {
 					position: fixed;
 				}
@@ -133,6 +115,12 @@ html body {
 						width: 100%;
 						text-align: left;
 						padding: 1em;
+					}
+
+					li ul,
+					li ol {
+						margin: 0;
+						margin-left: 0.75em;
 					}
 
 					&.enabled {
@@ -187,7 +175,11 @@ html body {
 							display: block;
 							text-align: right;
 						}
-
+						li ul,
+						li ol {
+							margin-left: 0;
+							margin-right: 0.75em;
+						}
 						&.expanded {
 							.toggle,
 							& > ul,

@@ -12,17 +12,14 @@ html(lang='en')
 			meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
 			meta(name='viewport', content='width=device-width')
 			meta(name='mode', content=mode)
-			if analytics
-				each data, name in analytics
-					meta(name='analytics-#{name}-code', content=data.code)
-					meta(name='analytics-#{name}-domain', content=data.domain)
 			title
 				block title
 					!=site.name
 			link(rel='alternate', href=site.url+'/feed.xml', type='application/rss+xml', title=site.name)
 			link(rel='stylesheet', media="print", href='/assets/css/print.css')
 			link(rel='stylesheet', media="screen, projector", href='/assets/css/screen.css')
-			
+			include partial/analytics
+
 	body(id=getMeta(page,'title').slugify(), class=bodyclass)
 
 		header.header

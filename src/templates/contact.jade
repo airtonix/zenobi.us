@@ -1,34 +1,15 @@
 extends page
 
-block aside-html
+block aside
 
 block content-html
-	.text-centered
-		ul.methods.small-block-grid-2.large-block-grid-4
-			li: a(href='http://plus.google.com/+zenobiusjiricek/')
-				em.icon-2x.icon-googleplus-rect
-				br
-				| google+
-			li: a(href='http://twitter.com/airtonix/')
-				em.icon-2x.icon-twitter
-				br
-				| twitter
-			li: a(href='http://au.linkedin.com/in/zenobiusjiricek')
-				em.icon-2x.icon-linkedin
-				br
-				| linkedin
-			li: a(href='tel:+61451075636')
-				em.icon-2x.icon-mobile
-				br
-				| phone
 
 	.column.large-12.large-centered
 		form(method='post',
-			 data-action="submit",
 			 data-module="contact-form",
-			 data-apikey=mandril?mandril.apikey:'',
-			 data-endpoint=mandril?mandril.endpoint:'',
-			 data-scout-event='submit')
+			 data-apikey=mandrill.apikey||'',
+			 data-endpoint=mandrill.endpoint||'',
+			 data-recipients=(mandrill?JSON.stringify(mandrill.recipients.contact):[]))
 			input(name="name", type="text", placeholder="your name", required)
 			input(name="email", type="email", placeholder="your email", required)
 			textarea(name="message", placeholder="your message", rows=7, required)
@@ -53,3 +34,21 @@ block content-html
 				button.button.simple-outline.small(data-action='click', data-emit='[data-module="contact-form"]:reset')  Ok
 
 
+	.text-centered
+		ul.methods.small-block-grid-4.large-block-grid-4
+			li: a(href='http://plus.google.com/+zenobiusjiricek/')
+				em.icon-2x.icon-googleplus-rect
+				br
+				| google+
+			li: a(href='http://twitter.com/airtonix/')
+				em.icon-2x.icon-twitter
+				br
+				| twitter
+			li: a(href='http://au.linkedin.com/in/zenobiusjiricek')
+				em.icon-2x.icon-linkedin
+				br
+				| linkedin
+			li: a(href='tel:+61451075636')
+				em.icon-2x.icon-mobile
+				br
+				| phone

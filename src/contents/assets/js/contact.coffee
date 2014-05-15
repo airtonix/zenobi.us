@@ -18,7 +18,6 @@ define [
 
 				bindEvents: ->
 					super()
-
 					@element.bind 'reset', =>
 						@element.removeClass 'error success sending'
 
@@ -35,6 +34,7 @@ define [
 						@field 'email', 'em@a.il'
 						@field 'name', 'Ema il'
 						@field 'message', 'Message'
+
 					super()
 
 				pending: () ->
@@ -80,8 +80,7 @@ define [
 					if @options.apikey and @modeIs('build')
 						@send payload
 					else
+						console.log "Faking submission"
 						_.chain [@pending, @failure, @success]
 							.map (item) =>
-								item.apply(@)
-						
-							
+								item.apply @

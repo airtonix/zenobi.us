@@ -9,6 +9,7 @@ module.exports =
 		"*/test/*"
 		"**/test/"
 		"**/test/*"
+		"**/_*"
 	]
 
 	plugins: [
@@ -45,7 +46,7 @@ module.exports =
 			root: 'articles'
 			first: 'index.html'
 			perPage: 2
-			template: 'archive.jade'
+			template: 'article-list.jade'
 			filenameTemplate: 'page/:page/index.html'
 
 		article:

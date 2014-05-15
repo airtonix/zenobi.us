@@ -4,13 +4,14 @@ title: Bust the cache out of it
 tags: nodejs, grunt, usemin, cache busting
 date: May 1, 2014
 icon: cloud
+comments: true
 ---
 
 This will be a short one, the topic of cache busting isn't new, it's covered by a wide range of articles. What I'll cover here is the basics and how I tackled a particular scenario.
 
 ---
 
-## Why cache busting?
+### Why cache busting?
 
 It's a strategy made popular due to how the majority of the www internet works, a story told with two major actors:
  - Caching Proxies, many of which exist between your browser and the websites you visit.
@@ -21,7 +22,7 @@ Many of them are configured in different ways, but mostly they exist to alleviat
 The affects on websites isn't apparent until you try to update some external asset files (images, javascript, stylehseets, fonts, etc). When people visit your site in the initial version their browser and all the caching proxies saved copies of the assets. When you updated those assets, your browser and the caching proxies only determine if they need to get a new copy based on a few bits of meta data (most of which the average webserver doesn't deliver). The end result is that your website starts having problems due to incorrect stylesheets, scripts and fonts.
 
 
-## An initial strategy
+### An initial strategy
 
 One of the first solutions to show up in response to this was to simply put a GET parameter after any asset you linked to : 
 
@@ -33,7 +34,7 @@ Here in this example, I'm using preprocessed html templating language `jinja`. S
 
 The problem with this is that some proxies and browsers ignore this and serve the same file again.
 
-## A strategy, robust
+### A strategy, robust
 
 People with more perseverance sought a more robust strategy, one that would guarantee the correct file is delivered.
 
@@ -41,7 +42,7 @@ It starts with the idea that your assets only change if you push new assets into
 
 This is the goal of `grunt-usemin` and `grunt-rev`, two tools used with the Grunt task runner.
 
-### Peculiar problem of relative paths
+#### Peculiar problem of relative paths
 
 The situation is that some of my pages in this website have images generated from something that looks at a directory and says "alrght, lets make a collection of images", other pages I point at the image myself in the markdown. Sometimes it's relative pathing, sometimes absolute.
 
@@ -95,6 +96,8 @@ I believe the important parts are :
   : This overrides the default matching and applies simple pattern matching of my own that allows for matching relative paths, as long as they start with `img/`.
    
 
+### Conclusion
+
 *Is it perfect?*
   : problaby not.
 
@@ -103,8 +106,6 @@ I believe the important parts are :
 
 *What do I think can be improved?*
   :remove the need to be in an `img` folder.
-
-## Conclusion
 
 Without cache busting, your life as a web developer is considerably more stressful. Phone calls, tickets, whispers you shouldn't have to deal with, they all start hanging on your shoulders.
 

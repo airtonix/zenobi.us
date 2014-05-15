@@ -4,18 +4,31 @@ define [
     './plugin'
     ], (_, $, sumatra) ->
         
-        sumatra.exports 'disqus', 
+        class ScriptTagInjector extends sumatra.Plugin
+
+            inject: (target, source) ->
+                $ "<script>"
+                    .attr
+                        type: 'text/javascript'
+                        async: true
+                        src: source
+                    .appendTo target
+
+        sumatra.export 'disqusComments', ->
         
-            class DisqusPlugin
+            class DisqusCommentWidgetPlugin extends ScriptTagInjector
                 defaults:
-                    shortname: null
+                    shortname: ''
                 
                 initialize: ->
-                    $ "<script>"
-                        .attrs
-                            type: 'text/javascript'
-                            async: true
-                            src: "//#{@options.shortname}.disqus.com/embed.js"
-                        .appendTo $ "head"
+                    @inject $("head"), "//#{@options.shortname}.disqus.com/embed.js"
 
-        
+
+        sumatra.export 'disqusCounter', ->
+
+            class DisqusCountIndicatorPlugin extends ScriptTagInjector
+                defaults:
+                    shortname: ''
+
+                initialize: ->
+                    @inject $("head"), "//#{@options.shortname}.disqus.com/count.js"

@@ -4,6 +4,7 @@ title: Wintersmith Plugin. Mounter
 tags: nodejs, wintersmith, plugin
 date: May 11, 2014
 icon: doc
+comments: true
 ---
 
 So I've just created a plugin for wintersmith, aimed at utilising my `bower_components` from outside

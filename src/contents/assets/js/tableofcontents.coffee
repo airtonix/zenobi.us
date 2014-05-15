@@ -22,13 +22,45 @@ define [
 
 					if @headings.length > 0
 						@element.addClass 'enabled'
+						parent = @list
 						@headings.each (index, item) =>
 							heading = $ item
-							@list.append $ "<li class='#{heading.get(0).nodeName.toLowerCase()}'><a href='##{heading.attr('id')}'>#{heading.html()}</a></li>"
+							nodename = heading.get(0).nodeName.toLowerCase()
+							itemDepth = Number nodename.match /\d+/
+							parentDepth = if parent then Number(parent.attr('depth')||0) else 0
+
+							if parentDepth < itemDepth
+								# going down into the chain
+								pointer = @addList heading
+								pointer.attr 'depth', itemDepth
+								pointer.addClass "level-#{itemDepth}"
+								parent.append $("<li>").append pointer
+								pointer.attr 'up', parent
+								parent = pointer
+								dir = "down"
+
+							if parentDepth == itemDepth
+								parent.append @addItem heading
+
+							if parentDepth > itemDepth
+								# back up the chain
+								parent.parent().parent().append @addItem heading
+								parent = parent.parent().parent()
+								dir = "up"
+
+							console.log dir, parentDepth, itemDepth
 
 					else
 						@list.remove()
 						@toggle.remove()
+
+				addList: (heading) ->
+					list = $ "<ul>"
+					list.append @addItem heading
+					list
+
+				addItem: (heading) ->
+					$ "<li><a href='##{heading.attr('id')}'>#{heading.html()}</a></li>"
 
 				bindEvents: ->
 					if @element.hasClass 'enabled'

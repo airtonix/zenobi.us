@@ -1,9 +1,19 @@
-html body form{
-	textarea{
-		&.vertical{
-			resize: vertical;
+html, body {
+	#content {
+		form {
+			textarea,
+			input {
+				// background: red;
+				@include box-shadow(none);
+				border: $button-border-width solid $primary-border-color;
+			}
+
+			textarea{
+				&.vertical{
+					resize: vertical;
+				}
+			}
+
 		}
 	}
-
-
 }
