@@ -67,14 +67,7 @@ define [
 
 						$(document).on 'click.toc', (Event) =>
 							isExpanded = @element.hasClass 'expanded'
-							isElement = Event?.target is @element
-							isChildOfElement = @element.find(Event?.target).length
 							isToggle = Event?.target is @toggle.get(0) or @toggle.find(Event?.target).length
-
-							console.log "isExpanded", isExpanded
-							console.log "isElement", isElement
-							console.log "isToggle", isToggle
-							console.log "isChildOfElement", isChildOfElement
 
 							if isToggle
 								@element.toggleClass 'expanded'
