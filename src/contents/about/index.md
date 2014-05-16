@@ -9,9 +9,11 @@ headerClass: large-centered
 ---
 
 I am an ethusiasitc, quality driven individual with over 5 years combined industry experience
-with web development. I constantly strive to expand my repotoire by learning new frameworks, strategies and techniques, but overall my goal is to establish robustly scalable and maintainable architecture that results higher team participation and lower technical debit.
+in web development. I constantly strive to expand my repotoire by learning new frameworks, strategies and techniques, but overall my goal is to establish robustly scalable and maintainable architecture that results in higher team participation and lower technical debit.
 
-I am searching for a team where each of us are at the top of their game and like myself, also keen improve area of expertise. At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate pretty much anywhere in the world. I would however, welcome the chance to become part of a distributed team that enjoys modern workflows.
+I am searching of a team where each of us are at the top of their game, constantly improving our area of expertise and generating new knowledge. I'm familiar with most workflows and modern opensource frameworks, however I prefer to work with Coffeescript over plain Javascript, AngularJs instead of Backbon, Django instead of Laravel, ORMs instead of getting bogged down in SQL, Scss instead of LessCSS an Zurb Foundation over Bootstrap.
+
+At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate pretty much anywhere in the world. However, since I can adapt to most timezones, I would welcome the chance to become part of a distributed team that enjoys modern workflows.
 
 
 ### Overview
