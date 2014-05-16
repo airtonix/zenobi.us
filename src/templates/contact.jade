@@ -8,6 +8,7 @@ block content-html
 		form(method='post',
 			 data-module="contact-form",
 			 data-apikey=mandrill.apikey||'',
+			 data-subject='Contact Form Enquiry',
 			 data-endpoint=mandrill.endpoint||'',
 			 data-recipients=(mandrill?JSON.stringify(mandrill.recipients.contact):[]))
 			input(name="name", type="text", placeholder="your name", required)

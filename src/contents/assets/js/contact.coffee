@@ -37,18 +37,24 @@ define [
 
 					super()
 
-				pending: () ->
+				pending: ->
 					@element.removeClass 'error success'
 					@element.addClass 'sending'
 
 				send: (data) ->
-					$.post @options.endpoint, payload
+					$.post @options.endpoint, data
 						.done @success
 						.fail @failure
 
-				success: (response) =>
-					@element.removeClass 'error sending'
-					@element.addClass 'success'
+				success: (response)=>
+					if response?[0].reject_reason
+						@failure response
+
+					else if response?[0].status is 'sent'
+						@element.removeClass 'error sending'
+						@element.addClass 'success'
+					else
+						@failure response
 
 				failure: (response) =>
 					@element.removeClass 'sending success'
@@ -56,6 +62,7 @@ define [
 
 				perform: (Event) =>
 					Event.preventDefault()
+					@pending()
 
 					from_subject = @options.subject
 					from_message = @field 'message'
@@ -72,14 +79,15 @@ define [
 							from_name: from_name
 							subject: from_subject
 							tags: @options.tags
-							to: @options.recipents
+							to: @options.recipients
 							headers: _.extend headers, @options.headers or {}
 
 					@element.ajaxSend @pending
 
-					if @options.apikey and @modeIs('build')
+					if @options.apikey
 						@send payload
-					else
+
+					else if @options.fake
 						console.log "Faking submission"
 						_.chain [@pending, @failure, @success]
 							.map (item) =>

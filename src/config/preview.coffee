@@ -11,6 +11,3 @@ module.exports = _.merge base,
 			google:
 				code: 'UA-TEST-0'
 				domain: 'nova.jiricek.info'
-
-		mandrill: _.merge base.locals.mandrill,
-			apikey: 'TEST'

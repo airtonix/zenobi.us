@@ -22,7 +22,7 @@ I'm in Adelaide, Australia, born in Sydney.
 - 4yrs experience with Python and Django.
 - 3yrs creating Drupal & Wordpress websites.
 - 2yr utilising Sass and Compass with Zurb Foundation.
-- 1.5yrs experience working with AngularJs, Grunt, NodeJs
+- 1.5yrs experience working with AngularJs, Grunt, NodeJs, ExpressJs
 - 9yrs using Linux for Server and Desktop environments, ranging from Gaming, Graphic Design and Programming
 - 3.5yrs experience as a Team Leader
 - 3yrs deploying and provisioning  horizontal scalable web applications on AWS Ec2, Heroku, Openshift, Digital Ocean
