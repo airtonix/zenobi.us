@@ -62,8 +62,6 @@ define [
 
 				bindEvents: ->
 					if @element.hasClass 'enabled'
-						# @toggle.on @action, =>
-						# 	@element.toggleClass 'expanded'
 
 						$(document).on 'click.toc', (Event) =>
 							isExpanded = @element.hasClass 'expanded'
