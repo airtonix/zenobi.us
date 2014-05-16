@@ -15,19 +15,22 @@ html body {
 			@include border-bottom-radius(50%);
 		}
 		
-		&.medium {
-			width: 75%;
-			height: 75%;
-		}
+		&:not(.lightbox-image-opened) {
+			&.medium {
+				width: 75%;
+				height: 75%;
+			}
 
-		&.small {
-			width: 50%;
-			height: 50%;
-		}
+			&.small {
+				width: 50%;
+				height: 50%;
+			}
 
-		&.tiny {
-			width: 25%;
-			height: 25%;
+			&.tiny {
+				width: 25%;
+				height: 25%;
+			}
+			
 		}
 		
 
