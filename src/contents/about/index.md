@@ -8,12 +8,11 @@ bannerClass: rounded centered tiny
 headerClass: large-centered
 ---
 
-I am an ethusiasitc, quality driven individual with over 5 years combined industry experience
-in web development. I constantly strive to expand my repotoire by learning new frameworks, strategies and techniques, but overall my goal is to establish robustly scalable and maintainable architecture that results in higher team participation and lower technical debit.
+I am an enthusiastic, quality driven individual with over 9 years combined industry experience in web development. I constantly strive to expand my repertoire by learning new frameworks, strategies and techniques, but overall my goal is to establish robustly scalable and maintainable architecture that results in higher team participation and lower technical debit.
 
-I am searching of a team where each of us are at the top of their game, constantly improving our area of expertise and generating new knowledge. I'm familiar with most workflows and modern opensource frameworks, however I prefer to work with [Coffeescript][lang-coffee] over plain Javascript, [AngularJs][framework-angular] instead of [Backbone][framework-backbone], [Python][lang-python] instead of [PHP][lang-php], ORMs instead of getting bogged down in SQL, [Scss][lang-scss] instead of [LessCSS][lang-lesscss] an [Zurb Foundation][framework-zurb] over [Bootstrap][framework-bootstrap].
+I am searching of a team where each of us are at the top of their game, constantly improving our area of expertise and generating new knowledge. I'm familiar with most workflows and modern opensource frameworks, however I prefer to work with Coffeescript over plain Javascript, AngularJs instead of Backbone, Python instead of PHP, ORMs instead of getting bogged down in SQL, Scss instead of LessCSS an Zurb Foundation over Bootstrap.
 
-At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate pretty much anywhere in the world. However, since I can adapt to most timezones, I would welcome the chance to become part of a distributed team that enjoys modern workflows.
+At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate pretty much anywhere in the world. However, since I can adapt to most time-zones, I would welcome the chance to become part of a distributed team that enjoys modern workflows.
 
 
 ### Overview
