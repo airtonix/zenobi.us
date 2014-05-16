@@ -5475,13 +5475,13 @@ html body img.th, html body img.banner {
     border-top-right-radius: 50%;
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%; }
-  html body img.th.medium, html body img.banner.medium {
+  html body img.th:not(.lightbox-image-opened).medium, html body img.banner:not(.lightbox-image-opened).medium {
     width: 75%;
     height: 75%; }
-  html body img.th.small, html body img.banner.small {
+  html body img.th:not(.lightbox-image-opened).small, html body img.banner:not(.lightbox-image-opened).small {
     width: 50%;
     height: 50%; }
-  html body img.th.tiny, html body img.banner.tiny {
+  html body img.th:not(.lightbox-image-opened).tiny, html body img.banner:not(.lightbox-image-opened).tiny {
     width: 25%;
     height: 25%; }
   html body img.th.left, html body img.th.right, html body img.banner.left, html body img.banner.right {
