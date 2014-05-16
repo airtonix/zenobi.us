@@ -34,23 +34,22 @@ block content-html
 					small Something went wrong whilst sending your message.
 				button.button.simple-outline.small(data-action='click', data-emit='[data-module="contact-form"]:reset')  Ok
 
-	.row
-		.column.large-8.large-centered
-			.textual-divider
-				label Or
+	.column.large-12.large-centered
+		.textual-divider
+			label Or
 
-			.text-centered
-				ul.methods.small-block-grid-2.large-block-grid-2
-					li: a(href='tel:+61451075636')
-						em.icon-2x.icon-mobile
-						br
-						| phone
-					li: a(href='skype:zenobius.jiricek')
-						em.icon-2x.icon-skype
-						br
-						| skype
+		.text-centered
+			ul.methods.small-block-grid-2.large-block-grid-2
+				li: a(href='tel:+61451075636')
+					em.icon-2x.icon-mobile
+					br
+					| phone
+				li: a(href='skype:zenobius.jiricek')
+					em.icon-2x.icon-skype
+					br
+					| skype
 
-					li
-						script(type="text/javascript" src="https://apis.google.com/js/platform.js")
-						.g-hangout(data-render="createhangout",
-								   data-invites="[{id: '114829468319402504031', invite_type: 'PROFILE'}]")
+				li
+					script(type="text/javascript" src="https://apis.google.com/js/platform.js")
+					.g-hangout(data-render="createhangout",
+							   data-invites="[{id: '114829468319402504031', invite_type: 'PROFILE'}]")
