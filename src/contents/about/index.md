@@ -11,7 +11,7 @@ headerClass: large-centered
 I am an ethusiasitc, quality driven individual with over 5 years combined industry experience
 in web development. I constantly strive to expand my repotoire by learning new frameworks, strategies and techniques, but overall my goal is to establish robustly scalable and maintainable architecture that results in higher team participation and lower technical debit.
 
-I am searching of a team where each of us are at the top of their game, constantly improving our area of expertise and generating new knowledge. I'm familiar with most workflows and modern opensource frameworks, however I prefer to work with Coffeescript over plain Javascript, AngularJs instead of Backbon, Django instead of Laravel, ORMs instead of getting bogged down in SQL, Scss instead of LessCSS an Zurb Foundation over Bootstrap.
+I am searching of a team where each of us are at the top of their game, constantly improving our area of expertise and generating new knowledge. I'm familiar with most workflows and modern opensource frameworks, however I prefer to work with [Coffeescript][lang-coffee] over plain Javascript, [AngularJs][framework-angular] instead of [Backbone][framework-backbone], [Python][lang-python] instead of [PHP][lang-php], ORMs instead of getting bogged down in SQL, [Scss][lang-scss] instead of [LessCSS][lang-lesscss] an [Zurb Foundation][framework-zurb] over [Bootstrap][framework-bootstrap].
 
 At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate pretty much anywhere in the world. However, since I can adapt to most timezones, I would welcome the chance to become part of a distributed team that enjoys modern workflows.
 
@@ -19,32 +19,31 @@ At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate p
 ### Overview
 
 - 13yrs hand coding HTML, CSS & Javascript.
-- 6yrs Utilising Git.
-- 4yrs experience with Python and Django.
-- 3yrs creating Drupal & Wordpress websites.
-- 2yr utilising Sass and Compass with Zurb Foundation.
-- 1.5yrs experience working with AngularJs, Grunt, NodeJs, ExpressJs
+- 6yrs Utilising [Git][tool-git].
+- 4yrs experience with [Python][lang-python] and [Django][framework-django].
+- 3yrs creating [Drupal][cms-drupal] & [Wordpress][cms-wordpress] websites.
+- 2yr utilising [Sass][lang-scss] and [Compass][framework-compass] with [Zurb Foundation][framework-zurb].
+- 1.5yrs experience working with [AngularJs][framework-angular], [GruntJs][framework-grunt], [NodeJs][engine-nodejs], [ExpressJs][framework-express]
 - 9yrs using Linux for Server and Desktop environments, ranging from Gaming, Graphic Design and Programming
 - 3.5yrs experience as a Team Leader
-- 3yrs deploying and provisioning  horizontal scalable web applications on AWS Ec2, Heroku, Openshift, Digital Ocean
+- 3yrs deploying and provisioning  horizontal scalable web applications on [AWS Ec2][iaas-ec2], [Heroku][paas-heroku], [Openshift][paas-openshift], [Digital Ocean][paas-digitalocean]
 
 
 ### Notable Projects
 
 #### Applications
- - [epochdb](http://airtonix.github.io/epochdb/)
+ - [epochdb][project-epochdb]
 
 #### Django
- - [django-ikari](http://github.com/airtonix/django-ikari/)
- - [django-puraibeto](http://github.com/airtonix/django-puraibeto/)
- - [cmsplugin-configurableproduct](http://github.com/airtonix/cmsplugin-configurableproduct/)
- - [ansible-django](http://github.com/airtonix/ansible-django/)
+ - [django-ikari][project-ikari]
+ - [django-puraibeto][project-puraibeto]
+ - [ansible-django][project-ansibledjango]
 
 #### AngularJs
- - [angular-named-routes](http://github.com/airtonix/angular-named-routes)
+ - [angular-named-routes][project-namedroutes]
 
 #### NodeJs
- - [wintersmith-mount](http://github.com/airtonix/wintersmith-mounter/)
+ - [wintersmith-mount][project-mounter]
 
 
 ### Experience
@@ -55,8 +54,8 @@ At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate p
 
 **Frontend Developer for Muvli**
 
-* Develop frontend design using AngularJs and Ratchet
-* Prototype RESTful api using Apiary
+* Develop frontend design using [AngularJs][framework-angular] and [Ratchet][framework-ratchet]
+* Prototype RESTful api using [Apiary][saas-apiary]
 
 
 ##### 2012-2013
@@ -64,12 +63,12 @@ At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate p
 **CTO & Product Design, Zibmedia**
 
 * Team manager tasked with organising copywriting, quality control, online marketing and design
-* Organised Chef and Puppet to automate deployment and configuration of all the workstations
+* Organised [Chef][tool-chef], [Puppet][tool-puppet] and [Ansible][tool-ansible] to automate deployment and configuration of all the workstations
 * Pioneered a few opensource django applications used in clients websites and zibmedia owned products
-* Contributed to opensource projects: DjangoCMS, DjangoShop, DjangoOscar
+* Contributed to opensource projects: [DjangoCMS][cms-djangocms], [DjangoShop][ecommerce-djangoshop], [DjangoOscar][ecommerce-djangooscar]
 * Plan & Develop several new products: Jobsite, Zibcode, Jetts
-	* Used AngularJS for the entire frontend
-	* Django with the RESTful backend (tastypie * guardianpie)
+	* Used [AngularJS][framework-angular] for the entire frontend
+	* Django with the RESTful backend ([tastypie][framework-tastypie], guardianpie)
 
 ##### 2011
 
@@ -81,7 +80,7 @@ At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate p
 * Enforced the use of PEP8
 * Initiated the hiring of copywriter, marketing and additional programmers
 * Utilised Haystack, ElasticSearch for search
-* Built custom CRM from scratch using Django and Bootstrap
+* Built custom CRM from scratch using [Django][framework-django] and [Bootstrap][framework-bootstrap]
 
 
 ##### 2010
@@ -223,3 +222,48 @@ Book Agencies of Adelaide
 * Metro Housing
 	* Advanced Website Programming
 
+
+
+[framework-angular]: http://angularjs.org/
+[framework-backbone]: http://backbonejs.org/
+[framework-zurb]: http://foundation.zurb.com/
+[framework-bootstrap]: http://getbootstrap.com/
+[framework-django]: http://django-project.org/
+[framework-compass]: http://compass-style.org/
+[framework-grunt]: http://gruntjs.com/
+[framework-express]: http://expressjs.com/
+[framework-ratchet]: http://goratchet.com/
+[framework-tastypie]: http://tastypieapi.org/
+
+[iaas-ec2]: http://aws.amazon.com/ec2/
+[paas-heroku]: http://heroku.com/
+[paas-openshift]: http://openshift.com/
+[paas-digitalocean]: http://digitalocean.com/
+
+[tool-git]: http://git-scm.com/
+[tool-puppet]: http://puppetlabs.com/
+[tool-chef]: http://getchef.com/chef/
+[tool-ansible]: http://github.com/ansible/ansible
+
+[lang-coffee]: http://coffeescript.org/
+[lang-python]: http://python.org/
+[lang-php]: http://php.net/
+[lang-lesscss]: http://lesscss.org/
+[lang-scss]: http://sass-lang.com/
+
+[engine-nodejs]: http://nodejs.org/
+
+[cms-drupal]: http://drupal.org/
+[cms-wordpress]: http://wordpress.org/
+[cms-djangocms]: http://django-cms.org/
+[ecommerce-djangoshop]: http://django-cms.org/en/e-commerce/
+[ecommerce-djangooscar]: http://github.com/tangentlabs/django-oscar/
+
+[saas-apiary]: http://apiary.io/
+
+[project-epochdb]: http://airtonix.github.io/epochdb/
+[project-ikari]: http://github.com/airtonix/django-ikari/
+[project-puraibeto]: http://github.com/airtonix/django-puraibeto/
+[project-ansibledjango]: http://github.com/airtonix/ansible-django/
+[project-namedroutes]: http://github.com/airtonix/angular-named-routes
+[project-mounter]: http://github.com/airtonix/wintersmith-mounter/
