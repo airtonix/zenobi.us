@@ -115,6 +115,17 @@ html body {
 						width: 100%;
 						text-align: left;
 						padding: 1em;
+
+						ul > li > a{
+							font-weight: normal;
+							text-transform: lowercase;
+							color: darken($gentle, 20%);
+						}
+						ul[depth="3"] > li > a{
+							text-transform: uppercase;
+							color: $firm;
+						}
+
 					}
 
 					li ul,
