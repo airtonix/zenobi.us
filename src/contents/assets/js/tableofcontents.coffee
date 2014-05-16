@@ -48,8 +48,6 @@ define [
 								parent = parent.parent().parent()
 								dir = "up"
 
-							console.log dir, parentDepth, itemDepth
-
 					else
 						@list.remove()
 						@toggle.remove()
@@ -64,7 +62,23 @@ define [
 
 				bindEvents: ->
 					if @element.hasClass 'enabled'
-						@toggle.on @action, =>
-							@element.toggleClass 'expanded'
+						# @toggle.on @action, =>
+						# 	@element.toggleClass 'expanded'
+
+						$(document).on 'click.toc', (Event) =>
+							isExpanded = @element.hasClass 'expanded'
+							isElement = Event?.target is @element
+							isChildOfElement = @element.find(Event?.target).length
+							isToggle = Event?.target is @toggle.get(0) or @toggle.find(Event?.target).length
+
+							console.log "isExpanded", isExpanded
+							console.log "isElement", isElement
+							console.log "isToggle", isToggle
+							console.log "isChildOfElement", isChildOfElement
+
+							if isToggle
+								@element.toggleClass 'expanded'
+							else if isExpanded
+								@element.removeClass 'expanded'
 
 			return TableOfContents

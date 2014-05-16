@@ -35,7 +35,21 @@ body {
 		text-align: center;
 		& > .row {
 			&:before {
+				width: 100%;
 				border-top: 1px solid $primary-tint;
+			}
+		}
+		@media #{$small-only} {
+			.sub-nav {
+				width: 75%;
+				display: inline-flex;
+				li {
+					text-align: center;
+					display: inline-flex;
+					margin-left: 0;
+					width: 25%;
+					a { width: 100%; }
+				}
 			}
 		}
 	}
@@ -92,7 +106,7 @@ body.page {
 		min-height: 4em;
 
 		@media #{$small-up} {
-			.hero {
+			.hero:not(.large-centered) {
 				text-align: inherit;
 				h1 {
 					margin-left: 1.4em;

@@ -32,23 +32,16 @@ module.exports = (grunt) ->
         scss: true
         force: true
         zip: "./.grunt/fontello"
-
-      build:
-        options:
-          fonts: "<%= paths.build %>/assets/font"
-          styles: "<%= paths.build %>/assets/css/font"
-
-      dev:
-        options:
-          fonts: "<%= paths.src %>/contents/assets/font"
-          styles: "<%= paths.src %>/templates/assets/css/font"
+        fonts: "<%= paths.src %>/contents/assets/font"
+        styles: "<%= paths.src %>/assets/scss/font"
 
     clean:
       all:
         src: [
           "./*"
+          "./src/{,**/}.tmp/"
           "!./{src,node_modules,bower_components}"
-          "!./{package.json,.bowerrc,bower.json,.gitignore}"
+          "!./{package.json,.bowerrc,bower.json,.gitignore,.git}"
           "!./{Gruntfile,app}.coffee"
           "!./readme.md"
           "!./CNAME"

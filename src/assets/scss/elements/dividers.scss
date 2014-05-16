@@ -1,0 +1,26 @@
+.textual-divider {
+	text-align: center;
+	height: 1em;
+	margin: 0.6em auto;
+
+	label {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		&:before,
+		&:after {
+			content: " ";
+			display: block;
+			width: 40%;
+			position: absolute;
+			left: 0;
+			top: 0.5em;
+			border-top: $button-border-width solid $primary-border-color;
+			height: $button-border-width;
+		}
+		&:after {
+			right: 0;
+			left: auto;
+		}
+	}
+}
