@@ -5549,17 +5549,29 @@ body {
     color: #526368;
     text-align: center; }
     body footer#site-footer > .row:before {
+      width: 100%;
       border-top: 1px solid #f5f7f7; }
+    @media only screen and (max-width: 40em) {
+      body footer#site-footer .sub-nav {
+        width: 75%;
+        display: inline-flex; }
+        body footer#site-footer .sub-nav li {
+          text-align: center;
+          display: inline-flex;
+          margin-left: 0;
+          width: 25%; }
+          body footer#site-footer .sub-nav li a {
+            width: 100%; } }
 
 body.page #page-header {
   width: 100%;
   min-height: 4em; }
   @media only screen {
-    body.page #page-header .hero {
+    body.page #page-header .hero:not(.large-centered) {
       text-align: inherit; }
-      body.page #page-header .hero h1 {
+      body.page #page-header .hero:not(.large-centered) h1 {
         margin-left: 1.4em; }
-        body.page #page-header .hero h1:before {
+        body.page #page-header .hero:not(.large-centered) h1:before {
           float: left;
           margin-left: -1.5em;
           line-height: 1.4; } }
