@@ -10,7 +10,7 @@ headerClass: large-centered
 
 I am an enthusiastic, quality driven individual with over 9 years combined industry experience in web development. I constantly strive to expand my repertoire by learning new frameworks, strategies and techniques, but overall my goal is to establish robustly scalable and maintainable architecture that results in higher team participation and lower technical debit.
 
-I am searching of a team where each of us are at the top of their game, constantly improving our area of expertise and generating new knowledge. I'm familiar with most workflows and modern opensource frameworks, however I prefer to work with Coffeescript over plain Javascript, AngularJs instead of Backbone, Python instead of PHP, ORMs instead of getting bogged down in SQL, Scss instead of LessCSS an Zurb Foundation over Bootstrap.
+I am in search of a team where each of us are at the top of their game, constantly improving our area of expertise and generating new knowledge. I'm familiar with most workflows and modern opensource frameworks, however I prefer to work with Coffeescript over plain Javascript, AngularJs instead of Backbone, Python instead of PHP, Django over most NodeJs frameworks, ORMs instead of getting bogged down in SQL, Scss instead of LessCSS an Zurb Foundation over Bootstrap. These are not concrete determinations however, from time to time I revisit old turning points in my academic journey to gain new insights.
 
 At the moment I'm in Adelaide, Australia where I enjoy the freedom to relocate pretty much anywhere in the world. However, since I can adapt to most time-zones, I would welcome the chance to become part of a distributed team that enjoys modern workflows.
 
