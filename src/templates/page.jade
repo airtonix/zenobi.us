@@ -22,5 +22,5 @@ block content
 					block aside-html
 						.side-nav.toc(data-module='toc sticky', data-content="#page-content > .content", data-toggle=".toggle")
 							a.link(href="../", title="Back"): span.icon-left-open-outline
-							a.link.sticky-only(href="##{page.title.slugify()}", title="Top"): span.icon-up-outline
+							a.link.sticky-only(href="##{slugify(page.title)}", title="Top"): span.icon-up-outline
 							a.link.toggle(title="Table of contents"): span.icon-flow-split

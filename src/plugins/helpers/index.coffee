@@ -11,14 +11,15 @@ module.exports = (env, done) ->
 
 		pageIcon: (page) ->
 			if page and page.metadata and page.metadata.icon
-				return "icon-#{page.metadata.icon}"
+        return ["icon-#{icon} " for icon in page.metadata.icon.split ","]
+
 			else
 				return ""
 
 		toJson: (obj) ->
 			util.inspect obj
 
-		# Resolve url relative to site root 
+		# Resolve url relative to site root
 		url: (p) ->
 			url.resolve env.locals.url, p
 

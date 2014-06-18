@@ -25,7 +25,7 @@ define [
 						parent = @list
 						@headings.each (index, item) =>
 							heading = $ item
-							nodename = heading.get(0).nodeName.toLowerCase()
+							nodename = heading.get(0)?.nodeName.toLowerCase()
 							itemDepth = Number nodename.match /\d+/
 							parentDepth = if parent then Number(parent.attr('depth')||0) else 0
 

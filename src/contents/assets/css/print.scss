@@ -1,14 +1,40 @@
 @import "fonts.scss";
 @import "config.scss";
-@import "foundation/scss/normalize.scss";
+
+@import "foundation/scss/foundation.scss";
 @import "bourbon/app/assets/stylesheets/_bourbon.scss";
+
 @import "mixins.scss";
+@import "elements.scss";
+@import "pages.scss";
 
-body{
-	background: white;
-	color: #999;
+@media print {
 
-	h1,h2,h3,h4,h5{
-		color: #666;
+	html body {
+		* {
+			color: $firm;
+			font-size: 95%;
+		}
+
+		header#header { display:none; }
+		article#content {
+			margin-top: 0;
+			padding-top: 0;
+			margin: auto 2em;
+
+			#page-header {
+				.hero {
+					h1 {
+						text-align: left;
+						&:before { display: none; }
+						img { display: none; }
+					}
+				}
+			}
+
+			.aside { display: none; }
+		}
+		footer { display: none; }
 	}
+
 }

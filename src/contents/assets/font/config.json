@@ -7,10 +7,142 @@
   "ascent": 850,
   "glyphs": [
     {
+      "uid": "c64623255a4a7c72436b199b05296c4f",
+      "css": "emo-happy",
+      "code": 59393,
+      "src": "fontelico"
+    },
+    {
+      "uid": "1ba44825e5f10920b4e3f1d0c73f79a2",
+      "css": "emo-wink",
+      "code": 59481,
+      "src": "fontelico"
+    },
+    {
+      "uid": "4bb2045a2aca451705fe8a23c4a576ab",
+      "css": "emo-wink2",
+      "code": 59482,
+      "src": "fontelico"
+    },
+    {
+      "uid": "53ed8570225581269cd7eff5795e8bea",
+      "css": "emo-unhappy",
+      "code": 59483,
+      "src": "fontelico"
+    },
+    {
+      "uid": "fd59eac4d575b48eb156590b63a355fd",
+      "css": "emo-sleep",
+      "code": 59484,
+      "src": "fontelico"
+    },
+    {
+      "uid": "142263941b9f4cd4b2b84f1f4cd13b1d",
+      "css": "emo-thumbsup",
+      "code": 59485,
+      "src": "fontelico"
+    },
+    {
+      "uid": "4dd56d61fd0dab19277824da301424b3",
+      "css": "emo-devil",
+      "code": 59486,
+      "src": "fontelico"
+    },
+    {
+      "uid": "68e298ff2d8b25dd7f647ed64f5ae690",
+      "css": "emo-surprised",
+      "code": 59487,
+      "src": "fontelico"
+    },
+    {
+      "uid": "bb68a13a3574b087d4350eff0b8d48e3",
+      "css": "emo-tongue",
+      "code": 59488,
+      "src": "fontelico"
+    },
+    {
+      "uid": "48cc210e59ff4bc56b6c8fba6eb384b8",
+      "css": "emo-coffee",
+      "code": 59489,
+      "src": "fontelico"
+    },
+    {
+      "uid": "078fec38562c3f83a1201a908040c141",
+      "css": "emo-sunglasses",
+      "code": 59490,
+      "src": "fontelico"
+    },
+    {
+      "uid": "043b585886018be7408f4c77c1a3759c",
+      "css": "emo-displeased",
+      "code": 59491,
+      "src": "fontelico"
+    },
+    {
+      "uid": "3a900d0e9f43f5409211f62bec557379",
+      "css": "emo-beer",
+      "code": 59492,
+      "src": "fontelico"
+    },
+    {
+      "uid": "cbc328d1c779a2b9e3b1199d904199a5",
+      "css": "emo-grin",
+      "code": 59493,
+      "src": "fontelico"
+    },
+    {
+      "uid": "f0d3ad15d020cf187d42dd3b2295b65c",
+      "css": "emo-angry",
+      "code": 59494,
+      "src": "fontelico"
+    },
+    {
+      "uid": "5195e2dcb4a63fbb8c09896a8058f6ab",
+      "css": "emo-saint",
+      "code": 59495,
+      "src": "fontelico"
+    },
+    {
+      "uid": "04688d76a33ce7a7950e40fae79c08ac",
+      "css": "emo-cry",
+      "code": 59496,
+      "src": "fontelico"
+    },
+    {
+      "uid": "4843d0d6050dd508d4c101a334f46db2",
+      "css": "emo-shoot",
+      "code": 59497,
+      "src": "fontelico"
+    },
+    {
+      "uid": "fc92480dedc439d274d4e3e4b425edf4",
+      "css": "emo-squint",
+      "code": 59498,
+      "src": "fontelico"
+    },
+    {
+      "uid": "2bd5f98482d86649958312ea2ab5bb40",
+      "css": "emo-laugh",
+      "code": 59499,
+      "src": "fontelico"
+    },
+    {
       "uid": "ce3cf091d6ebd004dd0b52d24074e6e3",
       "css": "help",
       "code": 59392,
       "src": "fontawesome"
+    },
+    {
+      "uid": "0133387f2069a1b3168942b84d81dd3a",
+      "css": "gamepad",
+      "code": 59479,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "b1c81b3df9f4a9b8c393f405bb5293d8",
+      "css": "music-outline",
+      "code": 59480,
+      "src": "typicons"
     },
     {
       "uid": "6a7ed3214c9049148cbdb01825e5efc2",
@@ -127,6 +259,30 @@
       "src": "typicons"
     },
     {
+      "uid": "4d3a91e6b0db6e03acaa74a861e2ab95",
+      "css": "desktop-2",
+      "code": 59509,
+      "src": "typicons"
+    },
+    {
+      "uid": "eea1af32a01c5e7a9ce5675bcff64a7b",
+      "css": "laptop-1",
+      "code": 59510,
+      "src": "typicons"
+    },
+    {
+      "uid": "c710cda53f5e1f8705865d453b7f323f",
+      "css": "tablet-1",
+      "code": 59511,
+      "src": "typicons"
+    },
+    {
+      "uid": "gz5flrq210wzbyafnerm4e0aublo7qwb",
+      "css": "mobile-2",
+      "code": 59512,
+      "src": "typicons"
+    },
+    {
       "uid": "da6c4728f6175a4b99b122274b8f921c",
       "css": "flow-split",
       "code": 59449,
@@ -151,9 +307,45 @@
       "src": "typicons"
     },
     {
+      "uid": "0fg01d4656jzluy9fz6ee4ohdd3nt2pe",
+      "css": "flask",
+      "code": 59507,
+      "src": "typicons"
+    },
+    {
+      "uid": "935dd4069330896913745bbdd9699b0e",
+      "css": "wine",
+      "code": 59508,
+      "src": "typicons"
+    },
+    {
+      "uid": "8f73806c205d38d9412c340f93ed0c7a",
+      "css": "coffee",
+      "code": 59506,
+      "src": "typicons"
+    },
+    {
+      "uid": "c2e02247804b8372740de0b76311f1ad",
+      "css": "beer",
+      "code": 59505,
+      "src": "typicons"
+    },
+    {
+      "uid": "8f47f269b2667fb9b661e950a9599e26",
+      "css": "puzzle-outline",
+      "code": 59504,
+      "src": "typicons"
+    },
+    {
       "uid": "8bf56386082752a2acc88a1ddf6851a8",
       "css": "at",
       "code": 59443,
+      "src": "typicons"
+    },
+    {
+      "uid": "758801555b61307e51e333e9d62d53ba",
+      "css": "dribbble",
+      "code": 59503,
       "src": "typicons"
     },
     {
@@ -175,8 +367,14 @@
       "src": "typicons"
     },
     {
-      "uid": "b2178b8fca35bac9e4bfcea4a4c05a92",
-      "css": "linkedin-circled",
+      "uid": "25a30265650b260ef03df4cbbff80272",
+      "css": "linkedin-1",
+      "code": 59500,
+      "src": "typicons"
+    },
+    {
+      "uid": "178c8af85364e12fe70b959c7c055bc6",
+      "css": "pinterest",
       "code": 59444,
       "src": "typicons"
     },
@@ -193,9 +391,21 @@
       "src": "typicons"
     },
     {
+      "uid": "4a0984f0fb3fd89dd5bdd923f2ff8e45",
+      "css": "tumbler",
+      "code": 59501,
+      "src": "typicons"
+    },
+    {
       "uid": "4568bba1dba45522fc539c733c9b35e5",
       "css": "twitter",
       "code": 59447,
+      "src": "typicons"
+    },
+    {
+      "uid": "3315691c918224dc4893f2e368a4e0c8",
+      "css": "vimeo-1",
+      "code": 59502,
       "src": "typicons"
     },
     {
@@ -239,12 +449,6 @@
       "css": "linkedin",
       "code": 59463,
       "src": "brandico"
-    },
-    {
-      "uid": "572c9ded6a688698dc275b30ff30fefa",
-      "css": "music",
-      "code": 59393,
-      "src": "linecons"
     },
     {
       "uid": "9725db89b610135dc76cd8a21afffa83",

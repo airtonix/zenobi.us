@@ -24,16 +24,18 @@ module.exports = (grunt) ->
 
       dist:
         options:
-          base: '<%= paths.dist %>'
+          base: "<%= paths.dist %>"
 
     fontello:
       options:
-        config: "<%= paths.src %>/contents/assets/font/fontello.json"
+        config: "<%= paths.src %>/contents/assets/font/config.json"
         scss: true
         force: true
         zip: "./.grunt/fontello"
-        fonts: "<%= paths.src %>/contents/assets/font"
-        styles: "<%= paths.src %>/assets/scss/font"
+      build:
+        options:
+          fonts: "<%= paths.src %>/contents/assets/font"
+          styles: "<%= paths.src %>/assets/scss/font"
 
     clean:
       all:
@@ -106,7 +108,7 @@ module.exports = (grunt) ->
           replaceRequireScript: [
             files: ['<%= paths.dist %>/**/*.html']
             module: '/assets/js/boot'
-            modulePath: '/assets/js/application',
+            modulePath: '/assets/js/application'
           ]
 
 
@@ -143,8 +145,8 @@ module.exports = (grunt) ->
 
     filerev:
       options:
-        encoding: 'utf8',
-        algorithm: 'md5',
+        encoding: 'utf8'
+        algorithm: 'md5'
         length: 8
         copy: false
 
@@ -224,7 +226,7 @@ module.exports = (grunt) ->
       @data.options.async = async
 
     klass = require './src/app'
-    wintersmith = new klass(@data.options)
+    wintersmith = new klass @data.options
     wintersmith.start()
 
 
@@ -235,6 +237,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask "test", [
     'clean:all'
+    'fontello:build'
     'wintersmith:test'
     'compile'
     'connect:dist'

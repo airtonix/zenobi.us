@@ -42,16 +42,17 @@ module.exports =
 		]
 
 	blog:
-		archive:
-			root: 'articles'
-			first: 'index.html'
-			perPage: 2
-			template: 'article-list.jade'
-			filenameTemplate: 'page/:page/index.html'
-
 		article:
-			template: 'article.jade'
-			filenameTemplate: '/:year/:month/:day/:file/index.html'
+			source: 'articles'
+
+		paginator:
+			source: 'articles'
+			mount: 'articles'
+			filename: 'articles'
+
+		tags:
+			source: 'articles'
+			mount: 'tags'
 
 	jade:
 		pretty: true

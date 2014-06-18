@@ -9,20 +9,35 @@ mixin timeline(articles)
 						- each Article in Articles
 							li.article-label= Article
 
-mixin pagination(page, archive)
-	if archive.length > 0
-		- var current = page.metadata.paginator
-		ul.pagination
+mixin pagination(page, list)
 
-			li.arrow
-				a(href=current.previous)
-					span.icon-left-open-outline
+	if list && _.keys(list).length
+		ul.pagination(data-paginator=toJson(page.paginator))
 
-			each page in archive
-				- var meta = page.metadata.paginator
-				li(class=(meta.index==current.index)?"current":"")
-					a(href="#")=meta.index
+			if page.paginator.previous
+				li.arrow
+					a(href=page.paginator.previous.getUrl())
+						span.icon-left-open-outline
 
-			li.arrow
-				a(href=current.next)
-					span.icon-right-open-outline
+			each item in list
+				li(class=(item.paginator.index==page.paginator.index)?"current":"")
+					a(href=item.getUrl())=item.paginator.index
+
+			if page.paginator.next
+				li.arrow
+					a(href=page.paginator.next.getUrl())
+						span.icon-right-open-outline
+
+mixin related(page, list)
+	each article in getRelated(page, list)
+		ul: li: a(href=site.url+article.url)= article.title
+
+mixin tags(page)
+	if page.tags
+		ul.sub-nav.centered.icon-tag
+			each tag in page.tags
+				li.secondary.radius
+					a(href=getTagHome(tag))=tag
+
+
+

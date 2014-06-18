@@ -29,7 +29,6 @@ require [
 					$("[data-module*='sticky']").sticky()
 					$("[data-module*='modal']").modal()
 					$("[data-module*='disqus-comments-widget']").disqusComments()
-					$("[data-module*='disqus-comments-count']").disqusCounter()
 
 					return
 

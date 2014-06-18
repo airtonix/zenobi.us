@@ -11,7 +11,7 @@ This will be a short one, the topic of cache busting isn't new, it's covered by 
 
 ---
 
-### Why cache busting?
+### Why cache busting
 
 It's a strategy made popular due to how the majority of the www internet works, a story told with two major actors:
  - Caching Proxies, many of which exist between your browser and the websites you visit.
@@ -24,7 +24,7 @@ The affects on websites isn't apparent until you try to update some external ass
 
 ### An initial strategy
 
-One of the first solutions to show up in response to this was to simply put a GET parameter after any asset you linked to : 
+One of the first solutions to show up in response to this was to simply put a GET parameter after any asset you linked to :
 
 ```html
 <img src="http://some.website.com/static/image/logo.png?cachebust={% now %}">
@@ -48,7 +48,7 @@ The situation is that some of my pages in this website have images generated fro
 
 By default `grunt-usemin` only operates on absolute paths, assuming you'll be keeping all your assets in a common location.
 
-To get all your files revved I ended up with the following : 
+To get all your files revved I ended up with the following :
 
 ```coffeescript
 
@@ -81,10 +81,10 @@ To get all your files revved I ended up with the following :
 
       html: ['<%= paths.dist %>/**/*.html']
       css: ['<%= paths.dist %>/assets/css/**/*.css']
-      
-``` 
 
-I believe the important parts are : 
+```
+
+I believe the important parts are :
 
 - *useminPrepare.dist.src*
   : Nothing occurs without this... pretty standard stuff, it just points useminPrepare at the collection of files to operate on.
@@ -94,7 +94,7 @@ I believe the important parts are :
 
 - *usemin.options.patterns.html*
   : This overrides the default matching and applies simple pattern matching of my own that allows for matching relative paths, as long as they start with `img/`.
-   
+
 
 ### Conclusion
 

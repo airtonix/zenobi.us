@@ -1,6 +1,5 @@
 doctype html
 include mixins
-include helpers
 
 block vars
 	- bodyclass = 'page'
@@ -20,7 +19,7 @@ html(lang='en')
 			link(rel='stylesheet', media="screen, projector", href='/assets/css/screen.css')
 			include partial/analytics
 
-	body(id=getMeta(page,'title').slugify(), class=bodyclass)
+	body(id=slugify(getMeta(page,'title')), class=bodyclass)
 
 		header.header
 			block header

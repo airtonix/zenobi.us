@@ -15,5 +15,39 @@ body.article-detail {
 			}
 		}
 	}
+
+}
+
+body.article-list #page-content {
+
+  #article-archive {
+    clear:both;
+
+    .header {
+      &:before {
+        margin: 0 0.5em;
+      }
+      small {
+        margin-left: 3.5em;
+      }
+    }
+  }
+
+  @media #{$small-only} {
+    #article-archive .header {
+      &:before {
+        margin: 0 -0.5em;
+        text-indent: -3em;
+      }
+      small {
+        margin-left: 0;
+      }
+    }
+
+    .aside {
+      display: none;
+    }
+  }
+
 }
 
