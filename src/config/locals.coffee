@@ -14,11 +14,11 @@ module.exports =
 			email: "its@zenobi.us"
 
 	mandrill:
-		apikey: 'oMstGBYNlE0KhW0DEd8Wdg'
+		apikey: 'changed'
 		endpoint: 'https://mandrillapp.com/api/1.0/messages/send.json'
 		recipients:
 			contact: [
-				email: "its@zenobi.us"
+				email: "changed"
 				name: "Zenobius Jiricek"
 				type: 'to'
 			]
