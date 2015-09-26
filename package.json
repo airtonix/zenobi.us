@@ -19,13 +19,17 @@
   },
   "main": "app.coffee",
   "scripts": {
-    "start": "gremlin run default --config=./config/development",
-    "build": "gremlin run build --config=./config/production",
-    "prepublish": "./node_modules/.bin/bower install"
+    "start": "gastropod run default --config=./config/development",
+    "build": "gastropod run build --config=./config/production",
+    "merge-to-master": "git checkout master && git merge develop",
+    "merge-to-develop": "git checkout develop && git merge master",
+    "push": "git push --all && git push --tags",
+    "preversion": "npm run merge-to-master",
+    "postversion": "npm run merge-to-develop && npm run push"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "gremlinjs": "*"
+    "gastropod": "0.0.x",
+    "lodash": "^3.10.1"
   }
 }

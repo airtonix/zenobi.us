@@ -1,4 +1,0 @@
-each item in items
-    h3.header(class=pageIcon(item)||'icon-doc')
-        a(href=site.url+item.url, data-disqus_identifier=slugify(item.url))= item.title
-            small.block.date= moment.utc(item.date).format('DD. MMMM YYYY')

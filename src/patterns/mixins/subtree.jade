@@ -1,8 +1,0 @@
-mixin subtree(tree, leafClass)
-	- leafClass = leafClass || ''
-	- var tree = _.omit(tree, 'index.md');
-	li: a(class=leafClass, href="../"): em.icon-left-open
-	if _.keys(tree).length
-	- each item, key in tree
-		if item.index
-			li: a(class=leafClass, href=item.index.url)= key

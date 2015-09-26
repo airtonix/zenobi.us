@@ -1,8 +1,0 @@
-extends page
-
-block prepend content-html
-	+repo(page.metadata)
-
-block append content-html
-	if page.metadata.gallery
-		+gallery()

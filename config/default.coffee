@@ -1,6 +1,9 @@
 module.exports =
 
-	target =
+	filters:
+		patterns: '**/*.jade'
+
+	target:
 		root: './dist/development'
 		fonts: './fonts'
 		images: './images'
@@ -8,7 +11,7 @@ module.exports =
 		scripts: './scripts'
 		pages: '' # target root is the site root
 
-	source =
+	source:
 		root: './src'
 		data: './data'
 		fonts:
