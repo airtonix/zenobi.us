@@ -1,0 +1,8 @@
+<form action="//formspree.io/its@zenobi.us"
+	  method="POST">
+    {% include templates.input with { type: 'text', name: '_gotcha', attrs: { style: 'display:none' } } %}
+    {% include templates.input with { type: 'text', name: 'name' } %}
+    {% include templates.inputEmail with { name: '_replyto' } %}
+    {% include templates.inputTextarea with { name: 'message' } %}
+    {% include templates.inputSubmit with { label: 'Send' } %}
+</form>

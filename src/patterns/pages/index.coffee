@@ -1,2 +1,1 @@
-module.exports =
-	title: 'test'
+module.exports = {}

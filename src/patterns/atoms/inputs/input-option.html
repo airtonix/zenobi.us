@@ -1,0 +1,8 @@
+<input id="{{ id }}"
+	   type="{{ type | default('radio') }}"
+	   name="{{ name }}"
+	   value="{{ value }}"
+	   {% if selected %}checked{% endif %}
+	   {% if required %}required{% endif %}
+	   {% block attrs %}{{ attrs | safe() }}{% endblock %}/>
+<label for="{{ id }}" class="{{ classes }}">{{ label | safe() }}</label>

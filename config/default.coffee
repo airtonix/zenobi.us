@@ -1,14 +1,11 @@
 module.exports =
 
-	filters:
-		patterns: '**/*.jade'
-
 	target:
 		root: './dist/development'
-		fonts: './fonts'
-		images: './images'
-		styles: './styles'
-		scripts: './scripts'
+		fonts: './static/fonts'
+		images: './static/images'
+		styles: './static/styles'
+		scripts: './static/scripts'
 		pages: '' # target root is the site root
 
 	source:
@@ -27,10 +24,6 @@ module.exports =
 		sass:
 			minify: false
 			includePaths: [
-				"src/contents/assets/css"
-				"src/assets/scss"
-				"bower_components/"
-				"bower_components/bourbon/app/assets/stylesheets"
-				"bower_components/foundation/scss"
-				"bower_components/foundation/scss/foundation/components"
+				"src/styles"
+				"node_modules/bourbon/app/assets/stylesheets"
 			]

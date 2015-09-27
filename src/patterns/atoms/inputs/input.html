@@ -1,0 +1,6 @@
+<input id="{{ id }}"
+	   type="{% block type %}{{ type | default('text') }}{% endblock %}"
+	   placeholder="{{ placeholder }}"
+	   name="{{ name }}"
+	   {% if required %}required{% endif %}
+	   {% block attrs %}{% endblock %} />

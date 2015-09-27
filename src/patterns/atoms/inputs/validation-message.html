@@ -1,0 +1,9 @@
+<small class="error">
+	{% block validationMessage %}
+		{% if validationMessage %}
+			{{ validationMessage }}
+		{% else %}
+				Please enter {{ label }}
+		{% endif %}
+	{% endblock %}
+</small>

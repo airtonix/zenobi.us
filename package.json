@@ -18,6 +18,19 @@
     "url": "http://github.com/airtonix/zenobi.us.git"
   },
   "main": "app.coffee",
+  "browserify": {
+    "extensions": [
+      ".coffee",
+      ".html"
+    ],
+    "transform": [
+      "coffeeify",
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {},
+  "browser": {},
+  "napa": {},
   "scripts": {
     "start": "gastropod run default --config=./config/development",
     "build": "gastropod run build --config=./config/production",
@@ -29,6 +42,10 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "bourbon": "^4.2.5",
+    "browserify": "^11.2.0",
+    "browserify-shim": "^3.8.10",
+    "coffeeify": "^1.1.0",
     "gastropod": "0.0.x",
     "lodash": "^3.10.1"
   }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ page.title }}</title>
+		{% for script in site.scripts %}
+			{% include templates.script with script %}
+		{% endfor %}
+	</head>
+	<body>
+		<pre>
+		Templates:
+		{{ templates | json(4) | safe }}
+		Site:
+		{{ site | json(4) | safe }}
+		</pre>
+	</body>
+</html>

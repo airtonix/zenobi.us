@@ -1,0 +1,14 @@
+<select id="{{ id }}"
+		name="{{ name }}"
+		{% if required %}required{% endif %}
+		{{ attributes | safe() }}>
+
+	{% if placeholder %}
+		<option value="" selected disabled>{{ placeholder }}</option>
+	{% endif %}
+
+	{% for item in items %}
+		<option value="{{ item.value || item.label }}" {% if item.selected %}selected{% endif %}>{{ item.label }}</option>
+	{% endfor %}
+
+</select>
