@@ -1,4 +1,12 @@
 #
+# System
+#
+
+#
+# Framework
+#
+
+#
 # Default Template Context
 #
 module.exports =
@@ -8,13 +16,12 @@ module.exports =
 		owner:
 			name: "Zenobius Jiricek"
 			email: "its@zenobi.us"
-		urls:
-			root: "http://zenobi.us"
-			static:  '/static'
-			media:  '/media'
 
 		scripts: [
-			{src: 'scripts/app.js', async: false}
+			{ src: 'scripts/app.js', async: false }
+		]
+		stylesheets: [
+			{ src: 'styles/app.css', media: 'all' }
 		]
 
 	modules:
@@ -25,3 +32,4 @@ module.exports =
 
 		disqus:
 			shortname: 'zenobiusjiricek'
+

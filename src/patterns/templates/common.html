@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content -%}
+	<div class="site-header">{% block siteHeader %}{% endblock %}</div>
+	<div class="site-content">
+	{% block siteContent -%}
+		{% for segment in page.segments %}
+			{% include template.segment with segment %}
+		{% endfor %}
+	{%- endblock %}
+	</div>
+	<div class="site-footer">{% block siteFooter %}{% include templates.siteFooter %}{% endblock %}</div>
+{%- endblock %}

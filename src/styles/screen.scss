@@ -1,9 +1,16 @@
-@import "fonts.scss";
-@import "config.scss";
+@import 'vendor';
+@import 'patterns';
 
-@import "foundation/scss/foundation.scss";
-@import "bourbon/app/assets/stylesheets/_bourbon.scss";
 
-@import "mixins.scss";
-@import "elements.scss";
-@import "pages.scss";
+section {
+  @include outer-container;
+
+  aside {
+    @include span-columns(3);
+  }
+
+  article {
+    @include span-columns(9);
+  }
+
+}

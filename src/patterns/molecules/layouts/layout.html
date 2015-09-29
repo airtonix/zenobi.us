@@ -1,0 +1,9 @@
+<div class="layout" class="layout {% block classes %}{{ classes }}{% endblock %}" {% block attrs -%}
+{% if background and background.url %}%style="background-image:url({% static background.url %});"{% endif %}
+{%- endblock %}>
+	{% block content -%}
+	{% for block in blocks -%}
+		{% include block.templates with block.data %}
+	{%- endfor %}
+	{%- endblock %}
+</div>

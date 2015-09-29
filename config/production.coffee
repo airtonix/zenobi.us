@@ -17,8 +17,8 @@ config =
 	context:
 		site:
 			urls:
-				root: "/"
-				static:  '/static'
+				root: "http://zenobi.us/"
+				static:  'static'
 				media:  'media'
 
 

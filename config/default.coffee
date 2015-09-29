@@ -1,3 +1,4 @@
+
 module.exports =
 
 	target:
@@ -26,4 +27,5 @@ module.exports =
 			includePaths: [
 				"src/styles"
 				"node_modules/bourbon/app/assets/stylesheets"
+				"node_modules/bourbon-neat/app/assets/stylesheets"
 			]

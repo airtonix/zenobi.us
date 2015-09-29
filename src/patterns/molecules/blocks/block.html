@@ -1,0 +1,9 @@
+<div class="block {% block classes %}{{classes}}{% endblock %}" {% block attrs -%}
+{% if background and background.url %}%style="background-image:url({% static background.url %});"{% endif %}
+{%- endblock %}>
+	{% block content %}
+	{% if heading %}{% include templates.heading with heading %}{% endif %}
+	{% if content %}{% include templates.text with content %}{% endif %}
+	{% if footer %}{% include templates.blockFooter with footer %}{% endif %}
+	{% endblock %}
+</div>

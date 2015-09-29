@@ -2,16 +2,16 @@
 <html>
 	<head>
 		<title>{{ page.title }}</title>
-		{% for script in site.scripts %}
-			{% include templates.script with script %}
-		{% endfor %}
+		{% for stylesheet in site.stylesheets -%}
+			{% include templates.stylesheet with stylesheet %}
+		{%- endfor %}
 	</head>
-	<body>
-		<pre>
-		Templates:
-		{{ templates | json(4) | safe }}
-		Site:
-		{{ site | json(4) | safe }}
-		</pre>
+	<body class="{% block bodyClasses %}{{ bodyClasses}}{% endblock %}" {% block bodyAttrs %}{{ bodyAttrs }}{% endblock %}>
+		<div class="main">
+		{% block content %}{% endblock %}
+		</div>
+		{% for script in site.scripts -%}
+			{% include templates.script with script %}
+		{%- endfor %}
 	</body>
 </html>
