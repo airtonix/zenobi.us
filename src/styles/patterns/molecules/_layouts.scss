@@ -1,0 +1,9 @@
+.layout {}
+.layout-three-column {
+	@include outer-container;
+
+	.layout-cell {
+		@include span-columns(4);
+	}
+
+}
