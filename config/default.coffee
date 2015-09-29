@@ -2,7 +2,7 @@
 module.exports =
 
 	target:
-		root: './dist/development'
+		root: './dist'
 		fonts: './static/fonts'
 		images: './static/images'
 		styles: './static/styles'

@@ -1,8 +1,10 @@
+
+@import 'molecules/blocks';
+@import 'molecules/layouts';
+
 /**
-
-@media #{medium-up} {}
-@media #{large-up} {}
-@media #{largex-up} {}
-@media #{largexx-up} {}
-
+@media #{$medium-up} {}
+@media #{$large-up} {}
+@media #{$xlarge-up} {}
+@media #{$xxlarge-up} {}
 **/

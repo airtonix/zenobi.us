@@ -13,5 +13,13 @@
 		{% for script in site.scripts -%}
 			{% include templates.script with script %}
 		{%- endfor %}
+		<script type="text/javascript">
+		var Gastropod = {
+			page: {{ page | json | safe }},
+			meta: {{ meta | json | safe }},
+			manifest: {{ manifest | json | safe }},
+			templates: {{ manifest | json | safe }}
+		};
+		</script>
 	</body>
 </html>

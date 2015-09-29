@@ -21,8 +21,12 @@ config =
 				static:  '/static'
 				media:  'media'
 
+	target:
+		root: './dist/development'
+
+
 
 #
 # Exports
 #
-module.exports = _.extend {}, defaults, config
+module.exports = _.extend defaults, config

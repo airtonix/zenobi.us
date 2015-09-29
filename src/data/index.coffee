@@ -21,7 +21,8 @@ module.exports =
 			{ src: 'scripts/app.js', async: false }
 		]
 		stylesheets: [
-			{ src: 'styles/app.css', media: 'all' }
+			{ src: 'styles/screen.css', media: 'all' }
+			{ src: 'styles/print.css', media: 'print' }
 		]
 
 	modules:

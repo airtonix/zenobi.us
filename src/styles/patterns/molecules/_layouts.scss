@@ -1,9 +1,43 @@
-.layout {}
-.layout-three-column {
+.layout {
 	@include outer-container;
+}
+
+.layout-six-column {
+
+	.layout-cell {
+		@include span-columns(2);
+	}
+
+}
+
+.layout-four-column {
+
+	.layout-cell {
+		@include span-columns(3);
+	}
+
+}
+
+.layout-three-column {
 
 	.layout-cell {
 		@include span-columns(4);
+	}
+
+}
+
+.layout-two-column {
+
+	.layout-cell {
+		@include span-columns(6);
+	}
+
+}
+
+.layout-one-column {
+
+	.layout-cell {
+		@include span-columns(12);
 	}
 
 }
