@@ -48,9 +48,8 @@
     "browserify": "^11.2.0",
     "browserify-shim": "^3.8.10",
     "coffeeify": "^1.1.0",
-    "gastropod": "0.0.x",
+    "gastropod": "0.2.0",
     "gastropod-task-webpack": "^0.0.1",
-    "lodash": "^3.10.1",
-    "neat": "^1.2.2"
+    "lodash": "^3.10.1"
   }
 }
