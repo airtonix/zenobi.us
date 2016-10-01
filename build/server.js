@@ -54,6 +54,7 @@ server.use(morgan('dev'));
 server.use(ConnectHistoryApiFallback());
 server.use(webpackDevMiddlewareInstance)
 server.use(webpackkHotMiddlewareInstance);
+server.use(serveIndex('./'));
 
 
 /**
