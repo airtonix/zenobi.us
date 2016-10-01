@@ -62,7 +62,12 @@ server.listen(config.server.port, () => {
 	log('server running');
 });
 
+function close () {
+	if (server) { server.close(); }
+	process.exit();
+}
 
-process.on('exit', () => server.close);
-process.on('SIGINT', () => server.close);
-process.on('uncaughtException', () => server.close);
+process.on('SIGTERM', (code) => {
+	log('SIGTERM');
+	close();
+});

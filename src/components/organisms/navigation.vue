@@ -8,7 +8,7 @@
 	</div>
 </template>
 
-<style type="text/css">
+<style>
 	.navigation {
 		display: flex;
 		justify-content: space-around;
@@ -20,12 +20,10 @@
 	}
 </style>
 
-<script type="text/babel">
+<script>
 export default {
 	props: {
 		links: true
 	},
-	components: {
-	}
 };
 </script>

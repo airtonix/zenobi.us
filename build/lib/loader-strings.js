@@ -10,7 +10,7 @@ const log = debug(`app.[${Constants.name}]:Build/webpack/uat`);
  */
 function expandToVerboseFormatFactory (useSourceMaps = false) {
 	return function (loader) {
-		let extraParamChar;
+		let extraParamChar, output;
 		if (/\?/.test(loader)) {
 			loader = loader.replace(/\?/, '-loader?');
 			extraParamChar = '&';
@@ -18,7 +18,9 @@ function expandToVerboseFormatFactory (useSourceMaps = false) {
 			loader = loader + '-loader';
 			extraParamChar = '?';
 		}
-		return loader + (useSourceMaps ? extraParamChar + 'sourceMap' : '');
+		output = loader + (useSourceMaps ? extraParamChar + 'sourceMap' : '');
+		log('expandToVerboseFormat', loader , ' > ', output);
+		return output;
 	}
 }
 
@@ -32,6 +34,8 @@ function SourceLoaderStringFactory (options) {
 			sourceLoader = loaders
 				.map(expander)
 				.join('!');
+		log('SourceLoaderString.loaders', loaders, ' > ', sourceLoader);
+		return sourceLoader;
 	}
 }
 
@@ -40,6 +44,7 @@ function SourceLoaderStringFactory (options) {
  */
 function VueStyleLoaderFactory (options) {
 	return function (Source) {
+		log('VueStyleLoader.Source', Source, options);
 		if (options.extract) {
 			return ExtractTextPlugin.extract('vue-style-loader', Source);
 		} else {

@@ -5,6 +5,7 @@ import webpack from 'webpack';
 import StatsPlugin from 'stats-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+import * as LoaderStrings from '../../lib/loader-strings';
 import Constants from '../constants';
 import Env from '../env';
 
@@ -13,6 +14,7 @@ const log = debug(`app.[${Constants.name}]:Build/webpack/base`);
 
 export default new Config()
 	.merge({
+
 		entry: {
 			app: ['app']
 		},
@@ -20,9 +22,8 @@ export default new Config()
 		output: {
 				path: '/',
 				publicPath: 'static/',
-				filename: 'static/js/[name].[chunkhash].js',
-				chunkFilename: 'static/js/[id].[chunkhash].js'
-
+				filename: 'static/js/[name].[hash].js',
+				chunkFilename: 'static/js/[id].[hash].js'
 		},
 
 		watch: {
@@ -30,14 +31,40 @@ export default new Config()
 			poll: true
 		},
 
-		// stats: true,
-		// profile: true,
+		stats: true,
+		profile: true,
 
 		module: {
+			preloaders: [
+				{
+	        test: /\.(vue|js)$/,
+	        loader: 'eslint-loader',
+	        include: path.join(Constants.CWD, 'src'),
+	        exclude: /node_modules/
+				}
+			],
 			loaders: [
 				{
 					test: /\.vue$/,
 					loader: 'vue-loader'
+				},
+				{
+					test: /\.css$/,
+					loader: 'style-loader'
+				},
+				{
+					test: /\.js$/,
+					loader: 'babel-loader',
+					include: path.join(Constants.CWD, 'src'),
+					exclude: /node_modules/,
+				},
+				{
+					test: /\.json$/,
+					loader: 'json'
+				},
+				{
+					test: /\.scss$/,
+					loader: 'sass-loader'
 				},
 				{
 					test: /\.html$/,
@@ -46,29 +73,30 @@ export default new Config()
 					]
 				},
 				{
-					test: /\.(png|jpg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,
+					test: /\.(png|jpg|gif|svg)(\?.*)?$/,
 					loader: 'url-loader',
 					query: {
 						limit: 1000,
-						name: '[name].[ext]?[hash:7]'
+						name: 'static/img/[name].[ext]?[hash:7]'
 					}
 				},
 				{
-					test: /\.js$/,
-					loader: 'babel-loader',
-					exclude: /node_modules/,
-				},
-				{
-					test: /\.json$/,
-					loader: 'json'
+					test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+					loader: 'url-loader',
+					query: {
+						limit: 1000,
+						name: 'static/fonts/[name].[ext]?[hash:7]'
+					}
 				},
 			]
 		},
+
 		resolveLoader: {
 			fallback: [path.join(Constants.CWD, 'node_modules')]
 		},
+
 		resolve: {
-			extensions: ['', '.js'],
+			extensions: ['', '.js', '.vue'],
 			fallback: [path.join(Constants.CWD, 'node_modules')],
 			alias: {
 				app: path.resolve(Constants.CWD, 'src'),
@@ -81,18 +109,28 @@ export default new Config()
 			new webpack.DefinePlugin({
 				'process.env': Env
 			}),
-			// new StatsPlugin('stats.json', {
-			// 	chunkModules: true,
-			// }),
+			new StatsPlugin('stats.json', {
+				chunkModules: true,
+			}),
 			new HtmlWebpackPlugin({
 				template: 'src/index.html',
 				filename: 'index.html'
 			}),
 		],
 
+		vue: {
+			loaders: Object.assign(LoaderStrings.css(), {
+				js: 'isparta'
+			})
+		},
+
 		htmlLoader: {
 			interpolate: true,
 			attrs: ['img:src', 'link:href']
-		}
+		},
+
+		eslint: {
+		  formatter: require('eslint-friendly-formatter')
+		},
 
 	});
