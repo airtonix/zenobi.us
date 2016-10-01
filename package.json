@@ -1,7 +1,7 @@
 {
   "name": "zenobi.us",
   "description": "A Vue.js project",
-  "version": "0.0.1",
+  "version": "2.0.0-beta",
   "homepage": "http://github.com/airtonix/zenobi.us/",
   "author": "Zenobius Jiricek <airtonix@gmail.com>",
   "license": "MIT",
@@ -16,15 +16,22 @@
     "prebuild": "rimraf ./dist && mkdirp dist",
     "build": "cross-env WEBPACK_ENV=prod babel-node ./build",
     "dev:run": "cross-env DEBUG=app* WEBPACK_ENV=dev babel-node ./build/server",
-    "dev": "watch \"npm run dev:run\" ./build --wait=1"
+    "dev": "watch \"npm run dev:run\" ./build --wait=1",
+    "release": "foundry release",
+    "release-resume": "foundry resume"
   },
   "babel": {
     "presets": [
       "es2015"
     ]
   },
+  "foundry": {
+    "releaseCommands": []
+  },
   "dependencies": {
     "babel-polyfill": "^6.13.0",
+    "cuid": "^1.3.8",
+    "debug": "^2.2.0",
     "vue": "^2.0.0-rc.8",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.0.0-rc.7",
@@ -43,7 +50,6 @@
     "cross-env": "^1.0.7",
     "cross-spawn": "^2.1.5",
     "css-loader": "^0.23.0",
-    "debug": "^2.2.0",
     "eslint": "^2.0.0",
     "eslint-config-standard": "^5.1.0",
     "eslint-friendly-formatter": "^1.2.2",
@@ -52,6 +58,8 @@
     "eslint-plugin-promise": "^1.0.8",
     "eslint-plugin-standard": "^1.3.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "foundry": "^4.3.2",
+    "foundry-release-require-branch": "0.0.2",
     "function-bind": "^1.0.2",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.22.0",
