@@ -1,0 +1,9 @@
+{
+	"pages": [
+		{ "id": "root.home", "slug": "home",
+			"segments": [
+				{ "component": "hero" }
+			]
+		}
+	]
+}

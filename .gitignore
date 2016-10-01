@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+/node_modules
+/dist/*
+test/unit/coverage/*
+!.gitignore
+*.sublime-project
+*.sublime-workspace
