@@ -26,7 +26,22 @@
     ]
   },
   "foundry": {
-    "releaseCommands": []
+    "releaseCommands": [
+      {
+        "type": "customCommand",
+        "updateFiles": "git clone git@github.com:airtonix/zenobi.us.git --branch gh-pages ./dist"
+      },
+      "foundry-release-git",
+      "foundry-release-npm",
+      {
+        "type": "customCommand",
+        "updateFiles": "npm run build"
+      },
+      {
+        "type": "customCommand",
+        "updateFiles": "cd dist && git add --all && git commit -m \"Release $FOUNDRY_VERSION\" && git push"
+      }
+    ]
   },
   "dependencies": {
     "babel-polyfill": "^6.13.0",
