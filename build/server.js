@@ -28,20 +28,30 @@ log('loading json.db', config.database.path);
  * @type {Function}
  */
 const webpackCompiler = webpack(config);
+const webpackkHotMiddlewareInstance = webpackHotMiddleware(webpackCompiler);
 const webpackDevMiddlewareInstance = webpackDevMiddleware(webpackCompiler, {
 	publicPath: config.output.publicPath,
-	stats: { color: true},
-	quiet: true
+	stats: {
+		colors: true,
+		chunks: false
+	}
+});
+
+webpackCompiler.plugin('compilation', (compilation) => {
+	compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
+		webpackkHotMiddlewareInstance.publish({action: 'reload'});
+		cb();
+	});
 });
 
 /**
  * Server Middleware
  */
-server.use(webpackDevMiddlewareInstance)
-server.use(webpackHotMiddleware(webpackCompiler));
-server.use(serveIndex(config.output.path))
-server.use(middleware);
 server.use('/api', router);
+server.use('/api', middleware);
+server.use(webpackDevMiddlewareInstance)
+server.use(webpackkHotMiddlewareInstance);
+server.use(serveIndex(config.output.publicPath))
 
 
 /**

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import debug from 'debug';
 import VueResource from 'vue-resource';
 
-const log = debug('application/api/client');
+const log = debug('app/api/client');
 
 Vue.use(VueResource);
 

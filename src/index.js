@@ -11,11 +11,11 @@ Vue.use(Vuex);
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-	scrollBehaviour (to, from, saved){
+	routes,
+	scrollBehaviour (to, from, saved) {
 		if (saved) { return saved; }
-		else { return {x: 0, y: 0 };
-	},
-	routes
+		return {x: 0, y: 0};
+	}
 });
 
 const app = new Vue({

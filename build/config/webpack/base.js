@@ -18,9 +18,11 @@ export default new Config()
 		},
 
 		output: {
-				path: path.join(Constants.CWD, 'dist'),
-				publicPath: '/',
-				filename: "[name].[hash].[ext]",
+				path: '/',
+				publicPath: 'static/',
+				filename: 'static/js/[name].[chunkhash].js',
+				chunkFilename: 'static/js/[id].[chunkhash].js'
+
 		},
 
 		watch: {

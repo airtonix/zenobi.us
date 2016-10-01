@@ -1,4 +1,4 @@
-import env from 'application/env';
+import env from 'app/env';
 
 import * as client from './client';
 

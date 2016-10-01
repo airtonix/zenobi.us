@@ -6,3 +6,4 @@ test/unit/coverage/*
 !.gitignore
 *.sublime-project
 *.sublime-workspace
+npm-debug.log
