@@ -12,7 +12,11 @@ export default new Config()
 		'build/config/webpack/base.js': config => {
 				Object
 					.keys(config.entry)
-					.forEach(entry => config.entry[entry].push('webpack-hot-middleware/client'));
+					.forEach(entry => {
+						let original = config.entry[entry];
+						config.entry[entry] = ['./build/client']
+							.concat(Array.isArray(original) ? original : [original]);
+					});
 				return config;
 			}
 	})
