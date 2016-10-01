@@ -13,7 +13,6 @@ export default new Config()
 				Object
 					.keys(config.entry)
 					.forEach(entry => config.entry[entry].push('webpack-hot-middleware/client'));
-
 				return config;
 			}
 	})

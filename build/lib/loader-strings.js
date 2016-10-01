@@ -2,7 +2,7 @@ import debug from 'debug';
 import Constants from '../config/constants';
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const log = debug(`app.[${Constants.name}]:Build/webpack/uat`);
+const log = debug(`app.[${Constants.name}]:Build/lib/loader-strings`);
 
 /**
  * @param  {Boolean}	useSourceMaps

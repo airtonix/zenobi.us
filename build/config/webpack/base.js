@@ -20,10 +20,10 @@ export default new Config()
 		},
 
 		output: {
-				path: '/',
-				publicPath: 'static/',
-				filename: 'static/js/[name].[hash].js',
-				chunkFilename: 'static/js/[id].[hash].js'
+				path: path.resolve(Constants.CWD, 'dist'),
+				publicPath: '/',
+				filename: '[name].[hash:16].js',
+				chunkFilename: '[id].[hash:16].js'
 		},
 
 		watch: {
@@ -114,7 +114,8 @@ export default new Config()
 			}),
 			new HtmlWebpackPlugin({
 				template: 'src/index.html',
-				filename: 'index.html'
+				filename: 'index.html',
+				inject: true,
 			}),
 		],
 
