@@ -1,16 +1,13 @@
 <template>
-	<div
-		:id="id"
-		class="page">
+	<div class="page">
 		<network-activity-indicator :status="loadStatus">
 
-			<div class="page__content">
-				<component
-					v-for="block in blocks"
-					:id="block.id"
-					:class="block.class"
-					:is="block.component"
-					:data="block.data"></component>
+			<div class="page__content"
+				v-if="content">
+				<segment
+					v-for="segment in content.segments"
+					:id="segment.id"
+					:data="segment"></segment>
 			</div>
 
 		</network-activity-indicator>
@@ -24,9 +21,14 @@ export default {
 
 	props: {
 		id: {
-			default () { return cuid(); }
+			default: () => `page-${cuid()}`
 		},
 		content: true,
+	},
+
+	components: {
+		NetworkActivityIndicator: require('app/components/molecules/network-activity-indicator'),
+		Segment: require('app/components/molecules/segment'),
 	},
 
 	data () {
@@ -42,6 +44,10 @@ export default {
 				}
 			}
 		};
+	},
+
+	methods: {
+		cuid,
 	},
 
 	computed: {

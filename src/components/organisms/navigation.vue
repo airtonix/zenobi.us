@@ -3,7 +3,7 @@
 		<router-link
 			class="navigation__link"
 			v-for="link in links"
-			:to="link.route"
+			:to="{ name: link.route }"
 			:alt="link.label">{{ link.text }}</router-link>
 	</div>
 </template>

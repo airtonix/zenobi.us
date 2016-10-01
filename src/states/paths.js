@@ -1,4 +1,5 @@
 export const HOME = '/';
-export const POST = '/post/*slug';
-export const CONTACT = '/contact';
-export const PROJECTS = '/projects';
+export const BLOG = 'blog';
+export const BLOG_DETAIL = 'blog/*slug';
+export const CONTACT = 'contact';
+export const PROJECTS = 'projects';

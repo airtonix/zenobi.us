@@ -1,19 +1,19 @@
 <template>
-	<div class="page">
-		<h1>Home</h1>
-		<pre v-if="content">{{ content }}</pre>
+	<div :id="id">
+		<page :content="content"></page>
 	</div>
 </template>
 
 <script>
 import debug from 'debug';
 import api from 'app/api';
+import changeCase from 'change-case';
 
 const log = debug('app/components/pages/home');
 
 export default {
 	components: {
-		Page: require('../organisms/page')
+		Page: require('../organisms/page'),
 	},
 
 	data () {
@@ -22,12 +22,8 @@ export default {
 		};
 	},
 
-	created () {
-		this.fetchData();
-	},
-
-	watch: {
-		'$route': 'fetchData'
+	computed: {
+		id () { return changeCase.paramCase(this.$route.name); }
 	},
 
 	beforeRouteEnter (to, from, next) {
@@ -39,9 +35,6 @@ export default {
 				})
 				.catch( err => next(false))
 	},
-	methods: {
-		fetchData () {
-		}
-	}
+
 };
 </script>

@@ -9,6 +9,9 @@
 </style>
 
 <script type="text/babel">
+import caseFilters from 'app/filters/case';
+import markdownFilters from 'app/filters/markdown';
+
 export default {
 	components: {
 		Navigation: require('app/components/organisms/navigation')
@@ -16,9 +19,7 @@ export default {
 	data () {
 		return {
 			links: [
-				{ route: 'root.contact', text: 'contact me'},
-				{ route: 'root.projects', text: 'projects'},
-				{ route: 'root.posts', text: 'blog'},
+				{ route: 'root.blog', text: 'blog'},
 			]
 		};
 	},

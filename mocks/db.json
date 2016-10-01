@@ -1,8 +1,9 @@
 {
 	"pages": [
-		{ "id": "root.home", "slug": "home",
+		{ "id": "root", "slug": "home",
 			"segments": [
-				{ "component": "hero" }
+				{ "class": "is-hero", "title": "Home",
+				  "content": "lorem \n* one\n * two"}
 			]
 		}
 	]
