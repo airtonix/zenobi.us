@@ -1,8 +1,8 @@
-@import 'settings';
-@import 'vendor';
+@import 'styles/settings';
+@import 'styles/vendor';
 
-@import 'patterns/atoms';
-@import 'patterns/molecules';
-@import 'patterns/organisms';
-@import 'patterns/templates';
-@import 'patterns/pages';
+@import 'styles/patterns/atoms';
+@import 'styles/patterns/molecules';
+@import 'styles/patterns/organisms';
+@import 'styles/patterns/templates';
+@import 'styles/patterns/pages';
