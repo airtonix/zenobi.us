@@ -1,27 +1,24 @@
+/* @flow */
+
 import 'babel-polyfill';
 import debug from 'debug';
 import Vue from 'vue';
-import Vuex from 'vuex';
-import VueRouter from 'vue-router';
 
-import routes from './states';
-import App from './app';
+const log = debug('app.root');
 
-Vue.use(Vuex);
-Vue.use(VueRouter);
+import { router, } from './states';
+import Store from './store';
+log('RootComponent.store', Store);
 
-const router = new VueRouter({
-	routes,
-	scrollBehaviour (to, from, saved) {
-		if (saved) { return saved; }
-		return {x: 0, y: 0};
-	}
-});
 
 const app = new Vue({
-		router,
-		components: { App }
-	})
-	.$mount('#app');
+  router,
+  components: {
+    App: (resolve: promise) : object => require(['./app'], resolve)
+  }
+});
+app.$mount('#app');
+
+log('RootComponent.mounted');
 
 export default app;

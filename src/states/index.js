@@ -1,7 +1,13 @@
+import debug from 'debug';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+const log = debug('app.states');
+
 import * as names from './names';
 import * as paths from './paths';
 
-export default [
+export const routes = [
 	{
 		name: names.HOME,
 		path: paths.HOME,
@@ -22,3 +28,22 @@ export default [
 	{ path: '*', redirect: paths.HOME }
 
 ];
+
+Vue.use(VueRouter);
+export const router = new VueRouter({
+  routes,
+  scrollBehaviour(to: object, from: object, saved: object) : object {
+    log('VueRouter.scrollBehaviour', {
+      to,
+      from,
+      saved
+    });
+    if (saved) {
+      return saved;
+    }
+    return {
+      x: 0,
+      y: 0
+    };
+  }
+});

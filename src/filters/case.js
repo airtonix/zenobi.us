@@ -1,13 +1,10 @@
-import debug from 'debug';
+/* @flow */
 
-import Vue from 'vue';
 import changeCase from 'change-case';
 
-const log = debug('app/filters/case');
-
-Object.keys(changeCase)
-	.filter((key) => key.indexOf('Case') > 0)
-	.forEach((key) => {
-		log('registering', key);
-		Vue.filter(key, changeCase[key]);
-	});
+export default Object.keys(changeCase)
+  .filter((key: string) : array => key.indexOf('Case') > 0)
+  .reduce((result: object, key: string) : object => {
+    result[key] = changeCase[key];
+    return result;
+  }, {});

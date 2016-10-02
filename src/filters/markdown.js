@@ -1,8 +1,4 @@
-import debug from 'debug';
-import Vue from 'vue';
+/* @flow */
 import tinydown from 'tinydown';
 
-const log = debug('app/filters/markdown');
-
-log('registering tinydown');
-Vue.filter('markdown', (value) => tinydown(value || ''));
+export const markdown = (value: string) : string => tinydown(value || '');

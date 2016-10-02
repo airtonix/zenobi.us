@@ -10,21 +10,28 @@
 </style>
 
 <script type="text/babel">
+/* @flow */
 import caseFilters from 'app/filters/case';
-import markdownFilters from 'app/filters/markdown';
+import {markdown, } from 'app/filters/markdown';
 
 export default {
+
+	filters: {
+		markdown,
+	},
+
+
 	components: {
 		Navigation: require('app/components/organisms/navigation')
 	},
-	data () {
+
+	data () : object {
 		return {
 			links: [
 				{ route: 'root.blog', text: 'blog'},
 			]
 		};
 	},
-	computed: {
-	}
-}
+
+};
 </script>
