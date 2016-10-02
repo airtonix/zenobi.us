@@ -5,7 +5,8 @@
 	</div>
 </template>
 
-<style lang="css">
+<style lang="sass">
+@import "./styles/screen";
 </style>
 
 <script type="text/babel">

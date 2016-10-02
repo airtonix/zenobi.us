@@ -1,0 +1,20 @@
+{
+	 "root": true,
+	"esformatter": {
+		"allowShebang": true
+	},
+
+	"indent": {
+    "value": "\t",
+		"alignComments": true,
+	},
+
+	"lineBreak": {
+		"value": "\n"
+	},
+
+	"whiteSpace": {
+		"value": " ",
+		"removeTrailing": 1
+	}
+};

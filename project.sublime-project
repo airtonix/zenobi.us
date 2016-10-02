@@ -2,7 +2,18 @@
 	"folders":
 	[
 		{
+			"name": "Root",
 			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"name": "bourbon",
+			"path": "./node_modules/bourbon/app/assets/stylesheets/"
+		},
+		{
+			"follow_symlinks": true,
+			"name": "bourbon-neat",
+			"path": "./node_modules/bourbon-neat/app/assets/stylesheets/"
 		}
 	]
 }

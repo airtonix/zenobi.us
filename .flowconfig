@@ -1,0 +1,10 @@
+[ignore]
+.*/node_modules/**/*
+
+[include]
+./src/**/*.(js|vue)
+
+[libs]
+
+[options]
+module.system.node.resolve_dirname=node_modules

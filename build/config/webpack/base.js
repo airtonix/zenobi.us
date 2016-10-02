@@ -11,127 +11,197 @@ import Env from '../env';
 
 const log = debug(`app.[${Constants.name}]:Build/webpack/base`);
 
-
 export default new Config()
-	.merge({
+  .merge({
 
-		entry: {
-			app: ['app']
-		},
+    entry: {
+      app: ['app'],
+      vendor: [
+        'vue', 'vuex', 'vue-resource', 'vue-router'
+      ]
+    },
 
-		output: {
-				path: path.resolve(Constants.CWD, 'dist'),
-				publicPath: '/',
-				filename: '[name].[hash:16].js',
-				chunkFilename: '[id].[hash:16].js'
-		},
+    resolve: {
+      extensions: ['', '.js', '.vue'],
+      fallback: [path.join(Constants.CWD, 'node_modules')],
+      alias: {
+        'app': path.resolve(Constants.CWD, 'src'),
+        // https://github.com/vuejs/vue-loader/issues/287#issuecomment-241372519
+        'vue': path.resolve(Constants.CWD, 'node_modules/vue/dist/vue.js'),
+      }
+    },
 
-		watch: {
-			aggregateTimeout: 300,
-			poll: true
-		},
+    resolveLoader: {
+      fallback: [path.join(Constants.CWD, 'node_modules')]
+    },
 
-		stats: true,
-		profile: true,
+    output: {
+      path: path.resolve(Constants.CWD, 'dist'),
+      publicPath: '/',
+      filename: '[name].[hash:16].js',
+      chunkFilename: '[id].[hash:16].js'
+    },
 
-		module: {
-			preloaders: [
-				{
-	        test: /\.(vue|js)$/,
-	        loader: 'eslint-loader',
-	        include: path.join(Constants.CWD, 'src'),
-	        exclude: /node_modules/
-				}
-			],
-			loaders: [
-				{
-					test: /\.vue$/,
-					loader: 'vue-loader'
-				},
-				{
-					test: /\.css$/,
-					loader: 'style-loader'
-				},
-				{
-					test: /\.js$/,
-					loader: 'babel-loader',
-					include: path.join(Constants.CWD, 'src'),
-					exclude: /node_modules/,
-				},
-				{
-					test: /\.json$/,
-					loader: 'json'
-				},
-				{
-					test: /\.scss$/,
-					loader: 'sass-loader'
-				},
-				{
-					test: /\.html$/,
-					loaders: [
-						'html-loader'
-					]
-				},
-				{
-					test: /\.(png|jpg|gif|svg)(\?.*)?$/,
-					loader: 'url-loader',
-					query: {
-						limit: 1000,
-						name: 'static/img/[name].[ext]?[hash:7]'
-					}
-				},
-				{
-					test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-					loader: 'url-loader',
-					query: {
-						limit: 1000,
-						name: 'static/fonts/[name].[ext]?[hash:7]'
-					}
-				},
-			]
-		},
+    watch: {
+      aggregateTimeout: 300,
+      poll: true
+    },
 
-		resolveLoader: {
-			fallback: [path.join(Constants.CWD, 'node_modules')]
-		},
+    stats: true,
+    profile: true,
 
-		resolve: {
-			extensions: ['', '.js', '.vue'],
-			fallback: [path.join(Constants.CWD, 'node_modules')],
-			alias: {
-				app: path.resolve(Constants.CWD, 'src'),
-				// https://github.com/vuejs/vue-loader/issues/287#issuecomment-241372519
-				vue: 'vue/dist/vue.js',
-			}
-		},
+    module: {
+      preloaders: [
+        {
+          test: /\.(vue|js)$/,
+          loader: 'eslint-loader',
+          include: path.join(Constants.CWD, 'src'),
+          exclude: /node_modules/
+        }
+      ],
+      loaders: [
+        {
+          test: /\.json$/,
+          loader: 'json'
+        },
+        {
+          test: /\.scss$/,
+          loader: LoaderStrings.Generate([
+            'style-loader',
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ]),
+        },
+        {
+          test: /\.html$/,
+          loader: 'html-loader'
+        },
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        },
+        {
+          test: /\.css$/,
+          loader: 'style-loader',
+        },
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.svg\??(\d*)$/,
+          loaders: [
+            `url-loader?limit=10000&mimetype=image/svg+xml&name=${Constants.STATIC_URL_IMAGES}[name].[hash:7].[ext]`,
+            'svgo-loader?useConfig=svgoConfig',
+          ],
+        },
+        {
+          test: /\.(png|jpe?g|gif|ico)(\?.*)?$/,
+          loader: 'url-loader',
+          query: {
+            limit: 1000,
+            name: `${Constants.STATIC_URL_IMAGES}[name].[ext]?[hash:7]`
+          }
+        },
+        {
+          test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+          loader: 'url-loader',
+          query: {
+            limit: 10000,
+            mimetype: 'application/font-woff',
+            name: `${Constants.STATIC_URL_FONTS}[name].[ext]?[hash:7]`
+          }
+        },
+      ]
+    },
 
-		plugins: [
-			new webpack.DefinePlugin({
-				'process.env': Env
-			}),
-			new StatsPlugin('stats.json', {
-				chunkModules: true,
-			}),
-			new HtmlWebpackPlugin({
-				template: 'src/index.html',
-				filename: 'index.html',
-				inject: true,
-			}),
-		],
+    plugins: [
+      new webpack.DefinePlugin({
+        'process.env': Env
+      }),
+      new StatsPlugin('stats.json', {
+        chunkModules: true,
+      }),
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        filename: 'index.html',
+        inject: true,
+      }),
+    ],
 
-		vue: {
-			loaders: Object.assign(LoaderStrings.css(), {
-				js: 'isparta'
-			})
-		},
+    vue: {
+      loaders: Object.assign(LoaderStrings.css(), {
+        js: 'isparta'
+      })
+    },
 
-		htmlLoader: {
-			interpolate: true,
-			attrs: ['img:src', 'link:href']
-		},
+    htmlLoader: {
+      interpolate: true,
+      attrs: ['img:src', 'link:href']
+    },
 
-		eslint: {
-		  formatter: require('eslint-friendly-formatter')
-		},
+    eslint: {
+      configFile: path.resolve(Constants.CWD, '.eslintrc'),
+      formatter: require('eslint-friendly-formatter'),
+    },
 
-	});
+    css: {
+      minimize: false,
+      autoprefixer: false
+    },
+
+    postcss() {
+      return [
+        // autoprefixer(browserlist)
+      ];
+    },
+
+    sassLoader: {
+      minify: true,
+      sourceComments: false,
+      errLogToConsole: true,
+      includePaths: [
+        './src/styles',
+        './node_modules/bourbon',
+        './node_modules/bourbon',
+      ]
+
+    },
+
+    svgoConfig: {
+      plugins: [
+        {
+          removeTitle: true
+        },
+        {
+          removeDesc: true
+        },
+        {
+          removeUselessDefs: true
+        },
+        {
+          convertColors: {
+            shorthex: false
+          }
+        },
+        {
+          convertPathData: false
+        },
+        {
+          cleanupAttrs: true
+        },
+        {
+          removeDoctype: true
+        },
+        {
+          removeComments: true
+        },
+        {
+          mergePaths: false
+        },
+      ]
+    },
+
+  });
