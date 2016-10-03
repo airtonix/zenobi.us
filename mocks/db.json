@@ -8,6 +8,14 @@
 		}
 	],
 	"posts": [
+		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"},
+		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"},
+		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"},
+		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"},
+		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"},
+		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"},
+		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"},
+		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"},
 		{"id": 1, "slug": "a-blog-post", "title": "A Blog Post", "content": "lorem \n* one\n * two"}
 	]
 }

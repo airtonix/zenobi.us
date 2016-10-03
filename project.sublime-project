@@ -6,10 +6,6 @@
 			"path": "."
 		},
 		{
-			"name": "material-design-icons",
-			"path": "node_modules\\material-design-icons"
-		},
-		{
 			"name": "material-design-lite",
 			"path": "node_modules\\material-design-lite"
 		},
@@ -20,9 +16,6 @@
 		{
 			"name": "bourbon-neat",
 			"path": "node_modules\\bourbon-neat\\app\\assets\\stylesheets"
-		},
-		{
-			"path": "node_modules\\vue-material-components"
 		}
 	]
 }

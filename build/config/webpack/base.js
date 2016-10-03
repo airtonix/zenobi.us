@@ -19,12 +19,12 @@ export default new Config()
     entry: {
       app: ['app'],
       vendor: [
-        'vue', 'vuex', 'vue-resource', 'vue-router'
+        'vue', 'vuex', 'vue-resource', 'vue-router',
       ]
     },
 
     resolve: {
-      extensions: ['', '.js', '.ts', '.scss', '.vue'],
+      extensions: ['', '.js', '.scss', '.vue'],
       fallback: [path.join(Constants.CWD, 'node_modules')],
       alias: {
         'app': path.resolve(Constants.CWD, 'src'),
@@ -70,10 +70,6 @@ export default new Config()
           test: /\.js$/,
           loader: 'babel-loader',
           exclude: /node_modules/,
-        },
-        {
-          test: /\.ts$/,
-          loader: 'ts-loader'
         },
         {
           test: /\.scss$/,
@@ -131,9 +127,6 @@ export default new Config()
     plugins: [
       new webpack.DefinePlugin({
         'process.env': Env
-      }),
-      new StatsPlugin('stats.json', {
-        chunkModules: true,
       }),
       new HtmlWebpackPlugin({
         template: 'src/index.html',
