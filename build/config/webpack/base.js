@@ -4,6 +4,8 @@ import Config from 'webpack-config';
 import webpack from 'webpack';
 import StatsPlugin from 'stats-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import VisualiserPlugin from 'webpack-visualizer-plugin';
 
 import * as LoaderStrings from '../../lib/loader-strings';
 import Constants from '../constants';
@@ -22,12 +24,12 @@ export default new Config()
     },
 
     resolve: {
-      extensions: ['', '.js', '.vue'],
+      extensions: ['', '.js', '.ts', '.scss', '.vue'],
       fallback: [path.join(Constants.CWD, 'node_modules')],
       alias: {
         'app': path.resolve(Constants.CWD, 'src'),
         // https://github.com/vuejs/vue-loader/issues/287#issuecomment-241372519
-        'vue': path.resolve(Constants.CWD, 'node_modules/vue/dist/vue.js'),
+        'vue': 'vue/dist/vue.js',
       }
     },
 
@@ -62,33 +64,34 @@ export default new Config()
       loaders: [
         {
           test: /\.json$/,
-          loader: 'json'
-        },
-        {
-          test: /\.scss$/,
-          loader: LoaderStrings.Generate([
-            'style-loader',
-            'css-loader',
-            'postcss-loader',
-            'sass-loader'
-          ]),
-        },
-        {
-          test: /\.html$/,
-          loader: 'html-loader'
-        },
-        {
-          test: /\.vue$/,
-          loader: 'vue-loader'
-        },
-        {
-          test: /\.css$/,
-          loader: 'style-loader',
+          loader: 'json-loader'
         },
         {
           test: /\.js$/,
           loader: 'babel-loader',
           exclude: /node_modules/,
+        },
+        {
+          test: /\.ts$/,
+          loader: 'ts-loader'
+        },
+        {
+          test: /\.scss$/,
+          loader: LoaderStrings.Generate([
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ], {
+            extract: true
+          }),
+        },
+        {
+          test: /\.css$/,
+          loader: LoaderStrings.Generate([
+            'css-loader'
+          ], {
+            extract: true
+          })
         },
         {
           test: /\.svg\??(\d*)$/,
@@ -114,6 +117,14 @@ export default new Config()
             name: `${Constants.STATIC_URL_FONTS}[name].[ext]?[hash:7]`
           }
         },
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        },
+        {
+          test: /\.html$/,
+          loader: 'html-loader'
+        },
       ]
     },
 
@@ -129,10 +140,16 @@ export default new Config()
         filename: 'index.html',
         inject: true,
       }),
+      new ExtractTextPlugin('css/[name].[hash:16].css'),
+      new VisualiserPlugin({
+        filename: 'stats.html'
+      })
     ],
 
     vue: {
-      loaders: Object.assign(LoaderStrings.css(), {
+      loaders: Object.assign(LoaderStrings.GenerateVueCssLoaders({
+        extract: true
+      }), {
         js: 'isparta'
       })
     },

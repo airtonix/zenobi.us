@@ -12,10 +12,10 @@ const Constants = Object.assign({}, PKG, {
 	 **/
 	`,
   STATIC_URL: '/static/',
-  STATIC_URL_IMAGES: '/static/img/',
-  STATIC_URL_SCRIPTS: '/static/js/',
-  STATIC_URL_STYLES: '/static/css/',
-  STATIC_URL_FONTS: '/static/fonts/',
+  STATIC_URL_IMAGES: 'static/img/',
+  STATIC_URL_SCRIPTS: 'static/js/',
+  STATIC_URL_STYLES: 'static/css/',
+  STATIC_URL_FONTS: 'static/fonts/',
 });
 
 export default Constants;
