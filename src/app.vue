@@ -1,16 +1,37 @@
 <template lang="html">
-	<div>
-		<navigation :links="links"></navigation>
-		<router-view></router-view>
+	<div class="mdl-layout mdl-js-layout has-drawer is-upgraded">
+
+  	<header class="mdl-layout__header mdl-layout__header--transparent">
+	    <div class="mdl-layout__header-row">
+
+        <span class="mdl-layout__title">
+        	<a href="//zenobi.us">zenobi.us</a>
+        	<logo :animates="true"></logo>
+        </span>
+        <div class="mdl-layout-spacer"></div>
+
+				<navigation :links="links"></navigation>
+
+	    </div>
+  	</header>
+
+	  <div class="mdl-layout__drawer" ref="drawer" @click="closeDrawer">
+        <span class="mdl-layout__title">zenobi.us</span>
+				<navigation :links="links"></navigation>
+	  </div>
+
+	  <main class="mdl-layout__content">
+			<router-view class="mdl-grid mdl-page"></router-view>
+		</main>
+
 	</div>
 </template>
 
-<style lang="sass" type="text/css">
-@import "~app/styles/screen";
-</style>
+<style lang="scss">@import "~app/styles/screen";</style>
 
 <script type="text/babel">
 /* @flow */
+import 'material-design-lite/material.js';
 import caseFilters from 'app/filters/case';
 import markdownFilters from 'app/filters/markdown';
 
@@ -21,9 +42,9 @@ export default {
 		...caseFilters
 	},
 
-
 	components: {
-		Navigation: require('app/components/organisms/navigation')
+		Logo: (resolve: Function) : any => require(['app/components/molecules/logo'], resolve),
+		Navigation: (resolve: Function ) : any => require(['app/components/organisms/navigation'], resolve),
 	},
 
 	data () : object {
@@ -35,5 +56,18 @@ export default {
 		};
 	},
 
+	methods: {
+		closeDrawer () {
+			let selectors = [
+				'.mdl-layout__obfuscator.is-visible',
+				'.mdl-layout__drawer.is-visible'
+			];
+
+			document
+				.querySelectorAll(selectors.join(', '))
+				.forEach( (el: string) : void => el.classList.remove('is-visible') );
+
+		}
+	}
 };
 </script>

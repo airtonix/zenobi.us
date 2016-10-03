@@ -1,7 +1,7 @@
 <template>
-	<div class="navigation">
+	<nav class="mdl-navigation">
 		<router-link
-			class="navigation__link"
+			class="mdl-navigation__link"
 			v-for="link in links"
 			:to="{ name: link.route }"
 			:alt="link.label">{{ link.text }}</router-link>

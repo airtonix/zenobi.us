@@ -1,8 +1,18 @@
 <template>
 	<div :id="id">
-		<md-card v-for="post in posts">
-			<span slot="title">{{ post.title }}</span>
-		</md-card>
+		<card
+			v-for="(post, index) in posts"
+			class="mdl-cell mdl-cell--12-col-phone mdl-cell--12-col-tablet"
+			:title="post.title"
+			:content="post.content"
+			:image="post.image"
+			:class="{
+				'mdl-cell--8-col': index === 0,
+				'mdl-cell--4-col': index === 1,
+				'mdl-cell--12-col': index >= 2
+		}">
+			<author slot="footer" :author="post.author" :when="post.changed"></author>
+		</card>
 	</div>
 </template>
 
@@ -15,7 +25,7 @@ const log = debug('app/components/pages/posts');
 
 export default {
 	components: {
-		MdCard: require('app/components/molecules/md-card')
+		Card: require('app/components/molecules/card')
 	},
 
 	data () {
