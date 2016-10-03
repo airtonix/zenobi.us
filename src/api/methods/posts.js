@@ -9,7 +9,7 @@ const log = debug('app/api/methods/posts');
  * @return {[type]}    [description]
  */
 export function get(id) {
-	client
+	return client
 		.get(`posts/${id}`)
 		.then( (response) => {
 			log('posts.get.response', response);
@@ -17,6 +17,24 @@ export function get(id) {
 		})
 		.catch( (err) => {
 			log('posts.get.err', err);
+			throw err;
+		});
+}
+
+/**
+ * Get a post by id
+ * @param  {[type]} id [description]
+ * @return {[type]}    [description]
+ */
+export function all() {
+	return client
+		.get(`posts`)
+		.then( (response) => {
+			log('posts.all.response', response);
+			return response.json();
+		})
+		.catch( (err) => {
+			log('posts.all.err', err);
 			throw err;
 		});
 }

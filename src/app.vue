@@ -5,19 +5,20 @@
 	</div>
 </template>
 
-<style lang="sass">
-@import "./styles/screen";
+<style lang="sass" type="text/css">
+@import "~app/styles/screen";
 </style>
 
 <script type="text/babel">
 /* @flow */
 import caseFilters from 'app/filters/case';
-import {markdown, } from 'app/filters/markdown';
+import markdownFilters from 'app/filters/markdown';
 
 export default {
 
 	filters: {
-		markdown,
+		...markdownFilters,
+		...caseFilters
 	},
 
 
@@ -28,6 +29,7 @@ export default {
 	data () : object {
 		return {
 			links: [
+				{ route: 'root', text: 'home'},
 				{ route: 'root.blog', text: 'blog'},
 			]
 		};

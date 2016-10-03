@@ -10,6 +10,7 @@ import { router, } from './states';
 import Store from './store';
 log('RootComponent.store', Store);
 
+import 'vue-material-components/assets/css/materialize.min.css';
 
 const app = new Vue({
   router,
