@@ -1,0 +1,34 @@
+.route--root {
+
+	.mdl-layout__header {
+		display: flex;
+
+		.mdl-layout__header-row {
+			display: flex;
+			flex-direction: column;
+			height: 50vh;
+			min-height: 50vh;
+			border-bottom: 1px solid #eee;
+			color: #ccc;
+			padding: 0;
+		}
+
+		.mdl-layout__title {
+			position: relative;
+			height: calc(100% - 56px);
+		}
+
+		.site-logo {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 1em;
+		  min-height: 10em;
+		  width: 8em;
+		}
+
+		.mdl-layout-spacer {}
+
+		.mdl-navigation a { color: #aaa;}
+	}
+}

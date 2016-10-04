@@ -1,5 +1,8 @@
 <template>
-	<div :id="id">
+	<div :id="id" >
+		<div class="mdl-cell mdl-cell--12-col">
+			<h4>Blog</h4>
+		</div>
 		<card
 			v-for="(post, index) in posts"
 			class="mdl-cell mdl-cell--12-col-phone mdl-cell--12-col-tablet"

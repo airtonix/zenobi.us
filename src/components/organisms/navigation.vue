@@ -1,22 +1,23 @@
 <template>
 	<nav class="mdl-navigation">
-		<router-link
-			class="mdl-navigation__link"
-			v-for="link in links"
-			:to="{ name: link.route }"
-			:alt="link.label">{{ link.text }}</router-link>
+		<template v-for="link in links">
+			<router-link
+				v-if="link.route"
+				class="mdl-navigation__link"
+				:to="{ name: link.route }"
+				:alt="link.label">{{ link.text }}</router-link>
+			<a v-if="link.uri" :href="link.uri">{{ link.text }}</a>
+		</template>
 	</div>
 </template>
 
 <style>
-	.navigation {
+	.mdl-navigation {
 		display: flex;
 		justify-content: space-around;
 	}
-	.navigation__link {
+	.mdl-navigation__link {
 		display: flex;
-		padding: 0.5em 1em;
-		border: 1px solid silver;
 	}
 </style>
 

@@ -1,9 +1,7 @@
 <template>
 	<div
 		class="site-logo"
-		:class="[
-			animates?'site-logo--animates':''
-		]">
+		:class="[ animates?'site-logo--animates':'' ]">
 		<img src="~app/images/cube-blue.png" class="site-logo__detail">
 		<img src="~app/images/cube-shadow.png" class="site-logo__shadow">
 	</div>
@@ -11,7 +9,6 @@
 
 
 <style lang="scss">
-
 @keyframes floating {
   from { bottom: 1em; }
   50% { bottom: 1.5em; }

@@ -9,7 +9,9 @@ const log = debug('app.root');
 
 import { router, } from './states';
 import Store from './store';
+import './validation';
 log('RootComponent.store', Store);
+
 
 const app = new Vue({
   router,
