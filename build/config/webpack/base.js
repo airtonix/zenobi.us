@@ -129,8 +129,13 @@ export default new Config()
         'process.env': Env
       }),
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
-        filename: 'index.html',
+        template: 'src/404.nunjucks',
+        filename: '404.nunjucks',
+        inject: false,
+      }),
+      new HtmlWebpackPlugin({
+        template: 'src/index.nunjucks',
+        filename: 'index.nunjucks',
         inject: true,
       }),
       new ExtractTextPlugin('css/[name].[hash:16].css'),

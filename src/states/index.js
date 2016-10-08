@@ -32,6 +32,7 @@ export const routes = [
 
 Vue.use(VueRouter);
 export const router = new VueRouter({
+  mode: 'history',
   routes,
   scrollBehaviour(to: object, from: object, saved: object) : object {
     log('VueRouter.scrollBehaviour', {
@@ -48,3 +49,9 @@ export const router = new VueRouter({
     };
   }
 });
+
+const redirect = sessionStorage.redirect;
+delete sessionStorage.redirect;
+if (redirect && redirect !== location.href) {
+  router.replace(redirect);
+}
