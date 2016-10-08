@@ -7,7 +7,7 @@ import * as posts from './methods/posts';
 import * as contact from './methods/contact';
 
 client.setOptions({
-  root: env.APP__VALUE_API_ROOT
+  root: env.CONFIG.APP__VALUE_API_ROOT
 });
 
 export default {
