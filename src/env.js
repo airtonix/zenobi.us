@@ -1,2 +1,2 @@
 /* @flow */
-export default Object.assign({}, process.env);
+export default Context;

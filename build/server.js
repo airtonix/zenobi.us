@@ -9,9 +9,9 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import ConnectHistoryApiFallback from 'connect-history-api-fallback';
 import config from './config/webpack';
-import Constants from './config/constants';
+import Context from './config/context';
 
-const log = debug(`app.[${Constants.name}]:Build/Server`);
+const log = debug(`app.[${Context.PKG.name}]:Build/Server`);
 
 /**
  * Server

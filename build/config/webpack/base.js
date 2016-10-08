@@ -2,16 +2,14 @@ import path from 'path';
 import debug from 'debug';
 import Config from 'webpack-config';
 import webpack from 'webpack';
-import StatsPlugin from 'stats-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import VisualiserPlugin from 'webpack-visualizer-plugin';
 
 import * as LoaderStrings from '../../lib/loader-strings';
-import Constants from '../constants';
-import Env from '../env';
+import Context from '../context';
 
-const log = debug(`app.[${Constants.name}]:Build/webpack/base`);
+const log = debug(`app.[${Context.PKG.name}]:Build/webpack/base`);
 
 export default new Config()
   .merge({
@@ -25,20 +23,20 @@ export default new Config()
 
     resolve: {
       extensions: ['', '.js', '.scss', '.vue'],
-      fallback: [path.join(Constants.CWD, 'node_modules')],
+      fallback: [path.join(Context.CWD, 'node_modules')],
       alias: {
-        'app': path.resolve(Constants.CWD, 'src'),
+        'app': path.resolve(Context.CWD, 'src'),
         // https://github.com/vuejs/vue-loader/issues/287#issuecomment-241372519
         'vue': 'vue/dist/vue.js',
       }
     },
 
     resolveLoader: {
-      fallback: [path.join(Constants.CWD, 'node_modules')]
+      fallback: [path.join(Context.CWD, 'node_modules')]
     },
 
     output: {
-      path: path.resolve(Constants.CWD, 'dist'),
+      path: path.resolve(Context.CWD, 'dist'),
       publicPath: '/',
       filename: '[name].[hash:16].js',
       chunkFilename: '[id].[hash:16].js'
@@ -57,7 +55,7 @@ export default new Config()
         {
           test: /\.(vue|js)$/,
           loader: 'eslint-loader',
-          include: path.join(Constants.CWD, 'src'),
+          include: path.join(Context.CWD, 'src'),
           exclude: /node_modules/
         }
       ],
@@ -92,7 +90,7 @@ export default new Config()
         {
           test: /\.svg\??(\d*)$/,
           loaders: [
-            `url-loader?limit=10000&mimetype=image/svg+xml&name=${Constants.STATIC_URL_IMAGES}[name].[hash:7].[ext]`,
+            `url-loader?limit=10000&mimetype=image/svg+xml&name=${Context.CONFIG.STATIC_URL_IMAGES}[name].[hash:7].[ext]`,
             'svgo-loader?useConfig=svgoConfig',
           ],
         },
@@ -101,7 +99,7 @@ export default new Config()
           loader: 'url-loader',
           query: {
             limit: 1000,
-            name: `${Constants.STATIC_URL_IMAGES}[name].[ext]?[hash:7]`
+            name: `${Context.CONFIG.STATIC_URL_IMAGES}[name].[ext]?[hash:7]`
           }
         },
         {
@@ -110,7 +108,7 @@ export default new Config()
           query: {
             limit: 10000,
             mimetype: 'application/font-woff',
-            name: `${Constants.STATIC_URL_FONTS}[name].[ext]?[hash:7]`
+            name: `${Context.CONFIG.STATIC_URL_FONTS}[name].[ext]?[hash:7]`
           }
         },
         {
@@ -118,24 +116,29 @@ export default new Config()
           loader: 'vue-loader'
         },
         {
-          test: /\.html$/,
-          loader: 'html-loader'
+          test: /\.es6.html$/,
+          loaders: [
+            'html-loader',
+            'val-loader',
+            'apply-loader?config=templateStringLoader',
+            'template-string-loader'
+          ]
         },
       ]
     },
 
     plugins: [
       new webpack.DefinePlugin({
-        'process.env': Env
+        'Context': JSON.stringify(Context),
       }),
       new HtmlWebpackPlugin({
-        template: 'src/404.nunjucks',
-        filename: '404.nunjucks',
+        template: 'src/404.es6.html',
+        filename: '404.html',
         inject: false,
       }),
       new HtmlWebpackPlugin({
-        template: 'src/index.nunjucks',
-        filename: 'index.nunjucks',
+        template: 'src/index.es6.html',
+        filename: 'index.html',
         inject: true,
       }),
       new ExtractTextPlugin('css/[name].[hash:16].css'),
@@ -143,6 +146,8 @@ export default new Config()
         filename: 'stats.html'
       })
     ],
+
+    templateStringLoader: Context,
 
     vue: {
       loaders: Object.assign(LoaderStrings.GenerateVueCssLoaders({
@@ -158,7 +163,7 @@ export default new Config()
     },
 
     eslint: {
-      configFile: path.resolve(Constants.CWD, '.eslintrc'),
+      configFile: path.resolve(Context.CWD, '.eslintrc'),
       formatter: require('eslint-friendly-formatter'),
     },
 

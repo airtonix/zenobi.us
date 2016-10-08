@@ -7,7 +7,9 @@
 	</head>
 	<body>
 		<div id="app" :class=[routeClass] class="mdl-layout__container">
-			<App></App>
+			<App>
+			<pre>${ JSON.stringify(scope, null, 2) }</pre>
+			</App>
 		</div>
 	</body>
 </html>

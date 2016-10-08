@@ -1,8 +1,8 @@
 import debug from 'debug';
-import Constants from '../config/constants';
+import Context from '../config/context';
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const log = debug(`app.[${Constants.name}]:Build/lib/loader-strings`);
+const log = debug(`app.[${Context.PKG.name}]:Build/lib/loader-strings`);
 
 
 /**
