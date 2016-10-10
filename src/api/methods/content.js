@@ -3,18 +3,19 @@ import debug from 'debug';
 import env from 'app/env';
 import client from 'app/api/client';
 
-const log = debug('app/api/methods/contact');
+const log = debug('app/api/methods/content');
 
 /**
- * Post contact payload to formspree.io
+ * Get a page by id
  * @param  {[type]} id [description]
  * @return {[type]}    [description]
  */
-export function post(data) {
+export function get(path) {
+	if (!path) { return Promise.reject(); }
   return client
-    .post(env.CONFIG.APP__SERVICE_FORMSPREE_URI, data)
+    .get(`${env.CONFIG.SERVICE_GITHUBAPI_URI}/contents/src/content/${path}`)
     .then((response) => {
-      log('contact.post.response', response);
+      log('content.get.response', response);
       return response.json();
     });
 }

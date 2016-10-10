@@ -1,9 +1,7 @@
 import env from 'app/env';
 
 import * as client from './client';
-
-import * as pages from './methods/pages';
-import * as posts from './methods/posts';
+import * as content from './methods/content';
 import * as contact from './methods/contact';
 
 client.setOptions({
@@ -11,7 +9,6 @@ client.setOptions({
 });
 
 export default {
-  pages,
-  posts,
+  content,
   contact,
 };
