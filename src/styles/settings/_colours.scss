@@ -1,0 +1,13 @@
+$settings__default__colour: (
+	gray: (
+		default: #526368
+	),
+	gun-metal: (
+		default: #83979d
+	)
+);
+
+@function settings-colour($colour, $variant: default) {
+	$group: map-get($settings__default__colour, $colour);
+	@return map-get($group, $variant);
+}

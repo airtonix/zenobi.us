@@ -9,16 +9,18 @@
 
 
 <style lang="scss">
+
 @keyframes floating {
   from { bottom: 1em; }
   50% { bottom: 1.5em; }
   to { bottom: 1em; }
 }
+
 @keyframes blurring {
-  from { opacity: 1; }
-  55% { opacity: 0.4; }
+  from { opacity: 1; transform: scale(1); }
+  55% { opacity: 0.65; }
   65% { transform: scale(0.96); }
-  to { opacity: 1; }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .site-logo {

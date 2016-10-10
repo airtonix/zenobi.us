@@ -61,6 +61,13 @@ export default new Config()
       ],
       loaders: [
         {
+          test: /manifest.json$/,
+          loaders: [
+            'file-loader?name=manifest.json',
+            'web-app-manifest-loader'
+          ]
+        },
+        {
           test: /\.json$/,
           loader: 'json-loader'
         },

@@ -5,8 +5,9 @@
 	    <div class="mdl-layout__header-row">
 
         <span class="mdl-layout__title">
-        	<a href="//zenobi.us">zenobi.us</a>
         	<logo :animates="true"></logo>
+        	<h3 class="mdl-layout__title-text">
+        		<a href="//zenobi.us">zenobi.us <small>web developer</small></a></h3>
         </span>
         <div class="mdl-layout-spacer"></div>
 

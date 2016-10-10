@@ -1,0 +1,20 @@
+$settings__default__type: (
+	normal: "32/16px Montserrat",
+);
+$settings__small__type: map-merge($settings__default__type, ());
+$settings__medium__type: map-merge($settings__small__type, ());
+$settings__large__type: map-merge($settings__medium__type, ());
+$settings__xlarge__type: map-merge($settings__large__type, ());
+
+
+$settings_type: (
+	small: $settings__small__type,
+	medium: $settings__medium__type,
+	large: $settings__large__type,
+	xlarge: $settings__xlarge__type
+);
+
+@function settings_font ($name, $breakpoint: small) {
+	$group: map-get($settings_type, $breakpoint);
+	@return map-get($group, $name);
+}

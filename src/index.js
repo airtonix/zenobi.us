@@ -12,6 +12,13 @@ import Store from './store';
 import './validation';
 log('RootComponent.store', Store);
 
+Vue.mixin({
+  methods: {
+    toJson(data: any): object {
+      return JSON.parse(JSON.stringify(data));
+    }
+  }
+});
 
 const app = new Vue({
   router,
@@ -30,5 +37,4 @@ const app = new Vue({
 app.$mount('#app');
 
 log('RootComponent.mounted');
-
 export default app;
