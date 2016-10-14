@@ -1,9 +1,9 @@
-## Projects
+#### Projects
 
-
-### Joust
+##### Joust
 
 - January 2016 to June 2016
+- http://app.joust.com.au
 
 Members:
 - Zenobius Jiricek
@@ -12,9 +12,10 @@ Members:
 
 > single page app developed with VueJs and Webpack
 
-### St John's: Volunteer for Volunteer
+##### St John's: Volunteer for Volunteer
 
 - November 2015 to January 2016
+- https://www.volunteerforavolunteer.com.au/
 
 Members:
 - Zenobius Jiricek
@@ -22,9 +23,10 @@ Members:
 
 > sitecore project implemented with patternlab
 
-### Bank Australia
+##### Bank Australia
 
 - July 2015 to November 2015
+- https://bankaust.com.au/
 
 Technologies:
 - Episerver, .Net
@@ -48,9 +50,10 @@ Members:
 
 > episerver project implemented with patternlab
 
-### Peoples Choice Credit Union
+##### Peoples Choice Credit Union
 
 - March 2014 to March 2015
+- https://www.peopleschoicecu.com.au/
 
 Technolgies:
  - Gulp
@@ -68,9 +71,10 @@ Members:
 
 > Digital branch upgrade for one of Adelaides most popular financial institutions.
 
-### Epoch DB
+##### Epoch DB
 
 - January 2014 to February 2014
+- http://airtonix.github.io/epochdb/
 
 Technologies:
 - AngularJS
@@ -85,9 +89,10 @@ Members:
 
 > AngularJs project built to scratch an itch for a game I played. Provides reference information on building components for players.
 
-### zibfitness.com
+##### zibfitness.com
 
 - January 2013 to March 2013
+- http://zibfitness.com/
 
 Technologies:
 - Django
@@ -102,9 +107,10 @@ Members:
 
 > Source of fitness knowledge and training for gyms
 
-### zibco.de
+##### zibco.de
 
 - January 2013 to March 2013
+- http://zibco.de/
 
 Technologies:
 - Django
@@ -120,7 +126,7 @@ Members:
 
 > Shorturl and QRcode tracking service created to replace other restrictive services.
 
-### the.jobsite.io
+##### the.jobsite.io
 
 - January 2013 to March 2013
 
@@ -137,9 +143,10 @@ Members:
 
 > Private workflow management web application for maintenance personnel. Seeks to reduce the paperwork required on site to nil through the use of QRcode & NFC tags.
 
-### flowersbyrita.com.au
+##### Flowers By Rita
 
 - January 2012 to February 2012
+- http://flowersbyrita.com.au
 
 Technologies:
 - Django
@@ -155,9 +162,10 @@ Members:
 
 > Small website
 
-### urpages.com.au
+##### urpages.com.au
 
 - February 2012 to Marc 2013
+- https://urpages.com.au/
 
 Technologies:
 - Django

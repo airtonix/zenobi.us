@@ -13,11 +13,19 @@ import './validation';
 log('RootComponent.store', Store);
 
 Vue.mixin({
+
+  data() {
+    return {
+      // ENV: process.env
+    };
+  },
+
   methods: {
     toJson(data: any): object {
       return JSON.parse(JSON.stringify(data));
     }
   }
+
 });
 
 const app = new Vue({

@@ -22,7 +22,7 @@ export default new Config()
     },
 
     resolve: {
-      extensions: ['', '.js', '.scss', '.vue'],
+      extensions: ['', '.js', '.scss', '.vue',],
       fallback: [path.join(Context.CWD, 'node_modules')],
       alias: {
         'app': path.resolve(Context.CWD, 'src'),
@@ -51,6 +51,7 @@ export default new Config()
     profile: true,
 
     module: {
+
       preloaders: [
         {
           test: /\.(vue|js)$/,
@@ -59,6 +60,7 @@ export default new Config()
           exclude: /node_modules/
         }
       ],
+
       loaders: [
         {
           test: /manifest.json$/,
@@ -70,6 +72,13 @@ export default new Config()
         {
           test: /\.json$/,
           loader: 'json-loader'
+        },
+        {
+          test: /\.md$/,
+          loaders: [
+            'html-loader',
+            'markdown-loader',
+          ]
         },
         {
           test: /\.js$/,
@@ -136,6 +145,7 @@ export default new Config()
 
     plugins: [
       new webpack.DefinePlugin({
+        'process.env': process.env,
         'Context': JSON.stringify(Context),
       }),
       new HtmlWebpackPlugin({

@@ -6,6 +6,7 @@
 			class="mdl-textfield__input"
 			:type="type"
 			:name="name"
+			ref="input"
 			v-model="model">
 		<label
 			class="mdl-textfield__label"
@@ -13,12 +14,15 @@
 		<span
 			v-if="valdiation.has(name)"
 			class="mdl-textfield__error">
-				<div v-for="error in valdiation.collect(name)">{{ error }}</div>
+				<div v-for="error in valdiation.collect(name)"><i class="material-icons">error</i> {{ error }}</div>
 		</span>
 	</div>
 </template>
 
 <script>
+import debug from 'debug';
+const log = debug('app/components/molecules/field-text');
+
 export default {
 
 	props: {
@@ -53,6 +57,12 @@ export default {
 		if (this.value) {
 			this.model = this.value;
 		}
+	},
+
+	activated () {
+		this.$nextTick( () => {
+			componentHandler.upgradeElement(this.$refs.input);
+		})
 	}
 
 };

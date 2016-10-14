@@ -8,6 +8,7 @@
 			:rows="rows"
 			:maxrows="maxrows"
 			:name="name"
+			ref="input"
 			v-model="model"></textarea>
 		<label
 			class="mdl-textfield__label"
@@ -21,6 +22,9 @@
 </template>
 
 <script>
+import debug from 'debug';
+const log = debug('app/components/molecules/field-textarea');
+
 export default {
 
 	props: {
@@ -51,13 +55,23 @@ export default {
 		}
 	},
 
-	methods: {
-	},
 
 	created () {
 		if (this.value) {
 			this.model = this.value;
 		}
+		log('created');
+	},
+
+	mounted () {
+		log('mounted');
+		this.$nextTick( () => {
+			componentHandler.upgradeElement(this.$refs.input);
+		})
+	},
+
+	updated () {
+		log('updated');
 	}
 
 };

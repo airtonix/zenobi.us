@@ -9,7 +9,7 @@ export const PageMixins = {
 
   data() {
     return {
-      content: null,
+      Content: null,
     };
   },
 
@@ -26,7 +26,7 @@ export const PageMixins = {
       .get(to.name)
       .then(response => {
         next(vm => {
-          vm.content = response;
+          vm.Content = response;
         });
       })
       .catch(() => next(false));

@@ -52,7 +52,8 @@ export default {
 		return {
 			links: [
 				{ route: 'root', text: 'home'},
-				{ route: 'root.blog', text: 'blog'},
+				{ route: 'root.about', text: 'about'},
+				{ route: 'root.projects', text: 'projects'},
 			]
 		};
 	},

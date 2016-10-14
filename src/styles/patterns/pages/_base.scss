@@ -9,3 +9,8 @@
 	color: white;
 	text-decoration: none;
 }
+
+.mdl-layout__container .mdl-layout .mdl-layout__content {
+	overflow-x: initial;
+	overflow-y: initial;
+}

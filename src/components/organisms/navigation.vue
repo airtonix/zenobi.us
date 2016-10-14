@@ -16,8 +16,14 @@
 		display: flex;
 		justify-content: space-around;
 	}
+
 	.mdl-navigation__link {
 		display: flex;
+	}
+
+	.mdl-navigation a.mdl-navigation__link.router-link-active {
+		background: silver;
+		color: black;
 	}
 </style>
 

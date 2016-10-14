@@ -19,6 +19,24 @@ export const routes = [
     component: resolve => require(['../components/pages/posts'], resolve),
   },
   {
+    name: names.ABOUT,
+    path: paths.ABOUT,
+    meta: {
+      title: 'About',
+      sources: [require('promise?global!app/content/resume/experience.md')]
+    },
+    component: resolve => require(['../components/templates/page'], resolve),
+  },
+  {
+    name: names.PROJECTS,
+    path: paths.PROJECTS,
+    meta: {
+      title: 'Projects',
+      sources: [require('promise?global!app/content/resume/projects.md')]
+    },
+    component: resolve => require(['../components/templates/page'], resolve),
+  },
+  {
     name: names.BLOG_DETAIL,
     path: paths.BLOG_DETAIL,
     component: resolve => require(['../components/pages/post'], resolve),
