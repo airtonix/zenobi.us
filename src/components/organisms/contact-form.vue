@@ -48,15 +48,16 @@
 				</div>
 			</div>
 
-
-			<button type="button" class="mdl-button mdl-js-button"
-				@click="testStatus(STATUS_CODES.VALIDATING)">STATUS_CODES.VALIDATING</button>
-			<button type="button" class="mdl-button mdl-js-button"
-				@click="testStatus(STATUS_CODES.SENDING)">STATUS_CODES.SENDING</button>
-			<button type="button" class="mdl-button mdl-js-button"
-				@click="testStatus(STATUS_CODES.SENT)">STATUS_CODES.SENT</button>
-			<button type="button" class="mdl-button mdl-js-button"
-				@click="testStatus(STATUS_CODES.IDLE)">STATUS_CODES.IDLE</button>
+			<template v-if="Context.isDev">
+				<button type="button" class="mdl-button mdl-js-button"
+					@click="testStatus(STATUS_CODES.VALIDATING)">STATUS_CODES.VALIDATING</button>
+				<button type="button" class="mdl-button mdl-js-button"
+					@click="testStatus(STATUS_CODES.SENDING)">STATUS_CODES.SENDING</button>
+				<button type="button" class="mdl-button mdl-js-button"
+					@click="testStatus(STATUS_CODES.SENT)">STATUS_CODES.SENT</button>
+				<button type="button" class="mdl-button mdl-js-button"
+					@click="testStatus(STATUS_CODES.IDLE)">STATUS_CODES.IDLE</button>
+			</template>
 	</form>
 </template>
 
@@ -101,7 +102,6 @@
 <script>
 import Vue from 'vue';
 import debug from 'debug';
-import api from 'app/api';
 import { Validator } from 'vee-validate';
 
 const log = debug('app/components/organisms/contact-form');
