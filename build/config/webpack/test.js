@@ -8,6 +8,7 @@ const log = debug(`app.[${Context.PKG.name}]:Build/webpack/test`);
 export default new Config()
   .extend({
     'build/config/webpack/dev.js': config => {
+      log('removing entrypoint');
       delete config.entry;
       return config;
     }

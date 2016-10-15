@@ -145,7 +145,6 @@ export default new Config()
 
     plugins: [
       new webpack.DefinePlugin({
-        'process.env': process.env,
         'Context': JSON.stringify(Context),
       }),
       new HtmlWebpackPlugin({

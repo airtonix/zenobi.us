@@ -14,6 +14,7 @@ export default new Config()
         .keys(config.entry)
         .forEach(entry => {
           let original = config.entry[entry];
+          log(`Adding hotmodule reload client to entrypoint: [${original}]`);
           config.entry[entry] = ['./build/client']
             .concat(Array.isArray(original) ? original : [original]);
         });

@@ -3,6 +3,10 @@ import PKG from '../../../package.json';
 
 export default new Config()
   .merge({
+    ENV_NAME__DEV: 'development',
+    ENV_NAME__PROD: 'production',
+  })
+  .merge({
     PKG,
     'CWD': process.cwd(),
     'APP__BANNER': `/**

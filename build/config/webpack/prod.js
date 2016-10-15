@@ -8,8 +8,11 @@ const log = debug(`app.[${Context.PKG.name}]:Build/webpack/prod`);
 export default new Config()
   .extend({
     'build/config/webpack/base.js': config => {
+      log('removing debug');
       delete config.debug;
+      log('removing devtools');
       delete config.devtool;
+      log('removing output.pathinfo');
       delete config.output.pathinfo;
       return config;
     }
