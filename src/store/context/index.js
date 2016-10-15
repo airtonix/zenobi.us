@@ -4,8 +4,8 @@ export default {
   },
   actions: {},
   getters: {
-  	isDev: state => state.ENV === state.ENV_NAME__DEV,
-  	isProd: state => state.ENV === state.ENV_NAME__PROD,
+    isDev: state => state.ENV === state.ENV_NAME__DEV,
+    isProd: state => state.ENV === state.ENV_NAME__PROD,
   },
   mutations: {}
 };
