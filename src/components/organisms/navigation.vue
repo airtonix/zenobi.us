@@ -11,32 +11,6 @@
 	</div>
 </template>
 
-<style lang="scss">
-	.mdl-layout__header-row {
-		height: 48px;
-		border-bottom: 1px solid #eee;
-
-		.mdl-navigation {
-			display: flex;
-			justify-content: space-around;
-
-
-			a.mdl-navigation__link {
-				display: flex;
-				line-height: 48px;
-				color: #83979d;
-				&.router-link-active {
-					background: #eee;
-					color: black;
-				}
-			}
-
-
-		}
-
-	}
-</style>
-
 <script>
 export default {
 	props: {

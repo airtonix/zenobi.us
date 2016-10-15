@@ -1,0 +1,27 @@
+$colour__white: settings-color(white);
+@warn $colour__white;
+
+.mdl-layout__header-row {
+
+	.mdl-navigation {
+		display: flex;
+		justify-content: space-around;
+
+		a.mdl-navigation__link {
+			display: flex;
+			line-height: 48px;
+			cursor: pointer;
+
+			&.router-link-active {
+				// color: black;
+			}
+
+			&:hover {
+				background: rgba(white, 0.2);
+			}
+
+		}
+
+	}
+
+}
