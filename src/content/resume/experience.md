@@ -1,5 +1,3 @@
-#### Experience
-
 ##### Front End Developer at Fusion
 
 - June 2014 - Present (2 years 5 months)

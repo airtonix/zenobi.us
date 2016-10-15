@@ -1,6 +1,6 @@
 <template>
 	<div :id="id" class="template-page">
-		<segment class="mdl-cell mdl-cell--12-col" :data="{title}">
+		<segment class="mdl-cell mdl-cell--12-col" :data="{title:Title}">
 			<template slot="content">
 				<div v-for="content in Contents" v-html="content"></div>
 			</template>
@@ -26,7 +26,7 @@ export default {
 
 	data () {
 		return {
-			title: null,
+			Title: null,
 			Contents: []
 		};
 	},
@@ -42,6 +42,7 @@ export default {
 			this.Contents = null;
 			load(this.$route.meta.sources)
 				.then( (contents) => {
+					this.Title = this.$route.meta.title;
 					this.Contents = contents;
 				});
 		}
@@ -55,7 +56,7 @@ export default {
 		load(sources)
 				.then( (contents) => {
 					return next( vm => {
-						vm.title = to.meta.title;
+						vm.Title = to.meta.title;
 						vm.Contents = contents;
 					});
 				})

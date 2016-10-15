@@ -1,29 +1,30 @@
-#### Projects
+
+#### Websites
 
 ##### Joust
+
+single page app developed with VueJs and Webpack
 
 - January 2016 to June 2016
 - http://app.joust.com.au
 
-Members:
+team:
 - Zenobius Jiricek
 - Ben Newsome
 - Rhys Lloyd
 
-> single page app developed with VueJs and Webpack
 
 ##### St John's: Volunteer for Volunteer
+
+sitecore project implemented with patternlab
 
 - November 2015 to January 2016
 - https://www.volunteerforavolunteer.com.au/
 
-Members:
-- Zenobius Jiricek
-- Ben Newsome
-
-> sitecore project implemented with patternlab
 
 ##### Bank Australia
+
+episerver project implemented with patternlab
 
 - July 2015 to November 2015
 - https://bankaust.com.au/
@@ -39,7 +40,7 @@ Technologies:
 - Scss
 - SwigJS
 
-Members:
+team:
 - Zenobius Jiricek
 - Cez Wieczorek
 - Oliver Boermans
@@ -48,9 +49,10 @@ Members:
 - Sharon Mok
 - Jonathan Wood
 
-> episerver project implemented with patternlab
 
 ##### Peoples Choice Credit Union
+
+Digital branch upgrade for one of Adelaides most popular financial institutions.
 
 - March 2014 to March 2015
 - https://www.peopleschoicecu.com.au/
@@ -60,7 +62,7 @@ Technolgies:
  - Javascript
  - Sass
 
-Members:
+team:
 - Rhys Lloyd
 - Zenobius Jiricek
 - Oliver Boermans
@@ -69,9 +71,10 @@ Members:
 - Jonathan Wood
 - Ben Wilkinson
 
-> Digital branch upgrade for one of Adelaides most popular financial institutions.
 
 ##### Epoch DB
+
+AngularJs project built to scratch an itch for a game I played. Provides reference information on building components for players.
 
 - January 2014 to February 2014
 - http://airtonix.github.io/epochdb/
@@ -84,12 +87,13 @@ Technologies:
 - Jade
 - Wintersmith
 
-Members:
+team:
 - Zenobius Jiricek
 
-> AngularJs project built to scratch an itch for a game I played. Provides reference information on building components for players.
 
 ##### zibfitness.com
+
+Source of fitness knowledge and training for gyms
 
 - January 2013 to March 2013
 - http://zibfitness.com/
@@ -102,12 +106,13 @@ Technologies:
 - AngularJs
 - Sass
 
-Members:
+team:
 - Zenobius Jiricek
 
-> Source of fitness knowledge and training for gyms
 
 ##### zibco.de
+
+Shorturl and QRcode tracking service created to replace other restrictive services.
 
 - January 2013 to March 2013
 - http://zibco.de/
@@ -121,12 +126,13 @@ Technologies:
 - Sass
 
 
-Members:
+team:
 - Zenobius Jiricek
 
-> Shorturl and QRcode tracking service created to replace other restrictive services.
 
 ##### the.jobsite.io
+
+Private workflow management web application for maintenance personnel. Seeks to reduce the paperwork required on site to nil through the use of QRcode & NFC tags.
 
 - January 2013 to March 2013
 
@@ -138,12 +144,12 @@ Technologies:
 - AngularJs
 - Sass
 
-Members:
+team:
 - Zenobius Jiricek
 
-> Private workflow management web application for maintenance personnel. Seeks to reduce the paperwork required on site to nil through the use of QRcode & NFC tags.
-
 ##### Flowers By Rita
+
+Small website
 
 - January 2012 to February 2012
 - http://flowersbyrita.com.au
@@ -156,13 +162,14 @@ Technologies:
 - jQuery
 - Sass
 
-Members:
+team:
 - Zenobius Jiricek
 - Chad Treloar
 
-> Small website
 
 ##### urpages.com.au
+
+Online Business Platform which seeks to provide internal and external small business tools.
 
 - February 2012 to Marc 2013
 - https://urpages.com.au/
@@ -175,12 +182,18 @@ Technologies:
 - jQuery
 - Sass
 
-Members:
+team:
 - Zenobius Jiricek
 - Thomas Woolford
 - Chris Knights
 - Alex Bianchini-Kometer
 
-> Online Business Platform which seeks to provide internal and external small business tools.
+
+
+#### Modules
+
+##### gastropod
+
+- patternlab gulp frontend build system
 
 
