@@ -21,12 +21,15 @@
 
 		<main class="mdl-layout__content">
 			<router-view class="mdl-grid mdl-page"></router-view>
+
+			<div class="site-credits">
+				<a href="https://unsplash.com/?photo=2154YiDnVJU">photo credit</a>
+			</div>
 		</main>
+
 
 	</div>
 </template>
-
-<style lang="scss">@import "~app/styles/screen";</style>
 
 <script type="text/babel">
 /* @flow */

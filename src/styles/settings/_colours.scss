@@ -1,19 +1,38 @@
 $settings__default__colour: (
+	black: (
+		default: #1a1a1a
+	),
 	gray: (
 		default: #526368
 	),
 	gun-metal: (
 		default: #83979d
+	),
+	navy-blue: (
+		default: #1c375b
+	),
+	sky-blue: (
+		default: #5dbede
+	),
+	white: (
+		default: #fff
 	)
 );
 
 @function settings-colour($colour, $variant: default) {
+	$output: $colour;
+
 	@if map-has-key($settings__default__colour, $colour) {
 		$group: map-get($settings__default__colour, $colour);
 		@if map-has-key($group, $variant) {
-			@return map-get($group, $variant);
+			$output: map-get($group, $variant);
+		} @else {
+			@warn "#{$colour} doesn't have #{$variant}";
 		}
+	} @else {
+			@warn "Colour Pallete doesn't have #{$colour}";
 	}
+	@warn "$output > #{$output}";
 
-	@return $colour;
+	@return $output;
 }

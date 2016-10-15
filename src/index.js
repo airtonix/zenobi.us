@@ -1,4 +1,5 @@
 /* @flow */
+import 'app/styles/screen';
 
 import 'babel-polyfill';
 import debug from 'debug';

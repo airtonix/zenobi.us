@@ -1,13 +1,15 @@
-$small-breakpoint:  em(640);
-$medium-breakpoint: em(1024);
-$large-breakpoint:  em(1440);
-$xlarge-breakpoint: em(1920);
+@import "functions";
 
-$small-range:   (0, $small-breakpoint);
-$medium-range:  ($small-breakpoint + em(1), $medium-breakpoint);
-$large-range:   ($medium-breakpoint + em(1), $large-breakpoint);
-$xlarge-range:  ($large-breakpoint + em(1), $xlarge-breakpoint);
-$xxlarge-range: ($xlarge-breakpoint + em(1), em(99999999));
+$small-breakpoint:  640;
+$medium-breakpoint: 1024;
+$large-breakpoint:  1440;
+$xlarge-breakpoint: 1920;
+
+$small-range:   (0, em($small-breakpoint));
+$medium-range:  (em($small-breakpoint + 1), $medium-breakpoint);
+$large-range:   (em($medium-breakpoint + 1), $large-breakpoint);
+$xlarge-range:  (em($large-breakpoint + 1), $xlarge-breakpoint);
+$xxlarge-range: (em($xlarge-breakpoint + 1), em(99999999));
 
 $screen: "only screen";
 $print: "only print";
@@ -38,4 +40,5 @@ $retina: (
  "#{$screen} and (min-resolution: 192dpi)",
  "#{$screen} and (min-resolution: 2dppx)"
 );
+
 

@@ -3,6 +3,19 @@ import PKG from '../../../package.json';
 
 export default new Config()
   .merge({
+    Autoprefixer: {
+      remove: false,
+      browsers: [
+        'last 20 versions',
+        'Explorer >= 11',
+        'iOS >= 8',
+        'iOS 8',
+        'Safari 8',
+        'Safari >= 8',
+      ]
+    }
+  })
+  .merge({
     ENV_NAME__DEV: 'development',
     ENV_NAME__PROD: 'production',
   })

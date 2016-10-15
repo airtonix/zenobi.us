@@ -1,0 +1,10 @@
+- 3yrs Digital Agency Experience
+- 4yrs experience as a Team Leader
+- 15yrs hand coding HTML, CSS & Javascript.
+- 8yrs Utilising [Git][tool-git].
+- 4yrs experience with [Python][lang-python] and [Django][framework-django].
+- 3yrs creating [Drupal][cms-drupal] & [Wordpress][cms-wordpress] websites.
+- 4yr utilising [Sass][lang-scss] and [Compass][framework-compass] with [Zurb Foundation][framework-zurb].
+- 2yrs experience working with [AngularJs][framework-angular], [GruntJs][framework-grunt], [NodeJs][engine-nodejs], [ExpressJs][framework-express]
+- 11yrs using Linux for Server and Desktop environments, ranging from Gaming, Graphic Design and Programming
+- 4yrs deploying and provisioning  horizontal scalable web applications on [AWS Ec2][iaas-ec2], [Heroku][paas-heroku], [Openshift][paas-openshift], [Digital Ocean][paas-digitalocean]

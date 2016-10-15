@@ -4,8 +4,6 @@
 		class="contact-form"
 		@submit.stop.prevent="submit">
 
-			<h4><slot name="title">Contact Me</slot></h4>
-
 			<template v-if="isIdle || hasError">
 				<field-text
 					name="name"

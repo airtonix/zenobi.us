@@ -5,6 +5,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import VisualiserPlugin from 'webpack-visualizer-plugin';
+import Autoprefixer from 'autoprefixer';
 
 import * as LoaderStrings from '../../lib/loader-strings';
 import Context from '../context';
@@ -22,7 +23,7 @@ export default new Config()
     },
 
     resolve: {
-      extensions: ['', '.js', '.scss', '.vue',],
+      extensions: ['', '.js', '.scss', '.vue'],
       fallback: [path.join(Context.CWD, 'node_modules')],
       alias: {
         'app': path.resolve(Context.CWD, 'src'),
@@ -38,8 +39,8 @@ export default new Config()
     output: {
       path: path.resolve(Context.CWD, 'dist'),
       publicPath: '/',
-      filename: '[name].[hash:16].js',
-      chunkFilename: '[id].[hash:16].js'
+      filename: 'static/js/[name].[hash:16].js',
+      chunkFilename: 'static/js/[id].[hash:16].js'
     },
 
     watch: {
@@ -157,7 +158,8 @@ export default new Config()
         filename: 'index.html',
         inject: true,
       }),
-      new ExtractTextPlugin('css/[name].[hash:16].css'),
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new ExtractTextPlugin('static/css/[name].[contenthash].css'),
       new VisualiserPlugin({
         filename: 'stats.html'
       })
@@ -190,7 +192,7 @@ export default new Config()
 
     postcss() {
       return [
-        // autoprefixer(browserlist)
+        Autoprefixer(Context.Autoprefixer)
       ];
     },
 

@@ -23,7 +23,10 @@ export const routes = [
     path: paths.ABOUT,
     meta: {
       title: 'About',
-      sources: [require('promise?global!app/content/resume/experience.md')]
+      sources: [
+        require('promise?global!app/content/resume/about.md'),
+        require('promise?global!app/content/resume/experience.md')
+      ]
     },
     component: resolve => require(['../components/templates/page'], resolve),
   },

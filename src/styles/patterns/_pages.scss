@@ -4,8 +4,13 @@
 
 @media #{$medium-up} {
 	@import "pages/base-mediumup";
+	@import "pages/home-mediumup";
 }
-@media #{$large-up} {}
+@media #{$large-up} {
+	@import "pages/base-largeup";
+}
 @media #{$xlarge-up} {}
-@media #{$xxlarge-up} {}
+@media #{$xxlarge-up} {
+	@import "pages/home-xxlargeup";
+}
 

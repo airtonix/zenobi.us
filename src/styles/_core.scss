@@ -1,0 +1,31 @@
+html:after {
+	clip: rect(0 0 0 0);
+	height: 0;
+	left: -9999px;
+	overflow: hidden;
+	position: absolute;
+	top: -9999px;
+	visibility: hidden;
+	width: 0;
+	content: 'small';
+}
+
+@mixin indicator($name, $breakpoint) {
+	@media #{$breakpoint} {
+		html:after {
+			content: '#{$name}';
+		}
+	}
+}
+
+@include indicator(small-up, $small-up);
+@include indicator(small-only, $small-only);
+@include indicator(medium-up, $medium-up);
+@include indicator(medium-only, $medium-only);
+@include indicator(large-up, $large-up);
+@include indicator(large-only, $large-only);
+@include indicator(xlarge-up, $xlarge-up);
+@include indicator(xlarge-only, $xlarge-only);
+@include indicator(xxlarge-up, $xxlarge-up);
+@include indicator(xxlarge-only, $xxlarge-only);
+

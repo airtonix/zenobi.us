@@ -1,5 +1,9 @@
 
-.mdl-layout__content .mdl-page {
-	margin-left: auto;
-	margin-right: auto;
+.mdl-layout__content {
+	.mdl-page {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 4em;
+		margin-bottom: 3em;
+	}
 }

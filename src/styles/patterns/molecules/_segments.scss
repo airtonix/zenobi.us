@@ -1,0 +1,19 @@
+.segment {
+	margin: 0 auto;
+
+	&,
+	&.mdl-card {
+		background-color: transparent;
+	}
+
+	&__title {
+		background: settings-colour(gun-metal);
+		color: settings-colour(white);
+	}
+
+	&__content {
+		background: settings-colour(white);
+		width: 100%;
+	}
+
+}

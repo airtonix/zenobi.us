@@ -1,20 +1,25 @@
-body {
-	background: url('images/photo-1447014886653-534c5b8b85c1.jpg');
+.mdl-layout__container {
+	.mdl-layout__content {
+		background-image: url('~app/images/bg.png');
+		background-repeat: no-repeat;
+		background-color: settings-colour(black);
+
+		overflow-x: initial;
+		overflow-y: initial;
+	}
+	.mdl-layout__drawer-button {
+		color: settings-colour(white);
+	}
 }
 
 .mdl-page {
 	font-family: $preferred_font;
 	max-width: 900px;
-	margin-top: 3em;
-	margin-bottom: 3em;
-	border-radius: 5px;
-	background: white;
-	box-shadow: 0 2px 6px rgba(#000, 0.1);
-	margin-top: 6em;
+	margin-top: 48px;
 }
 
 .mdl-layout__title { display: flex; }
-.mdl-layout__header-row { border-bottom: 1px solid settings-color(gun-metal); }
+.mdl-layout__header-row { border-bottom: 1px solid settings-colour(gun-metal); }
 .mdl-layout__header-row .mdl-navigation { display: flex; }
 
 .mdl-layout__title,
@@ -24,10 +29,12 @@ body {
 	text-decoration: none;
 }
 
-.mdl-layout__container {
-	.mdl-layout__content {
-		overflow-x: initial;
-		overflow-y: initial;
+.site-credits {
+	display: flex;
+	justify-content: center;
+	font-size: 10px;
+	a {
+		color: settings-colour(gun-metal);
+		text-decoration: none;
 	}
 }
-

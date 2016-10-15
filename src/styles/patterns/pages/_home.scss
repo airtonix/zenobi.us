@@ -1,4 +1,69 @@
 .route--root {
 
+	.mdl-layout__title,
+	.mdl-layout__header,
+	.mdl-layout__header-row,
+	.mdl-layout__header-row .mdl-navigation { display: none; }
 
+	.mdl-page {
+		background: transparent;
+		margin-top: 3em;
+	}
+
+	.site-header {
+		display: flex;
+		flex-direction: column;
+		height: 60vh;
+		min-height: 50vh;
+		color: #ccc;
+		padding: 0;
+
+		&__title {
+			position: relative;
+			height: calc(100% - 56px);
+			width: 100%;
+			color: white;
+
+			&-text {
+				position: absolute;
+				bottom: 0;
+				margin: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				text-align: center;
+
+				a {
+					display: flex;
+					flex-direction: column;
+					text-decoration: none;
+					cursor: pointer;
+				}
+				&, a { color: settings-colour(white); }
+				small { color: rgba(settings-colour(white), 0.75); }
+			}
+
+		}
+
+		&__logo {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 5.5em;
+			min-height: 10em;
+			width: 12em;
+		}
+
+		.mdl-navigation {
+			display: flex;
+			justify-content: center;
+			width: auto;
+			margin: 0 -1em;
+
+			a.mdl-navigation__link {
+				color: settings-colour(gun-metal);
+				padding: 1em 1.5em;
+				&.router-link-active { color: settings-colour(gray); }
+			}
+		}
+	}
 }

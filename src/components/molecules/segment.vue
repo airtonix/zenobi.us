@@ -1,5 +1,5 @@
 <template>
-	<div :id="id" class="segment mdl-card">
+	<div :id="id" class="segment mdl-card mdl-shadow--2dp">
 		<div class="segment__title mdl-card__title" v-if="!noTitle">
 	    <h2 class="mdl-card__title-text"><slot name="title">{{ Title }}</slot></h2>
 	  </div>
@@ -8,10 +8,6 @@
 	  <div class="mdl-card__menu" v-if="actions"><slot name="actions"></slot></div>
 	</div>
 </template>
-
-<style>
-	.segment { width: 100%; max-width: 50em; margin: 0 auto; }
-</style>
 
 <script type="text/babel">
 import cuid from 'cuid';
