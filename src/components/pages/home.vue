@@ -62,6 +62,7 @@
 					display: flex;
 					flex-direction: column;
 					text-decoration: none;
+					cursor: pointer;
 				}
 				&, a { color: settings-colour(gray); }
 				small { color: settings-colour(gun-metal); }
