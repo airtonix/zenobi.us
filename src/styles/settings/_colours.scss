@@ -8,6 +8,12 @@ $settings__default__colour: (
 );
 
 @function settings-colour($colour, $variant: default) {
-	$group: map-get($settings__default__colour, $colour);
-	@return map-get($group, $variant);
+	@if map-has-key($settings__default__colour, $colour) {
+		$group: map-get($settings__default__colour, $colour);
+		@if map-has-key($group, $variant) {
+			@return map-get($group, $variant);
+		}
+	}
+
+	@return $colour;
 }
