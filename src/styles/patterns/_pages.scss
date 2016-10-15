@@ -2,7 +2,9 @@
 @import "pages/home";
 @import "pages/posts";
 
-@media #{$medium-up} {}
+@media #{$medium-up} {
+	@import "pages/base-mediumup";
+}
 @media #{$large-up} {}
 @media #{$xlarge-up} {}
 @media #{$xxlarge-up} {}

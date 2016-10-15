@@ -3,11 +3,13 @@ import Vue from 'vue';
 
 Vue.use(Vuex);
 
-import PagesModule from './pages';
+import pages from './pages';
+import navigation from './navigation';
 
 export default new Vuex.Store({
-	strict: true,
+  strict: true,
   modules: {
-    pages: PagesModule
+    pages,
+    navigation,
   }
 });

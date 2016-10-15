@@ -1,7 +1,21 @@
-.mdl-page {
-	max-width: 900px;
-	font-family: $preferred_font;
+body {
+	background: url('images/photo-1447014886653-534c5b8b85c1.jpg');
 }
+
+.mdl-page {
+	font-family: $preferred_font;
+	max-width: 900px;
+	margin-top: 3em;
+	margin-bottom: 3em;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 0 2px 6px rgba(#000, 0.1);
+	margin-top: 6em;
+}
+
+.mdl-layout__title { display: flex; }
+.mdl-layout__header-row { border-bottom: 1px solid settings-color(gun-metal); }
+.mdl-layout__header-row .mdl-navigation { display: flex; }
 
 .mdl-layout__title,
 .mdl-layout__title a
@@ -10,7 +24,10 @@
 	text-decoration: none;
 }
 
-.mdl-layout__container .mdl-layout .mdl-layout__content {
-	overflow-x: initial;
-	overflow-y: initial;
+.mdl-layout__container {
+	.mdl-layout__content {
+		overflow-x: initial;
+		overflow-y: initial;
+	}
 }
+

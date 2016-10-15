@@ -1,45 +1,4 @@
 .route--root {
 
-	.mdl-layout__header {
-		display: flex;
 
-		.mdl-layout__header-row {
-			display: flex;
-			flex-direction: column;
-			height: 50vh;
-			min-height: 50vh;
-			border-bottom: 1px solid #eee;
-			color: #ccc;
-			padding: 0;
-		}
-
-		.mdl-layout__title {
-			position: relative;
-			height: calc(100% - 56px);
-
-			&-text {
-				position: absolute;
-				bottom: 0;
-				margin: 0;
-				transform: translateX(-50%);
-				text-align: center;
-				&, a { color: settings-colour(gray); }
-				small { color: settings-colour(gun-metal); }
-			}
-
-		}
-
-		.site-logo {
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			bottom: 3.5em;
-		  min-height: 10em;
-		  width: 8em;
-		}
-
-		.mdl-layout-spacer {}
-
-		.mdl-navigation a { color: #aaa;}
-	}
 }

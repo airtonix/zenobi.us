@@ -30,7 +30,7 @@ Vue.mixin({
 
 const app = new Vue({
   router,
-
+  store: Store,
   computed: {
     routeClass() : string {
       return `route--${changeCase.paramCase(this.$route.name)}`;

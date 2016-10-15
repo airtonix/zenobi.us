@@ -1,13 +1,5 @@
 <template>
 	<div :id="id" class="template-page">
-		<nav>
-			<router-link
-				class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-navigation__link"
-				:to="{ name: 'root' }"
-				alt="Return home">
-	      <i class="material-icons">home</i>
-			</router-link>
-		</nav>
 		<segment class="mdl-cell mdl-cell--12-col" :data="{title}">
 			<template slot="content">
 				<div v-for="content in Contents" v-html="content"></div>

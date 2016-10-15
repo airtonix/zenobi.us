@@ -11,19 +11,29 @@
 	</div>
 </template>
 
-<style>
-	.mdl-navigation {
-		display: flex;
-		justify-content: space-around;
-	}
+<style lang="scss">
+	.mdl-layout__header-row {
+		height: 48px;
+		border-bottom: 1px solid #eee;
 
-	.mdl-navigation__link {
-		display: flex;
-	}
+		.mdl-navigation {
+			display: flex;
+			justify-content: space-around;
 
-	.mdl-navigation a.mdl-navigation__link.router-link-active {
-		background: silver;
-		color: black;
+
+			a.mdl-navigation__link {
+				display: flex;
+				line-height: 48px;
+				color: #83979d;
+				&.router-link-active {
+					background: #eee;
+					color: black;
+				}
+			}
+
+
+		}
+
 	}
 </style>
 
