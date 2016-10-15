@@ -11,6 +11,9 @@
         "node": true,
         "es6": true
     },
+    "globals": {
+        "Context": true
+    },
 
     "settings": {
         "html/report-bad-indent": 2,
