@@ -9,6 +9,7 @@
 </template>
 
 <script type="text/babel">
+import Vue from 'vue';
 import debug from 'debug';
 import changeCase from 'change-case';
 const log = debug('app/components/templates/page');
@@ -51,16 +52,18 @@ export default {
 	beforeRouteEnter (to, from, next) {
 		log('route.beforeRouteEnter', {from, to});
 		if (!to.meta) { return; }
-		let {sources } = to.meta;
+		let { sources, } = to.meta;
 
 		load(sources)
-				.then( (contents) => {
-					return next( vm => {
+			.then( (contents) => {
+				return next( vm => {
+					Vue.nextTick( () => {
 						vm.Title = to.meta.title;
 						vm.Contents = contents;
 					});
-				})
-				.catch( () => next(false));
+				});
+			})
+			.catch( () => next(false));
 	},
 
 };

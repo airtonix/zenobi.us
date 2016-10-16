@@ -10,7 +10,7 @@
 			v-model="model">
 		<label
 			class="mdl-textfield__label"
-			:for="name">Your Name</label>
+			:for="name">{{ label }}</label>
 		<span
 			v-if="valdiation.has(name)"
 			class="mdl-textfield__error">
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+/*global componentHandler*/
 import debug from 'debug';
 const log = debug('app/components/molecules/field-text');
 
@@ -29,6 +30,7 @@ export default {
 		type: {
 			default () { return 'text'; }
 		},
+		label: true,
 		valdiation: true,
 		name: true,
 		value: true,
@@ -51,19 +53,35 @@ export default {
 	},
 
 	methods: {
+		prepare () {
+			this.$nextTick( () => {
+				componentHandler.upgradeDom('foo');
+				log('componentHandler.upgradeElement', this.name, this.$refs.input);
+			});
+		}
 	},
 
 	created () {
 		if (this.value) {
 			this.model = this.value;
 		}
+		this.prepare();
+		log('created', this.name);
+	},
+
+	mounted () {
+		log('mounted', this.name);
 	},
 
 	activated () {
-		this.$nextTick( () => {
-			componentHandler.upgradeElement(this.$refs.input);
-		})
+		log('activated', this.name);
+	},
+
+	updated () {
+		log('updated', this.name);
 	}
 
 };
+
+
 </script>

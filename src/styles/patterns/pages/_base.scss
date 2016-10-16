@@ -14,12 +14,12 @@
 
 .mdl-page {
 	font-family: $preferred_font;
-	max-width: 900px;
-	margin-top: 48px;
+	max-width: em(900);
+	margin-top: em(64);
 }
 
 .mdl-layout__title { display: flex; }
-.mdl-layout__header-row { border-bottom: 1px solid settings-colour(gun-metal); }
+.mdl-layout__header-row { border-bottom: 0; }
 .mdl-layout__header-row .mdl-navigation { display: flex; }
 
 .mdl-layout__title,
@@ -32,7 +32,7 @@
 .site-credits {
 	display: flex;
 	justify-content: center;
-	font-size: 10px;
+	font-size: em(10);
 	a {
 		color: settings-colour(gun-metal);
 		text-decoration: none;

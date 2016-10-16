@@ -98,9 +98,13 @@
 </style>
 
 <script>
+/*global componentHandler*/
+
 import Vue from 'vue';
 import debug from 'debug';
 import { Validator } from 'vee-validate';
+
+import api from 'app/api';
 
 const log = debug('app/components/organisms/contact-form');
 const STATUS_CODES = {
@@ -190,11 +194,11 @@ export default {
 			this.validate(this.toJson(this.form))
 				.then(() => {
 					this.status = STATUS_CODES.SENDING;
-				// 	return api.contact.post(this.form);
+					return api.contact.post(this.form);
 				})
-				.then((response) => {
+				.then( (response) => {
 					this.status = STATUS_CODES.SENT;
-				// 	log('submit.response', response);
+					log('submit.response', response);
 				})
 				.catch((err) => {
 					log('submit.err', err);

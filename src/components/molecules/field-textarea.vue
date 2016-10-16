@@ -22,6 +22,7 @@
 </template>
 
 <script>
+/*global componentHandler*/
 import debug from 'debug';
 const log = debug('app/components/molecules/field-textarea');
 
@@ -55,23 +56,33 @@ export default {
 		}
 	},
 
+	methods: {
+		prepare () {
+			this.$nextTick( () => {
+				componentHandler.upgradeDom();
+				log('componentHandler.upgradeElement', this.name, this.$refs.input);
+			});
+		}
+	},
 
 	created () {
 		if (this.value) {
 			this.model = this.value;
 		}
-		log('created');
+		this.prepare();
+		log('created', this.name);
 	},
 
 	mounted () {
-		log('mounted');
-		this.$nextTick( () => {
-			componentHandler.upgradeElement(this.$refs.input);
-		})
+		log('mounted', this.name);
+	},
+
+	activated () {
+		log('activated', this.name);
 	},
 
 	updated () {
-		log('updated');
+		log('updated', this.name);
 	}
 
 };

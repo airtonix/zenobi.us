@@ -53,6 +53,7 @@ export const routes = [
 
 Vue.use(VueRouter);
 export const router = new VueRouter({
+  mode: 'history',
   routes,
   scrollBehaviour(to: object, from: object, saved: object) : object {
     log('VueRouter.scrollBehaviour', {
@@ -60,13 +61,30 @@ export const router = new VueRouter({
       from,
       saved
     });
-    if (saved) {
-      return saved;
-    }
-    return {
-      x: 0,
-      y: 0
-    };
+    return {x: 0, y: 0};
+
+    // if (saved) {
+    //   // saved is only available for popstate navigations.
+    //   return saved;
+    // } else {
+    //   const position = {};
+    //   // new navigation.
+    //   // scroll to anchor by returning the selector
+    //   if (to.hash) {
+    //     position.selector = to.hash;
+    //   }
+    //   // check if any matched route config has meta that requires scrolling to top
+    //   if (to.matched.some(m => m.meta.scrollToTop)) {
+    //     // cords will be used if no selector is provided,
+    //     // or if the selector didn't match any element.
+    //     position.x = 0;
+    //     position.y = 0;
+    //   }
+    //   // if the returned position is falsy or an empty object,
+    //   // will retain current scroll position.
+    //   return position;
+    // }
+
   }
 });
 
