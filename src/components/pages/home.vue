@@ -47,5 +47,9 @@ export default {
 		links () : array { return this.$store.state.navigation.global; },
 	},
 
+	mounted () {
+		window.scrollTo(0, 0);
+	}
+
 };
 </script>

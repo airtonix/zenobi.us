@@ -57,8 +57,9 @@ export default {
 				.catch( () => next(false));
 	},
 
-	ready () {
-		log('ready');
+	mounted () {
+		window.scrollTo(0, 0);
 	}
+
 };
 </script>
