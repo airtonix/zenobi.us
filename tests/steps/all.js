@@ -59,6 +59,61 @@ define(function(require) {
         return this.remote
           .setFindTimeout(Constants.ELEMENT_TIMEOUT)
           .findByXpath(Selectors.buttonWithLabel(label));
+      })
+
+      /**
+       * Perform a click on a button having certain label
+       * @param  {String} label  text to be found in the buttons label.
+       * @return Intern.Leadfoot.Command
+       */
+      .when('I click the "$label" button', function(label) {
+        return this.remote
+          .setFindTimeout(Constants.ELEMENT_TIMEOUT)
+          .findByXpath(Selectors.buttonWithLabel(label))
+          .click();
+      })
+
+      /**
+       * Form field containing a label should not have any validation errors visible
+       * @param  {String} label  text to be found in the fields label.
+       * @return Intern.Leadfoot.Command
+       */
+      .then('"$label" should be invalid', function(label) {
+        return this.remote
+          .setFindTimeout(Constants.ELEMENT_TIMEOUT)
+          .findByXpath(Selectors.validationErrorsForLabel(label));
+      })
+
+      /**
+       * Form field containing a label should have some validation errors visible
+       * @param  {String} label  text to be found in the fields label.
+       * @return Intern.Leadfoot.Command
+       */
+      .then('"$label" should be valid', function(label) {
+        return this.remote
+          .setFindTimeout(Constants.ELEMENT_TIMEOUT)
+          .waitForDeletedByXpath(Selectors.validationErrorsForLabel(label));
+      })
+
+      /**
+       * There should be some validation errors visible
+       * @return Intern.Leadfoot.Command
+       */
+      .then('there should be some Validation Errors visible', function() {
+        return this.remote
+          .setFindTimeout(Constants.ELEMENT_TIMEOUT)
+          .findByXpath(Selectors.anyValidationErrors());
+
+      })
+
+      /**
+       * There should not be any validation errors visible
+       * @return Intern.Leadfoot.Command
+       */
+      .then('there should not be any Validation Errors visible', function() {
+        return this.remote
+          .setFindTimeout(Constants.ELEMENT_TIMEOUT)
+          .waitForDeletedByXpath(Selectors.anyValidationErrors());
       });
 
   };

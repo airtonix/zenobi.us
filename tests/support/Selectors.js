@@ -23,7 +23,7 @@ define([
         `//div[contains(@class, 'mdl-card')]`,
         // whose title text contains our title
         `//*[contains(@class, 'mdl-card__title-text')]`,
-        `[contains(.,`, Helpers.prepareStringForXpath(title), `)]`,
+        `[contains(., ${Helpers.prepareStringForXpath(title)} )]`,
         // then select the containing card again
         `//parent::div[contains(@class, 'mdl-card')]`,
       ].join('');
@@ -37,11 +37,11 @@ define([
     fieldWithLabel: (label) => {
       return [
         // find the label containing the text
-        '//label[contains(., ', Helpers.prepareStringForXpath(label), ')]',
+        `//label[contains(., ${Helpers.prepareStringForXpath(label)})]`,
         // match the containing div
-        '//parent::div[contains(@class, "mdl-textfield")]',
+        `//parent::div[contains(@class, 'mdl-textfield')]`,
         // match the contained field
-        '//*[(local-name() = "input" or local-name() = "select" or local-name() = "textarea")]'
+        `//*[(local-name() = 'input' or local-name() = 'select' or local-name() = 'textarea')]`
       ].join('');
     },
 
@@ -53,11 +53,27 @@ define([
     buttonWithLabel: (label) => {
       return [
         // find a button
-        '//*[contains(@class, "mdl-button")]',
+        `//*[contains(@class, "mdl-button")]`,
         // that contains the label
-        '[contains(.,', Helpers.prepareStringForXpath(label), ')]',
+        `[contains(., ${Helpers.prepareStringForXpath(label)} )]`,
       ].join('');
     },
+
+    anyValidationErrors: () => {
+      return [
+        // find a field
+        `//div[contains(@class, 'mdl-textfield')]`,
+        `/span[@class='mdl-textfield__error']`
+      ].join('');
+    },
+
+    validationErrorsForLabel: (label) => {
+      return [
+        // find the label containing the text
+        `//label[contains(., ${Helpers.prepareStringForXpath(label)})]`,
+        `//following::span[@class='mdl-textfield__error']`
+      ].join('');
+    }
 
   };
 
