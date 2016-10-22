@@ -7,3 +7,4 @@ test/unit/coverage/*
 *.sublime-project
 *.sublime-workspace
 npm-debug.log*
+tests/screenshots/

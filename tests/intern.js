@@ -25,6 +25,9 @@ define([
     reporters: [
       'Runner',
       {
+        id: 'tests/support/ScreenshotOnPass'
+      },
+      {
         id: 'tests/support/ScreenshotOnFail'
       }
     ],

@@ -5,7 +5,7 @@ define([
   'intern/dojo/node!mkdirp',
 ], function(fs, path, changeCase, mkdirp) {
 
-  class ScreenshotOnFail {
+  class ScreenshotOnPass {
 
     constructor(config) {
       this.config = Object.assign({
@@ -17,7 +17,7 @@ define([
       try {
         var folderName = changeCase.snakeCase(test.parent.name),
           fileName = changeCase.snakeCase(test.name),
-          destination = path.join(this.config.path, folderName, `${fileName}-FAILED.png`);
+          destination = path.join(this.config.path, folderName, `${fileName}-PASSED.png`);
 
         mkdirp(path.join(this.config.path, folderName), (err) => {
           if (err) {
@@ -32,7 +32,7 @@ define([
 
     }
 
-    testFail(test) {
+    testPass(test) {
       return test.remote
         .takeScreenshot()
         .then((buffer) => this.save(test, buffer));
@@ -40,5 +40,5 @@ define([
 
   }
 
-  return ScreenshotOnFail;
+  return ScreenshotOnPass;
 });
