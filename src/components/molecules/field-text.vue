@@ -2,15 +2,17 @@
 	<div
 		class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 		:class="{ 'is-invalid': valdiation.has(name) }">
-		<input
-			class="mdl-textfield__input"
-			:type="type"
-			:name="name"
-			ref="input"
-			v-model="model">
-		<label
-			class="mdl-textfield__label"
-			:for="name">{{ label }}</label>
+		<div class="mdl-textfield__input-wrapper">
+			<input
+				class="mdl-textfield__input"
+				:type="type"
+				:name="name"
+				ref="input"
+				v-model="model">
+			<label
+				class="mdl-textfield__label"
+				:for="name">{{ label }}</label>
+		</div>
 		<span
 			v-if="valdiation.has(name)"
 			class="mdl-textfield__error">
