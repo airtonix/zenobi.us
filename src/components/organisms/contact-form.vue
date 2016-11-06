@@ -33,10 +33,7 @@
 						@update="update"></field-textarea>
 				</div>
 
-				<div
-					v-if="isSending"
-					ref="progress"
-					class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+				<progress-bar v-if="isSending"></progress-bar>
 
 				<div v-if="isSent"
 					class="mdl-card__icon">
@@ -162,6 +159,7 @@ export default {
 		FieldText: (resolve: Function ) : any => require(['app/components/molecules/field-text'], resolve),
 		FieldTextarea: (resolve: Function ) : any => require(['app/components/molecules/field-textarea'], resolve),
 		Segment: (resolve: Function ) : any => require(['app/components/molecules/segment'], resolve),
+		ProgressBar: (resolve: Function) : any => require(['app/components/molecules/progress-bar'], resolve)
 	},
 
 	data () {
@@ -197,14 +195,6 @@ export default {
 			this.validator.validate('message', value);
 		},
 
-		status (value) {
-			Vue.nextTick( () => {
-				if (this.isSending) {
-					log(`statusChange:${value}`, this.$refs);
-					componentHandler.upgradeElement(this.$refs.progress);
-				}
-			});
-		}
 	},
 
 	methods: {
