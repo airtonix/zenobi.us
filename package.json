@@ -34,39 +34,6 @@
       "syntax-flow"
     ]
   },
-  "foundry": {
-    "releaseCommands": [
-      {
-        "type": "releaseCommand",
-        "command": "foundry-release-require-branch",
-        "options": {
-          "branch": "master"
-        }
-      },
-      {
-        "type": "customCommand",
-        "updateFiles": "git clone git@github.com:airtonix/zenobi.us.git --branch gh-pages ./dist"
-      },
-      {
-        "type": "customCommand",
-        "updateFiles": "rimraf ./dist/!(.git)"
-      },
-      "foundry-release-git",
-      "foundry-release-npm",
-      {
-        "type": "customCommand",
-        "updateFiles": "npm run build"
-      },
-      {
-        "type": "customCommand",
-        "updateFiles": "cd dist && git add --all && git commit -m \"Release $FOUNDRY_VERSION\" && git push"
-      },
-      {
-        "type": "customCommand",
-        "updateFiles": "cd .. && git checkout develop"
-      }
-    ]
-  },
   "dependencies": {
     "babel-polyfill": "^6.13.0",
     "change-case": "^3.0.0",
@@ -108,6 +75,7 @@
     "bemify": "^0.1.2",
     "bourbon": "^4.2.7",
     "bourbon-neat": "^1.8.0",
+    "bumped": "^0.10.2",
     "chromedriver": "^2.24.1",
     "connect-history-api-fallback": "^1.3.0",
     "cross-env": "^1.0.7",
@@ -126,9 +94,8 @@
     "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
-    "foundry": "^4.3.2",
-    "foundry-release-require-branch": "0.0.2",
     "function-bind": "^1.0.2",
+    "git-dirty": "^1.0.2",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.22.0",
     "inject-loader": "^3.0.0-beta1",

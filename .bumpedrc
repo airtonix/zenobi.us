@@ -1,0 +1,31 @@
+files: [
+  'package.json'
+  'bower.json'
+]
+
+plugins:
+
+  prerelease:
+    'Linting config files':
+      plugin: 'bumped-finepack'
+
+  postrelease:
+
+    'Generating CHANGELOG file':
+      plugin: 'bumped-changelog'
+
+    'Compiling browser version':
+      plugin: 'bumped-terminal'
+      command: 'NODE_ENV=production npm run build'
+
+    'Check for missing changes':
+      plugin: 'bumped-terminal'
+      command: 'git-dirty && npm run test'
+
+    'Publishing tag at GitHub':
+      plugin: 'bumped-terminal'
+      command: 'git tag $newVersion && git push origin $newVersion'
+
+    'Publishing at GitHub Pages':
+      plugin: 'bumped-gh-pages'
+      folder: 'dist'
