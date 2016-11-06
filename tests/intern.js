@@ -8,8 +8,8 @@ define([
     tunnel: 'NullTunnel',
 
     tunnelOptions: {
-      hostname: 'thelma',
-      port: '4444',
+      hostname: process.env.SELENIUM_HOST,
+      port: process.env.SELENIUM_PORT,
       protocol: 'http'
     },
 

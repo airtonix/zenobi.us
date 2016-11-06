@@ -10,10 +10,6 @@ plugins:
 
   postrelease:
 
-    'Run tests':
-      plugin: 'bumped-terminal'
-      command: 'npm run test'
-
     'Compiling browser version':
       plugin: 'bumped-terminal'
       command: 'cross-env NODE_ENV=production npm run build'
