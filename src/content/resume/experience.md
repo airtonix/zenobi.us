@@ -1,6 +1,6 @@
-#### Experience
+##### Experience
 
-### 2016-Present
+###### 2016-Present
 
 **Senior Frontend Developer at Fusion**
 
@@ -24,7 +24,7 @@
         - docker deployments (dokku, etc) [wip]
 
 
-### 2015-2016
+###### 2015-2016
 
 **Senior Frontend Developer at Fusion**
 - Developed new website for Melbourn Credit Union, now known as Bank Australia.
@@ -35,7 +35,7 @@
 - opensourced several minor libraries under the Fusion github profile.
 
 
-### 2014-2015
+###### 2014-2015
 
 **Senior Frontend Developer at Fusion**
 
@@ -44,7 +44,7 @@
 - Developed internal angular.js powered tool for capturing User Stories.
 
 
-### 2013-2014
+###### 2013-2014
 
 **Participated in 48hr Startup Weekend**
 - Worked with Designer to create prototype application in Django and AngularJs
@@ -55,7 +55,7 @@
 - Prototype RESTful api using [Apiary][saas-apiary]
 
 
-### 2012-2013
+###### 2012-2013
 
 **CTO & Product Design, Zibmedia**
 
@@ -67,7 +67,7 @@
     + Used [AngularJS][framework-angular] for the entire frontend
     + Django with the RESTful backend ([tastypie][framework-tastypie], guardianpie)
 
-### 2011
+###### 2011
 
 **Lead Developer, Urpages.com.au**
 
@@ -80,7 +80,7 @@
 - Built custom CRM from scratch using [Django][framework-django] and [Bootstrap][framework-bootstrap]
 
 
-### 2010
+###### 2010
 
 **Youthjet**
 
@@ -89,7 +89,7 @@
 - Website Training Provider
     + Provide basic introduction to website creation to small groups of migrants
 
-### 2007-2009
+###### 2007-2009
 
 **Open Source Research And Development**
 
@@ -100,7 +100,7 @@
     + ubuntu@irc.freenode.net
 
 
-### 2004-2007
+###### 2004-2007
 
 **HETA**
 

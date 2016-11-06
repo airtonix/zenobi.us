@@ -4,59 +4,80 @@
 		class="contact-form"
 		@submit.stop.prevent="submit">
 
-			<template v-if="isIdle || hasError">
-				<field-text
-					name="name"
-					type="text"
-					label="Your Name"
-					:valdiation="errors"
-					@update="update"></field-text>
-				<field-text
-					name="email"
-					type="email"
-					label="Your Email"
-					:valdiation="errors"
-					@update="update"></field-text>
-				<field-textarea
-					name="message"
-					type="text"
-					label="Your Message"
-					:valdiation="errors"
-					@update="update"></field-textarea>
+		<segment class="mdl-cell mdl-cell--12-col">
+			<h4 slot="title">{{ title }}</h4>
+			<div
+				slot="content">
 
+				<div v-if="isIdle || hasError">
+					<field-text
+						name="name"
+						type="text"
+						label="Your Name"
+						:valdiation="errors"
+						@update="update"></field-text>
+					<field-text
+						name="email"
+						type="email"
+						label="Your Email"
+						:valdiation="errors"
+						@update="update"></field-text>
+					<field-textarea
+						name="message"
+						type="text"
+						label="Your Message"
+						:valdiation="errors"
+						@update="update"></field-textarea>
+				</div>
+
+				<div
+					v-if="isSending"
+					ref="progress"
+					class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+
+				<div v-if="isSent"
+					class="mdl-card__icon mdl-card mdl-card--border">
+					<div class="mdl-card__media	">
+						<i class="material-icons">sentiment_satisfied</i>
+					</div>
+					<div class="mdl-card__title">
+						<div class="mdl-card__title-text">Thanks</div>
+						<div class="mdl-card__subtitle-text">I'll be in touch soon.</div>
+					</div>
+				</div>
+
+				<div v-if="Context.isDev">
+					<button type="button" class="mdl-button mdl-js-button"
+						@click="testStatus(STATUS_CODES.VALIDATING)">STATUS_CODES.VALIDATING</button>
+					<button type="button" class="mdl-button mdl-js-button"
+						@click="testStatus(STATUS_CODES.SENDING)">STATUS_CODES.SENDING</button>
+					<button type="button" class="mdl-button mdl-js-button"
+						@click="testStatus(STATUS_CODES.SENT)">STATUS_CODES.SENT</button>
+					<button type="button" class="mdl-button mdl-js-button"
+						@click="testStatus(STATUS_CODES.IDLE)">STATUS_CODES.IDLE</button>
+				</div>
+
+			</div>
+			<div
+				v-if="isIdle || hasError"
+				slot="footer">
 				<button
 					ref="submit"
 					type="submit"
-					class="mdl-button mdl-js-button mdl-button--primary">Send</button>
-			</template>
+					class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">Send</button>
 
-			<div
-				v-if="isSending"
-				ref="progress"
-				class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+		    <div class="mdl-layout-spacer"></div>
 
-			<div v-if="isSent"
-				class="mdl-card__icon mdl-card mdl-card--border">
-				<div class="mdl-card__media	">
-					<i class="material-icons">sentiment_satisfied</i>
-				</div>
-				<div class="mdl-card__title">
-					<div class="mdl-card__title-text">Thanks</div>
-					<div class="mdl-card__subtitle-text">I'll be in touch soon.</div>
-				</div>
+				<a href="http://github.com/airtonix/"
+					class="mdl-button mdl-button--icon mdl-color-text--blue-grey-300">
+					<i class="mdi mdi-github-circle"></i></a>
+				<a href="https://au.linkedin.com/in/zenobiusjiricek"
+					class="mdl-button mdl-button--icon mdl-color-text--blue-grey-300">
+					<i class="mdi mdi-linkedin"></i></a>
 			</div>
-
-			<template v-if="Context.isDev">
-				<button type="button" class="mdl-button mdl-js-button"
-					@click="testStatus(STATUS_CODES.VALIDATING)">STATUS_CODES.VALIDATING</button>
-				<button type="button" class="mdl-button mdl-js-button"
-					@click="testStatus(STATUS_CODES.SENDING)">STATUS_CODES.SENDING</button>
-				<button type="button" class="mdl-button mdl-js-button"
-					@click="testStatus(STATUS_CODES.SENT)">STATUS_CODES.SENT</button>
-				<button type="button" class="mdl-button mdl-js-button"
-					@click="testStatus(STATUS_CODES.IDLE)">STATUS_CODES.IDLE</button>
-			</template>
+		</segment>
 	</form>
+
 </template>
 
 <style lang="scss">
@@ -99,6 +120,7 @@
 
 <script>
 /*global componentHandler*/
+/* @flow */
 
 import Vue from 'vue';
 import debug from 'debug';
@@ -116,8 +138,13 @@ const STATUS_CODES = {
 };
 
 export default {
+	props: {
+		title: true,
+		menu: true,
+	},
 
 	validator: null,
+
 	filters: {
 		json (value, indent = 2) {
 			return JSON.stringify(value, null, indent);
@@ -125,8 +152,9 @@ export default {
 	},
 
 	components: {
-		FieldText: resolve => require(['app/components/molecules/field-text'], resolve),
-		FieldTextarea: resolve => require(['app/components/molecules/field-textarea'], resolve),
+		FieldText: (resolve: Function ) : any => require(['app/components/molecules/field-text'], resolve),
+		FieldTextarea: (resolve: Function ) : any => require(['app/components/molecules/field-textarea'], resolve),
+		Segment: (resolve: Function ) : any => require(['app/components/molecules/segment'], resolve),
 	},
 
 	data () {

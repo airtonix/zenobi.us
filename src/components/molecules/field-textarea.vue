@@ -2,6 +2,7 @@
 	<div
 		class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 		:class="{ 'is-invalid': valdiation.has(name) }">
+
 		<textarea
 			class="mdl-textfield__input"
 			:type="type"
@@ -10,14 +11,17 @@
 			:name="name"
 			ref="input"
 			v-model="model"></textarea>
+
 		<label
 			class="mdl-textfield__label"
 			:for="name">{{ label }}</label>
+
 		<span
 			v-if="valdiation.has(name)"
 			class="mdl-textfield__error">
-				<div v-for="error in valdiation.collect(name)">{{ error }}</div>
+				<span v-for="error in valdiation.collect(name)">{{ error }}</span>
 		</span>
+
 	</div>
 </template>
 

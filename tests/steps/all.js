@@ -1,10 +1,7 @@
 /* global define */
 
 define(function(require) {
-
-  var expect = require('intern/chai!expect');
   var Constants = require('tests/support/constants');
-  var Helpers = require('tests/support/Helpers');
   var Selectors = require('tests/support/Selectors');
 
   /**

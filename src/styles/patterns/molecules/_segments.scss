@@ -13,7 +13,14 @@
 
 	&__content {
 		background: settings-colour(white);
-		width: 100%;
+		width: initial;
+	}
+
+	&__footer {
+		background: settings-colour(white);
+		> div {
+			display: flex;
+		}
 	}
 
 }

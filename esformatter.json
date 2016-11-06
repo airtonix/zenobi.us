@@ -5,7 +5,7 @@
 	},
 
 	"indent": {
-    "value": "\t",
+		"value": "\t",
 		"alignComments": true,
 	},
 

@@ -1,13 +1,13 @@
 <template>
 	<nav class="mdl-navigation">
-		<template v-for="link in links">
+		<span v-for="link in links">
 			<router-link
 				v-if="link.route"
 				class="mdl-navigation__link"
 				:to="{ name: link.route }"
 				:alt="link.label">{{ link.text }}</router-link>
 			<a v-if="link.uri" :href="link.uri">{{ link.text }}</a>
-		</template>
+		</span>
 	</div>
 </template>
 

@@ -1,7 +1,8 @@
-Zenobius is an enthusiastic, quality driven individual with over 11 years combined industry experience in web development. Constantly striving to expand his repertoire through learning new frameworks, strategies and techniques, but overall setting a goal  to establish robustly scalable and maintainable team development process that survives contact with real life scenarios, higher team participation and lower technical debit.
+It surprises me, that even after 14 years combined industry experience in web development that the horizon brings new tricks to keep me entertained.
 
-Always searching for a team composed of top performers, a team lazy enough to investigate automating the mundane, a team that raises the collective expertise to new industry standards.
+I compliment teams lazy enough to investigate automating the mundane, a team that shrinks in horror at the thought of deployment without quality control. A team that modularises their toolkit for the world to use... We all dream of being some kind of leader in knowledge creation.
 
-While being familiar with most workflows and modern opensource frameworks, Zenobius prefers to work with Coffescript, Es6, Scss, VueJS, Webpack, Nodejs, Python and Django. These are not concrete determinations however, since from time to time he will be evaluating other options that present better workflow oppurtunities.
+While being familiar with most work flows and modern open source frameworks, You'll find my efficiency is greatest with ES6, Scss, VueJS, Webpack, NodeJS, Python and Django.
 
-At the moment Zenobius is in Adelaide, Australia and willing to consider offers of relocation pretty much anywhere in the world.
+At the moment I'm in Adelaide, Australia and willing to consider offers of relocation pretty much anywhere in the world.
+

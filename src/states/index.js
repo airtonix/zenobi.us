@@ -2,7 +2,7 @@ import debug from 'debug';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-const log = debug('app.states');
+const log = debug('app/states');
 
 import * as names from './names';
 import * as paths from './paths';
@@ -52,11 +52,20 @@ export const routes = [
 ];
 
 Vue.use(VueRouter);
+
 export const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
 });
 
+router.beforeEach( (to, from, next) => {
+  var container = document.querySelector('.mdl-layout');
+  if (container) {
+    log('beforeEach.scrollTop');
+    container.scrollTop = 0;
+  }
+  next();
+});
 
 const redirect = sessionStorage.redirect;
 delete sessionStorage.redirect;

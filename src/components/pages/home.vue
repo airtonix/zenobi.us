@@ -17,10 +17,7 @@
 
 		</div>
 
-		<segment class="mdl-cell mdl-cell--6-col">
-			<h4 slot="title">Contact Me</h4>
-			<contact-form slot="content"></contact-form>
-		</segment>
+		<contact-form title="Contact Me"></contact-form>
 
 	</div>
 </template>

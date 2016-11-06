@@ -15,7 +15,7 @@ log('RootComponent.store', Store);
 
 Vue.mixin({
 
-  data() {
+  data () : object {
     return {
       // ENV: process.env
     };
