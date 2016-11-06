@@ -1,7 +1,14 @@
+import fs from 'fs';
+
 import debug from 'debug';
 import webpack from 'webpack';
 import Config from 'webpack-config';
 import Context from '../context';
+import gracefulFs from 'graceful-fs';
+
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+
+gracefulFs.gracefulify(fs);
 
 const log = debug(`app:Build/webpack/prod`);
 
@@ -23,7 +30,11 @@ export default new Config()
       pathinfo: true,
     },
     plugins: [
-
+      new CopyWebpackPlugin([
+          {from: 'CNAME', toType: 'file'}
+        ], {
+          copyUnmodified: true
+        }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurrenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin({
