@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import Config from 'webpack-config';
 import Context from '../context';
 
-const log = debug(`app.[${Context.PKG.name}]:Build/webpack/prod`);
+const log = debug(`app:Build/webpack/prod`);
 
 export default new Config()
   .extend({
@@ -19,10 +19,11 @@ export default new Config()
   })
   .merge({
     filename: __filename,
+    output: {
+      pathinfo: true,
+    },
     plugins: [
-      new webpack.BannerPlugin(Context.APP_BANNER, {
-        raw: true
-      }),
+
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurrenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin({

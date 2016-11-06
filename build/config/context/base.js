@@ -23,9 +23,8 @@ export default new Config()
     PKG,
     'CWD': process.cwd(),
     'APP__BANNER': `/**
-     * v${PKG.name}
-     * v${PKG.version}
-     * v${PKG.author}
+     * ${PKG.name}@v${PKG.version}
+     * ${PKG.author}
      * ${PKG.homepage}
      * Released under the ${PKG.license} License
      **/`,

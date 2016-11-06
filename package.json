@@ -1,39 +1,16 @@
 {
   "name": "zenobi.us",
   "description": "A Vue.js project",
-  "version": "2.0.0-beta",
   "homepage": "http://github.com/airtonix/zenobi.us/",
-  "author": "Zenobius Jiricek <airtonix@gmail.com>",
-  "license": "MIT",
-  "private": true,
+  "version": "2.0.0",
+  "author": {
+    "email": "airtonix@gmail.com",
+    "name": "Zenobius Jiricek"
+  },
   "keywords": [
     "Vue",
     "vuex"
   ],
-  "scripts": {
-    "selenium": "cross-env WEBPACK_ENV=test DEBUG=tests/* node tests/selenium.js",
-    "test": "cross-env WEBPACK_ENV=test intern-runner config=tests/intern",
-    "debug-test": "node --debug-brk node_modules/intern/runner config=tests/intern",
-    "prebuild": "rimraf ./dist && mkdirp dist",
-    "build": "cross-env WEBPACK_ENV=prod babel-node ./build",
-    "dev:run": "cross-env DEBUG=app* WEBPACK_ENV=dev babel-node ./build/server",
-    "dev": "onchange \"package.json\" \"{mocks,build}/**/*\" -i -v -- npm run dev:run",
-    "release": "foundry release",
-    "release-resume": "foundry resume"
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "es2016",
-      "es2017"
-    ],
-    "plugins": [
-      "transform-runtime",
-      "transform-flow-comments",
-      "transform-object-rest-spread",
-      "syntax-flow"
-    ]
-  },
   "dependencies": {
     "babel-polyfill": "^6.13.0",
     "change-case": "^3.0.0",
@@ -76,6 +53,10 @@
     "bourbon": "^4.2.7",
     "bourbon-neat": "^1.8.0",
     "bumped": "^0.10.2",
+    "bumped-changelog": "^0.3.6",
+    "bumped-finepack": "^0.2.5",
+    "bumped-gh-pages": "^0.1.0",
+    "bumped-terminal": "^0.7.2",
     "chromedriver": "^2.24.1",
     "connect-history-api-fallback": "^1.3.0",
     "cross-env": "^1.0.7",
@@ -150,5 +131,30 @@
     "webpack-visualizer-plugin": "^0.1.5",
     "yadda": "^0.16.3",
     "yargs": "^6.3.0"
+  },
+  "scripts": {
+    "build": "cross-env WEBPACK_ENV=prod babel-node ./build",
+    "debug-test": "node --debug-brk node_modules/intern/runner config=tests/intern",
+    "dev": "onchange \"package.json\" \"{mocks,build}/**/*\" -i -v -- npm run dev:run",
+    "dev:run": "cross-env DEBUG=app* WEBPACK_ENV=dev babel-node ./build/server",
+    "prebuild": "rimraf ./dist && mkdirp dist",
+    "release": "bumped release",
+    "selenium": "cross-env WEBPACK_ENV=test DEBUG=tests/* node tests/selenium.js",
+    "test": "cross-env WEBPACK_ENV=test intern-runner config=tests/intern"
+  },
+  "private": true,
+  "license": "MIT",
+  "babel": {
+    "plugins": [
+      "transform-runtime",
+      "transform-flow-comments",
+      "transform-object-rest-spread",
+      "syntax-flow"
+    ],
+    "presets": [
+      "es2015",
+      "es2016",
+      "es2017"
+    ]
   }
 }
