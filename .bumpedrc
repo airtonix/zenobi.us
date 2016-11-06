@@ -10,9 +10,9 @@ plugins:
 
   postrelease:
 
-    'Check for missing changes':
+    'Run tests':
       plugin: 'bumped-terminal'
-      command: 'git-dirty'
+      command: 'npm run test'
 
     'Compiling browser version':
       plugin: 'bumped-terminal'
