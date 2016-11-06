@@ -4,7 +4,10 @@
 		class="contact-form"
 		@submit.stop.prevent="submit">
 
-		<segment class="mdl-cell mdl-cell--12-col">
+		<segment class="mdl-cell mdl-cell--12-col"
+			:data="{
+				noFooter: !(isIdle || hasError || isSent)
+			}">
 			<h4 slot="title">{{ title }}</h4>
 			<div
 				slot="content">
@@ -36,9 +39,9 @@
 					class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
 
 				<div v-if="isSent"
-					class="mdl-card__icon mdl-card mdl-card--border">
+					class="mdl-card__icon">
 					<div class="mdl-card__media	">
-						<i class="material-icons">sentiment_satisfied</i>
+						<i class="material-icons md-48">sentiment_satisfied</i>
 					</div>
 					<div class="mdl-card__title">
 						<div class="mdl-card__title-text">Thanks</div>
@@ -46,7 +49,7 @@
 					</div>
 				</div>
 
-				<div v-if="Context.isDev">
+				<div v-if="isDev">
 					<button type="button" class="mdl-button mdl-js-button"
 						@click="testStatus(STATUS_CODES.VALIDATING)">STATUS_CODES.VALIDATING</button>
 					<button type="button" class="mdl-button mdl-js-button"
@@ -59,9 +62,10 @@
 
 			</div>
 			<div
-				v-if="isIdle || hasError"
+				v-if="isIdle || hasError || isSent"
 				slot="footer">
 				<button
+					v-if="isIdle || hasError"
 					ref="submit"
 					type="submit"
 					class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">Send</button>
@@ -69,9 +73,11 @@
 		    <div class="mdl-layout-spacer"></div>
 
 				<a href="http://github.com/airtonix/"
+					v-if="isIdle || hasError || isSent"
 					class="mdl-button mdl-button--icon mdl-color-text--blue-grey-300">
 					<i class="mdi mdi-github-circle"></i></a>
 				<a href="https://au.linkedin.com/in/zenobiusjiricek"
+					v-if="isIdle || hasError || isSent"
 					class="mdl-button mdl-button--icon mdl-color-text--blue-grey-300">
 					<i class="mdi mdi-linkedin"></i></a>
 			</div>
@@ -124,6 +130,7 @@
 
 import Vue from 'vue';
 import debug from 'debug';
+
 import { Validator } from 'vee-validate';
 
 import api from 'app/api';
@@ -166,6 +173,7 @@ export default {
 			},
 			status: STATUS_CODES.IDLE,
 			STATUS_CODES,
+			isDev: false,
 			errors: []
 		};
 	},
@@ -188,10 +196,11 @@ export default {
 		['form.message'] (value) {
 			this.validator.validate('message', value);
 		},
+
 		status (value) {
 			Vue.nextTick( () => {
 				if (this.isSending) {
-					log(value, this.$refs);
+					log(`statusChange:${value}`, this.$refs);
 					componentHandler.upgradeElement(this.$refs.progress);
 				}
 			});
@@ -205,15 +214,18 @@ export default {
 				if (!data) { reject(new Error('Missing data to validate')); }
 				this.validator.validateAll(data);
 				if (this.errors.any()) {
+					debug('validation.failed');
 					reject(this.errors.all());
 				} else {
+					debug('validation.success');
 					resolve();
 				}
 			});
 		},
 
-		update (field, value) {
-			log('update', field, value);
+		update ({name, value}) {
+			log('update', name, value);
+			this.form[name] = value;
 		},
 
 		submit () {
@@ -221,10 +233,12 @@ export default {
 			this.status = STATUS_CODES.VALIDATING;
 			this.validate(this.toJson(this.form))
 				.then(() => {
+					log('submit.sending');
 					this.status = STATUS_CODES.SENDING;
 					return api.contact.post(this.form);
 				})
 				.then( (response) => {
+					log('submit.sent');
 					this.status = STATUS_CODES.SENT;
 					log('submit.response', response);
 				})
@@ -237,6 +251,7 @@ export default {
 		clearErrors() {
 				this.errors.clear();
 		},
+
 		testStatus (code) {
 			this.status = code;
 		}
@@ -249,6 +264,7 @@ export default {
 			message: 'required'
 		});
 		this.errors = this.validator.errorBag;
+		this.isDev = this.Context('isDev');
 	}
 
 };

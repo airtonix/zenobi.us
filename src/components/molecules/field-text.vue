@@ -58,8 +58,9 @@ export default {
 
 	methods: {
 		prepare () {
+			log('prepare', this.name);
 			this.$nextTick( () => {
-				componentHandler.upgradeDom('foo');
+				componentHandler.upgradeDom(this.$refs.input);
 				log('componentHandler.upgradeElement', this.name, this.$refs.input);
 			});
 		}

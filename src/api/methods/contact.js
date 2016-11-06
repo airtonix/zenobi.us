@@ -11,8 +11,9 @@ const log = debug('app/api/methods/contact');
  * @return {[type]}    [description]
  */
 export function post(data) {
+	log('contact.post.before', data, env);
   return client
-    .post(env.CONFIG.APP__SERVICE_FORMSPREE_URI, data)
+    .post(env.CONFIG.SERVICE_FORMSPREE_URI, data)
     .then((response) => {
       log('contact.post.response', response);
       return response.json();

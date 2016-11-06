@@ -21,3 +21,5 @@ plugins:
     'Publishing at GitHub Pages':
       plugin: 'bumped-gh-pages'
       folder: 'dist'
+      opts:
+        message: 'Release $newVersion'

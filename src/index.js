@@ -8,6 +8,7 @@ import changeCase from 'change-case';
 
 const log = debug('app.root');
 
+import env from './env';
 import { router, } from './states';
 import Store from './store';
 import './validation';
@@ -17,13 +18,24 @@ Vue.mixin({
 
   data () : object {
     return {
-      // ENV: process.env
     };
   },
 
   methods: {
     toJson(data: any): object {
       return JSON.parse(JSON.stringify(data));
+    },
+    Context (key: string) : any {
+      log('Context.reduction', env, key);
+      let result = key &&
+        typeof key === 'string' &&
+        key.split('.')
+          .reduce( (obj: object, part: string) : any => {
+            if (!obj || !obj[part]) { return false; }
+            return obj[part];
+          }, env);
+      log('Context.result', result);
+      return result;
     }
   }
 

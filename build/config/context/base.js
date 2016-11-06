@@ -16,6 +16,8 @@ export default new Config()
     }
   })
   .merge({
+    isProd: false,
+    isDev: false,
     ENV_NAME__DEV: 'development',
     ENV_NAME__PROD: 'production',
   })
