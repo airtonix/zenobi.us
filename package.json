@@ -2,7 +2,7 @@
   "name": "zenobi.us",
   "description": "A Vue.js project",
   "homepage": "http://github.com/airtonix/zenobi.us/",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "author": {
     "email": "airtonix@gmail.com",
     "name": "Zenobius Jiricek"
@@ -67,6 +67,7 @@
     "css-loader": "^0.25.0",
     "debug": "^2.2.0",
     "del": "^2.2.2",
+    "documentation-loader": "^0.1.1-beta",
     "eslint": "^3.7.0",
     "eslint-config-standard": "^5.1.0",
     "eslint-friendly-formatter": "^1.2.2",

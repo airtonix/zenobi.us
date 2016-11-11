@@ -141,6 +141,14 @@ export default new Config()
             'template-string-loader'
           ]
         },
+      ],
+
+      postLoaders: [
+          {
+              test: [/\.js$/],
+              exclude: /(node_modules|bower_components)/,
+              loader: 'documentation'
+          }
       ]
     },
 
@@ -240,6 +248,13 @@ export default new Config()
           mergePaths: false
         },
       ]
+    },
+
+    documentation: {
+        entry: './src/**/*.js',
+        github: true,
+        format: 'html',
+        output: './docs/js'
     },
 
   });

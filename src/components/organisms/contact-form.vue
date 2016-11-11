@@ -127,7 +127,7 @@
 
 import Vue from 'vue';
 import debug from 'debug';
-
+import analytics from 'universal-ga';
 import { Validator } from 'vee-validate';
 
 import api from 'app/api';
@@ -230,6 +230,10 @@ export default {
 				.then( (response) => {
 					log('submit.sent');
 					this.status = STATUS_CODES.SENT;
+					analytics.event('interaction', 'submit', {
+						eventLabel: 'contact-us',
+						transport: 'beacon'
+					});
 					log('submit.response', response);
 				})
 				.catch((err) => {
