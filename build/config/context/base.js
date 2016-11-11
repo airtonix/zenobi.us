@@ -38,7 +38,7 @@ export default new Config()
       'STATIC_URL_FONTS': 'static/fonts/',
       'VALUE_DOMAIN_NAME': 'zenobi.us',
       'VALUE_API_ROOT': '/api',
-      'SERVICE_GOOGLEANALYTICS_KEY': 'foo',
+      'SERVICE_GOOGLEANALYTICS_KEY': 'UA-43586909-1',
       'SERVICE_FORMSPREE_URI': 'https://formspree.io/its@zenobi.us',
       'SERVICE_GITHUBAPI_URI': 'https://api.github.com/repos/airtonix/zenobi.us',
     }

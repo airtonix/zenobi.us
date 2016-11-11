@@ -1,12 +1,12 @@
 import debug from 'debug';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import analytics from 'universal-ga';
 
 const log = debug('app/states');
 
 import * as names from './names';
 import * as paths from './paths';
-
 export const routes = [
   {
     name: names.HOME,
@@ -65,6 +65,10 @@ router.beforeEach( (to, from, next) => {
     container.scrollTop = 0;
   }
   next();
+});
+
+router.afterEach((to, from) => {
+  analytics.pageview(to.path);
 });
 
 const redirect = sessionStorage.redirect;

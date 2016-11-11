@@ -5,6 +5,7 @@ import 'babel-polyfill';
 import debug from 'debug';
 import Vue from 'vue';
 import changeCase from 'change-case';
+import analytics from 'universal-ga';
 
 const log = debug('app.root');
 
@@ -12,7 +13,9 @@ import env from './env';
 import { router, } from './states';
 import Store from './store';
 import './validation';
-log('RootComponent.store', Store);
+
+log(env.CONFIG.SERVICE_GOOGLEANALYTICS_KEY);
+analytics.initialize(env.CONFIG.SERVICE_GOOGLEANALYTICS_KEY);
 
 Vue.mixin({
 
