@@ -7,7 +7,7 @@
 
                 <navigation
                     :exclude="['/']"
-                    class="navigation--thick navigation--hero navigation--rounded navigation--vertical navigation--horizontal@mediumup"
+                    class="navigation--thick navigation--hero navigation--rounded navigation--horizontal"
                     shade="dark">
                 </navigation>
 

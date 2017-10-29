@@ -13,6 +13,9 @@ module.exports = {
         ],
         link: [
             { href: 'https://fonts.googleapis.com/icon?family=Material+Icons', rel: 'stylesheet'}
+        ],
+        script: [
+            {src: 'https://unpkg.com/vue-observe-visibility@0.3.1'}
         ]
     },
 
