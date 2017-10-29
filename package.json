@@ -1,10 +1,13 @@
 {
     "name": "my-app",
     "scripts": {
-        "dev": "cross-env HOST=0.0.0.0 PORT=3000 nuxt"
+        "dev": "cross-env HOST=0.0.0.0 PORT=3000 nuxt",
+        "build": "nuxt build",
+        "start": "nuxt start",
+        "generate": "nuxt generate",
+        "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
     },
     "dependencies": {
-        "@nuxtjs/bulma": "^1.0.3",
         "@nuxtjs/markdownit": "^1.1.2",
         "@nuxtjs/offline": "^1.0.3",
         "@nuxtjs/pwa": "^1.0.2",
@@ -13,6 +16,7 @@
         "css-loader": "^0.28.7",
         "node-sass": "^4.5.3",
         "nuxt": "^1.0.0-rc11",
+        "push-dir": "^0.4.1",
         "raw-loader": "^0.5.1",
         "sass-breakpoints": "^2.1.0",
         "sass-ems": "^1.0.3",
