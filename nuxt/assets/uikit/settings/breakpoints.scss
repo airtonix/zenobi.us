@@ -1,0 +1,39 @@
+/*
+Breakpoint Map
+
+Styleguide Core.Settings.Breakpoints
+*/
+$settings__breakpoints: (
+    small: 425px,
+    medium: 768px,
+    large: 1024px,
+    xlarge: 1190px,
+    xxlarge: 1440px,
+  );
+
+
+$settings__media--screen: "screen";
+$settings__media--prinit: "print";
+
+$settings__orientations--portrait: "(orientation: portrait)";
+$settings__orientations--landscape: "(orientation: landscape)";
+
+$settings__mediaqueries: (
+    smallup: "#{$settings__media--screen} and #{breakpoint(small)}",
+    smallup--portrait: "#{$settings__media--screen} and #{breakpoint(small)} and #{$settings__orientations--portrait}",
+    smallup--landscape: "#{$settings__media--screen} and #{breakpoint(small)} and #{$settings__orientations--landscape}",
+
+    mediumup: "#{$settings__media--screen} and #{breakpoint(medium)}",
+    mediumup-minus-one: "#{$settings__media--screen} and #{breakpoint(medium)}",
+    mediumup--portrait: "#{$settings__media--screen} and #{breakpoint(medium)} and #{$settings__orientations--portrait}",
+    mediumup--landscape: #{breakpoint(medium)} and #{$settings__orientations--landscape},
+
+    largeup: "#{$settings__media--screen} and #{breakpoint(large)}",
+    largeup--portrait: "#{$settings__media--screen} and #{breakpoint(large)} and #{$settings__orientations--portrait}",
+    largeup--landscape: "#{$settings__media--screen} and #{breakpoint(large)} and #{$settings__orientations--landscape}",
+
+    xlargeup: "#{$settings__media--screen} and #{breakpoint(xlarge)}",
+    xlargeup--portrait: "#{$settings__media--screen} and #{breakpoint(xlarge)} and #{$settings__orientations--portrait}",
+    xlargeup--landscape: "#{$settings__media--screen} and #{breakpoint(xlarge)} and #{$settings__orientations--landscape}",
+
+);

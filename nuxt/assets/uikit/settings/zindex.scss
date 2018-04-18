@@ -1,0 +1,52 @@
+//
+// _settings-zindex.scss
+//
+// Medium.com's z-index scale. Z-index values should always be defined in
+// z-index.less. This allows us to at a glance determine relative layers of
+// our application and prevents bugs arrising from arbitrary z-index values.
+//
+// Add application scoped z-index values as separate modules.
+
+
+// Z-Index Scale (private vars)
+// --------------------------------------------------
+$zindex-1:   100;
+$zindex-2:   200;
+$zindex-3:   300;
+$zindex-4:   400;
+$zindex-5:   500;
+$zindex-6:   600;
+$zindex-7:   700;
+$zindex-8:   800;
+$zindex-9:   900;
+$zindex-10: 1000;
+
+
+// Z-Index Applications
+// --------------------------------------------------
+$zindex-1--screenForeground:        $zindex-1;
+$zindex-1--surfaceUnder:            $zindex-1;
+$zindex-1--breadcrumb:              $zindex-1;
+
+$zindex-2--surfaceOver:             $zindex-2;
+
+$zindex-3--caption:                 $zindex-3;
+
+$zindex-5--figureOverlay:           $zindex-5;
+$zindex-5--noteRecommendations:     $zindex-5;
+
+$zindex-6--tooltip:                 $zindex-6;
+
+$zindex-7--nav:                     $zindex-7;
+
+$zindex-8--transitioningContainer:  $zindex-8;
+$zindex-8--panel:                   $zindex-8;
+$zindex-8--loadingBar:              $zindex-8;
+$zindex-8--zoomOverlay:             $zindex-8;
+
+$zindex-9--zoomOverlayTarget:       $zindex-9;
+$zindex-9--navOverlayTouch:         $zindex-9;
+$zindex-9--overlay:                 $zindex-9;
+$zindex-9--dialog:                  $zindex-9;
+
+$zindex-10--dev:                    $zindex-10;

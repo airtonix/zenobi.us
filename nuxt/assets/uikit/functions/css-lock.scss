@@ -1,0 +1,7 @@
+@function css-lock ($min-fontsize: 16px, $max-fontsize: 30px, $viewport-unit: 'px', $viewport-minimum: 320, $viewport-maximum: 960) {
+  @return calc(
+      #{$min-fontsize} +
+      #{$min-fontsize / $max-fontsize} *
+      (100vw - #{$viewport-minimum}#{$viewport-unit}) / (#{$viewport-maximum} - #{$viewport-minimum})
+    )
+}

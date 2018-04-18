@@ -1,0 +1,19 @@
+/*
+typeface-get($scheme, $tone)
+
+Get a named type size from the typeface map
+see `construct/settings/_typeface.scss`
+
+Compatible untested.
+
+$name - The logical name
+
+Styleguide Core.Functions.Type
+*/
+@function typeface-get($name) {
+  @if map-has-key($settings__typeface, $name) != true {
+    @return $name;
+  }
+
+  @return map-get($settings__typeface, $name);
+}

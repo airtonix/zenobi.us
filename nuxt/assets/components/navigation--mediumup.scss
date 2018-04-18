@@ -1,0 +1,12 @@
+
+.navigation {
+    width: auto;
+}
+.navigation--vertical\@mediumup {
+    flex-direction: column;
+    @include navigation-item-vertical();
+}
+.navigation--horizontal\@mediumup {
+    flex-direction: row;
+    @include navigation-item-horizontal();
+}

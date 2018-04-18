@@ -1,13 +1,43 @@
 {
-    "name": "my-app",
+    "name": "zenobius",
+    "version": "0.0.1",
     "scripts": {
         "dev": "cross-env HOST=0.0.0.0 PORT=3000 nuxt",
         "build": "nuxt build",
         "start": "nuxt start",
         "generate": "nuxt generate",
-        "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+
+        "// [workstation] Release Commands": "",
+        "git:checkoutStatic": "npx cross-var git checkout ./dist",
+        "git:cleanStatic": "npx cross-var git clean -f ./dist",
+        "git:pull": "git pull",
+        "prerelease": "npx npm-run-all --serial git:checkoutStatic git:cleanStatic git:pull",
+        "postversion": "npm run docker:run -- yarn container:release",
+        "release": "npx standard-version",
+        "postrelease": "npx npm-run-all --serial release:post:git-add release:post:git-commit-amend release:post:git-push-origin",
+        "release:post:git-add": "git add .",
+        "release:post:git-commit-amend": "git commit --amend --no-edit",
+        "release:post:git-push-origin": "git push --follow-tags && git push origin",
+
+        "// [workstation] Docker Commands": "",
+        "docker:run": "docker-compose run --rm",
+        "postdocker:run": "docker-compose rm -sf",
+        "docker:shell": "npm run docker:run -- /bin/sh",
+        "docker:release": "npx npm-run-all docker:build docker:push",
+        "docker:build": "npx npm-run-all docker:build:version docker:build:tag-latest",
+        "docker:build:version": "docker-compose build image",
+        "docker:build:tag-latest": "npx cross-var docker tag airtonix/$npm_package_name:$npm_package_version airtonix/$npm_package_name:latest",
+        "docker:push": "npx npm-run-all docker:push:version docker:push:tag-latest",
+        "docker:push:version": "npx cross-var docker push docker.fusion.com.au/$npm_package_name:$npm_package_version",
+        "docker:push:tag-latest": "npx cross-var docker push docker.fusion.com.au/$npm_package_name:latest",
+
+        "// [container] Release Commands": "",
+        "container:release": "npx run-s release:build-frontend release:publish-styleguide",
+        "container:release:changelog": "conventional-changelog --infile=./project/docs/CHANGELOG.md "
+
     },
     "dependencies": {
+        "@nuxtjs/axios": "^5.3.1",
         "@nuxtjs/markdownit": "^1.1.2",
         "@nuxtjs/offline": "^1.0.3",
         "@nuxtjs/pwa": "^1.0.2",
@@ -15,11 +45,11 @@
         "axios": "^0.17.0",
         "css-loader": "^0.28.7",
         "node-sass": "^4.5.3",
-        "nuxt": "^1.0.0-rc11",
+        "nuxt": "^1.4.0",
+        "nuxtent": "^1.4.1",
         "push-dir": "^0.4.1",
         "raw-loader": "^0.5.1",
         "sass-breakpoints": "^2.1.0",
-        "sass-ems": "^1.0.3",
         "sass-loader": "^6.0.6",
         "style-loader": "^0.19.0"
     }
