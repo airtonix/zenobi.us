@@ -1,10 +1,7 @@
-var path = require('path');
-
-
 module.exports = {
   mode: 'spa',
 
-  srcDir: 'nuxt',
+  srcDir: `${__dirname}/nuxt`,
 
   head: {
     titleTemplate: '%s - zenobi.us',
@@ -56,6 +53,19 @@ module.exports = {
       }],
 
     ]
+  },
+
+  watchers: {
+
+    chokidar: {
+      usePolling: true,
+      useFsEvents: false
+    },
+
+    webpack: {
+      aggregateTimeout: 300,
+      poll: 1000
+    }
   }
 
 }

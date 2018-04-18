@@ -11,9 +11,9 @@
 
 <script>
 export default {
-  async asyncData ({ app, params, payload }) {
+  async asyncData ({ app, params, payload, route }) {
     return {
-      content: payload || await app.$content('/').get(params.slug)
+      content: payload || await app.$content('/posts').get(route.path)
     }
   }
 }

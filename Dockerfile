@@ -1,28 +1,41 @@
 FROM node:8.9.0-alpine as builder
 
-WORKDIR /app
+WORKDIR /build
 
-RUN apk update && \
-    apk upgrade && \
-    apk add git
+RUN apk add --no-cache \
+  autoconf \
+  automake \
+  ca-certificates \
+  curl \
+  g++ \
+  gcc \
+  git \
+  jpeg-dev \
+  jq \
+  make \
+  nasm \
+  openssh \
+  openssl \
+  python \
+  run-parts \
+  zlib-dev \
+ && update-ca-certificates
+
+RUN npm install -g node-gyp
 
 COPY ./package.json .
 COPY ./package-lock.json .
+RUN npm install
+
 
 FROM node:8.9.0-alpine
 
 WORKDIR /app
 
-COPY ./nuxt /app/nuxt
-COPY ./bin /app/bin
-COPY ./entrypoint.sh /entrypoint.sh
-
+COPY --from=builder /build/node_modules /app/node_modules
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-RUN npm install && \
-    npm run build
 
-ENV HOST 0.0.0.0
-EXPOSE 3000
+ENTRYPOINT ["/entrypoint.sh"]
+CMD [ "npx", "nuxt", "--config=/app/project/nuxt.config.js" ]
 
-ENTRYPOINT [ "/entrypoint.sh" ]
-CMD [ "npm", "start" ]

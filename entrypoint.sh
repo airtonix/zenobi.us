@@ -1,8 +1,7 @@
 #!/bin/sh
 echo "${ENTRYPOINT}.start"
 
-echo "${ENTRYPOINT}.mergeProjectPackageJson"
-node bin/merge-package-json.js
+ln -s ./project/package.json ./package.json
 
 if [[ -f "bin/$1" ]]; then
     echo "${ENTRYPOINT}.exec $1 ${@:1}"
