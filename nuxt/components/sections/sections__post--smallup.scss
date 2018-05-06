@@ -1,0 +1,21 @@
+.post-section {}
+.post-section .section__header {
+    background-color: colour-get(fieryrose);
+    min-height: 50vh;
+
+    &:before {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(colour-get(grey, lightest), 0.9);
+        content: '';
+    }
+
+    .section__header-container {
+        z-index: 2;
+        color: colour-get(grey, dark);
+    }
+}

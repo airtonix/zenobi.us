@@ -1,0 +1,26 @@
+/*
+Typeface Map
+
+Styleguide Core.Settings.Typeface
+*/
+$settings__typface__family--ROBOTOSLAB: 'Roboto Slab', serif;
+$settings__typface__family--OPENSANS: 'Open Sans', sans-serif;
+
+$settings__typeface: (
+  "robotoslab" : (
+    "default": (
+      font-family: $settings__typface__family--ROBOTOSLAB,
+      font-weight: 400,
+      font-style: normal
+    )
+  ),
+
+  "opensans" : (
+    "default": (
+      font-family: $settings__typface__family--OPENSANS,
+      font-weight: 400,
+      font-style: normal
+    )
+  ),
+
+);

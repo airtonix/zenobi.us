@@ -1,13 +1,14 @@
 ---
-layout: posts
 title: Automation, what I've learnt this year.
+stage: draft
 tags: nodejs, webpack, browserify, es6, selenium, vuejs
-date: Nov 11, 2016
-icon: doc
-comments: true
+icon: info_outline
+theme: midnightgreen
+banner: https://media.giphy.com/media/fhAwk4DnqNgw8/giphy.gif
 ---
 
 This year (and the next) mark the time in my growth where I become more pragmatic in my world view. Evolution and survival of the most pragmatic.
+
 
 There is more focus on creating systems for people.
 
@@ -24,8 +25,22 @@ Checklists as code are:
 - tools that generate things
 - deployment code
 
-I've discovered some checklists are too expensive as code:
-- automated visual regression testing. instead you should be using a tool like wraith to publish incremental snapshots over the life of a project.
+### Somethings can't be autometed (yet)
+
+I've discovered some checklists are too expensive as code.
+
+**visual regression testing**
+
+Here we found that a tool like wraith to publish incremental snapshots over the life of a project is great for quickly highlight changes. A designer or developer can then make the call if the change is acceptable.
+
+**Unused Code**
+
+Often styles and javascript are created for components that may only come to life when a CMS user enables a setting or adds certain types of content to the page.
+
+In this case we've found that a simple component library gives quick indication about what css/js relates to what html mark-up.
+
+Ideally a developer should not leave dead code in the project.
+
 
 ## Webpack
 

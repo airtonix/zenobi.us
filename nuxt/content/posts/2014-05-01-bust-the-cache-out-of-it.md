@@ -1,10 +1,11 @@
 ---
-layout: posts
 title: Bust the cache out of it
+stage: published
 tags: nodejs, grunt, usemin, cache busting
-date: May 1, 2014
 icon: cloud
+theme: fieryrose
 comments: true
+published: true
 ---
 
 This will be a short one, the topic of cache busting isn't new, it's covered by a wide range of articles. What I'll cover here is the basics and how I tackled a particular scenario.

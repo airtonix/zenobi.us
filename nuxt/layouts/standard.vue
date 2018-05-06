@@ -1,6 +1,6 @@
 <template>
     <div class="page">
-        <div class="page__content section-group section-group--vertical">
+        <div class="page__container">
             <navigation
                 class="navigation--toolbar navigation--horizontal"></navigation>
             <nuxt class="section" />

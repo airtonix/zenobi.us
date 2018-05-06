@@ -2,48 +2,52 @@
     <div
         class="navigation"
         :class="['navigation--' + shade]">
+        <div class="navigation__container">
 
-        <div class="navigation__group navigation__group--onscreen">
+            <div class="navigation__group navigation__group--onscreen">
 
-            <nuxt-link
-                class="navigation__link"
-                v-hide-if-excluded="exclude"
-                to="/">
-                <span class="navigation-item__label"></span>
-                <span class="navigation-item__icon material-icons">gesture</span>
-            </nuxt-link>
+                <nuxt-link
+                    class="navigation__link"
+                    v-hide-if-excluded="exclude"
+                    to="/">
+                    <span class="navigation-item__label"></span>
+                    <span class="navigation-item__icon material-icons">gesture</span>
+                </nuxt-link>
 
-            <intersect
-                @change="changed"
-                :threshold="[0, 1.0]">
-            <nuxt-link
-                class="navigation__link"
-                v-hide-if-excluded="exclude"
-                to="/resume">
-                <span class="navigation-item__label">resume</span>
-            </nuxt-link>
-            </intersect>
+                <intersect
+                    @change="changed"
+                    :threshold="[0, 1.0]">
+                <nuxt-link
+                    class="navigation__link"
+                    v-hide-if-excluded="exclude"
+                    to="/resume">
+                    <span class="navigation-item__label">resume</span>
+                </nuxt-link>
+                </intersect>
 
-            <intersect
-                @change="changed"
-                :threshold="[1.0]">
-            <nuxt-link
-                class="navigation__link"
-                v-hide-if-excluded="exclude"
-                to="/stories">
-                <span class="navigation-item__label">stories</span>
-            </nuxt-link>
-            </intersect>
+                <intersect
+                    @change="changed"
+                    :threshold="[1.0]">
+                <nuxt-link
+                    class="navigation__link"
+                    v-hide-if-excluded="exclude"
+                    to="/posts">
+                    <span class="navigation-item__label">posts</span>
+                </nuxt-link>
+                </intersect>
 
-        </div>
-
-        <div class="navigation__group navigation__group--offscreen">
-            <div class="navigation__group-toggle"
-                v-if="offscreen.length">
-                <span class="material-icons">menu</span>
             </div>
-            <div class="navigation__group-items"></div>
-            <div class="navigation__badge navigation__badge--count">{{offscreen.length}} offcanvas items</div>
+
+            <div class="navigation__group navigation__group--offscreen">
+                <div class="navigation__group-toggle"
+                    v-if="offscreen.length">
+                    <span class="material-icons">menu</span>
+                </div>
+                <div class="navigation__group-items"></div>
+                <div class="navigation__badge navigation__badge--count"
+                    v-if="debug">{{offscreen.length}} offcanvas items</div>
+            </div>
+
         </div>
     </div>
 </template>
@@ -56,6 +60,7 @@ const log = debug('components/navigation');
 
 
 export default {
+
     components: {
         intersect: () => import('./intersect.vue')
     },
@@ -65,14 +70,20 @@ export default {
             bind (el, binding, vnode) {
                 const {to} = vnode.componentInstance;
                 if (binding.value.includes(to)) {
-                    log('directive.hide-if-excluded', el)
-                    el.classList.add('navigation__link--hide')
+                    log('directive.hide-if-excluded', {el, to});
+                    el.classList.add('navigation__link--hide');
                 }
             }
         }
     },
 
     props: {
+
+        debug: {
+            type: Boolean,
+            default () { return false; }
+        },
+
         exclude: {
             type: Array,
             default: () => []

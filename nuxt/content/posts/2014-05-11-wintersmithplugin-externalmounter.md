@@ -1,9 +1,8 @@
 ---
-layout: posts
 title: Wintersmith Plugin. Mounter
+stage: published
 tags: nodejs, wintersmith, plugin
-date: May 11, 2014
-icon: doc
+icon: extension
 comments: true
 ---
 

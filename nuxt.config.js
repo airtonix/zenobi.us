@@ -2,9 +2,15 @@ module.exports = {
   mode: 'spa',
 
   srcDir: `${__dirname}/nuxt`,
+  generate: {
+    dir: `${__dirname}/dist`
+  },
 
   head: {
-    titleTemplate: '%s - zenobi.us',
+    titleTemplate: (titleChunk) => {
+      // If undefined or blank then we don't need the hyphen
+      return titleChunk ? `${titleChunk} - zenobi.us` : `zenobi.us`;
+    },
     meta: [
       {
         charset: 'utf-8'
@@ -28,8 +34,8 @@ module.exports = {
   },
 
   css: [
-    '@/assets/core.scss',
-    '@/assets/site__zenobius.scss',
+    '@/core.scss',
+    '@/site__zenobius.scss',
   ],
 
   plugins: [
@@ -52,7 +58,35 @@ module.exports = {
           permalink: '/posts/:slug'
       }],
 
-    ]
+      ['pages', {
+          page: '/_slug',
+          permalink: '/:slug',
+          isPost: false
+      }],
+    ],
+    parsers: {
+
+      md: {
+        // extend(config) {
+        //   const Prism = require('prism');
+
+        //   config.highlight = (code, lang) => {
+        //     return `<pre class="language-${lang}"><code class="language-${lang}">${Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup)}</code></pre>`
+        //   }
+        // },
+
+        plugins: [
+          require('markdown-it-prism'),
+          require('markdown-it-decorate'),
+          [require('markdown-it-html5-media').html5Media, {
+            videoAttrs: 'class="video-player"',
+            audioAttrs: 'class="audio-player"'
+          }]
+        ]
+      },
+
+    }
+
   },
 
   watchers: {

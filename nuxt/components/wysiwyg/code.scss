@@ -1,0 +1,6 @@
+.wysiwyg-area {
+    pre {
+        max-width: 100%;
+        @include typeface-get(robotoslab);
+    }
+}

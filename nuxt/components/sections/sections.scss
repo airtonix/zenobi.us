@@ -1,0 +1,66 @@
+.section {
+    display: flex;
+    width: 100%;
+}
+    .section__container {
+        width: 100%;
+    }
+    .section__header {
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        justify-content: flex-end;
+
+        padding: layout-get(spacing);
+
+        position: relative;
+    }
+
+    .section__heading {
+        width: 100%;
+        margin: 0;
+        font-family: 'Roboto Slab', serif;
+        font-weight: bold;
+    }
+    .section--link .section__heading {
+        color: inherit;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .section__meta {
+        font-family: 'Roboto Slab', serif;
+        display: block;
+    }
+
+    .section__body {
+        padding: layout-get(spacing);
+    }
+
+
+.section--card {
+    background-color: colour-get(grey, light);
+    color: colour-get(grey, dark);
+
+    .section__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: space-between;
+    }
+}
+
+@each $name, $group in $settings__colours {
+    .section--theme-#{$name} {
+        background-color: colour-get($name);
+        color: colour-get($name, lightest);
+        .section__meta { color: colour-get($name, lighter); }
+    }
+}
+
+.section--theme-buttercup {
+    background-color: colour-get(buttercup);
+    color: colour-get(buttercup, darker);
+    .section__meta { color: colour-get(buttercup, light); }
+}

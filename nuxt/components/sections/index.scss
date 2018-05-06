@@ -1,0 +1,14 @@
+@import "sections";
+@import "sections__group--smallup";
+@import "sections__page--smallup";
+@import "sections__post--smallup";
+
+@media #{breakpoint-gt(small)} {
+    @import "sections__group--mediumup";
+    @import "sections__page--mediumup";
+    @import "sections__post--mediumup";
+}
+
+@media #{breakpoint-gt(medium)} {
+    @import "sections__group--largeup";
+}

@@ -1,0 +1,27 @@
+.section-group {
+    display: flex;
+}
+    .section-group--vertical {
+        flex-direction: column;
+    }
+    .section-group--horizontal {
+        flex-direction: row;
+    }
+
+    .section-group--columns {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: layout-get(spacing);
+        padding: layout-get(spacing);
+
+        .section {
+            margin-top: layout-get(spacing);
+            width: 100%;
+            height: layout-get(card-size) / 2;
+        }
+        .section:first-child {
+            margin-top: 0;
+            min-height: layout-get(card-size);
+        }
+    }

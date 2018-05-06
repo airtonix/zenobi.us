@@ -1,0 +1,11 @@
+
+.navigation {
+}
+.navigation--vertical\@mediumup .navigation__group--onscreen {
+    flex-direction: column;
+    @include navigation-item-vertical();
+}
+.navigation--horizontal\@mediumup .navigation__group--onscreen {
+    flex-direction: row;
+    @include navigation-item-horizontal();
+}

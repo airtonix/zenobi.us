@@ -1,5 +1,6 @@
 ---
 title: resume
+hideHeader: true
 ---
 
 # Zenobius Jiricek (Zeno)
@@ -7,29 +8,20 @@ title: resume
 *Full Stack Web Developer (VueJs, NodeJs, Django, Linux, Docker)*
 
 * [@home](http://zenobi.us/)
-* [@contact](http://zenobi.us/contact/)
-* [@google+](http://plus.google.com/+zenobiusjiricek)
+* [@linkedin](http://www.linkedin.com/in/zenobiusjiricek)
 * [@github](http://github.com/airtonix/)
-* [@twitter](http://twitter.com/airtonix/)
 
 ## Highlights
 
-- 3yrs Digital Agency Experience
-- 4yrs experience as a Team Leader
+- 4yrs Digital Agency Experience
 - 15yrs hand coding HTML, CSS & Javascript.
 - 8yrs Utilising [Git][tool-git].
 - 4yrs experience with [Python][lang-python] and [Django][framework-django].
 - 3yrs creating [Drupal][cms-drupal] & [Wordpress][cms-wordpress] websites.
-- 4yr utilising [Sass][lang-scss] and [Compass][framework-compass] with [Zurb Foundation][framework-zurb].
+- 5yr utilising [Sass][lang-scss] and [Compass][framework-compass] with [Zurb Foundation][framework-zurb].
 - 2yrs experience working with [AngularJs][framework-angular], [GruntJs][framework-grunt], [NodeJs][engine-nodejs], [ExpressJs][framework-express]
-- 11yrs using Linux for Server and Desktop environments, ranging from Gaming, Graphic Design and Programming
+- 12yrs using Linux for Server and Desktop environments, ranging from Gaming, Graphic Design and Programming
 - 4yrs deploying and provisioning  horizontal scalable web applications on [AWS Ec2][iaas-ec2], [Heroku][paas-heroku], [Openshift][paas-openshift], [Digital Ocean][paas-digitalocean]
-
-### DevOps
-
-- Configure and deploy compute power with infrastructure orchestration frameworks like Ansible, Fabric, Puppet, Chef and Docker.
-- Load balancing.
-- Development environment provisioning and replication.
 
 ### Agile
 
@@ -38,48 +30,61 @@ title: resume
 - Assisting with scenario steps implementation in Gherkin.
 - Reviewing designs, helping designers understand Atomic Design.
 
+### DevOps
+
+- Configure and deploy compute power with infrastructure orchestration frameworks like Ansible, Fabric, Puppet, Chef and Docker.
+- Load balancing.
+- Development environment provisioning and replication.
+
 ### TDD
 
 - Defining unit tests
 - Developing mocking factories
-- Mock api backend in and out of the browser.
+- Mock api back-end in and out of the browser.
+- 'Styleguide' driven design
 
 
 ## Experience
 
-### 2016-Present
+### 2017-Present
+
+**Senior Frontend Developer at Fusion**
+
++ Mitigating Risk from frontend libraries by
+
+### 2016-2017
 
 **Senior Frontend Developer at Fusion**
 
 + Building tools and processes that reduce "onboarding" new developers to a project.
     * Desired outcomes:
-        - adoption of PatternLab principles in all projects [Acheived].
-        - backend should be transparent to frontend developers and designers [wip].
-        - Continous Integration. [wip]
-        - Automated documentation (changelog, jsdoc, etc) [wip]
-        - Standardise Restful API design approach (json-schema, jsonapi, api-blueprint) [wip]
+        - adoption of PatternLab principles in all projects ✔️
+        - back-end should be transparent to frontend developers and designers 🕥
+        - Continuous Integration.🕥
+        - Automated documentation (changelog, jsdoc, etc)🕥
+        - Standardise Restful API design approach (json-schema, jsonapi, api-blueprint)🕥
 + Increasing quality and lifetime of projects
     * Desired outcomes:
-        - Homogneous coding styleguide [wip]
-        - Ownership of design pattern life cycle by frontend developers [wip].
-        - Automated testing frameworks. [Acheived]
+        - Homogenous coding styleguide🕥
+        - Ownership of design pattern life cycle by frontend developers🕥.
+        - Automated testing frameworks. ✔️
 + Championing a diversity in technology skills:
     * Desired outcomes:
-        - Learn React. [wip]
-        - promote VueJs [Acheived]
-        - platform agnostic backend (asp5-vnext, nodejs, etc) [wip]
-        - docker deployments (dokku, etc) [wip]
+        - Learn React.🕥
+        - promote VueJs ✔️
+        - platform agnostic backend (asp5-vnext, nodejs, etc)🕥
+        - docker deployments (dokku, etc)🕥
 
 
 ### 2015-2016
 
 **Senior Frontend Developer at Fusion**
 - Developed new website for Melbourn Credit Union, now known as Bank Australia.
-- Developed Several minor websites utilising progressive enchancement with `Vue.js`
-- Introduced and Championed Atomic Design as a company wide workflow
+- Developed Several minor websites utilising progressive enhancement with `Vue.js`
+- Introduced and Championed Atomic Design as a company wide work flow
 - Developed internal tool based on gulp.js that implemented atomic design and standardised project structures and techniques between developers.
-- Pushed for and Introduced User stories in the Define and Develop phases of projects (foundations for transition to Agile Workflow)
-- opensourced several minor libraries under the Fusion github profile.
+- Pushed for and Introduced User stories in the Define and Develop phases of projects (foundations for transition to Agile work flow)
+- opensource several minor libraries under the Fusion github profile.
 
 
 ### 2014-2015
@@ -106,13 +111,13 @@ title: resume
 
 **Lead Developer, Zibmedia**
 
-- Team manager tasked with organising copywriting, quality control, online marketing and design
+- Team manager tasked with organising copy writing, quality control, online marketing and design
 - Organised [Chef][tool-chef], [Puppet][tool-puppet] and [Ansible][tool-ansible] to automate deployment and configuration of all the workstations
 - Pioneered a few opensource django applications used in clients websites and zibmedia owned products
 - Contributed to opensource projects: [DjangoCMS][cms-djangocms], [DjangoShop][ecommerce-djangoshop], [DjangoOscar][ecommerce-djangooscar]
 - Plan & Develop several new products: Jobsite, Zibcode, Jetts
     + Used [AngularJS][framework-angular] for the entire frontend
-    + Django with the RESTful backend ([tastypie][framework-tastypie], guardianpie)
+    + Django with the RESTful back-end ([tastypie][framework-tastypie], guardianpie)
 
 ### 2011
 
@@ -120,7 +125,7 @@ title: resume
 
 - Refactored the code base of the flagship product (urpages.com.au) in order to become deployable by automated tools like Fabric and (indirectly) Jenkins.
 - Championed the use of bitbucket issue tickets for our products amongst entire staff seeking to contribute
-- Championed Fabric, Virtualenv as primary workflow tools
+- Championed Fabric, Virtualenv as primary work flow tools
 - Enforced the use of PEP8
 - Initiated the hiring of copywriter, marketing and additional programmers
 - Utilised Haystack, ElasticSearch for search
@@ -153,7 +158,7 @@ title: resume
 
 - Website Design Project Manager
     + Introduced the use of Wordpress, Drupal and Plain PHP
-    + Championed the principle of minimal remote ineraction, develop locally, deploy fast.
+    + Championed the principle of minimal remote interaction, develop locally, deploy fast.
     + Supervise, provide direction and maintain work­flow of Community Groups Website project.
 - Metro Housing
     + Purchase and installation of computer network. Create a database user interface that works with a central server. Contains XML, XSLT, ASP, SQL, Javascript.
@@ -164,40 +169,39 @@ title: resume
 ### Web Development
 
 - Develop reusable project skeletons
-- Create development and deployment workflow tools with Nodejs, Bash, Python
+- Create development and deployment work flow tools with Nodejs, Bash, Python
 - Create architecture configuration manifests with Ansible and Docker
 
 ### Applications
 
-- Sublime Text 3, Git, Zsh/Bash, Ssh, Powershell
-- Vagrant, Ansible, PuppetAgent, Fabric, VirtualENV, Pip, NVM/Nodist/Nave
-- Firefox/Chrome/Epiphany/Edge/Internet Explorer
-- Gimp, Inkscape
-- Quassel, Hangouts, Skype
+- Sublime Text 3, Git, Zsh/Bash, Ssh, Powershell.
+- Docker-Compose, Vagrant, Packer, Chocolatey, BoxStarter, Ansible, PuppetAgent, Fabric.
+- VirtualENV, Pip, Yarn, Npm, NVM/Nodist/Nave.
+- Firefox, Safari, Chrome, Epiphany, Edge, Internet Explorer.
+- Gimp, Inkscape, Sketch.
+- Quassel, Hangouts, Skype.
 - Fedora, Ubuntu, RancherOS, CoreOS, Windows 10.
-- Packer, Vagrant, Chocolatey, BoxStarter.
-
 
 ### Daemons
 
-- Docker, Shipyard, Doku, Vagrant, SystemD, InitD
+- Docker, Rancher, Doku, Vagrant,
+- SystemD, InitD, Upstart
 - Bind9, Nginx, Uwsgi, Postgres, OpenSSHd, MongoDb
-- Samba, nfs­kernel­server, Gitolite, Gitlab, Gitliab-CI, ZFS, Upstart
+- Samba, ZFS
 - Sinopia
 
 ### Languages
 
-- CSS3/Scss, Javascript (es5, es6), CoffeeScript, JSON, HTML5/Jade/Swig
-- Advanced Python 2.6, Advanded NodeJs,
-- Moderate Bash,
-- Basic MySQL, basic Postgres, basic Lua, basic PHP, basic Powershell
+- CSS3/Scss, Javascript (es5, es6), JSON, HTML5/Jade/Swig/Handlebars/Razor
+- Advanced Python 2.6, advanced NodeJs,
+- Moderate Bash, basic Powershell
+- Basic MySQL, basic Postgres, basic Lua, basic PHP
 
 ### Frameworks
 
-- AngularJS, VueJs, Marionette, Backbone, Jquery
-- Gulp, Webpack, Browserify, SlushJS, YeomanJS
-- Django, ExpressJs, SailsJs
-- PySide, PyGtk
+- VueJs, Jquery, Javascript
+- Gulp, Webpack, Browserify
+- ExpressJs, SailsJs
 
 
 ## Projects

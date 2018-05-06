@@ -1,0 +1,69 @@
+$settings__colours: (
+
+    midnightgreen: (
+        dark: hsla(195%, 70%, 17%, 1),
+        default: hsla(195%, 70%, 22%, 1),
+        light: hsla(195%, 70%, 42%, 1),
+        lighter: hsla(195%, 70%, 52%, 1),
+        lightest: hsla(195%, 70%, 62%, 1),
+    ),
+
+    seaweed: (
+        dark: hsla(187%, 97%, 24%, 1),
+        default: hsla(187%, 97%, 29%, 1),
+        light: hsla(187%, 97%, 34%, 1),
+        lighter: hsla(187%, 97%, 54%, 1),
+        lightest: hsla(187%, 97%, 94%, 1),
+    ),
+
+    nyanza: (
+        darkest: hsla(114%, 88%, 49%, 1),
+        darker: hsla(114%, 88%, 69%, 1),
+        dark: hsla(114%, 88%, 89%, 1),
+        default: hsla(114%, 88%, 94%, 1),
+        light: hsla(114%, 88%, 100%, 1),
+    ),
+
+    queenblue: (
+        darkest: hsla(211%, 35%, 3%, 1),
+        darker: hsla(211%, 35%, 13%, 1),
+        dark: hsla(211%, 35%, 33%, 1),
+        default: hsla(211%, 35%, 42%, 1),
+        light: hsla(211%, 35%, 47%, 1),
+        lighter: hsla(211%, 35%, 57%, 1),
+        lightest: hsla(211%, 35%, 67%, 1),
+    ),
+
+    fieryrose: (
+        dark: hsla(355%, 87%, 61%, 1),
+        default: hsla(355%, 87%, 66%, 1),
+        light: hsla(355%, 87%, 71%, 1),
+        lighter: hsla(355%, 87%, 81%, 1),
+        lightest: hsla(355%, 87%, 91%, 1),
+    ),
+
+    buttercup: (
+        lightest: hsl(45, 100%, 81%),
+        lighter: hsl(45, 100%, 71%),
+        light: hsl(45, 100%, 61%),
+        default: hsl(45, 100%, 51%),
+        dark: hsl(45, 100%, 41%),
+        darker: hsl(45, 100%, 31%),
+        darkest: hsl(45, 100%, 21%)
+    ),
+
+    grey: (
+        darkest: #333,
+        darker: #555,
+        dark: #777,
+        default: #999,
+        light: #aaa,
+        lighter: #ccc,
+        lightest: #eee
+    )
+
+);
+
+// :export {
+//     colours: $settings__colours;
+// }
