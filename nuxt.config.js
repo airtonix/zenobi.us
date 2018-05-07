@@ -2,8 +2,9 @@ module.exports = {
   mode: 'spa',
 
   srcDir: `${__dirname}/nuxt`,
+
   generate: {
-    dir: `${__dirname}/dist`
+    dir: `${__dirname}/docs`
   },
 
   head: {
@@ -55,13 +56,21 @@ module.exports = {
 
       ['posts', {
           page: '/posts/_slug',
-          permalink: '/posts/:slug'
+          permalink: '/posts/:slug',
+          generate: [
+            'get',
+            'getAll'
+          ]
       }],
 
       ['pages', {
           page: '/_slug',
           permalink: '/:slug',
-          isPost: false
+          isPost: false,
+          generate: [
+            'get',
+            'getAll'
+          ]
       }],
     ],
     parsers: {

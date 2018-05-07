@@ -3,8 +3,6 @@ title: Automation, what I've learnt this year.
 stage: draft
 tags: nodejs, webpack, browserify, es6, selenium, vuejs
 icon: info_outline
-theme: midnightgreen
-banner: https://media.giphy.com/media/fhAwk4DnqNgw8/giphy.gif
 ---
 
 This year (and the next) mark the time in my growth where I become more pragmatic in my world view. Evolution and survival of the most pragmatic.

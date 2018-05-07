@@ -1,7 +1,7 @@
 <template>
     <div class="page page--hero">
         <div class="page__container">
-            <nuxt class="section" />
+            <nuxt />
         </div>
     </div>
 </template>

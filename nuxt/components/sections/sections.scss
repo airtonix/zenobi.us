@@ -30,18 +30,25 @@
         }
     }
     .section__meta {
-        font-family: 'Roboto Slab', serif;
+        @include typeface-get(opensans);
+        font-weight: bold;
         display: block;
+        margin: 0;
     }
 
     .section__body {
         padding: layout-get(spacing);
     }
 
+    .section__meta-link,
+    .section a {
+
+    }
+
 
 .section--card {
     background-color: colour-get(grey, light);
-    color: colour-get(grey, dark);
+    color: colour-get(grey, darker);
 
     .section__container {
         display: flex;
@@ -49,6 +56,7 @@
         justify-content: flex-end;
         align-items: space-between;
     }
+
 }
 
 @each $name, $group in $settings__colours {

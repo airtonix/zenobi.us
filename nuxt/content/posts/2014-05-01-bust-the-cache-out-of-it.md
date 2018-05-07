@@ -3,7 +3,6 @@ title: Bust the cache out of it
 stage: published
 tags: nodejs, grunt, usemin, cache busting
 icon: cloud
-theme: fieryrose
 comments: true
 published: true
 ---

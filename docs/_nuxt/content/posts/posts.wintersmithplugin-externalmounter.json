@@ -1,0 +1,18 @@
+{
+  "title": "Wintersmith Plugin. Mounter",
+  "stage": "published",
+  "tags": "nodejs, wintersmith, plugin",
+  "icon": "extension",
+  "comments": true,
+  "meta": {
+    "index": 2,
+    "fileName": "2014-05-11-wintersmithplugin-externalmounter.md",
+    "section": "/",
+    "dirName": "/posts"
+  },
+  "date": "2014-05-11",
+  "path": "/posts/posts/wintersmithplugin-externalmounter",
+  "permalink": "/posts/wintersmithplugin-externalmounter",
+  "anchors": [],
+  "body": "<p>So I’ve just created a plugin for wintersmith, aimed at utilising my <code>bower_components</code> or <code>node_modules</code> directory from outside\nmy contents directory. Really though, you could use any directory as an additional source of content for wintersmiths <code>content tree</code>.</p>\n<pre class=\"language-bash\"><code class=\"language-bash\">me@machine:~/Projects/this/one $ mythical-ls\n\tbower_components\n\tnode_modules\n\tsrc\n\t\tassets\n\t\t\tscss\n\t\tconfig\n\t\tcontents\n\t\t\tarticles\n\t\t\tetc\n\t\t\t<span class=\"token punctuation\">..</span>.\n\t\t\tindex.md\n\t\tplugins\n\t\ttemplates\n\t\ttests\n\t\tapp.coffee\n\tCNAME\n\tGruntfile.coffee\n\tbower.json\n\tpackage.json\n\treadme.md\n</code></pre>\n<p>At first I was just putting <code>bower_components</code> directly inside my <code>project/src/contents/assets/vendor/</code> and while this might be tenable for bower, it wasn’t clean, you might come up with other reasons.</p>\n<h4>Installation</h4>\n<pre class=\"language-bash\"><code class=\"language-bash\"><span class=\"token function\">npm</span> <span class=\"token function\">install</span> wintersmith-mounter\n</code></pre>\n<h4>Configuration</h4>\n<p>In your configuration file, describe the path you wish to mount external content at :</p>\n<pre class=\"language-yaml\"><code class=\"language-yaml\">\n  <span class=\"token punctuation\">...</span>\n\n  <span class=\"token key atrule\">mounter</span><span class=\"token punctuation\">:</span>\n    <span class=\"token key atrule\">mounts</span><span class=\"token punctuation\">:</span>\n      <span class=\"token key atrule\">'/assets/vendor/'</span><span class=\"token punctuation\">:</span>\n        <span class=\"token key atrule\">src</span><span class=\"token punctuation\">:</span> <span class=\"token string\">'./bower_components'</span>\n\n  <span class=\"token punctuation\">...</span>\n</code></pre>\n<p>Now, any content inside <code>./bower_components</code> will be available in your templates,\njavascript or stylesheets under <code>/assets/vendor/</code></p>\n<h4>Contributing</h4>\n<p>Feel free to submit bug reports, pull requests over at <a href=\"http://github.com/airtonix/wintersmith-mounter\">http://github.com/airtonix/wintersmith-mounter</a></p>\n"
+}

@@ -4,7 +4,6 @@ stage: draft
 tags: nodejs, docker, frontend
 comments: true
 theme: queenblue
-banner: https://media.giphy.com/media/9MPqCXXJ2cPQY/giphy.gif
 ---
 
 You and your team have been working on a website for the last couple of weeks, everything is good. But now there's a new team member and they need to get their machine setup.

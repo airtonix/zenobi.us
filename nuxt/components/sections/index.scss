@@ -2,6 +2,7 @@
 @import "sections__group--smallup";
 @import "sections__page--smallup";
 @import "sections__post--smallup";
+@import "sections__hero--smallup";
 
 @media #{breakpoint-gt(small)} {
     @import "sections__group--mediumup";

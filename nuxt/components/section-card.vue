@@ -5,14 +5,16 @@
              }"
              :to="page.permalink">
       <div class="section__container">
-        <small class="section__meta"
-                  v-if="page.date">{{ page.date | date }}</small>
+
         <div class="section__header hero-section__header">
-            <h3 class="section__heading">
-              {{ page.title }}
-            </h3>
+          <small class="section__meta"
+                    v-if="page.date">{{ page.date | date }}</small>
+          <h3 class="section__heading">
+            {{ page.title }}
+          </h3>
         </div>
 
+        <span class="section__icon material-icons" v-if="page.icon">{{page.icon}}</span>
       </div>
     </nuxt-link>
 </template>

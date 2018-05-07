@@ -1,6 +1,7 @@
 ---
-title: resume
-hideHeader: true
+title: About Me
+theme: buttercup
+date: ''
 ---
 
 # Zenobius Jiricek (Zeno)
@@ -50,13 +51,14 @@ hideHeader: true
 
 **Senior Frontend Developer at Fusion**
 
-+ Mitigating Risk from frontend libraries by
++ Mitigate risk from inconsistent node module installations through use of docker and yarn.
++ Create versatile webpack based frontend build tool.
 
 ### 2016-2017
 
 **Senior Frontend Developer at Fusion**
 
-+ Building tools and processes that reduce "onboarding" new developers to a project.
++ Building tools and processes that reduce "on-boarding" new developers to a project.
     * Desired outcomes:
         - adoption of PatternLab principles in all projects ✔️
         - back-end should be transparent to frontend developers and designers 🕥
@@ -65,16 +67,15 @@ hideHeader: true
         - Standardise Restful API design approach (json-schema, jsonapi, api-blueprint)🕥
 + Increasing quality and lifetime of projects
     * Desired outcomes:
-        - Homogenous coding styleguide🕥
+        - Homogenous coding style-guide🕥
         - Ownership of design pattern life cycle by frontend developers🕥.
         - Automated testing frameworks. ✔️
 + Championing a diversity in technology skills:
     * Desired outcomes:
         - Learn React.🕥
         - promote VueJs ✔️
-        - platform agnostic backend (asp5-vnext, nodejs, etc)🕥
+        - platform agnostic back-end (asp5-vnext, nodejs, etc)🕥
         - docker deployments (dokku, etc)🕥
-
 
 ### 2015-2016
 
@@ -84,7 +85,7 @@ hideHeader: true
 - Introduced and Championed Atomic Design as a company wide work flow
 - Developed internal tool based on gulp.js that implemented atomic design and standardised project structures and techniques between developers.
 - Pushed for and Introduced User stories in the Define and Develop phases of projects (foundations for transition to Agile work flow)
-- opensource several minor libraries under the Fusion github profile.
+- open source several minor libraries under the Fusion github profile.
 
 
 ### 2014-2015
@@ -113,8 +114,8 @@ hideHeader: true
 
 - Team manager tasked with organising copy writing, quality control, online marketing and design
 - Organised [Chef][tool-chef], [Puppet][tool-puppet] and [Ansible][tool-ansible] to automate deployment and configuration of all the workstations
-- Pioneered a few opensource django applications used in clients websites and zibmedia owned products
-- Contributed to opensource projects: [DjangoCMS][cms-djangocms], [DjangoShop][ecommerce-djangoshop], [DjangoOscar][ecommerce-djangooscar]
+- Pioneered a few open source django applications used in clients websites and zibmedia owned products
+- Contributed to open source projects: [DjangoCMS][cms-djangocms], [DjangoShop][ecommerce-djangoshop], [DjangoOscar][ecommerce-djangooscar]
 - Plan & Develop several new products: Jobsite, Zibcode, Jetts
     + Used [AngularJS][framework-angular] for the entire frontend
     + Django with the RESTful back-end ([tastypie][framework-tastypie], guardianpie)
@@ -123,7 +124,7 @@ hideHeader: true
 
 **Lead Developer, Urpages.com.au**
 
-- Refactored the code base of the flagship product (urpages.com.au) in order to become deployable by automated tools like Fabric and (indirectly) Jenkins.
+- Refractor the code base of the flagship product (urpages.com.au) in order to become deployable by automated tools like Fabric and (indirectly) Jenkins.
 - Championed the use of bitbucket issue tickets for our products amongst entire staff seeking to contribute
 - Championed Fabric, Virtualenv as primary work flow tools
 - Enforced the use of PEP8
@@ -207,24 +208,30 @@ hideHeader: true
 ## Projects
 
 ### Websites
+ - [Acumen Practice Notes](http://acumen.architects.com.au)
+     + Large reference site for architectural students and aia members.
+ - [Queensland Country Health Fund Membership Form](http://acumen.architects.com.au)
+     + Vuejs powered membership application form (get a quote, choose a product and apply)
  - [Joust](http://app.joust.com.au)
      + Ebay for home loans
+ - [Bank Australia: Locator Tool](https://bankaust.com.au/location-search-page/location-search-map/)
+     + Vuejs powered google maps branch locator
  - [Bank Australia](https://bankaust.com.au)
      + Digital branch presence for major bank in Melbourne, Australia
  - [UniSA New Students](http://w3.unisa.edu.au/newstudents)
      + New Season marketing mini site for UniSA
  - [St Johns Volunteer for a Volunteer](https://www.volunteerforavolunteer.com.au/)
-     + Fundraising campaign
+     + Fund raising campaign
  - [Peoples Choice Credit Union](https://www.peopleschoicecu.com.au/)
      + Digital branch presence for major credit union in Adelaide, Australia
 
 ### Applications
  - [epochdb](http://airtonix.github.io/epochdb)
-     + Recipie explorer and calculator for Arma 2 survival simulator.
+     + Recipe explorer and calculator for Arma 2 survival simulator.
 
 ### Tooling
  - [gastropod](http://github.com/airtonix/gastropod)
-     + Patternlab frontend build system. Essentially a static site generator.
+     + Pattern lab frontend build system. Essentially a static site generator.
      + with [supporting packages](https://github.com/airtonix?page=1&tab=repositories&utf8=%E2%9C%93&q=gastropod):
          * [gastropod-task-webpack](github.com/airtonix/gastropod-task-webpack)
          * [gastropod-task-sass](github.com/airtonix/gastropod-task-sass)
