@@ -8,7 +8,7 @@
 
         <div class="section__header hero-section__header">
           <small class="section__meta"
-                    v-if="page.date">{{ page.date | date }}</small>
+                    v-if="showDate && page.date">{{ page.date | date }}</small>
           <h3 class="section__heading">
             {{ page.title }}
           </h3>
@@ -22,7 +22,10 @@
 <script>
 export default {
     props: {
-        page: Object
+        page: Object,
+        showDate: {
+          default: () => true
+        }
     },
 
   filters: {

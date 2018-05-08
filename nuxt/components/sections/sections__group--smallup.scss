@@ -17,8 +17,8 @@
 
         .section {
             margin-top: layout-get(spacing);
-            width: 100%;
             height: layout-get(card-size) / 2;
+            width: 100%;
         }
         .section:first-child {
             margin-top: 0;

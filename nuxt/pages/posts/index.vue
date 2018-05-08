@@ -39,7 +39,7 @@ export default {
   layout: 'standard',
 
   components: {
-      SectionCard: () => import('~/components/section-card.vue')
+      SectionCard: () => import('~/components/sections/section-card.vue')
   },
 
   methods: {

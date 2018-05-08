@@ -4,6 +4,7 @@
 }
     .section__container {
         width: 100%;
+        position: relative;
     }
     .section__header {
         display: flex;
@@ -29,6 +30,15 @@
             text-decoration: underline;
         }
     }
+    .section__header-image-layer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
     .section__meta {
         @include typeface-get(opensans);
         font-weight: bold;
@@ -40,9 +50,10 @@
         padding: layout-get(spacing);
     }
 
+    .section,
     .section__meta-link,
     .section a {
-
+        text-decoration: none;
     }
 
 

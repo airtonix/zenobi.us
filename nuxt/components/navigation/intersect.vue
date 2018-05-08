@@ -1,5 +1,6 @@
 <script>
 import Vue from 'vue'
+import '@/vendor/polyfill__intersection-observer';
 
 const warn = (msg) => {
   if (!Vue.config.silent) {

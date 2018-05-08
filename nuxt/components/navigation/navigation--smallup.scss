@@ -18,6 +18,7 @@ $text-colour--dark: rgba(black, 0.8);
 .navigation__container {
     max-width: layout-get(page-width);
     width: 100%;
+    display: flex;
 }
 
 .navigation__group {

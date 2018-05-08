@@ -7,6 +7,12 @@ module.exports = {
     dir: `${__dirname}/docs`
   },
 
+  build: {
+    vendor: [
+      'babel-polyfill'
+    ],
+  },
+
   head: {
     titleTemplate: (titleChunk) => {
       // If undefined or blank then we don't need the hyphen
@@ -31,7 +37,7 @@ module.exports = {
         href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
         rel: 'stylesheet'
       }
-    ],
+    ]
   },
 
   css: [

@@ -9,13 +9,12 @@
 </template>
 
 <script>
-import navigation from '~/components/navigation';
 
 export default {
     layout: 'default',
 
     components: {
-        navigation
+        navigation: () => import('~/components/navigation/component.vue')
     }
 }
 </script>
