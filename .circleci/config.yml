@@ -2,23 +2,23 @@ version: 2
 
 jobs:
 
-  # generate_website:
-  #   docker:
-  #     - image: circleci/node:8.9.0
-  #   working_directory: /build
+# generate_website:
+#   docker:
+#     - image: circleci/node:8.9.0
+#   working_directory: /build
 
-  # deploy_website:
-  #   docker:
-  #     - image: circleci/node:8.9.0
-  #   working_directory: /build
+# deploy_website:
+#   docker:
+#     - image: circleci/node:8.9.0
+#   working_directory: /build
 
-  # test_image:
-  #   docker:
-  #     - image: circleci/node:8.9.0
-  #   working_directory: /build
-  #   steps:
-  #     - checkout
-  #     -
+# test_image:
+#   docker:
+#     - image: circleci/node:8.9.0
+#   working_directory: /build
+#   steps:
+#     - checkout
+#     -
 
   build_image:
     docker:
@@ -49,16 +49,16 @@ jobs:
           name: Build Image
           command: npm run docker:build
 
-  # register_image:
-  #   docker:
-  #     - image: circleci/golang:latest
-  #   working_directory: /build
-  #   steps:
-  #     - setup_remote_docker: {version: 17.09.0-ce}
-  #     - checkout
-  #     - run:
-  #         name: Build & Deploy Image
-  #         command: npm run docker:publish
+# register_image:
+#   docker:
+#     - image: circleci/golang:latest
+#   working_directory: /build
+#   steps:
+#     - setup_remote_docker: {version: 17.09.0-ce}
+#     - checkout
+#     - run:
+#         name: Build & Deploy Image
+#         command: npm run docker:publish
 
 
 
