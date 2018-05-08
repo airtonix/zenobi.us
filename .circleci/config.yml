@@ -67,9 +67,9 @@ workflows:
 
   docker__build_test_deploy:
     jobs:
-      - build_image:
-        filters:
-          tags: {only: /v.*/}
+      - build_image
+        # filters:
+        #   tags: {only: /v.*/}
       # - test_image:
       #   requires: [build_image]
       #   filters:
