@@ -2,20 +2,23 @@ version: 2
 
 jobs:
 
-  generate_website:
-    docker:
-      - image: circleci/node:8.9.0
-    working_directory: /build
+  # generate_website:
+  #   docker:
+  #     - image: circleci/node:8.9.0
+  #   working_directory: /build
 
-  deploy_website:
-    docker:
-      - image: circleci/node:8.9.0
-    working_directory: /build
+  # deploy_website:
+  #   docker:
+  #     - image: circleci/node:8.9.0
+  #   working_directory: /build
 
-  test_image:
-    docker:
-      - image: circleci/node:8.9.0
-    working_directory: /build
+  # test_image:
+  #   docker:
+  #     - image: circleci/node:8.9.0
+  #   working_directory: /build
+  #   steps:
+  #     - checkout
+  #     -
 
   build_image:
     docker:
@@ -23,21 +26,39 @@ jobs:
     working_directory: /build
     steps:
       - setup_remote_docker: {version: 17.09.0-ce}
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0 \
+              awscli==1.11.76
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          paths:
+            - /caches/app.tar
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app.tar | true
       - checkout
       - run:
           name: Build Image
           command: npm run docker:build
 
-  register_image:
-    docker:
-      - image: circleci/golang:latest
-    working_directory: /build
-    steps:
-      - setup_remote_docker: {version: 17.09.0-ce}
-      - checkout
-      - run:
-          name: Build & Deploy Image
-          command: npm run docker:publish
+  # register_image:
+  #   docker:
+  #     - image: circleci/golang:latest
+  #   working_directory: /build
+  #   steps:
+  #     - setup_remote_docker: {version: 17.09.0-ce}
+  #     - checkout
+  #     - run:
+  #         name: Build & Deploy Image
+  #         command: npm run docker:publish
 
 
 
