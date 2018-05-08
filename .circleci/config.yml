@@ -70,21 +70,21 @@ workflows:
       - build_image:
         filters:
           tags: {only: /v.*/}
-      - test_image:
-        requires: [build_image]
-        filters:
-          tags: {only: /v.*/}
-      - deploy_image:
-        requires: [test_image]
-        filters:
-          tags: {only: /v.*/}
+      # - test_image:
+      #   requires: [build_image]
+      #   filters:
+      #     tags: {only: /v.*/}
+      # - deploy_image:
+      #   requires: [test_image]
+      #   filters:
+      #     tags: {only: /v.*/}
 
-  website__generate_deploy:
-    jobs:
-      - build_website:
-        filters:
-          branches: {only: /master/}
-      - deploy_website:
-        requires: [build_website]
-        filters:
-          branches: {only: /master/}
+  # website__generate_deploy:
+  #   jobs:
+  #     - build_website:
+  #       filters:
+  #         branches: {only: /master/}
+  #     - deploy_website:
+  #       requires: [build_website]
+  #       filters:
+  #         branches: {only: /master/}
