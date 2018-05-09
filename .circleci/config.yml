@@ -74,12 +74,20 @@ jobs:
     working_directory: /build
     docker: {image: docker:17.05.0-ce-git}
     steps:
-      - checkout
-      - setup_remote_docker
+      - run: echo true
+
+  test_website:
+    working_directory: /build
+    docker: {image: docker:17.05.0-ce-git}
+    steps:
+      - run: echo true
 
 workflows:
   version: 2
 
+  # only builds new docker images
+  # for tagged commites on
+  # branches starting with 'docker'.
   build-docker-image:
     jobs:
       - build_image:
@@ -89,10 +97,23 @@ workflows:
 
   build-deploy-website:
     jobs:
+      # builds website on any branch or tag
       - build_website:
           filters:
             tags: { only: /.*/ }
+      # runs tests on any branch or tag
+      - test_website:
+          requires:
+            - build_website
+          filters:
+            tags: { only: /.*/ }
+            branches: { ignore: /^docker/ }
+      # deploys website only
+      # for v tagged commits
+      # on the master branch
       - deploy_website:
+          requires:
+            - test_website
           filters:
             tags: { only: /^v.*/ }
             branches: { only: /master/ }
