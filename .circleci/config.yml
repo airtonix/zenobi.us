@@ -28,20 +28,31 @@ jobs:
             set +o pipefail
             docker load -i /caches/app.tar | true
       - run:
-          name: Load Docker image layer cache
-          command: |
-            set +o pipefail
-            docker load -i /caches/app.tar | true
-      - run:
           name: Build application Docker image
+          when: on_success
           command: |
-            docker build --cache-from=app -t app .
+              docker build --cache-from=app -t app .
+      - run:
+          name: Push image to dockerhub
+          when: on_success
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
+              docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
+              docker tag app ${DOCKER_USERNAME}/zenobius:latest
+              docker push ${DOCKER_USERNAME}/zenobius:latest
+            } else {
+              docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM} .
+              docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}
+            }
       - run:
           name: Save Docker image layer cache
+          when: on_success
           command: |
             mkdir -p /caches
             docker save -o /caches/app.tar app
       - save_cache:
+          when: on_success
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
             - /caches/app.tar
