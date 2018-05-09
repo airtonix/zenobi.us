@@ -4,70 +4,96 @@ jobs:
 
   build_image:
     working_directory: /build
-    docker:
-      - image: docker:17.05.0-ce-git
+    docker: {image: docker:17.05.0-ce-git}
     steps:
+      - checkout
       - setup_remote_docker
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --no-cache \
-              py-pip=9.0.0-r1
-            pip install \
-              docker-compose==1.12.0 \
-              awscli==1.11.76
+
       - restore_cache:
           keys:
-            - app-{{ .Branch }}
+            - image-{{ .Branch }}
           paths:
-            - /caches/app.tar
+            - /caches/docker-image.tar
+
       - run:
           name: Load Docker image layer cache
           command: |
             set +o pipefail
-            docker load -i /caches/app.tar | true
-      - checkout
+            docker load -i /caches/docker-image.tar | true
+
       - run:
           name: Build application Docker image
           when: on_success
           command: |
-            docker build --cache-from=app -t app .
-            echo "Docker image size $(docker image inspect app -format='{{.Size}}')"
-
-      - run:
-          name: Push image to dockerhub
-          when: on_success
-          command: |
             docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "tagging image as ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}"
-              docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
-              docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
-              echo "tagging image as ${DOCKER_USERNAME}/zenobius:latest"
-              docker tag app ${DOCKER_USERNAME}/zenobius:latest
-              docker push ${DOCKER_USERNAME}/zenobius:latest
-            else
-              TAG=$( echo "${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}" | sed 's/\W/_/g' )
-              echo "tagging image as ${DOCKER_USERNAME}/zenobius:${TAG}"
-              docker tag app ${DOCKER_USERNAME}/zenobius:${TAG}
-              docker push ${DOCKER_USERNAME}/zenobius:${TAG}
-            fi
+
+            DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
+
+            docker build --cache-from=app -t ${DOCKER_IMAGE_NAME}:${CIRCLE_TAG} .
+            echo "built image as ${DOCKER_IMAGE_NAME}:${CIRCLE_TAG}"
+            echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME}:${CIRCLE_TAG} --format='{{.Size}}')"
+
+            echo "tagging image as ${DOCKER_IMAGE_NAME}:latest"
+            docker tag ${IMAGE_NAME}:${CIRCLE_TAG} ${DOCKER_IMAGE_NAME}:latest
+
+            docker push ${IMAGE_NAME}:${CIRCLE_TAG}
+            docker push ${IMAGE_NAME}:latest
+
       - run:
           name: Save Docker image layer cache
           when: on_success
           command: |
             mkdir -p /caches
-            docker save -o ./app.tar app
-            cp app.tar /caches/
+            docker save -o ./docker-image.tar ${DOCKER_USERNAME}/zenobius:latest
+            cp docker-image.tar /caches/
+
       - save_cache:
           when: on_success
-          key: v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: image-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
-            - /caches/app.tar
+            - /caches/docker-image.tar
+
+  build_website:
+    working_directory: /build
+    docker: {image: docker:17.05.0-ce-git}
+    steps:
+      - run:
+          name: Build website
+          command: |
+            docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
+            npm run generate
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory.
+          # This is a directory on the container which is
+	        # taken to be the root directory of the workspace.
+          root: .
+          paths:
+            - docs/**/*
+
+  deploy_website:
+    working_directory: /build
+    docker: {image: docker:17.05.0-ce-git}
+    steps:
+      - checkout
+      - setup_remote_docker
 
 workflows:
   version: 2
 
-  docker__build_test_deploy:
+  build-docker-image:
     jobs:
-      - build_image
+      - build_image:
+          filters:
+            tags: { only: /^v.*/ }
+            branch: { only: /^docker/ }
+
+  build-deploy-website:
+    jobs:
+      - build_website:
+          filters:
+            tags: { only: /.*/ }
+      - deploy_website:
+          filters:
+            tags: { only: /^v.*/ }
+            branches: { only: /master/ }
+
