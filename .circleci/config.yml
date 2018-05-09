@@ -1,7 +1,7 @@
 version: "2"
 jobs:
 
-  build_image:
+  build-image:
     working_directory: /build
     docker: {image: docker:17.05.0-ce-git}
     steps:
@@ -86,9 +86,9 @@ workflows:
   # only builds new docker images
   # for tagged commites on
   # branches starting with 'docker'.
-  build-docker-image:
+  "build_docker_image":
     jobs:
-      - build_image:
+      - build-image:
           filters:
             tags: { only: /^v.*/ }
             branch: { only: /^docker/ }
