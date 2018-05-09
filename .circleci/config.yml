@@ -28,7 +28,7 @@ jobs:
             docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
 
             DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
-            TAG=${CIRCLE_TAG:-$(git describe)}
+            TAG=${CIRCLE_TAG:-$(git describe --tags)}
             docker build --cache-from=app -t ${DOCKER_IMAGE_NAME}:${TAG} .
             echo "built image as ${DOCKER_IMAGE_NAME}:${TAG}"
             echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME}:${TAG} --format='{{.Size}}')"
