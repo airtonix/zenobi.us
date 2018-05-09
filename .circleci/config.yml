@@ -40,12 +40,15 @@ jobs:
           command: |
             docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "tagging image as ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}"
               docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
               docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
+              echo "tagging image as ${DOCKER_USERNAME}/zenobius:latest"
               docker tag app ${DOCKER_USERNAME}/zenobius:latest
               docker push ${DOCKER_USERNAME}/zenobius:latest
             else
-              docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM} .
+              echo "tagging image as ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}"
+              docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}
               docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}
             fi
       - run:
