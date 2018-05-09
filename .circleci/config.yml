@@ -36,6 +36,7 @@ jobs:
           name: Push image to dockerhub
           when: on_success
           command: |
+            docker login ${DOCKER_USERNAME} ${DOCKER_PASSWORD}
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
               docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
