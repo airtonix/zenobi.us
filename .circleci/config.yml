@@ -52,57 +52,66 @@ jobs:
           paths:
             - /caches/docker-image.tar
 
-  build_website:
-    working_directory: /build
-    docker: {image: docker:17.05.0-ce-git}
-    steps:
-      - run:
-          name: Build website
-          command: |
-            docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
-            npm run generate
-      - persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory.
-          # This is a directory on the container which is
-	        # taken to be the root directory of the workspace.
-          root: .
-          paths:
-            - docs/**/*
+  # build_website:
+  #   working_directory: /build
+  #   docker: {image: docker:17.05.0-ce-git}
+  #   steps:
+  #     - run:
+  #         name: Build website
+  #         command: |
+  #           docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
+  #           npm run generate
+  #     - persist_to_workspace:
+  #         # Must be an absolute path, or relative path from working_directory.
+  #         # This is a directory on the container which is
+	#         # taken to be the root directory of the workspace.
+  #         root: .
+  #         paths:
+  #           - docs/**/*
 
-  deploy_website:
-    working_directory: /build
-    docker: {image: docker:17.05.0-ce-git}
-    steps:
-      - run: echo true
+  # deploy_website:
+  #   working_directory: /build
+  #   docker: {image: docker:17.05.0-ce-git}
+  #   steps:
+  #     - run: echo true
 
-  test_website:
-    working_directory: /build
-    docker: {image: docker:17.05.0-ce-git}
-    steps:
-      - run: echo true
+  # test_website:
+  #   working_directory: /build
+  #   docker: {image: docker:17.05.0-ce-git}
+  #   steps:
+  #     - run: echo true
 
 workflows:
   version: "2"
+  # only builds new docker images
+  # for tagged commites on
+  # branches starting with 'docker'.
   build-docker-image:
     jobs:
       - build_image:
           filters:
             tags: { only: /^v.*/ }
             branch: { only: /^docker/ }
-  build-deploy-website:
-    jobs:
-      - build_website:
-          filters:
-            tags: { only: /.*/ }
-      - test_website:
-          requires:
-            - build_website
-          filters:
-            tags: { only: /.*/ }
-            branches: { ignore: /^docker/ }
-      - deploy_website:
-          requires:
-            - test_website
-          filters:
-            tags: { only: /^v.*/ }
-            branches: { only: /master/ }
+
+  # build-deploy-website:
+  #   jobs:
+  #     # builds website on any branch or tag
+  #     - build_website:
+  #         filters:
+  #           tags: { only: /.*/ }
+  #     # runs tests on any branch or tag
+  #     - test_website:
+  #         requires:
+  #           - build_website
+  #         filters:
+  #           tags: { only: /.*/ }
+  #           branches: { ignore: /^docker/ }
+  #     # deploys website only
+  #     # for v tagged commits
+  #     # on the master branch
+  #     - deploy_website:
+  #         requires:
+  #           - test_website
+  #         filters:
+  #           tags: { only: /^v.*/ }
+  #           branches: { only: /master/ }
