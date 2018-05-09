@@ -41,10 +41,10 @@ jobs:
               docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BUILD_NUM}
               docker tag app ${DOCKER_USERNAME}/zenobius:latest
               docker push ${DOCKER_USERNAME}/zenobius:latest
-            } else {
+            else
               docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM} .
               docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}
-            }
+            fi
       - run:
           name: Save Docker image layer cache
           when: on_success
