@@ -4,7 +4,7 @@ jobs:
   build_image:
     working_directory: /build
     docker:
-      image: docker:17.05.0-ce-git
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
       - setup_remote_docker
@@ -56,7 +56,7 @@ jobs:
   build_website:
     working_directory: /build
     docker:
-      image: docker:17.05.0-ce-git
+      - image: docker:17.05.0-ce-git
     steps:
       - run:
           name: Build website
@@ -74,14 +74,14 @@ jobs:
   deploy_website:
     working_directory: /build
     docker:
-      image: docker:17.05.0-ce-git
+      - image: docker:17.05.0-ce-git
     steps:
       - run: echo true
 
   test_website:
     working_directory: /build
     docker:
-      image: docker:17.05.0-ce-git
+      - image: docker:17.05.0-ce-git
     steps:
       - run: echo true
 
