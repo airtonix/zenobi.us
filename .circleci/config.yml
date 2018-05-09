@@ -91,7 +91,7 @@ workflows:
       - build_image:
           filters:
             tags: { only: /.*/ }
-            branch: { only: /^docker/ }
+            branches: { only: /^docker/ }
 
   build-deploy-website:
     jobs:
