@@ -28,15 +28,15 @@ jobs:
             docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
 
             DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
-
-            docker build --cache-from=app -t ${DOCKER_IMAGE_NAME}:${CIRCLE_TAG} .
-            echo "built image as ${DOCKER_IMAGE_NAME}:${CIRCLE_TAG}"
-            echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME}:${CIRCLE_TAG} --format='{{.Size}}')"
+            TAG=${CIRCLE_TAG:-$(git describe)}
+            docker build --cache-from=app -t ${DOCKER_IMAGE_NAME}:${TAG} .
+            echo "built image as ${DOCKER_IMAGE_NAME}:${TAG}"
+            echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME}:${TAG} --format='{{.Size}}')"
 
             echo "tagging image as ${DOCKER_IMAGE_NAME}:latest"
-            docker tag ${IMAGE_NAME}:${CIRCLE_TAG} ${DOCKER_IMAGE_NAME}:latest
+            docker tag ${IMAGE_NAME}:${TAG} ${DOCKER_IMAGE_NAME}:latest
 
-            docker push ${IMAGE_NAME}:${CIRCLE_TAG}
+            docker push ${IMAGE_NAME}:${TAG}
             docker push ${IMAGE_NAME}:latest
 
       - run:
