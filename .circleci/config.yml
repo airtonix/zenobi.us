@@ -1,5 +1,4 @@
-version: 2
-
+version: "2"
 jobs:
 
   build_image:
@@ -83,38 +82,27 @@ jobs:
       - run: echo true
 
 workflows:
-  version: 2
-
-  # only builds new docker images
-  # for tagged commites on
-  # branches starting with 'docker'.
+  version: "2"
   build-docker-image:
     jobs:
       - build_image:
           filters:
             tags: { only: /^v.*/ }
             branch: { only: /^docker/ }
-
   build-deploy-website:
     jobs:
-      # builds website on any branch or tag
       - build_website:
           filters:
             tags: { only: /.*/ }
-      # runs tests on any branch or tag
       - test_website:
           requires:
             - build_website
           filters:
             tags: { only: /.*/ }
             branches: { ignore: /^docker/ }
-      # deploys website only
-      # for v tagged commits
-      # on the master branch
       - deploy_website:
           requires:
             - test_website
           filters:
             tags: { only: /^v.*/ }
             branches: { only: /master/ }
-
