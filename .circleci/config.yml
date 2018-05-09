@@ -1,4 +1,4 @@
-version: "2"
+version: 2
 
 jobs:
   build_image:
@@ -82,7 +82,7 @@ jobs:
       - run: echo true
 
 workflows:
-  version: "2"
+  version: 2
   # only builds new docker images
   # for tagged commites on
   # branches starting with 'docker'.
