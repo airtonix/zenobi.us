@@ -47,9 +47,10 @@ jobs:
               docker tag app ${DOCKER_USERNAME}/zenobius:latest
               docker push ${DOCKER_USERNAME}/zenobius:latest
             else
-              echo "tagging image as ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}"
-              docker tag app ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}
-              docker push ${DOCKER_USERNAME}/zenobius:${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}
+              TAG=$( echo "${CIRCLE_BRANCH}-${CIRCLE_SHA1}-${CIRCLE_BUILD_NUM}" | sed 's/\W//g' )
+              echo "tagging image as ${DOCKER_USERNAME}/zenobius:${TAG}"
+              docker tag app ${DOCKER_USERNAME}/zenobius:${TAG}
+              docker push ${DOCKER_USERNAME}/zenobius:${TAG}
             fi
       - run:
           name: Save Docker image layer cache
