@@ -31,7 +31,9 @@ jobs:
           name: Build application Docker image
           when: on_success
           command: |
-              docker build --cache-from=app -t app .
+            docker build --cache-from=app -t app .
+            echo "Docker image size $(docker images | grep app)"
+
       - run:
           name: Push image to dockerhub
           when: on_success
