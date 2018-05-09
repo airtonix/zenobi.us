@@ -32,7 +32,7 @@ jobs:
           when: on_success
           command: |
             docker build --cache-from=app -t app .
-            echo "Docker image size $(docker images | grep app)"
+            echo "Docker image size $(docker image inspect app -format='{{.Size}}')"
 
       - run:
           name: Push image to dockerhub
@@ -57,7 +57,8 @@ jobs:
           when: on_success
           command: |
             mkdir -p /caches
-            docker save -o /caches/app.tar app
+            docker save -o ./app.tar app
+            cp app.tar /caches/
       - save_cache:
           when: on_success
           key: v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
