@@ -28,7 +28,7 @@ jobs:
             docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
 
             DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
-            TAG=${CIRCLE_TAG:-$(git describe --tags)}
+            TAG=${CIRCLE_TAG:-$(git describe --tags | sed 's/[\.v]//g')}
             docker build --cache-from=app -t ${DOCKER_IMAGE_NAME}:${TAG} .
             echo "built image as ${DOCKER_IMAGE_NAME}:${TAG}"
             echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME}:${TAG} --format='{{.Size}}')"
@@ -58,6 +58,8 @@ jobs:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
+      - checkout
+      - setup_remote_docker
       - run:
           name: Build website
           command: |
@@ -76,6 +78,8 @@ jobs:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
+      - checkout
+      - setup_remote_docker
       - run: echo true
 
   test_website:
@@ -83,6 +87,8 @@ jobs:
     docker:
       - image: docker:17.05.0-ce-git
     steps:
+      - checkout
+      - setup_remote_docker
       - run: echo true
 
 workflows:
