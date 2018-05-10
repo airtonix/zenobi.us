@@ -1,6 +1,6 @@
 {
   "name": "zenobius",
-  "version": "0.0.3",
+  "version": "3.0.0",
   "scripts": {
     "dev": "npm run docker:run -- tool npm run container:nuxt:dev",
     "build": "npm run docker:run -- tool npm run container:nuxt:build",
