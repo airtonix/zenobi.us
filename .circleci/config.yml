@@ -76,8 +76,8 @@ jobs:
       - run:
           name: install docker-compose
           command: |
-            apk add --no-cache \
-              py-pip=9.0.0-r1
+            apk add --update --no-cache \
+              py-pip
 
             pip install \
               docker-compose==1.12.0
