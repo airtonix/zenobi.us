@@ -23,7 +23,7 @@
     "postrelease": "npm run git:publish",
     "release:post:git-add": "git add .",
     "release:post:git-commit-amend": "git commit --amend --no-edit",
-    "release:post:git-push-origin": "git push --follow-tags && git push origin",
+    "release:post:git-push-origin": "git push --tags && git push origin",
     "// [workstation] Docker Commands": "",
     "docker:run": "docker-compose run --service-ports --rm",
     "docker:shell": "npm run docker:run -- tool /bin/sh",
