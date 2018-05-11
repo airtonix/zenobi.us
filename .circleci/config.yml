@@ -43,11 +43,9 @@ jobs:
           name: Build application Docker image
           when: on_success
           command: |
-              GIT_HASH=$(git describe --tags)
-
               docker build \
                 --cache-from=app \
-                --label="project.git.described=${GIT_HASH}" \
+                --label="project.git.described=$(git describe --tags)" \
                 --label="project.git.commit=${CIRCLE_SHA1}" \
                 --label="project.ci.workflow=${CIRCLE_WORKFLOW_ID}" \
                 --label="project.ci.job=${CIRCLE_JOB}" \
@@ -70,9 +68,8 @@ jobs:
           name: Deploy docker image
           when: on_success
           command: |
-              GIT_HASH=$(git describe --tags)
+              TAG=$(git describe --tags HEAD | sed 's/\v//g')
               DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
-              TAG=${CIRCLE_TAG:-$(echo $GIT_HASH | sed 's/[\.v]//g')}
               echo "tagging image as ${DOCKER_IMAGE_NAME}:${TAG}"
               docker tag app ${DOCKER_IMAGE_NAME}:${TAG}
 
