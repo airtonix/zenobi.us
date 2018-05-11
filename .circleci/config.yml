@@ -169,10 +169,6 @@ workflows:
           filters:
             tags: { only: /.*/ }
             branches: { only: /^docker/ }
-      - test_image:
-          filters:
-            tags: { only: /.*/ }
-            branches: { only: /^docker/ }
 
   build-deploy-website:
     jobs:
