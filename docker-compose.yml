@@ -2,16 +2,20 @@ version: "2.0"
 
 services:
 
-  tool:
+  build:
     image: airtonix/${npm_package_name}:${npm_package_version}
-    volumes:
-      - "./package.json:/app/package.json"
-      - "./:/app/project"
     environment:
       HOST: '0.0.0.0'
       PORT: 3000
     ports:
       - "3000:3000"
+
+  tool:
+    extends:
+      service: build
+    volumes:
+      - "./package.json:/app/package.json"
+      - "./:/app/project"
 
   make:
     image: jizhilong/docker-make

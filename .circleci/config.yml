@@ -64,7 +64,7 @@ jobs:
           command: |
             # tag the image as expected by the docker-compose.yml (which uses package.json version field)
             docker tag app ${DOCKER_USERNAME}/zenobius:$(cat ./package.json | jq -r '.version')
-            npm run generate
+            npm run ci:generate
 
       - run:
           name: Deploy docker image
