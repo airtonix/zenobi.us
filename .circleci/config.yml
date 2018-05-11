@@ -32,6 +32,8 @@ jobs:
       - *defaults__docker_provision
       - setup_remote_docker
       - checkout
+      - attach_workspace:
+          at: ~/workspace
       - run:
           name: deploy hashed image
           command: |
@@ -55,19 +57,17 @@ jobs:
 
             echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME_HASHED} --format='{{.Size}}')"
 
-            mkdir -p /tmp/workspace
-
             echo "docker.save.image > ${DOCKER_IMAGE_NAME_HASHED}"
-            docker save ${DOCKER_IMAGE_NAME_HASHED} > /tmp/workspace/image.tar
-            echo ${DOCKER_IMAGE_NAME} > /tmp/workspace/name
-            echo ${DOCKER_IMAGE_NAME_HASHED} > /tmp/workspace/hash
-            echo ${PROJECT_VERSION} > /tmp/workspace/version
+            docker save ${DOCKER_IMAGE_NAME_HASHED} > ./image.tar
+            echo ${DOCKER_IMAGE_NAME} > ./name
+            echo ${DOCKER_IMAGE_NAME_HASHED} > ./hash
+            echo ${PROJECT_VERSION} > ./version
 
             echo "docker.push.image > ${DOCKER_IMAGE_NAME_HASHED}"
             docker push ${DOCKER_IMAGE_NAME_HASHED}
 
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: .
           paths:
             - image.tar
             - name
@@ -80,16 +80,16 @@ jobs:
       - *defaults__docker_provision
       - setup_remote_docker
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/workspace
       - run:
           name: Test docker image
           when: on_success
           command: |
-            DOCKER_IMAGE_NAME=$(cat /tmp/workspace/name)
-            DOCKER_IMAGE_NAME_HASHED=$(cat /tmp/workspace/hash)
-            PROJECT_VERSION=$(cat /tmp/workspace/version)
+            DOCKER_IMAGE_NAME=$(cat ~/workspace/name)
+            DOCKER_IMAGE_NAME_HASHED=$(cat ~/workspace/hash)
+            PROJECT_VERSION=$(cat ~/workspace/version)
 
-            docker load < /tmp/workspace/image.tar
+            docker load < ~/workspace/image.tar
             echo "docker.tag.image > ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}"
             docker tag ${DOCKER_IMAGE_NAME_HASHED} ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
             npm run ci:generate
@@ -100,17 +100,17 @@ jobs:
       - *defaults__docker_provision
       - setup_remote_docker
       - attach_workspace:
-          at: /tmp/workspace
+          at: ~/workspace
       - run:
           name: Deploy docker image
           when: on_success
           command: |
-            DOCKER_IMAGE_NAME=$(cat /tmp/workspace/name)
-            DOCKER_IMAGE_NAME_HASHED=$(cat /tmp/workspace/hash)
-            PROJECT_VERSION=$(cat /tmp/workspace/version)
+            DOCKER_IMAGE_NAME=$(cat ~/workspace/name)
+            DOCKER_IMAGE_NAME_HASHED=$(cat ~/workspace/hash)
+            PROJECT_VERSION=$(cat ~/workspace/version)
 
             echo "docker.load.image"
-            docker load < /tmp/workspace/image.tar
+            docker load < ~/workspace/image.tar
 
             echo "docker.tag.image > ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}"
             docker tag ${DOCKER_IMAGE_NAME_HASHED} ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
