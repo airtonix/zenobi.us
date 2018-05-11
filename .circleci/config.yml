@@ -29,8 +29,8 @@ jobs:
               docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
 
               DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
-              GIT_HASH=`git describe --tags`
-              TAG=${CIRCLE_TAG:-$(GIT_HASH | sed 's/[\.v]//g')}
+              GIT_HASH=$(git describe --tags)
+              TAG=${CIRCLE_TAG:-$(echo $GIT_HASH | sed 's/[\.v]//g')}
 
               docker build \
                 --cache-from=app \
