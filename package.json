@@ -1,6 +1,6 @@
 {
   "name": "zenobius",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "scripts": {
     "dev": "npm run docker:run -- tool npm run container:nuxt:dev",
     "build": "npm run docker:run -- tool npm run container:nuxt:build",
@@ -20,7 +20,7 @@
     "prerelease": "npx npm-run-all --serial git:checkoutStatic git:cleanStatic git:pull",
     "postversion": "npm run docker:run -- tool container:release",
     "release": "npx standard-version",
-    "postrelease": "npm run git:publish",
+    "postrelease": "git push --follow-tags",
     "release:post:git-add": "git add .",
     "release:post:git-commit-amend": "git commit --amend --no-edit",
     "release:post:git-push-origin": "git push --follow-tags",
