@@ -14,6 +14,7 @@ jobs:
             apk add --update --no-cache \
               py2-pip=9.0.1-r1 \
               docker \
+              git \
               jq
 
             pip install \
@@ -115,6 +116,7 @@ jobs:
             apk add --update --no-cache \
               py2-pip=9.0.1-r1 \
               docker \
+              git \
               jq
 
             pip install \
