@@ -70,6 +70,7 @@ jobs:
           name: Deploy docker image
           when: on_success
           command: |
+              GIT_HASH=$(git describe --tags)
               DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
               TAG=${CIRCLE_TAG:-$(echo $GIT_HASH | sed 's/[\.v]//g')}
               echo "tagging image as ${DOCKER_IMAGE_NAME}:${TAG}"
