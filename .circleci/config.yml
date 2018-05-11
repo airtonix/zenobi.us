@@ -72,7 +72,7 @@ jobs:
             - image.tar
             - name
             - hash
-            - project/version
+            - version
 
   image_test:
     <<: *defaults__docker
@@ -122,24 +122,20 @@ jobs:
             echo "docker.push.image > ${DOCKER_IMAGE_NAME}:latest"
             docker push ${DOCKER_IMAGE_NAME}:latest
 
-  # deploy_build:
-  #   <<: *defaults__docker
-  #   steps:
-  #     - *defaults__docker_provision
-  #     - setup_remote_docker
-  #     - checkout
-  #     - *defaults__docker_login
-  #     - run:
-  #         name: Build website
-  #         command: |
-  #             npm run generate
-  #     - persist_to_workspace:
-  #         # Must be an absolute path, or relative path from working_directory.
-  #         # This is a directory on the container which is
-  #         # taken to be the root directory of the workspace.
-  #         root: .
-  #         paths:
-  #           - docs/**/*
+  deploy_build:
+    <<: *defaults__docker
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+      - *defaults__docker_provision
+      - setup_remote_docker
+      - checkout
+      - *defaults__docker_login
+      - run: npm run generate
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docs/**/*
 
   # deploy_test:
   #   <<: *defaults__docker
