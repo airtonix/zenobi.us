@@ -1,11 +1,13 @@
 version: 2
 
 jobs:
+
   build_image:
     working_directory: /build
     docker:
       - image: node:alpine
     steps:
+
       - checkout
 
       - run:
@@ -23,91 +25,94 @@ jobs:
       - setup_remote_docker
 
       - run:
-          name: docker login
+          name: deploy hashed image
           command: |
+            DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
+            DOCKER_IMAGE_NAME_REF=${DOCKER_IMAGE_NAME}:${CIRCLE_SHA1}
+
             docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
+            docker build \
+              --cache-from=app \
+              --label="project.git.described=$(git describe --tags)" \
+              --label="project.git.commit=${CIRCLE_SHA1}" \
+              --label="project.ci.workflow=${CIRCLE_WORKFLOW_ID}" \
+              --label="project.ci.job=${CIRCLE_JOB}" \
+              --label="project.ci.buildNo=${CIRCLE_BUILD_NUM}" \
+              --label="project.ci.buildurl=${CIRCLE_BUILD_URL}" \
+              --label="project.ci.prs=${CIRCLE_PULL_REQUESTS}" \
+              -t ${DOCKER_IMAGE_NAME_REF} .
 
-      - restore_cache:
-          keys:
-            - image-{{ .Branch }}
-          paths:
-            - /caches/docker-image.tar
+            echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME_REF} --format='{{.Size}}')"
+            docker push ${DOCKER_IMAGE_NAME_REF}
 
+  test_image:
+    working_directory: /build
+    docker:
+      - image: node:alpine
+    steps:
+      - setup_remote_docker
+      - checkout
       - run:
-          name: Load Docker image layer cache
+          name: provision
           command: |
-              set +o pipefail
-              docker load -i /caches/docker-image.tar | true
+            apk add --update --no-cache \
+              py2-pip=9.0.1-r1 \
+              docker \
+              git \
+              jq
 
-      - run:
-          name: Build application Docker image
-          when: on_success
-          command: |
-              docker build \
-                --cache-from=app \
-                --label="project.git.described=$(git describe --tags)" \
-                --label="project.git.commit=${CIRCLE_SHA1}" \
-                --label="project.ci.workflow=${CIRCLE_WORKFLOW_ID}" \
-                --label="project.ci.job=${CIRCLE_JOB}" \
-                --label="project.ci.buildNo=${CIRCLE_BUILD_NUM}" \
-                --label="project.ci.buildurl=${CIRCLE_BUILD_URL}" \
-                --label="project.ci.prs=${CIRCLE_PULL_REQUESTS}" \
-                -t app .
-
-              echo "Docker image size $(docker image inspect app --format='{{.Size}}')"
-
+            pip install \
+              docker-compose==1.12.0
       - run:
           name: Test docker image
           when: on_success
           command: |
-            # tag the image as expected by the docker-compose.yml (which uses package.json version field)
-            docker tag app ${DOCKER_USERNAME}/zenobius:$(cat ./package.json | jq -r '.version')
+            docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
             npm run ci:generate
 
+
+  deploy_image:
+    working_directory: /build
+    docker:
+      - image: node:alpine
+    steps:
+      - setup_remote_docker
+      - checkout
+      - run:
+          name: provision
+          command: |
+            apk add --update --no-cache \
+              py2-pip=9.0.1-r1 \
+              docker \
+              git \
+              jq
+
+            pip install \
+              docker-compose==1.12.0
       - run:
           name: Deploy docker image
           when: on_success
           command: |
-              TAG=$(git describe --tags HEAD | sed 's/\v//g')
-              DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
-              echo "tagging image as ${DOCKER_IMAGE_NAME}:${TAG}"
-              docker tag app ${DOCKER_IMAGE_NAME}:${TAG}
+            docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
+            TAG=$(git describe --tags HEAD | sed 's/\v//g')
+            DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
 
-              echo "tagging image as ${DOCKER_IMAGE_NAME}:latest"
-              docker tag app ${DOCKER_IMAGE_NAME}:latest
+            echo "tagging image as ${DOCKER_IMAGE_NAME}:${TAG}"
+            docker tag DOCKER_IMAGE_NAME:${CIRCLE_SHA1} ${DOCKER_IMAGE_NAME}:${TAG}
+            docker push ${DOCKER_IMAGE_NAME}:${TAG}
 
-              docker push ${DOCKER_IMAGE_NAME}:${TAG}
-              docker push ${DOCKER_IMAGE_NAME}:latest
+            echo "tagging image as ${DOCKER_IMAGE_NAME}:latest"
+            docker tag DOCKER_IMAGE_NAME:${CIRCLE_SHA1} ${DOCKER_IMAGE_NAME}:latest
+            docker push ${DOCKER_IMAGE_NAME}:latest
 
-      - run:
-          name: Save Docker image layer cache
-          when: on_success
-          command: |
-              mkdir -p /caches
-              docker save -o ./docker-image.tar ${DOCKER_USERNAME}/zenobius:latest
-              cp docker-image.tar /caches/
-
-      - save_cache:
-          when: on_success
-          key: image-{{ .Branch }}-{{ checksum "package-lock.json" }}
-          paths:
-            - /caches/docker-image.tar
-      - persist_to_workspace:
-          # Must be an absolute path, or relative path from working_directory.
-          # This is a directory on the container which is
-          # taken to be the root directory of the workspace.
-          root: .
-          paths:
-            - docs/**/*
 
   build_website:
     working_directory: /build
     docker:
       - image: node:alpine
     steps:
-
+      - setup_remote_docker
       - checkout
-
       - run:
           name: install docker-compose
           command: |
@@ -119,8 +124,6 @@ jobs:
 
             pip install \
               docker-compose==1.12.0
-
-      - setup_remote_docker
 
       - run:
           name: docker login
@@ -167,7 +170,19 @@ workflows:
     jobs:
       - build_image:
           filters:
-            tags: { only: /.*/ }
+            tags: { only: /v.*/ }
+            branches: { only: /^docker/ }
+      - test_image:
+          requires:
+            - build_image
+          filters:
+            tags: { only: /v.*/ }
+            branches: { only: /^docker/ }
+      - deploy_image:
+          requires:
+            - test_image
+          filters:
+            tags: { only: /v.*/ }
             branches: { only: /^docker/ }
 
   build-deploy-website:
