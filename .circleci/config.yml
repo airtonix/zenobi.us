@@ -87,7 +87,7 @@ jobs:
           command: |
             DOCKER_IMAGE_NAME=$(cat /tmp/workspace/name)
             DOCKER_IMAGE_NAME_HASHED=$(cat /tmp/workspace/hash)
-            PROJECT_VERSION=$(cat /tmp/workspace/project/version)
+            PROJECT_VERSION=$(cat /tmp/workspace/version)
 
             docker load < /tmp/workspace/image.tar
             echo "docker.tag.image > ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}"
@@ -107,7 +107,7 @@ jobs:
           command: |
             DOCKER_IMAGE_NAME=$(cat /tmp/workspace/name)
             DOCKER_IMAGE_NAME_HASHED=$(cat /tmp/workspace/hash)
-            PROJECT_VERSION=$(cat /tmp/workspace/project/version)
+            PROJECT_VERSION=$(cat /tmp/workspace/version)
 
             echo "docker.load.image"
             docker load < /tmp/workspace/image.tar
