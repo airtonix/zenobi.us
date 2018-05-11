@@ -69,26 +69,18 @@ jobs:
   build_website:
     working_directory: /build
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: node:alpine
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: install docker-compose
           command: |
             apk add --no-cache \
-              py-pip=9.0.0-r1 \
-              curl \
-              bash
+              py-pip=9.0.0-r1
 
             pip install \
               docker-compose==1.12.0
-
-      - setup_remote_docker
-
-      - run:
-          name: install nodejs
-          command: |
-            curl -L https://git.io/n-install | bash -s -- -y lts
 
       - run:
           name: docker login
