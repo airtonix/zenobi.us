@@ -79,6 +79,7 @@ jobs:
     steps:
       - *defaults__docker_provision
       - setup_remote_docker
+      - checkout
       - attach_workspace:
           at: ~/workspace
       - run:
