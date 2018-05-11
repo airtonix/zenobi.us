@@ -6,7 +6,8 @@ defaults: &defaults
     docker:
       - image: node:alpine
     steps:
-      - &defaults__docker_provision run:
+      - &defaults__docker_provision
+        run:
           name: install docker-compose
           command: |
             apk add --update --no-cache \
@@ -17,7 +18,8 @@ defaults: &defaults
             pip install \
               docker-compose==1.12.0
 
-      - &defaults__docker_login run:
+      - &defaults__docker_login
+        run:
           name: docker login
           command: |
             docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
