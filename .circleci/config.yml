@@ -26,7 +26,7 @@ defaults: &defaults
 
 jobs:
 
-  image_build:
+  image_build_test_deploy:
     <<: *defaults__docker
     steps:
       - *defaults__docker_provision
@@ -35,18 +35,28 @@ jobs:
       - attach_workspace:
           at: ~/workspace
       - run:
-          name: deploy hashed image
+          name: setup variables
           command: |
-            DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
-            DOCKER_IMAGE_NAME_HASHED=${DOCKER_IMAGE_NAME}:${CIRCLE_SHA1}
-            PROJECT_VERSION=$(cat ./package.json | jq -r '.version')
+            echo ${DOCKER_USERNAME}/zenobius > ./name
+            echo ${DOCKER_IMAGE_NAME}:${CIRCLE_SHA1} > ./hash
+            echo $(cat ./package.json | jq -r '.version') > ./version
+            echo $(git describe --tags) > ./described
 
             docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
             docker pull ${DOCKER_IMAGE_NAME}
+
+      - run:
+          name: deploy hashed image
+          command: |
+            DOCKER_IMAGE_NAME=$(cat ./name)
+            DOCKER_IMAGE_NAME_HASHED=$(cat ./hash)
+            PROJECT_VERSION=$(cat ./version)
+            GIT_DESCRIBED=$(cat ./described)
+
             docker build \
               --cache-from=$DOCKER_IMAGE_NAME_HASHED \
               --label="project.pkg.version=${PROJECT_VERSION}" \
-              --label="project.git.described=$(git describe --tags)" \
+              --label="project.git.described=$(GIT_DESCRIBED)" \
               --label="project.git.commit=${CIRCLE_SHA1}" \
               --label="project.ci.workflow=${CIRCLE_WORKFLOW_ID}" \
               --label="project.ci.job=${CIRCLE_JOB}" \
@@ -58,63 +68,14 @@ jobs:
             echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME_HASHED} --format='{{.Size}}')"
 
             echo "docker.save.image > ${DOCKER_IMAGE_NAME_HASHED}"
-            docker save ${DOCKER_IMAGE_NAME_HASHED} > ./image.tar
-            echo ${DOCKER_IMAGE_NAME} > ./name
-            echo ${DOCKER_IMAGE_NAME_HASHED} > ./hash
-            echo ${PROJECT_VERSION} > ./version
-
+            # docker save ${DOCKER_IMAGE_NAME_HASHED} > ./image.tar
             echo "docker.push.image > ${DOCKER_IMAGE_NAME_HASHED}"
-            docker push ${DOCKER_IMAGE_NAME_HASHED}
+            # docker push ${DOCKER_IMAGE_NAME_HASHED}
 
-      - persist_to_workspace:
-          root: .
-          paths:
-            - image.tar
-            - name
-            - hash
-            - version
-
-  image_test:
-    <<: *defaults__docker
-    steps:
-      - *defaults__docker_provision
-      - setup_remote_docker
-      - checkout
-      - attach_workspace:
-          at: ~/workspace
-      - run:
-          name: Test docker image
-          when: on_success
-          command: |
-            DOCKER_IMAGE_NAME=$(cat ~/workspace/name)
-            DOCKER_IMAGE_NAME_HASHED=$(cat ~/workspace/hash)
-            PROJECT_VERSION=$(cat ~/workspace/version)
-
-            docker load < ~/workspace/image.tar
             echo "docker.tag.image > ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}"
             docker tag ${DOCKER_IMAGE_NAME_HASHED} ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
             npm run ci:generate
 
-  image_push:
-    <<: *defaults__docker
-    steps:
-      - *defaults__docker_provision
-      - setup_remote_docker
-      - attach_workspace:
-          at: ~/workspace
-      - run:
-          name: Deploy docker image
-          when: on_success
-          command: |
-            DOCKER_IMAGE_NAME=$(cat ~/workspace/name)
-            DOCKER_IMAGE_NAME_HASHED=$(cat ~/workspace/hash)
-            PROJECT_VERSION=$(cat ~/workspace/version)
-
-            echo "docker.load.image"
-            docker load < ~/workspace/image.tar
-
-            echo "docker.tag.image > ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}"
-            docker tag ${DOCKER_IMAGE_NAME_HASHED} ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
             echo "docker.push.image > ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}"
             docker push ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
 
@@ -123,7 +84,34 @@ jobs:
             echo "docker.push.image > ${DOCKER_IMAGE_NAME}:latest"
             docker push ${DOCKER_IMAGE_NAME}:latest
 
+
   deploy_build:
+    <<: *defaults__docker
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+      - *defaults__docker_provision
+      - setup_remote_docker
+      - *defaults__docker_login
+      - checkout
+      - run:
+          name: generate
+          command: |
+            DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
+            PROJECT_VERSION=$(cat ./package.json | jq -r '.version')
+            docker pull ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
+            docker tag ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION} app
+            docker run app npm run container:nuxt:generate
+      - run:
+          name: persist
+          command: |
+            docker cp app:/app/project/docs ./docs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docs/**/*
+
+  deploy_test:
     <<: *defaults__docker
     steps:
       - attach_workspace:
@@ -132,25 +120,25 @@ jobs:
       - setup_remote_docker
       - checkout
       - *defaults__docker_login
-      - run: npm run generate
-      - persist_to_workspace:
-          root: .
-          paths:
-            - docs/**/*
+      - run: ls -al ~/workspace/docs
+      # - run:
+      #     name: Unit Tests
+      #     command: npm run test:unit
+      # - run:
+      #     name: Integration Tests
+      #     command: npm run test:integration
+      # - persist_to_workspace:
+      #     root: .
+      #     paths:
+      #       - reports/**/*
+      #       - docs/**/*
 
-  # deploy_test:
-  #   <<: *defaults__docker
-  #   steps:
-  #     - checkout
-  #     - setup_remote_docker
-  #     - run: echo true
-
-  # deploy_push:
-  #   <<: *defaults__docker
-  #   steps:
-  #     - checkout
-  #     - setup_remote_docker
-  #     - run: echo true
+  deploy_push:
+    <<: *defaults__docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: echo true
 
 
 workflows:
@@ -161,51 +149,38 @@ workflows:
   # - branches starting with 'docker'.
   image:
     jobs:
-      - image_build:
+      - image_build_test_deploy:
           filters:
             tags: { only: /.*/ }
             branches: { only: /^docker/ }
-      - image_test:
+
+  deploy:
+    jobs:
+
+      # builds website on:
+      # - any branch (expcept those starting with docker)
+      # - any tag
+      - deploy_build:
+          filters:
+            tags: { only: /.*/ }
+            branches: { ignore: /^docker/ }
+
+      # runs tests on:
+      # - any branch
+      # - any tag
+      - deploy_test:
           requires:
-            - image_build
+            - deploy_build
           filters:
             tags: { only: /.*/ }
-            branches: { only: /^docker/ }
-      - image_push:
+            branches: { ignore: /^docker/ }
+
+      # deploys website only
+      # - for v tagged commits
+      # - on the master branch
+      - deploy_push:
           requires:
-            - image_test
+            - deploy_build
           filters:
-            tags: { only: /.*/ }
-            branches: { only: /^docker/ }
-
-
-  # deploy:
-  #   jobs:
-
-  #     # builds website on:
-  #     # - any branch (expcept those starting with docker)
-  #     # - any tag
-  #     - deploy_build:
-  #         filters:
-  #           tags: { only: /.*/ }
-  #           branches: { ignore: /^docker/ }
-
-  #     # runs tests on:
-  #     # - any branch
-  #     # - any tag
-  #     - test_website:
-  #         requires:
-  #           - build_website
-  #         filters:
-  #           tags: { only: /.*/ }
-  #           branches: { ignore: /^docker/ }
-
-  #     # deploys website only
-  #     # - for v tagged commits
-  #     # - on the master branch
-  #     - deploy_website:
-  #         requires:
-  #           - test_website
-  #         filters:
-  #           tags: { only: /^v.*/ }
-  #           branches: { only: /master/ }
+            tags: { only: /^v.*/ }
+            branches: { only: /master/ }
