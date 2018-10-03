@@ -1,5 +1,5 @@
 .post-section {}
-.post-section .section__header {
+.post-section__header {
     min-height: 50vh;
 
     &:before {
@@ -13,10 +13,18 @@
         content: '';
     }
 
-    .section__header-container {
-        z-index: 2;
-        color: colour-get(grey, dark);
-    }
+}
+.post-section__header-container {
+    z-index: 2;
+    color: colour-get(grey, dark);
+}
+.post-section__credit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    color: grey;
+    font-size: 10px;
 }
 
 .section--card.section--post .section__container {

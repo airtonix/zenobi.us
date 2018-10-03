@@ -1,3 +1,9 @@
+---
+title: How I use NPM
+stage: draft
+tags: nodejs, architecture, npm
+---
+
 # How I use the npm lifecycle
 
 Npm lifecycle scripts are great:

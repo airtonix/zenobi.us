@@ -11,13 +11,16 @@
 
             <div class="blog-list">
               <div class="link-list blog-list__years"
-                  v-for="(months, year) in posts" :key="year">
+                   v-for="(months, year) in grouped"
+                   :key="year">
                 <h3 class="blog-list__year">{{year}}</h3>
                 <div class="link-list blog-list__months"
-                    v-for="(items, month) in months" :key="month">
+                    v-for="(items, month) in months"
+                    :key="month">
                   <h4 class="block-list__month">{{$dates.monthNames[month]}}</h4>
                   <ul class="link-list blog-list__posts">
-                    <li v-for="post in items" :key="post.id">
+                    <li v-for="post in items"
+                        :key="post.id">
                       <nuxt-link :to="post.permalink">{{post.title}}</nuxt-link>
                     </li>
                   </ul>
@@ -34,6 +37,7 @@
 <script>
 import Vue from 'vue';
 import _ from 'lodash';
+
 export default {
 
   layout: 'standard',
@@ -52,16 +56,19 @@ export default {
         .getAll();
 
     return {
-      posts: posts.reduce((collection, post) => {
-        const date = new Date(post.date);
-        const items = (collection[date.getFullYear()] || {})[date.getMonth()] || [];
-        Object.assign(collection, {
-          [`${date.getFullYear()}`]: {
-            [`${date.getMonth()}`]: items.concat(post)
-          }
-        });
-        return collection;
-      }, {})
+      posts: posts,
+      grouped: posts
+        .filter(post => Vue.$colophon.isPublished(post))
+        .reduce((collection, post) => {
+          const date = new Date(post.date);
+          const yearKey = date.getFullYear();
+          const monthKey = date.getMonth()+1;
+
+          collection[yearKey] = collection[yearKey] || {};
+          collection[yearKey][monthKey] = collection[yearKey][monthKey] || [];
+          collection[yearKey][monthKey] = collection[yearKey][monthKey].concat(post);
+          return collection;
+        }, {})
     };
 
   },

@@ -21,6 +21,7 @@
     <section-card
       class="section--post"
       v-for="post in posts"
+      v-if="$colophon.isPublished(post)"
       :key="post.id"
       :page="post"></section-card>
 
@@ -28,6 +29,8 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 export default {
 
   layout: 'hero',
@@ -46,12 +49,16 @@ export default {
         .query({exclude: 'body'})
         .get('resume');
 
+    const mode = process.env.mode;
+
     return {
+      mode,
       resume,
-      posts: posts.reduce((posts, post) => {
-          post.theme = '';
-          return posts;
-        }, posts)
+      posts: posts
+        .reduce((posts, post) => {
+            post.theme = '';
+            return posts;
+          }, posts)
     }
   }
 

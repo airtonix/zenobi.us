@@ -45,7 +45,22 @@ Vue.use({
             }
 
         };
+
         Vue.prototype.$objects = Vue.$objects;
+
+        Vue.$colophon = {
+            isPublished (post) {
+                return process.env.mode == 'development' ||
+                       post.stage &&
+                       post.stage.toLowerCase() == 'published';
+            },
+            isDraft (post) {
+                return process.env.mode == 'development' ||
+                       !post.stage ||
+                       post.stage.toLowerCase() == 'draft';
+            }
+        };
+        Vue.prototype.$colophon = Vue.$colophon;
 
         Vue.$dates = {
             monthNames: [

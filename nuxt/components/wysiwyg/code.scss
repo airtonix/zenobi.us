@@ -2,5 +2,12 @@
     pre {
         max-width: 100%;
         @include typeface-get(robotoslab);
+        background-color: colour-get(grey, darker);
+        color: colour-get(grey, lighter);
+        padding: 0.5rem;
+        border-radius: 0.4rem;
+    }
+    code {
+        white-space: pre-wrap;
     }
 }

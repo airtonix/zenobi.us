@@ -82,13 +82,6 @@ module.exports = {
     parsers: {
 
       md: {
-        // extend(config) {
-        //   const Prism = require('prism');
-
-        //   config.highlight = (code, lang) => {
-        //     return `<pre class="language-${lang}"><code class="language-${lang}">${Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup)}</code></pre>`
-        //   }
-        // },
 
         plugins: [
           require('markdown-it-prism'),
@@ -101,7 +94,10 @@ module.exports = {
       },
 
     }
+  },
 
+  env: {
+    mode: process.env.MODE || 'production'
   },
 
   watchers: {
