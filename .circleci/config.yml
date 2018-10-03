@@ -1,90 +1,187 @@
 version: 2
 
+defaults: &defaults
+  docker-image: &defaults__docker
+    working_directory: /build
+    docker:
+      - image: node:alpine
+    steps:
+      - &defaults__docker_provision
+        run:
+          name: install docker-compose
+          command: |
+            apk add --update --no-cache \
+              py2-pip=9.0.1-r1 \
+              docker \
+              git \
+              jq
+            pip install \
+              docker-compose==1.12.0
+
+      - &defaults__docker_login
+        run:
+          name: docker login
+          command: |
+            docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
+
 jobs:
 
-  # generate_website:
-  #   docker:
-  #     - image: circleci/node:8.9.0
-  #   working_directory: /build
-
-  # deploy_website:
-  #   docker:
-  #     - image: circleci/node:8.9.0
-  #   working_directory: /build
-
-  # test_image:
-  #   docker:
-  #     - image: circleci/node:8.9.0
-  #   working_directory: /build
-  #   steps:
-  #     - checkout
-  #     -
-
-  build_image:
-    docker:
-      - image: circleci/node:8.9.0
-    working_directory: /build
+  image_build_test_deploy:
+    <<: *defaults__docker
     steps:
-      - setup_remote_docker: {version: 17.09.0-ce}
+      - *defaults__docker_provision
+      - setup_remote_docker
+      - checkout
+      - attach_workspace:
+          at: ~/workspace
       - run:
-          name: Install dependencies
+          name: setup variables
           command: |
-            apk add --no-cache \
-              py-pip=9.0.0-r1
-            pip install \
-              docker-compose==1.12.0 \
-              awscli==1.11.76
-      - restore_cache:
-          keys:
-            - v1-{{ .Branch }}
-          paths:
-            - /caches/app.tar
+            DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
+            echo ${DOCKER_IMAGE_NAME} > ./name
+            echo ${DOCKER_IMAGE_NAME}:${CIRCLE_SHA1} > ./hash
+            echo $(cat ./package.json | jq -r '.version') > ./version
+            echo $(git describe --tags) > ./described
+
+            docker login --username=${DOCKER_USERNAME} --password=${DOCKER_PASSWORD}
+            docker pull ${DOCKER_IMAGE_NAME}
+
       - run:
-          name: Load Docker image layer cache
+          name: deploy hashed image
           command: |
-            set +o pipefail
-            docker load -i /caches/app.tar | true
+            DOCKER_IMAGE_NAME=$(cat ./name)
+            DOCKER_IMAGE_NAME_HASHED=$(cat ./hash)
+            PROJECT_VERSION=$(cat ./version)
+            GIT_DESCRIBED=$(cat ./described)
+
+            docker build \
+              --cache-from=$DOCKER_IMAGE_NAME_HASHED \
+              --label="project.pkg.version=${PROJECT_VERSION}" \
+              --label="project.git.described=$(GIT_DESCRIBED)" \
+              --label="project.git.commit=${CIRCLE_SHA1}" \
+              --label="project.ci.workflow=${CIRCLE_WORKFLOW_ID}" \
+              --label="project.ci.job=${CIRCLE_JOB}" \
+              --label="project.ci.buildNo=${CIRCLE_BUILD_NUM}" \
+              --label="project.ci.buildurl=${CIRCLE_BUILD_URL}" \
+              --label="project.ci.prs=${CIRCLE_PULL_REQUESTS}" \
+              --tag ${DOCKER_IMAGE_NAME_HASHED} .
+
+            echo "Docker image size $(docker image inspect ${DOCKER_IMAGE_NAME_HASHED} --format='{{.Size}}')"
+
+            echo "docker.save.image > ${DOCKER_IMAGE_NAME_HASHED}"
+            # docker save ${DOCKER_IMAGE_NAME_HASHED} > ./image.tar
+            echo "docker.push.image > ${DOCKER_IMAGE_NAME_HASHED}"
+            # docker push ${DOCKER_IMAGE_NAME_HASHED}
+
+            echo "docker.tag.image > ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}"
+            docker tag ${DOCKER_IMAGE_NAME_HASHED} ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
+            npm run ci:generate
+
+            echo "docker.push.image > ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}"
+            docker push ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
+
+            echo "docker.tag.image > ${DOCKER_IMAGE_NAME}:latest"
+            docker tag ${DOCKER_IMAGE_NAME}:${CIRCLE_SHA1} ${DOCKER_IMAGE_NAME}:latest
+            echo "docker.push.image > ${DOCKER_IMAGE_NAME}:latest"
+            docker push ${DOCKER_IMAGE_NAME}:latest
+
+
+  deploy_build:
+    <<: *defaults__docker
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+      - *defaults__docker_provision
+      - setup_remote_docker
+      - *defaults__docker_login
       - checkout
       - run:
-          name: Build Image
-          command: npm run docker:build
+          name: generate
+          command: |
+            DOCKER_IMAGE_NAME=${DOCKER_USERNAME}/zenobius
+            PROJECT_VERSION=$(cat ./package.json | jq -r '.version')
+            docker pull ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION}
+            docker tag ${DOCKER_IMAGE_NAME}:${PROJECT_VERSION} app
+            docker run app npm run container:nuxt:generate
+      - run:
+          name: persist
+          command: |
+            docker cp app:/app/project/docs ./docs
+      - persist_to_workspace:
+          root: .
+          paths:
+            - docs/**/*
 
-  # register_image:
-  #   docker:
-  #     - image: circleci/golang:latest
-  #   working_directory: /build
-  #   steps:
-  #     - setup_remote_docker: {version: 17.09.0-ce}
-  #     - checkout
-  #     - run:
-  #         name: Build & Deploy Image
-  #         command: npm run docker:publish
+  deploy_test:
+    <<: *defaults__docker
+    steps:
+      - attach_workspace:
+          at: ~/workspace
+      - *defaults__docker_provision
+      - setup_remote_docker
+      - checkout
+      - *defaults__docker_login
+      - run: ls -al ~/workspace/docs
+      # - run:
+      #     name: Unit Tests
+      #     command: npm run test:unit
+      # - run:
+      #     name: Integration Tests
+      #     command: npm run test:integration
+      # - persist_to_workspace:
+      #     root: .
+      #     paths:
+      #       - reports/**/*
+      #       - docs/**/*
 
+  deploy_push:
+    <<: *defaults__docker
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: echo true
 
 
 workflows:
   version: 2
 
-  docker__build_test_deploy:
+  # only builds new docker images
+  # - for tagged commites on
+  # - branches starting with 'docker'.
+  image:
     jobs:
-      - build_image:
-        filters:
-          tags: {only: /v.*/}
-      - test_image:
-        requires: [build_image]
-        filters:
-          tags: {only: /v.*/}
-      - deploy_image:
-        requires: [test_image]
-        filters:
-          tags: {only: /v.*/}
+      - image_build_test_deploy:
+          filters:
+            tags: { only: /.*/ }
+            branches: { only: /^docker/ }
 
-  website__generate_deploy:
+  deploy:
     jobs:
-      - build_website:
-        filters:
-          branches: {only: /master/}
-      - deploy_website:
-        requires: [build_website]
-        filters:
-          branches: {only: /master/}
+
+      # builds website on:
+      # - any branch (expcept those starting with docker)
+      # - any tag
+      - deploy_build:
+          filters:
+            tags: { only: /.*/ }
+            branches: { ignore: /^docker/ }
+
+      # runs tests on:
+      # - any branch
+      # - any tag
+      - deploy_test:
+          requires:
+            - deploy_build
+          filters:
+            tags: { only: /.*/ }
+            branches: { ignore: /^docker/ }
+
+      # deploys website only
+      # - for v tagged commits
+      # - on the master branch
+      - deploy_push:
+          requires:
+            - deploy_build
+          filters:
+            tags: { only: /^v.*/ }
+            branches: { only: /master/ }
