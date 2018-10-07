@@ -8,4 +8,5 @@ services:
       - 3000:3000
     volumes:
       - "./src:/app/src"
+      - "./dist:/app/dist"
       - "./package.json:/app/package.json"

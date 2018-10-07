@@ -1,21 +1,18 @@
 {
   "name": "zenobius",
   "version": "4.0.0-beta",
-  "serve": {
-    "port": 3000,
-    "options": {
-      "host": "0.0.0.0",
-      "logLevel": "trace",
-      "logTime": true
-    }
-  },
   "scripts": {
-    "dev": "npm run docker:run -- tool npm run container:dev:x0",
+    "dev": "npm run docker:run -- tool npm run container:dev",
     "prod": "npm run docker:run -- tool npm run container:prod",
+    "prod:static": "npm run docker:run -- tool npm run container:prod:static",
+    "int": "npm run docker:run -- tool npm run container:int",
     "// [container] commands": "",
-    "container:dev": "npm-run-all --parallel container:dev:x0",
-    "container:dev:x0": "x0 src/content -p 3000",
-    "container:prod": "x0 build src/content",
+    "container:dev": "npm-run-all --parallel container:dev:proxy container:dev:x0",
+    "container:dev:proxy": "http-proxy --verbose --hostname=0.0.0.0 --port=3000 localhost:8080",
+    "container:dev:x0": "x0 src/content",
+    "container:prod": "x0 build src/content --out-dir ./dist",
+    "container:prod:static": "x0 build src/content --static --out-dir ./dist",
+    "container:int": "http-server ./dist -d false -p 3000",
     "// [workstation] Release Commands": "",
     "git:pull": "git pull",
     "git:publish": "npx npm-run-all --serial release:post:git-add release:post:git-commit-amend release:post:git-push-origin",
@@ -43,6 +40,7 @@
     "push-dir": "0.4.1",
     "@compositor/x0": "^6.0.6",
     "http-server": "0.11.1",
+    "http-proxy-cli": "1.1.0",
     "npm-run-all": "4.1.3"
   }
 }
