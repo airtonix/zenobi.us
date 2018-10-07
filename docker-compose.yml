@@ -2,25 +2,10 @@ version: "2.0"
 
 services:
 
-  build:
-    image: airtonix/${npm_package_name}:${npm_package_version}
-    environment:
-      HOST: '0.0.0.0'
-      PORT: 3000
-    ports:
-      - "3000:3000"
-
   tool:
-    extends:
-      service: build
+    image: airtonix/${npm_package_name}:${npm_package_version}
+    ports:
+      - 3000:3000
     volumes:
+      - "./src:/app/src"
       - "./package.json:/app/package.json"
-      - "./:/app/project"
-
-  make:
-    image: jizhilong/docker-make
-    working_dir: /build
-    volumes:
-      - ${HOME}/.docker:/root/.docker
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./:/build

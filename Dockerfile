@@ -32,12 +32,12 @@ FROM node:8.9.0-alpine
 
 WORKDIR /app
 
-COPY . /app/project
+COPY . /app
 
 COPY --from=builder /build/node_modules /app/node_modules
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD [ "npx", "nuxt", "--config=/app/project/nuxt.config.js" ]
+CMD [ "npm", "run", "container:prod" ]
 
