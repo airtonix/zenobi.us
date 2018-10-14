@@ -13,4 +13,5 @@ services:
       - DEBUG=config*
     volumes:
       - "./src:/app/src"
+      - "./config:/app/config"
       - "./package.json:/app/package.json"
