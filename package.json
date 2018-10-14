@@ -5,6 +5,10 @@
     "basename": "/my-site",
     "template": "./src/components/root.js"
   },
+  "ci": {
+    "dist": "./dist",
+    "command": "npm run container:prod"
+  },
   "scripts": {
     "dev": "npm run docker:run -- tool npm run container:dev",
     "prod": "npm run docker:run -- tool npm run container:prod",
