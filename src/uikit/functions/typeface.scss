@@ -16,7 +16,7 @@ Turn a map into a series of css `attribute: value;`
 */
 @mixin map-as-attributes($property-value-map) {
   @each $property, $value in $property-value-map {
-    #{$property}: $value;
+    $property: $value;
   }
 }
 
