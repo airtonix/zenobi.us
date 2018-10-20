@@ -5,10 +5,9 @@ services:
   tool:
     image: airtonix/${npm_package_name}:${npm_package_version}
     ports:
-      - 3000:3000
+      - 8080:8080
+      - 8081:8081
     environment:
-      - HOST=0.0.0.0
-      - PORT=3000
       - CHOKIDAR_USEPOLLING=true
       - DEBUG=config*
     volumes:

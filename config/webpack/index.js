@@ -1,3 +1,4 @@
+const log = require('debug')('config');
 const Config = require('webpack-config').default;
 const {environment} = require('webpack-config');
 
@@ -6,6 +7,11 @@ environment.setAll({
     env: () => process.env.NODE_ENV
 });
 
-module.exports = new Config()
+const WebpackConfig = new Config()
 	.extend('[config_root]/base/index.js')
-	.extend('[config_root]/[env]/index.js');
+	.extend('[config_root]/[env]/index.js')
+	;
+
+log(WebpackConfig);
+
+module.exports = WebpackConfig;

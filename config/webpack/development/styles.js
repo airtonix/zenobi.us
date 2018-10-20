@@ -20,16 +20,16 @@ module.exports = new Config()
               sourceMap: true
             }
           },
-          // { loader: 'postcss-loader',
-          //   options: {
-          //     ident: 'postcss',
-          //     sourceMap: true,
-          //     plugins: [
-          //       require('postcss-preset-env')({}),
-          //       require('postcss-functions')({}),
-          //     ]
-          //   }
-          // },
+          { loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              sourceMap: true,
+              plugins: [
+                require('postcss-preset-env')({}),
+                require('postcss-functions')({}),
+              ]
+            }
+          },
           { loader: 'sass-loader',
             options: {
               sourceMap: true

@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 
 
-import "./navigation.scss";
-
 export default function Navigation (props) {
     const links = (items) => items.map(link => (
         <div className={classnames(
