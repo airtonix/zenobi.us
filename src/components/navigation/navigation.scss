@@ -1,0 +1,5 @@
+@import "./navigation--smallup.scss";
+
+@media #{breakpoint-gt(small)} {
+    @import "./navigation--mediumup.scss";
+}

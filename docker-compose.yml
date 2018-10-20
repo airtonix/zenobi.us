@@ -5,8 +5,13 @@ services:
   tool:
     image: airtonix/${npm_package_name}:${npm_package_version}
     ports:
-      - 3000:3000
+      - 8080:8080
+      - 8081:8081
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - DEBUG=config*
     volumes:
       - "./src:/app/src"
       - "./dist:/app/dist"
       - "./package.json:/app/package.json"
+      - "./config:/app/config"

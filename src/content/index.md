@@ -1,6 +1,6 @@
-import LinkedList from '../components/link-list';
-import posts from './posts';
-import Header from '../components/header.md';
+import HeroSection from '@components/sections/hero-section';
 
+<HeroSection
+	title="zenobi.us"
+	subtitle="Node.Js and Docker Protaginist" />
 
-<LinkedList links={posts}/>

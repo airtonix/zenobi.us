@@ -1,4 +1,4 @@
-//
+/*
 // _settings-zindex.scss
 //
 // Medium.com's z-index scale. Z-index values should always be defined in
@@ -9,7 +9,7 @@
 
 
 // Z-Index Scale (private vars)
-// --------------------------------------------------
+*/
 $zindex-1:   100;
 $zindex-2:   200;
 $zindex-3:   300;
@@ -21,9 +21,9 @@ $zindex-8:   800;
 $zindex-9:   900;
 $zindex-10: 1000;
 
-
+/*
 // Z-Index Applications
-// --------------------------------------------------
+*/
 $zindex-1--screenForeground:        $zindex-1;
 $zindex-1--surfaceUnder:            $zindex-1;
 $zindex-1--breadcrumb:              $zindex-1;

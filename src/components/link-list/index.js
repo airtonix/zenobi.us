@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import classnames from '../../helpers/classnames';
+import classnames from 'classnames';
 
 
 export default function LinkedList (props) {

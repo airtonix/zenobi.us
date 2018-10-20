@@ -1,28 +1,39 @@
 import React from 'react';
-import classnames from '../../helpers/classnames';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
+
 
 export default function Navigation (props) {
-    return <nav className={classnames(
-        Navigation.CONST__CLASSNAME,
-        {[`${props.mixClass}`]: props.mixClass}
-    )}>
-    {props.links.map(link => {
-
+    const links = (items) => items.map(link => (
         <div className={classnames(
             `${Navigation.CONST__CLASSNAME}__link`,
-            {[`${props.mixClass}__link`]: props.mixClass}
+            {[`${props.mixClass}__link`]: props.mixClass},
             )}>
-            <a className={classnames(
+            <Link className={classnames(
                 `${Navigation.CONST__CLASSNAME}__link`,
                 {[`${props.mixClass}__link`]: props.mixClass}
                 )}
-                href={link.href}>{link.label}</a>
+                to={link.href}>{link.label}</Link>
         </div>
+    ))
 
-    })}
-    </nav>
+    return (
+        <nav className={classnames(
+            Navigation.CONST__CLASSNAME,
+            props.mixClass,
+            props.classes
+        )}>
+            {props.routes}
+        </nav>
+    )
+}
+Navigation.propTypes = {
+    links: PropTypes.array,
+    mixClass: PropTypes.string,
+    classes: PropTypes.string
 }
 Navigation.defaultProps = {
-    links: []
+    links: [],
 };
 Navigation.CONST__CLASSNAME = 'navigation';
