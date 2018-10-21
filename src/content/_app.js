@@ -1,11 +1,11 @@
 import React from 'react'
-import classnames from 'classnames';
+// import classnames from 'classnames';
 
-import Nav from '@components/navigation';
-import HeroSection from '@components/sections/hero-section';
-import Footer from '@components/footer';
+// import Nav from '@components/navigation';
+// import HeroSection from '@components/sections/hero-section';
+// import Footer from '@components/footer';
 
-import "./core.scss";
+// import "./core.scss";
 
 
 export default class App extends React.Component {
@@ -21,12 +21,12 @@ export default class App extends React.Component {
     return (
       <div className={'site-layout'}>
         <header className="site-layout__header">
-          <Nav mixClass="site-layout__navigation" links={routes} />
+          <div className="site-layout__navigation" links={routes}></div>
         </header>
         <div className="site-layout__content">
           {render()}
         </div>
-        <Footer className="site-layout__footer" />
+        <div className="site-layout__footer"></div>
       </div>
     )
   }

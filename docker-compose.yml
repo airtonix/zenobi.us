@@ -3,7 +3,7 @@ version: "2.0"
 services:
 
   tool:
-    image: airtonix/${npm_package_name}:${npm_package_version}
+    image: airtonix/${npm_package_docker_image}:${npm_package_docker_tag}
     ports:
       - 8080:8080
       - 8081:8081
@@ -13,5 +13,7 @@ services:
     volumes:
       - "./src:/app/src"
       - "./dist:/app/dist"
-      - "./package.json:/app/package.json"
       - "./config:/app/config"
+      - "./package.json:/app/package.json"
+      - "./.babelrc:/app/.babelrc"
+      - "./node_modules/@compositor/x0:/app/node_modules/@compositor/x0"

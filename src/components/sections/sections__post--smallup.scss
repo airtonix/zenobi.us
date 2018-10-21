@@ -1,4 +1,7 @@
-.post-section {}
+// .post-section {}
+$section__header-bg: colour-get(grey, lightest) !default;
+
+
 .post-section__header {
     min-height: 50vh;
 
@@ -9,7 +12,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background: rgba(colour-get(grey, lightest), 0.9);
+        background: rgba($section__header-bg, 0.9);
         content: '';
     }
 

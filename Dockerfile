@@ -1,4 +1,4 @@
-FROM node:8.9.0-alpine as builder
+FROM node:8-alpine as builder
 WORKDIR /build
 RUN apk add --no-cache \
   autoconf \
@@ -23,7 +23,7 @@ COPY ./package.json .
 RUN npm install
 
 
-FROM node:8.9.0-alpine
+FROM node:8-alpine
 WORKDIR /app
 COPY . /app
 COPY --from=builder /build/node_modules /app/node_modules

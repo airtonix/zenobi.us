@@ -1,9 +1,11 @@
 {
   "name": "zenobius",
   "version": "4.0.0-beta",
+  "docker": {
+    "image": "airtonix/zenobi.us",
+    "tag": "4.0.0-beta"
+  },
   "x0": {
-    "basename": "/my-site",
-    "template": "./src/components/root.js"
   },
   "ci": {
     "dist": "./dist",
@@ -14,32 +16,36 @@
     "prod": "npm run docker:run -- tool npm run container:prod",
     "prod:static": "npm run docker:run -- tool npm run container:prod:static",
     "int": "npm run docker:run -- tool npm run container:int",
+    "release": "npx standard-version",
+
     "// [container] commands": "",
-    "container:dev": "npm-run-all --parallel container:dev:x0",
-    "container:dev:proxy": "http-proxy --verbose --hostname=0.0.0.0 --port=3000 localhost:8080",
-    "container:dev:x0": "NODE_ENV=development x0 src/content --webpack=./config/webpack",
-    "container:prod:x0": "NODE_ENV=production x0 build src/content --webpack=./config/webpack",
-    "// [workstation] Release Commands": "",
+    "container:dev": "npm-run-all --parallel container:dev:*",
+    "container:dev:x0": "cross-env NODE_ENV=development x0 src/content --debug --webpack=./config/webpack --host=0.0.0.0 --port=8080",
+
+    "container:prod": "npm-run-all --parallel container:prod:*",
+    "container:prod:x0": "cross-env NODE_ENV=production x0 build src/content --webpack=./config/webpack",
+    "container:prod:changelog": "conventional-changelog --infile=./project/CHANGELOG.md",
+
+    "// [workstation] Release Commands": "npm:release [npm:prerelease > npm:git:pull] standard-version [ > postversion > [ docker run npm:containerprod]] > [npm:postrelease > [npm: ",
     "git:pull": "git pull",
     "git:publish": "npx npm-run-all --serial release:post:git-add release:post:git-commit-amend release:post:git-push-origin",
     "prerelease": "npx npm-run-all --serial git:pull",
-    "postversion": "npm run docker:run -- tool container:release",
-    "release": "npx standard-version",
-    "postrelease": "git push --follow-tags",
+    "postrelease": "npm run git:publish",
+    "postversion": "npm run docker:run -- tool npm run container:prod",
+
     "release:post:git-add": "git add .",
     "release:post:git-commit-amend": "git commit --amend --no-edit",
     "release:post:git-push-origin": "git push --follow-tags",
+
     "// [workstation] Docker Commands": "",
     "docker:run": "docker-compose run --service-ports --rm",
     "docker:shell": "npm run docker:run -- tool /bin/sh",
-    "docker:build": "docker-compose -f docker-compose--build.yml build tool",
-    "// [container] Release Commands": "",
-    "container:release": "npx run-s release:build-frontend release:publish-styleguide",
-    "container:release:changelog": "conventional-changelog --infile=./project/CHANGELOG.md"
+    "docker:build": "docker-compose -f docker-compose--build.yml build tool"
+
   },
   "dependencies": {
     "@babel/register": "7.0.0",
-    "@compositor/x0": "airtonix/x0#feature/104-replace-webpack-serve-with-webpack-dev-server",
+    "@compositor/x0": "airtonix/x0#02c6842c97797ddf7b486bc06541b6463c5af991",
     "autoprefixer": "9.1.5",
     "axios": "0.17.0",
     "classnames": "2.2.6",

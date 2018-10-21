@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Section from './section';
+import Section from './index.scss';
 
 
 export default function HeroSection (props) {

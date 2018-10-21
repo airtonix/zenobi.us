@@ -1,9 +1,9 @@
 # Personal Website
 
+Tech:
 - docker
-- nuxt
-- vuex
-- vue
+- react
+- x0
 
 ## Use
 
@@ -11,12 +11,20 @@
 2. have nodejs 8+ installed
 
 ```
-$ git clone
-$ npm install
+$ git clone THISREPO ./zenobi.us
+$ cd zenobi.us
+$ npm run docker:build
 $ npm run dev
 ```
 
 ## Release Process
+
+1. be on feature branch
+2. make sure `package.json` `docker.image` and `docker.tag` refers to an existing remote image
+3. commit and push, create pull request
+4. visit netlify for magical pullrequest url, review build
+5. merge into master
+6. visit netlify promote to master
 
 ### Website changes
 
