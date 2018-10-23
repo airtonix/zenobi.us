@@ -1,0 +1,27 @@
+.card-group {
+    display: flex;
+}
+    .card-group--vertical {
+        flex-direction: column;
+    }
+    .card-group--horizontal {
+        flex-direction: row;
+    }
+
+    .card-group--columns {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: layout-get(spacing);
+        padding: layout-get(spacing);
+
+        .card {
+            margin-top: layout-get(spacing);
+            height: layout-get(card-size) / 2;
+            width: 100%;
+        }
+        .card:first-child {
+            margin-top: 0;
+            min-height: layout-get(card-size);
+        }
+    }

@@ -3,17 +3,17 @@ version: "2.0"
 services:
 
   tool:
-    image: airtonix/${npm_package_docker_image}:${npm_package_docker_tag}
+    image: ${npm_package_docker_image}:${npm_package_docker_tag}
     ports:
-      - 8080:8080
-      - 8081:8081
+      - 3000:3000
     environment:
+      - PORT=3000
       - CHOKIDAR_USEPOLLING=true
       - DEBUG=config*
     volumes:
       - "./src:/app/src"
+      - "./test:/app/test"
       - "./dist:/app/dist"
       - "./config:/app/config"
       - "./package.json:/app/package.json"
       - "./.babelrc:/app/.babelrc"
-      - "./node_modules/@compositor/x0:/app/node_modules/@compositor/x0"

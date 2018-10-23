@@ -1,5 +1,5 @@
-import HeroSection from '@components/sections/hero-section';
+import HeroCard from '@components/cards/hero-card';
 
-<HeroSection
+<HeroCard
 	title="zenobi.us"
-	subtitle="Node.Js and Docker Protaginist" />
+	subtitle={!!document && 'yes' || 'no'} />

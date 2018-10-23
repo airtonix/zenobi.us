@@ -31,3 +31,7 @@ export default class App extends React.Component {
     )
   }
 }
+
+if (module && module.hot) {
+  module.hot.accept();
+}

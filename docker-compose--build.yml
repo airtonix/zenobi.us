@@ -4,4 +4,4 @@ services:
 
   tool:
     build: .
-    image: airtonix/${npm_package_docker_image}:${npm_package_docker_tag}
+    image: ${npm_package_docker_image}:${npm_package_docker_tag}
