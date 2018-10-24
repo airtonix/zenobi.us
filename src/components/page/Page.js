@@ -1,18 +1,15 @@
-import React from 'react';
+import React, {Fragment} from 'react';
+import PageBase from './PageBase';
+import { withRouteData, Link } from 'react-static'
+import marked from 'marked'
 
-export default function Page ({
-	children,
-	mixClass
-}) {
-
-		return <div className={classnames(
-				Page.CONST__BASECLASS,
-				mixClass
-			)}>
-			{children}
-		</div>
-
-}
-
-Page.CONST__BASECLASS = 'page';
-
+export default withRouteData( (props) => {
+	return <PageBase mixClass="generic-page">
+		<h3 className="page__header">{props.attributes.title}</h3>
+		<main className="page__body">
+			<div dangerouslySetInnerHTML={(
+				{__html: marked(props.body)}
+			)}/>
+		</main>
+	</PageBase>
+})

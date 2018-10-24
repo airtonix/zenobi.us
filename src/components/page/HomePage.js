@@ -1,7 +1,7 @@
-import Page from './page';
+import PageBase from './PageBase';
 
 export default function HomePage (props) {
-	return <Page mixClass="home-page">
+	return <PageBase mixClass="home-page">
 		Home!
-	</Page>
+	</PageBase>
 }

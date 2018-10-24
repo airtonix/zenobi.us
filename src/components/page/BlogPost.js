@@ -1,7 +1,7 @@
-import Page from './page';
+import PageBase from './PageBase';
 
 export default function BlogPage ({ isLoading, page }) {
-	return <Page mixClassname="blog-page">
+	return <PageBase mixClassname="blog-page">
     {isLoading && "Loading..."}
     {!isLoading &&
       page.node && (
@@ -13,5 +13,5 @@ export default function BlogPage ({ isLoading, page }) {
     <footer>
       <Link to="/">Go to home</Link>
     </footer>
-	</Page>
+	</PageBase>
 };

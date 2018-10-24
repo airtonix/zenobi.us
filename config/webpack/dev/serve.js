@@ -6,6 +6,7 @@ module.exports = new Config()
     devServer: {
       host: '0.0.0.0',
       port: 3000,
-      overlay: true
+      overlay: true,
+      poll: true
     }
   });
