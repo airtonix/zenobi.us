@@ -61,11 +61,6 @@ export default {
     webpack (config, {defaultLoaders, stage}) {
         return new Config()
             .merge(config)
-            // .merge({
-            //     entry: stage == 'dev' &&
-            //         ['babel-polyfill', ...config.entry] ||
-            //         ['babel-polyfill', config.entry]
-            // })
             .extend(`${__dirname}/webpack/${stage}/index.js`);
     }
 };
