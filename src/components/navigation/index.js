@@ -1,22 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-static'
 
 export default function Navigation (props) {
-    const links = (items) => items.map(link => (
-        <div className={classnames(
-            `${Navigation.CONST__CLASSNAME}__link`,
-            {[`${props.mixClass}__link`]: props.mixClass},
-            )}>
-            <Link className={classnames(
-                `${Navigation.CONST__CLASSNAME}__link`,
-                {[`${props.mixClass}__link`]: props.mixClass}
-                )}
-                to={link.href}>{link.label}</Link>
-        </div>
-    ))
 
     return (
         <nav className={classnames(
@@ -24,7 +11,21 @@ export default function Navigation (props) {
             props.mixClass,
             props.classes
         )}>
-            {props.routes}
+            {props.routes.map((link, index) =>
+                (
+                <div className={classnames(
+                    `${Navigation.CONST__CLASSNAME}__link`,
+                    {[`${props.mixClass}__link`]: props.mixClass},
+                    )}>
+                    <Link className={classnames(
+                        `${Navigation.CONST__CLASSNAME}__link`,
+                        {[`${props.mixClass}__link`]: props.mixClass}
+                        )}
+                        key={`${index}`}
+                        to={link.href}>{link.label}</Link>
+                </div>
+                )
+            )}
         </nav>
     )
 }
@@ -34,6 +35,6 @@ Navigation.propTypes = {
     classes: PropTypes.string
 }
 Navigation.defaultProps = {
-    links: [],
+    routes: [],
 };
 Navigation.CONST__CLASSNAME = 'navigation';

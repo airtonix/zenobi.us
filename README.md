@@ -2,8 +2,10 @@
 
 Tech:
 - docker
+- docker-compose
+- sass
 - react
-- x0
+- react-static
 
 ## Use
 
@@ -11,7 +13,7 @@ Tech:
 2. have nodejs 8+ installed
 
 ```
-$ git clone THISREPO ./zenobi.us
+$ git clone THISREPO#THISBRANCH ./zenobi.us
 $ cd zenobi.us
 $ npm run docker:build
 $ npm run dev

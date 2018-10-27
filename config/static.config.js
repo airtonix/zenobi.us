@@ -1,49 +1,56 @@
-import Config from 'webpack-config';
-import { reloadRoutes } from 'react-static/node'
-import chokidar from 'chokidar'
-import glob from 'glob'
-import matter from 'front-matter';
 import fs from 'fs';
+import Config from 'webpack-config';
+import { reloadRoutes } from 'react-static/node';
+import chokidar from 'chokidar';
+import glob from 'glob';
+import {dirname} from 'path';
+import {renderMdx, mdxToComponent} from 'react-static-markdown';
+import matter from 'gray-matter';
 
 
 chokidar.watch(`${process.cwd()}/src`)
     .on('all', () => reloadRoutes())
 
-function contentQuery (pattern) {
-    return glob.sync(pattern)
+function contentQuery (patterns) {
+    return glob
+        .sync(patterns)
         .map(path => {
-            return {
-                path,
-                body: fs.readFileSync(path, 'utf8')
-            };
+            const {data, content} = matter(fs.readFileSync(path, 'utf8'));
+            return Object.assign({
+                content: renderMdx(content),
+                path
+            }, data);
         })
-        .filter(data => !!data.body)
-        .map(({path, body}) => {
-            const data = typeof body == 'string' &&
-                matter(body) ||
-                {body};
-            return {
-                path,
-                ...data
-            };
+        .map((page) => {
+            if (page.children) {
+                console.log('querying', page.children);
+                page.children = contentQuery(`${dirname(page.path)}/${page.children}`)
+            }
+            return page;
         })
-        .map(({path, attributes = {}, body}) => {
-            const {component} = attributes;
-            const url = path
+        .map((page) => {
+            const url = page.path
                 .replace(`${process.cwd()}/src/content`, '')
                 .replace(/.(jsx?|mdx?)/, '')
                 .replace(/\/index/, '/');
 
             return {
                 path: url,
-                slug: attributes.title && attributes.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, ''),
-                component: component || `${process.cwd()}/src/components/page/Page`,
-                getData: async () => ({attributes, body})
+                slug: page.title && page.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') || '',
+                component: page.component || `${process.cwd()}/src/components/page/Page`,
+                children: page.children || [],
+                getData: async () => page
             };
         });
 }
 
 export default {
+
+    siteRoot: '/',
+    stagingSiteRoot: '/',
+    paths: {
+        dist: `${process.cwd()}/dist`
+    },
 
     getSiteDate: async ({ dev }) => {
       return {
@@ -53,7 +60,7 @@ export default {
     },
 
     getRoutes: async ({dev}) => {
-        const routes = contentQuery(`${process.cwd()}/src/content/**/*.md`)
+        const routes = await contentQuery(`${process.cwd()}/src/content/*.{mdx,md}`)
         console.log(routes);
         return routes;
     },
@@ -61,6 +68,6 @@ export default {
     webpack (config, {defaultLoaders, stage}) {
         return new Config()
             .merge(config)
-            .extend(`${__dirname}/webpack/${stage}/index.js`);
+            .extend(`${__dirname}/webpack/dev/index.js`);
     }
 };
