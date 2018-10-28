@@ -5,16 +5,14 @@ services:
   tool:
     image: ${npm_package_docker_image}:${npm_package_docker_tag}
     ports:
-      - 3000:3000
-      - 4000:4000
+      - 8000:8000
     environment:
       - PORT=3000
       - CHOKIDAR_USEPOLLING=true
       - DEBUG=project*,config*
+      - GATSBY_WEBPACK_PUBLICPATH=/
     volumes:
       - "./src:/app/src"
       - "./dist:/app/dist"
       - "./config:/app/config"
       - "./package.json:/app/package.json"
-      - "./.babelrc:/app/.babelrc"
-      - "./vendor/react-static/lib/commands/bundle.js:/app/node_modules/react-static/lib/commands/bundle.js"
