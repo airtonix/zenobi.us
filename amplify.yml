@@ -1,0 +1,16 @@
+version: 0.1
+frontend:
+  phases:
+    # IMPORTANT - Please verify your build commands
+    build:
+      commands:
+        - 'npm install'
+        - 'MODE=production ./node_modules/.bin/nuxt generate --spa --config-file ./nuxt.config.js'
+  artifacts:
+    # IMPORTANT - Please verify your build output directory
+    baseDirectory: /
+    files:
+      - '/.nuxt/**/*'
+  cache:
+    paths:
+      - node_modules/**/*
