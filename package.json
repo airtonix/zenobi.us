@@ -3,28 +3,20 @@
   "version": "4.0.0-beta-2",
   "docker": {
     "image": "airtonix/zenobi.us",
-    "tag": "4.0.0-beta-2"
+    "tag": "5.0.0-beta-1"
   },
   "ci": {
     "dist": "./dist",
-    "command": "npm run container:prod"
-  },
-  "scripts": {
-    "start": "react-static start",
-    "stage": "react-static build --staging",
-    "build": "react-static build",
-    "bundle": "react-static bundle",
-    "export": "react-static export",
-    "storybook:serve": "serve dist -p 9001 -s -c ./tools/storybook",
-    "storybook:dev": "start-storybook -p 9001 --ci -c ./tools/storybook",
-    "storybook:build": "build-storybook  -c ./tools/storybook"
+    "command": "yarn prod"
   },
   "dependencies": {
     "@mdx-js/react": "^1.6.18",
     "@reach/router": "^1.2.1",
     "@types/classnames": "^2.2.10",
     "axios": "^0.19.0",
+    "buildfile": "^1.2.22",
     "classnames": "^2.2.6",
+    "concurrently": "^5.3.0",
     "css-modules-typescript-loader": "^4.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -34,14 +26,13 @@
     "react-static-plugin-sass": "^7.3.0",
     "react-static-plugin-sitemap": "^7.2.0",
     "react-static-plugin-source-filesystem": "^7.2.0",
-    "react-static-plugin-typescript": "^7.2.0"
-  },
-  "devDependencies": {
+    "react-static-plugin-typescript": "^7.2.0",
     "@babel/core": "^7.11.6",
     "@storybook/addon-actions": "^6.0.21",
     "@storybook/addon-docs": "^6.0.21",
     "@storybook/addon-essentials": "^6.0.21",
     "@storybook/addon-links": "^6.0.21",
+    "@storybook/preset-scss": "^1.0.2",
     "@storybook/react": "^6.0.21",
     "@types/debug": "^4.1.5",
     "@types/lodash": "^4.14.123",
@@ -53,13 +44,16 @@
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^4.1.1",
     "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
     "eslint": "^7.3.0",
     "eslint-plugin-import": "^2.22.0",
     "jest": "^26.2.2",
     "jest-extended": "^0.11.5",
     "react-hot-loader": "^4.12.11",
     "react-is": "^16.13.1",
+    "sass-loader": "^10.0.2",
     "serve": "^11.1.0",
+    "style-loader": "^1.2.1",
     "ts-jest": "^26.1.0",
     "typescript": "4.x"
   }

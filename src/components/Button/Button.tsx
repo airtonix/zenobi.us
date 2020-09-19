@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 import './button.scss'
@@ -81,5 +81,6 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 
 Button.defaultProps = {
   as: 'button',
-  size: ButtonSizes.Normal
+  size: ButtonSizes.Normal,
+  style: ButtonStyles.Primary
 }

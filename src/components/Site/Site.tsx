@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes } from 'react-static'
 import { Router } from '@reach/router'
 
-import { Navigation } from '~/components/navigation/Navigation'
+import { Navigation } from '~/components/Navigation/Navigation'
 
 import './Site.scss'
 

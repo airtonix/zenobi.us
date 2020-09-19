@@ -1,0 +1,9 @@
+.button {
+    padding: 6px 8px;
+}
+
+.button--primary {
+    color: colour-get(white);
+    background-color: colour-get(queenblue);
+    border: 2px solid colour-get(queenblue);
+}
