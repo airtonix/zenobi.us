@@ -1,7 +1,7 @@
 import React from 'react';
 import PageBase from './PageBase';
 
-import HeroCard from '@components/cards/hero-card';
+import HeroCard from '~/components/cards/hero-card';
 
 export default function HomePage (props) {
 	return <PageBase mixClass="home-page">

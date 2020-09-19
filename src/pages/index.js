@@ -1,5 +1,5 @@
 import React from 'react';
-import HeroCard from '../components/cards/hero-card';
+import HeroCard from '~/components/cards/hero-card';
 
 export default () => {
 	return (

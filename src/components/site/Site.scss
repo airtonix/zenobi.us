@@ -1,0 +1,24 @@
+@import "~uikit/index.scss";
+
+@import "~/components/wysiwyg/index.scss";
+
+@import "./Fonts.scss";
+@import "./Root.scss";
+
+.site {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	max-width: layout-get(page-width);
+}
+
+.site__header {}
+.site__content,
+.site__content > div {
+	flex-grow: 1;
+
+	display: flex;
+	flex-direction: column;
+
+}
+.site__footer {}
