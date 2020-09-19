@@ -6,6 +6,7 @@
 !tsconfig.json
 !static.config.js
 !yarn.lock
+!Buildfile
 
 !tools/
 !plugins/*
