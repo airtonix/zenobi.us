@@ -3,9 +3,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 
+import './index.scss'
+
 // Your top level component
 import { Site } from '~/components/Site/Site'
-
 // Export your top level component as JSX (for static rendering)
 export default Site
 

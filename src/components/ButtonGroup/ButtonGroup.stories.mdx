@@ -1,0 +1,94 @@
+import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+
+import { ButtonGroup } from './ButtonGroup'
+
+<Meta title="Components/ButtonGroup" component={ButtonGroup} />
+
+# ButtonGroup
+
+A ButtonGroup holds buttons in an arrangement to suit spacing within and between its neigbours
+
+<Preview>
+    <Story name="basic">
+    <footer>
+        <ButtonGroup>
+            <PrimaryButton label='one' />
+            <SecondaryButton label='two' />
+            <TertiaryButton label='three' />
+        </ButtonGroup>
+        <ButtonGroup>
+            <PrimaryButton label='one' size='small' />
+            <SecondaryButton label='two' size='small' />
+            <TertiaryButton label='three' size='small' />
+        </ButtonGroup>
+        <ButtonGroup>
+            <PrimaryButton label='one' size='tiny' />
+            <SecondaryButton label='two' size='tiny' />
+            <TertiaryButton label='three' size='tiny' />
+        </ButtonGroup>
+    </footer>
+    </Story>
+</Preview>
+
+<Props of={ButtonGroup} />
+
+
+## Direction
+
+A ButtonGroup can have a `direction`
+
+<Preview>
+    <Story name="direction row">
+        <ButtonGroup direction="row">
+            <PrimaryButton label='one' size='tiny' />
+            <SecondaryButton label='two' size='tiny' />
+            <TertiaryButton label='three' size='tiny' />
+        </ButtonGroup>
+    </Story>
+    <Story name="direction column">
+        <ButtonGroup direction="column">
+            <PrimaryButton label='one' size='tiny' />
+            <SecondaryButton label='two' size='tiny' />
+            <TertiaryButton label='three' size='tiny' />
+        </ButtonGroup>
+    </Story>
+</Preview>
+
+
+## Separators
+
+A ButtonGroup can have a `separators`
+
+<Preview>
+    <Story name="separator dots row">
+        <ButtonGroup separators='dot' direction="row">
+            <PrimaryButton label='one' size='tiny' />
+            <SecondaryButton label='two' size='tiny' />
+            <TertiaryButton label='three' size='tiny' />
+        </ButtonGroup>
+    </Story>
+    <Story name="separator dots column">
+        <ButtonGroup separators='dot' direction="column">
+            <PrimaryButton label='one' size='tiny' />
+            <SecondaryButton label='two' size='tiny' />
+            <TertiaryButton label='three' size='tiny' />
+        </ButtonGroup>
+    </Story>
+</Preview>
+
+<Preview>
+    <Story name="separator lines row">
+        <ButtonGroup separators='line' direction="row">
+            <PrimaryButton label='one' size='tiny' />
+            <SecondaryButton label='two' size='tiny' />
+            <TertiaryButton label='three' size='tiny' />
+        </ButtonGroup>
+    </Story>
+    <Story name="separator lines column">
+        <ButtonGroup separators='line' direction="column">
+            <PrimaryButton label='one' size='tiny' />
+            <SecondaryButton label='two' size='tiny' />
+            <TertiaryButton label='three' size='tiny' />
+        </ButtonGroup>
+    </Story>
+</Preview>

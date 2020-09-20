@@ -12,21 +12,24 @@ export type NavigationItem = {
 
 export type NavigationProps = {
   routes: NavigationItem[],
-  isVertical?: boolean
+  isVertical?: boolean,
+  className?: string
 }
 
 export const Navigation:React.FC<NavigationProps> = (props) => {
   const {
     routes,
-    isVertical
+    isVertical,
+    className
   } = props 
   
   return (
     <nav className={classnames(
       'navigation',
+      className,
       isVertical && 'navigation--vertical'
     )}>
-      <div className='navigation__group--onscreen'>
+      <div className='navigation__group'>
         {routes.map((link: NavigationItem ) =>
           (
             <div

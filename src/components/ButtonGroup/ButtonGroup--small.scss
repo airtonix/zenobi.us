@@ -1,0 +1,85 @@
+.button-group {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.button-group--wraps {
+  flex-wrap: wrap;
+}
+
+.button-group--column {
+  flex-direction: column;
+}
+
+.button-group--row {
+  flex-direction: row;
+}
+
+.button-group__separator {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.button-group__separator:focus {
+  outline: 0;
+}
+.button-group__separator:after {
+  background: currentColor;
+  opacity: 0.25;
+}
+
+.button-group--row
+.button-group__separator {
+  flex-direction: row;
+}
+
+.button-group--row
+.button-group__separator:after {
+  margin-left: 8px;
+}
+
+.button-group--column
+.button-group__separator {
+  flex-direction: column;
+}
+
+.button-group--column
+.button-group__separator:after {
+  margin-top: 8px;
+}
+
+
+.button-group--column
+.button-group__separator:not(:first-child) {
+  margin-top: 8px
+}
+.button-group--row
+.button-group__separator:not(:first-child) {
+  margin-left: 8px
+}
+
+.button-group--separated-by-dots
+.button-group__separator:not(:last-child):after,
+.button-group--separated-by-lines
+.button-group__separator:not(:last-child):after {
+  content: '';
+}
+
+.button-group--separated-by-dots .button-group__separator:after {
+  width: 4px;
+  height: 4px;
+  border-radius: 1000px;
+}
+
+.button-group--column.button-group--separated-by-lines
+.button-group__separator:after {
+  width: 80%;
+  height: 2px;
+}
+
+.button-group--row.button-group--separated-by-lines
+.button-group__separator:after {
+  width: 2px;
+  height: 80%;
+}
+

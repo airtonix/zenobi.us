@@ -118,3 +118,19 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
 Button.defaultProps = {
   as: 'button',
 }
+
+export const ButtonPrimary:React.FC<ButtonProps> = (props) => (
+  <Button {...props} style={ButtonStyles.Primary} />
+)
+
+export const ButtonSecondary:React.FC<ButtonProps> = (props) => (
+  <Button {...props} style={ButtonStyles.Secondary} />
+)
+
+export const ButtonTertiary:React.FC<ButtonProps> = (props) => (
+  <Button {...props} style={ButtonStyles.Tertiary} />
+)
+
+export const ButtonLink:React.FC<ButtonProps> = (props) => (
+  <Button {...props} style={ButtonStyles.Link} />
+)

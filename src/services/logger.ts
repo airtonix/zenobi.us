@@ -20,7 +20,7 @@ export const LogMethodProperty = (property: string): ConsoleLogType =>
     meta: Metadata<any>
   ) => {
     if (!meta.scope.log) return
-    const { method, args, result, scope } = meta
+    const { method, scope } = meta
     meta.scope.log(method.name, property, scope)
   }
 
