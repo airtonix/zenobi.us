@@ -1,16 +1,13 @@
 *
+
 !.gitignore
 
-!.vscode/
-!.vscode/*
-!.github/
-!.github/*
-!.github/**/*
 !.babelrc
 !.eslintrc.json
 !tsconfig.json
 !static.config.js
 !docker-compose*
+!package.json
 !yarn.lock
 !Buildfile
 !.editorconfig
@@ -23,5 +20,5 @@
 
 !tools/
 !tools/**
-!app/
-!app/**
+!src/
+!src/**

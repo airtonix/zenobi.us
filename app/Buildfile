@@ -1,0 +1,48 @@
+# code: language=makefile
+# https://github.com/jeremija/Buildfile/
+
+dev:
+  concurrently \
+  --names "site,storybook" \
+  --prefix-colors "yellow.bold,yellow" \
+  "build site.dev" \
+  "build storybook.dev"
+
+prod:
+  concurrently \
+  --names "site,storybook" \
+  --prefix-colors "yellow.bold,yellow" \
+  "build site.prod" \
+  "build storybook.prod"
+
+site.dev:
+  react-static start
+
+site.stage:
+  react-static build --staging
+
+site.bundle:
+  react-static bundle
+
+site.export:
+  react-static export
+
+site.prod:
+  react-static build
+
+storybook.dev:
+  start-storybook \
+  -p 9001 \
+  --ci \
+  -c ./tools/storybook
+
+storybook.serve: 
+  serve dist \
+  -p 9001 \
+  -s \
+  -c ./tools/storybook
+
+storybook.prod:
+  build-storybook \
+  --config-dir ./tools/storybook \
+  --output-dir ./dist/storybook

@@ -3,50 +3,21 @@
 
 repo ?= docker.pkg.github.com/airtonix/zenobi.us
 version ?= develop
+service ?= app
 
-dev:
-  concurrently \
-  "build site.dev" \
-  "build storybook.dev"
-
-site.dev:
-  react-static start
-
-site.stage:
-  react-static build --staging
-
-site.build:
-  react-static build
-
-site.bundle:
-  react-static bundle
-
-site.export:
-  react-static export
-
-storybook.serve: 
-  serve dist \
-  -p 9001 \
-  -s \
-  -c ./tools/storybook
-
-storybook.dev:
-  start-storybook \
-  -p 9001 \
-  --ci \
-  -c ./tools/storybook
-
-storybook.build:
-  build-storybook \
-  --config-dir ./tools/storybook \
-  --output-dir ./dist/storybook
+dev.setup: ci.setup
 
 ci.setup:
-  npm i -g buildfile concurrently
+  npm i -g \
+  buildfile \
+  concurrently \
+  gh-pages
 
 ci.build:
-  build storybook.build
-  build site.build
+  build docker.run \
+  --stage=ci \
+  --service=${service} \
+  --command=build prod
 
 ci.deploy: ci.setup ci.build
   gh-pages \
@@ -54,6 +25,16 @@ ci.deploy: ci.setup ci.build
   --add
   --repo=${repo}
 
+#
+# Docker Utilities
+#
+
+# Build Docker Image
+# @param {string} repo - name of the docker repo
+# @param {string} service
+#   name of the service to build.
+#   This is the folder found:
+#     - ./<service>
 docker.build:
   # pull the cached layers 
   docker pull ${repo}:builder || true
@@ -62,10 +43,10 @@ docker.build:
   # have changes, this should be very fast.
   docker build \
   --cache-from ${repo}:builder \
-  --file ./tools/docker/app/Dockerfile \
+  --file ./${service}/tools/docker/Dockerfile \
   --tag ${repo}:builder \
   --target install \
-  .
+  ./${service}
 
   # # pull the latest image
   docker pull ${repo}:latest || true
@@ -77,19 +58,27 @@ docker.build:
   --build-arg COMMIT=${version} \
   --cache-from ${repo}:builder \
   --cache-from ${repo}:latest \
-  --file ./tools/docker/app/Dockerfile \
+  --file ./${service}/tools/docker/Dockerfile \
   --tag ${repo} \
   --target prod \
-  .
+  ./${service}
 
+# Run a command in a container using a service image
+# @param {string} stage - Which compose file layer to add
+# @param {string} service - service to run
+# @param {string} command - what to run
 docker.run:
   stage ?= 'local'
+
   docker-compose \
   -f docker-compose.yml \
   -f docker-compose--${stage}.yml \
   run --rm \
   ${service} ${command}
 
+# Bring the whole stack up with services
+# @param {string} stage - Which compose file layer to add
+# @param {string} services - services to bring up
 docker.up:
   stage ?= 'local'
 
@@ -129,6 +118,3 @@ env.template:
   -e version=${version} \
   supinf/envsubst \
   /tmp/${infile} > ./${outfile}
-
-done:
-  echo "Done"

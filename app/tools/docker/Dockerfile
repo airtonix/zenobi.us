@@ -12,8 +12,8 @@ RUN apk --update --no-cache add \
 
 ENV ENTRYPOINT_TASKS_DIR=/entrypoint.d/
 
-COPY ./tools/docker/app/entrypoint.sh /entrypoint.sh
-COPY ./tools/docker/app/entrypoint.d/* /entrypoint.d/
+COPY ./tools/docker/entrypoint.sh /entrypoint.sh
+COPY ./tools/docker/entrypoint.d/* /entrypoint.d/
 RUN chmod +x /entrypoint.sh
 RUN chmod +x /entrypoint.d/*
 
