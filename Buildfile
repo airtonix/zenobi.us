@@ -4,6 +4,7 @@
 repo ?= docker.pkg.github.com/airtonix/zenobi.us
 version ?= develop
 service ?= app
+stage ?= local
 
 dev.setup: ci.setup
 
@@ -17,7 +18,7 @@ ci.build:
   build docker.run \
   --stage=ci \
   --service=${service} \
-  --command=build prod
+  --command="build prod"
 
 ci.deploy: ci.setup ci.build
   gh-pages \
@@ -68,11 +69,9 @@ docker.build:
 # @param {string} service - service to run
 # @param {string} command - what to run
 docker.run:
-  stage ?= 'local'
-
   docker-compose \
   -f docker-compose.yml \
-  -f docker-compose--${stage}.yml \
+  -f docker-compose--${stage:local}.yml \
   run --rm \
   ${service} ${command}
 
@@ -80,8 +79,6 @@ docker.run:
 # @param {string} stage - Which compose file layer to add
 # @param {string} services - services to bring up
 docker.up:
-  stage ?= 'local'
-
   docker-compose \
   -f docker-compose.yml \
   -f docker-compose--${stage}.yml \

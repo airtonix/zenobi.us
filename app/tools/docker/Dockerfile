@@ -47,7 +47,6 @@ COPY ./.browserslistrc \
      ./tsconfig.json \
      ./src \
      ./tools \
-     ./public \
      ./
 
 ARG COMMIT
