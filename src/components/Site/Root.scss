@@ -11,5 +11,5 @@ body,
 }
 
 body {
-  @include typeface-get(opensans);
+  @include get-typeface(paragraph);
 }

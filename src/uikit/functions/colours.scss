@@ -1,5 +1,5 @@
 /*
-colour-get($scheme, $tone)
+get-colour($scheme, $tone)
 
 Get a colour shade from the colour palette
 see `construct/settings/_colours.scss`
@@ -11,7 +11,7 @@ $tone   - options shade.
 
 Styleguide Core.Functions.Colour
 */
-@function colour-get($scheme, $tone: default) {
+@function get-colour($scheme, $tone: default) {
   @if map-has-key($settings__colours, $scheme) != true {
     @return $scheme;
   }

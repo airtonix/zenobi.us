@@ -2,7 +2,7 @@
 // .post-card__container {}
 
 .post-card__header {
-    @include typeface-get(robotoslab);
+    @include get-typeface(section-heading);
     display: flex;
     flex-direction: row;
 }
@@ -12,22 +12,22 @@
 }
 
 .post-card__meta {
-    @include typeface-get(opensans);
-    font-size: rem-calc(16px);
-    color: colour-get(grey)
+    @include get-typeface(section-description);
+    font-size: rems(16px);
+    color: get-colour(grey)
 
 }
 .post-card__link {
-    color: colour-get(queenblue);
+    color: get-colour(queenblue);
     text-decoration: none;
 }
     .post-card__link:visited {
-        color: colour-get(queenblue, dark);
+        color: get-colour(queenblue, dark);
     }
     .post-card__link:hover {
         text-decoration: underline;
-        color: colour-get(queenblue, light);
+        color: get-colour(queenblue, light);
     }
     .post-card__link-icon {
-        color: colour-get(grey);
+        color: get-colour(grey);
     }

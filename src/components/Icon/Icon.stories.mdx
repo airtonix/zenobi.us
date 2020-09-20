@@ -1,0 +1,162 @@
+import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+import { Icon, IconSizes, IconStyles, IconTones, IconBadgeStyles } from './Icon'
+
+export const Template = (args) => <Icon {...args } />;
+
+<Meta title="Components/Icon" component={Icon} />
+
+# Icon
+
+Icons are provided by Google Material Icons.
+
+- [Icon browser](https://material.io/resources/icons/)
+- [codepoints](https://github.com/google/material-design-icons/blob/master/iconfont/codepoints)
+
+
+<Canvas>
+  <Story name="basic">
+    <Icon name='lock'/>
+    <Icon>lock</Icon>
+  </Story>
+</Canvas>
+
+<ArgsTable of={Icon} />
+
+## Sizes
+
+Icons can have many sizes.
+
+<Canvas>
+  <Story name="size small" args={{ name: 'lock', size: IconSizes.Small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="size normal" args={{ name: 'lock', size: IconSizes.Normal }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="size big" args={{ name: 'lock', size: IconSizes.Big }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="size large" args={{ name: 'lock', size: IconSizes.Large }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="size huge" args={{ name: 'lock', size: IconSizes.Huge }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="size massive" args={{ name: 'lock', size: IconSizes.Massive }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="size enormous" args={{ name: 'lock', size: IconSizes.Enormous }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+with badges
+<Canvas>
+  <Story name="badge size small" args={{ name: 'lock', badge: true, size: IconSizes.Small }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="badge size normal" args={{ name: 'lock', badge: true, size: IconSizes.Normal }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="badge size big" args={{ name: 'lock', badge: true, size: IconSizes.Big }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="badge size large" args={{ name: 'lock', badge: true, size: IconSizes.Large }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="badge size huge" args={{ name: 'lock', badge: true, size: IconSizes.Huge }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="badge size massive" args={{ name: 'lock', badge: true, size: IconSizes.Massive }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="badge size enormous" args={{ name: 'lock', badge: true, size: IconSizes.Enormous }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+The size is a preset to the font size.
+
+| size     | font-size |
+| -------- | --------- |
+| small    | 12        |
+| normal   | 16        |
+| big      | 18        |
+| large    | 24        |
+| huge     | 48        |
+| massive  | 64        |
+| enormous | 96        |
+
+The size can be `inherited` from the containing element
+
+<Canvas>
+  <Story name="size inherited">
+    <article>
+        <h1>
+          <Icon name='help' size='inherited'/>
+          h1
+        </h1>
+        <h2>
+          <Icon name='help' size='inherited'/>
+          h2
+        </h2>
+        <h3>
+          <Icon name='help' size='inherited'/>
+          h3
+        </h3>
+      <p>
+        <Icon name='help' size='inherited'/>
+        What is ...
+      </p>
+    </article>
+  </Story>
+</Canvas>
+
+# Styles
+
+An icon can use the various styles from Material Icons.
+
+<Canvas>
+  <Story name="style round" args={{ name: 'lock', style: IconStyles.Round }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="style sharp" args={{ name: 'lock', style: IconStyles.Sharp }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="style outline" args={{ name: 'lock', style: IconStyles.Outline }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="style twotone" args={{ name: 'lock', style: IconStyles.TwoTone }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Badges
+
+An Icon can be wrapped in a badge.
+
+<Canvas>
+  <Story name="badge solid" args={{ name: 'lock', badge: IconBadgeStyles.Solid }}>
+    {Template.bind({})}
+  </Story>
+  <Story name="badge outline" args={{ name: 'lock', badge: IconBadgeStyles.Outline }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+# Tones
+
+An Icon can have a light or a dark tone
+
+<Canvas>
+  <Story
+    name="tone light"
+    args={{ name: 'lock', tone: IconTones.Light }}
+    decorator={(<span style={{ backgroundColor: 'grey'}} />)}
+    >
+    {Template.bind({})}
+  </Story>
+  <Story name="tone dark" args={{ name: 'lock', tone: IconTones.Dark }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

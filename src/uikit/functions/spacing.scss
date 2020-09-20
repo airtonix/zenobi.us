@@ -1,0 +1,24 @@
+/*
+get-spacing($name)
+
+Get a named type size from the spacing map
+see `uikit/settings/spacing.scss`
+
+Compatible untested.
+
+$name - The logical name
+
+Styleguide UiKit.Functions.Spacing
+*/
+@function get-spacing($name) {
+  @if map-has-key($settings__spacing, $name) != true {
+    @return "#{$name}";
+  }
+
+  @return #{map-get($settings__spacing, $name)};
+}
+
+@function get-spacing-px($name) {
+  $value: get-spacing($name);
+  @return #{$value}px;
+}

@@ -5,6 +5,7 @@
 !.eslintrc.json
 !tsconfig.json
 !static.config.js
+!docker-compose*
 !yarn.lock
 !Buildfile
 

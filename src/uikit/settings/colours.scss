@@ -33,6 +33,16 @@ $settings__colours: (
         lighter: hsla(211%, 35%, 57%, 1),
         lightest: hsla(211%, 35%, 67%, 1),
     ),
+    
+    skyblue: (
+        darkest: hsl(197, 71%, 60%),
+        darker: hsl(197, 71%, 64%),
+        dark: hsl(197, 71%, 68%),
+        default: skyblue,
+        light: hsl(197, 71%, 78%),
+        lighter: hsl(197, 71%, 82%),
+        lightest: hsl(197, 71%, 97%),
+    ),
 
     fieryrose: (
         dark: hsla(355%, 87%, 61%, 1),

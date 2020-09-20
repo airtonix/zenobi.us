@@ -1,7 +1,12 @@
 # code: language=makefile
 version ?= 'develop'
+repo ?= 'docker.pkg.github.com/airtonix/zenobi.us'
+source ?= '.'
 
-dev: site.dev
+dev:
+  concurrently \
+  "build site.dev" \
+  "build storybook.dev"
 
 site.dev:
   react-static start
@@ -33,7 +38,6 @@ storybook.dev:
 storybook.build:
   build-storybook \
   -c ./tools/storybook
-
 
 docker.build:
   # pull the cached layers 
@@ -70,26 +74,44 @@ docker.run:
   ${service} ${command}
 
 docker.up:
+  stage ?= 'local'
+
   docker-compose \
   -f docker-compose.yml \
   -f docker-compose--${stage}.yml \
   up ${services}
 
-docker.templates:
-  yarn build env.template \
-    infile=./tools/docker/docker-compose.yml \
-    outfile=./docker-compose.yml
-  yarn build env.template \
-    infile=./tools/docker/docker-compose--local.yml \
-    outfile=./docker-compose--local.yml
-  yarn build env.template \
-    infile=./tools/docker/docker-compose--ci.yml \
-    outfile=./docker-compose--ci.yml
+docker.publish:
+  docker tag ${image} ${tag}
+  docker push ${tag}
 
-# Pass a docker-compose
+docker.templates: docker.templates.*
+docker.templates.base:
+  build env.template \
+  infile=./tools/docker/docker-compose.yml \
+  outfile=./docker-compose.yml
+
+docker.templates.local:
+  build env.template \
+  infile=./tools/docker/docker-compose--local.yml \
+  outfile=./docker-compose--local.yml
+
+docker.templates.ci:
+  build env.template \
+  infile=./tools/docker/docker-compose--ci.yml \
+  outfile=./docker-compose--ci.yml
+
+
+#
+# Template a file with env vars
+#
 env.template:
   docker run --rm \
-  -v "$(pwd):/tmp" \
+  -v "${PWD}:/tmp" \
+  -e repo=${repo} \
   -e version=${version} \
   supinf/envsubst \
-  /tmp/${infile} > ./${outfile} \
+  /tmp/${infile} > ./${outfile}
+
+done:
+  echo "Done"

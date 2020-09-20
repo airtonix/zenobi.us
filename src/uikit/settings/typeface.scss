@@ -7,20 +7,37 @@ $settings__typface__family--ROBOTOSLAB: 'Roboto Slab', serif;
 $settings__typface__family--OPENSANS: 'Open Sans', sans-serif;
 
 $settings__typeface: (
-  "robotoslab" : (
-    "default": (
-      font-family: $settings__typface__family--ROBOTOSLAB,
-      font-weight: 400,
-      font-style: normal
-    )
+  "page-heading": (
+    font-family: $settings__typface__family--ROBOTOSLAB,
+    font-weight: 700,
+    font-style: normal,
+    font-size: 22
   ),
 
-  "opensans" : (
-    "default": (
-      font-family: $settings__typface__family--OPENSANS,
-      font-weight: 400,
-      font-style: normal
-    )
+  "section-heading": (
+    font-family: $settings__typface__family--ROBOTOSLAB,
+    font-weight: 700,
+    font-style: normal,
+    font-size: 18
   ),
 
+  "section-description" : (
+    font-family: $settings__typface__family--OPENSANS,
+    font-weight: 400,
+    font-style: normal,
+    font-size: 18,
+  ),
+
+  "button" : (
+    font-family: $settings__typface__family--OPENSANS,
+    font-weight: 700,
+    font-style: normal,
+    text-transform: uppercase
+  ),
+
+  "paragraph" : (
+    font-family: $settings__typface__family--OPENSANS,
+    font-weight: 400,
+    font-style: normal
+  ),
 );
