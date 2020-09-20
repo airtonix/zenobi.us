@@ -7,7 +7,7 @@ on:
       -  master
 
 env:
-  CI_SETTINGS__APP_DOCKER_REPO: docker.pkg.github.com/airtonix/phaser-tutorial-one
+  CI_SETTINGS__APP_DOCKER_REPO: docker.pkg.github.com/airtonix/zenobi.us
 
 jobs:
 
@@ -30,25 +30,26 @@ jobs:
         run: >-
           build docker.build
           --version=$GITHUB_SHA
-          --repo=$CI_SETTINGS__APP_DOCKER_REPO/app
+          --repo=$CI_SETTINGS__APP_DOCKER_REPO
+          --service=app
 
       - name: Publish image
         run: >-
           build docker.publish
-          --image=$CI_SETTINGS__APP_DOCKER_REPO/site
-          --tag=$CI_SETTINGS__APP_DOCKER_REPO/site:builder;
-          build docker.publish
-          --image=$CI_SETTINGS__APP_DOCKER_REPO/site
-          --tag=$CI_SETTINGS__APP_DOCKER_REPO/site:$GITHUB_SHA;
+          --image=$CI_SETTINGS__APP_DOCKER_REPO/app
+          --tag=$CI_SETTINGS__APP_DOCKER_REPO/app:builder;
           build docker.publish
           --image=$CI_SETTINGS__APP_DOCKER_REPO/app
-          --tag=$CI_SETTINGS__APP_DOCKER_REPO/site:latest;
+          --tag=$CI_SETTINGS__APP_DOCKER_REPO/app:$GITHUB_SHA;
+          build docker.publish
+          --image=$CI_SETTINGS__APP_DOCKER_REPO/app
+          --tag=$CI_SETTINGS__APP_DOCKER_REPO/app:latest;
 
       - name: Rewrite Templates
         run: >-
           build docker.templates
-          --repo=$CI_SETTINGS__APP_DOCKER_REPO/site
           --version=$GITHUB_SHA
+          --repo=$CI_SETTINGS__APP_DOCKER_REPO/app
 
       - uses: EndBug/add-and-commit@v4 # You can change this to use a specific version
         with:

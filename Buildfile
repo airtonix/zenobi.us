@@ -14,15 +14,15 @@ ci.setup:
   concurrently \
   gh-pages
 
-ci.build:
+ci.app.build:
   build docker.run \
   --stage=ci \
-  --service=${service} \
+  --service=app \
   --command="build prod"
 
-ci.deploy: ci.setup ci.build
+ci.app.deploy: ci.app.build
   gh-pages \
-  --dist dist \
+  --dist app/dist \
   --add
   --repo=${repo}
 
@@ -38,29 +38,29 @@ ci.deploy: ci.setup ci.build
 #     - ./<service>
 docker.build:
   # pull the cached layers 
-  docker pull ${repo}:builder || true
+  docker pull ${repo}/${service}:builder || true
 
   # rebuild it. if nothing in these layers
   # have changes, this should be very fast.
   docker build \
-  --cache-from ${repo}:builder \
+  --cache-from ${repo}/${service}:builder \
   --file ./${service}/tools/docker/Dockerfile \
-  --tag ${repo}:builder \
+  --tag ${repo}/${service}:builder \
   --target install \
   ./${service}
 
   # # pull the latest image
-  docker pull ${repo}:latest || true
+  docker pull ${repo}/${service}:latest || true
 
   # rebuild it using cache layers from:
   # - builder
   # - latest
   docker build \
   --build-arg COMMIT=${version} \
-  --cache-from ${repo}:builder \
-  --cache-from ${repo}:latest \
+  --cache-from ${repo}/${service}:builder \
+  --cache-from ${repo}/${service}:latest \
   --file ./${service}/tools/docker/Dockerfile \
-  --tag ${repo} \
+  --tag ${repo}/${service} \
   --target prod \
   ./${service}
 
