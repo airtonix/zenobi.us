@@ -1,9 +1,9 @@
-node_modules
 .git
 .nuxt
 .vscode
 .circleci
-node_modules
+tmp/
+node_modules/
 docker-compose.yml
 docker-compose--build.yml
 Dockerfile

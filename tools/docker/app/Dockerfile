@@ -7,7 +7,8 @@ ENV PROJECT_DIR=/app
 WORKDIR /app
 RUN apk --update --no-cache add \
      # 1. \/
-     util-linux
+     util-linux \
+     bash
 
 ENV ENTRYPOINT_TASKS_DIR=/entrypoint.d/
 
@@ -39,13 +40,17 @@ FROM base as prod
 COPY --from=install /build/node_modules /app/node_modules
 
 COPY ./.browserslistrc \
-     ./.eslintrc.js \
-    #  ./cssnano.config.js \
-    #  ./jest.config.js \
-    #  ./postcss.config.js \
+     ./.eslintrc.json \
+     ./cssnano.config.js \
+     ./jest.config.js \
+     ./postcss.config.js \
      ./tsconfig.json \
      ./src \
      ./tools \
+     ./public \
      ./
+
+ARG COMMIT
+ENV COMMIT=${COMMIT}
 
 CMD ["yarn", "build", "site.build"]
