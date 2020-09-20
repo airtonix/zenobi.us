@@ -1,0 +1,44 @@
+name: PR Checks
+
+on:
+  pull_request:
+
+env:
+  CI_SETTINGS__APP_DOCKER_REPO: docker.pkg.github.com/airtonix/zenobi.us
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup NodeJs
+        uses: dcodeIO/setup-node-nvm@95b79d1e43008418044c51ae8aecb89044d2ec80
+
+      - name: install BuildFile
+        run: npm i -g buildfile
+
+      - name: Build Docker Assets
+        run: >-
+          build docker.build
+          --repo=$CI_SETTINGS__APP_DOCKER_REPO/site
+          --version=$GITHUB_SHA
+          build docker.templates
+          --repo=$CI_SETTINGS__APP_DOCKER_REPO/site
+          --version=$GITHUB_SHA
+
+      - name: Run linting
+        run: >-
+          build ci.app.lint
+
+      - name: Run tests
+        run: >-
+          build ci.app.test
+
+      - name: Deploy Branch Preview
+        run: >-
+          build ci.app.build
+          --public_url=https://zenobi.us/pr/$GITHUB_SHA
+          build ci.app.deploy
+          --token=${{ secrets.GITHUB_TOKEN }}

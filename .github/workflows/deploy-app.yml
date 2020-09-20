@@ -1,0 +1,69 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      -  develop
+      -  master
+
+env:
+  CI_SETTINGS__APP_DOCKER_REPO: docker.pkg.github.com/airtonix/phaser-tutorial-one
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup NodeJs
+        uses: dcodeIO/setup-node-nvm@95b79d1e43008418044c51ae8aecb89044d2ec80
+      - name: install BuildFile
+        run: npm i -g buildfile
+      - name: install dependancies
+        run: build ci.setup
+
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+      - name: Build ci image
+        run: >-
+          build docker.build
+          --version=$GITHUB_SHA
+          --repo=$CI_SETTINGS__APP_DOCKER_REPO/app
+
+      - name: Publish image
+        run: >-
+          build docker.publish
+          --image=$CI_SETTINGS__APP_DOCKER_REPO/site
+          --tag=$CI_SETTINGS__APP_DOCKER_REPO/site:builder;
+          build docker.publish
+          --image=$CI_SETTINGS__APP_DOCKER_REPO/site
+          --tag=$CI_SETTINGS__APP_DOCKER_REPO/site:$GITHUB_SHA;
+          build docker.publish
+          --image=$CI_SETTINGS__APP_DOCKER_REPO/app
+          --tag=$CI_SETTINGS__APP_DOCKER_REPO/site:latest;
+
+      - name: Rewrite Templates
+        run: >-
+          build docker.templates
+          --repo=$CI_SETTINGS__APP_DOCKER_REPO/site
+          --version=$GITHUB_SHA
+
+      - uses: EndBug/add-and-commit@v4 # You can change this to use a specific version
+        with:
+          add: docker-compose*
+        env:
+          # This is necessary in order to push a commit to the repo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+
+      - name: create production build
+        run: >-
+          build ci.app.build
+          --public_url=https://zenobi.us/
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        run: >-
+          build ci.app.deploy
+          --token=${{ secrets.GITHUB_TOKEN }}
