@@ -1,6 +1,10 @@
 *
 
 !.vscode/
+!.vscode/*
+!.github/
+!.github/*
+!.github/**/*
 !.babelrc
 !.eslintrc.json
 !tsconfig.json
@@ -8,11 +12,21 @@
 !docker-compose*
 !yarn.lock
 !Buildfile
+!.editorconfig
+!.devcontainer.json
+!.browserslistrc
+!.releaserc.json
+!cssnano.config.js
+!jest.config.js
+!postcss.config.js
 
 !tools/
+!tools/*
+!tools/**/*
+!public/
+!public/*
 !plugins/*
 !plugins/**/*
 !src/
 !src/*
 !src/**/*
-!tools/**/*

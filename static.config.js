@@ -1,5 +1,7 @@
 import path from 'path'
 
+import RemarkFrontmatter from 'remark-frontmatter'
+
 export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),
   
@@ -8,8 +10,14 @@ export default {
   }),
 
   plugins: [
-    'react-static-plugin-typescript',
-    'react-static-plugin-mdx',
+    ['react-static-plugin-typescript', { }],
+    ['react-static-plugin-mdx', {
+      mdxOptions: {
+        remarkPlugins: [
+          RemarkFrontmatter
+        ],
+      },
+    }],
     ['react-static-plugin-sass', { }],
     [
       'react-static-plugin-source-filesystem',
@@ -17,6 +25,6 @@ export default {
         location: path.resolve('./src/pages'),
       },
     ],
-    'react-static-plugin-reach-router',
+    ['react-static-plugin-reach-router', { }],
   ],
 }

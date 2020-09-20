@@ -1,7 +1,8 @@
 # code: language=makefile
-version ?= 'develop'
-repo ?= 'docker.pkg.github.com/airtonix/zenobi.us'
-source ?= '.'
+# https://github.com/jeremija/Buildfile/
+
+repo ?= docker.pkg.github.com/airtonix/zenobi.us
+version ?= develop
 
 dev:
   concurrently \
@@ -37,7 +38,21 @@ storybook.dev:
 
 storybook.build:
   build-storybook \
-  -c ./tools/storybook
+  --config-dir ./tools/storybook \
+  --output-dir ./dist/storybook
+
+ci.setup:
+  npm i -g buildfile concurrently
+
+ci.build:
+  build storybook.build
+  build site.build
+
+ci.deploy: ci.setup ci.build
+  gh-pages \
+  --dist dist \
+  --add
+  --repo=${repo}
 
 docker.build:
   # pull the cached layers 
@@ -47,10 +62,10 @@ docker.build:
   # have changes, this should be very fast.
   docker build \
   --cache-from ${repo}:builder \
-  --file ./${source}/Dockerfile \
-  --tag ${repo}:builder \ 
+  --file ./tools/docker/app/Dockerfile \
+  --tag ${repo}:builder \
   --target install \
-  ./${source}
+  .
 
   # # pull the latest image
   docker pull ${repo}:latest || true
@@ -62,14 +77,16 @@ docker.build:
   --build-arg COMMIT=${version} \
   --cache-from ${repo}:builder \
   --cache-from ${repo}:latest \
-  --file ./${source}/Dockerfile \
+  --file ./tools/docker/app/Dockerfile \
   --tag ${repo} \
   --target prod \
-  ./${source}
+  .
 
 docker.run:
+  stage ?= 'local'
   docker-compose \
   -f docker-compose.yml \
+  -f docker-compose--${stage}.yml \
   run --rm \
   ${service} ${command}
 
