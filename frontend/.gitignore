@@ -2,18 +2,18 @@
 
 !.gitignore
 
-!.babelrc
-!.eslintrc.json
-!tsconfig.json
-!static.config.js
+!.devcontainer.json
 !docker-compose*
 !package.json
 !yarn.lock
-!Buildfile
-!.editorconfig
-!.devcontainer.json
-!.browserslistrc
 !.releaserc.json
+!Taskfile.yml
+
+!static.config.js
+!.babelrc
+!.eslintrc.json
+!tsconfig.json
+!.browserslistrc
 !cssnano.config.js
 !jest.config.js
 !postcss.config.js

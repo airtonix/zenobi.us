@@ -18,10 +18,10 @@ then
     # if it's not executable
     if [[ ! -x $part ]] &&
     # if it's not enabled
-    [[ -z "${!task_ref}" ]] {
+    [[ -z "${!task_ref}" ]]; then
       echo "[ENTRYPOINT]: x $part"
       continue
-    }
+    fi
 
     echo "[ENTRYPOINT]: --> $task_ref"
     . $part

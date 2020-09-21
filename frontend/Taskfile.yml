@@ -1,0 +1,57 @@
+version: '3'
+
+tasks:
+
+  dev:
+    deps: 
+      - site.dev
+      - storybook.dev
+
+  prod:
+    deps:
+      - site.prod
+      - storybook.prod
+
+  test: >-
+    npx jest
+    --config ./jest.config.js
+    --passWithNoTests
+
+  lint: >-
+    npx eslint
+    ./src
+    --ext .ts
+    --cache
+  
+  site.dev:
+    - npx react-static start
+  
+  site.stage:
+    - npx react-static build --staging
+  
+  site.bundle:
+    - npx react-static bundle
+  
+  site.export:
+    - npx react-static export
+  
+  site.prod:
+    - npx react-static build
+  
+  storybook.dev: >-
+    npx start-storybook
+    -p 9001
+    --ci
+    -c ./tools/storybook
+  
+  storybook.serve: >-
+    npx serve dist
+    -p 9001
+    -s
+    -c ./tools/storybook
+  
+  storybook.prod: >-
+    npx build-storybook
+    --config-dir ./tools/storybook
+    --output-dir ./dist/storybook
+    

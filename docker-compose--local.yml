@@ -2,17 +2,14 @@ version: "2.0"
 
 services:
 
-  site:
-    image: docker.pkg.github.com/airtonix/zenobi.us:develop
+  frontend:
+    image: docker.pkg.github.com/airtonix/zenobi.us/frontend:5776c08
     ports:
-      - 8000:8000
+      - 3000:3000
     environment:
       - PORT=3000
       - CHOKIDAR_USEPOLLING=true
       - DEBUG=project*,config*
-      - GATSBY_WEBPACK_PUBLICPATH=/
     volumes:
-      - "./src:/app/src"
-      - "./dist:/app/dist"
-      - "./config:/app/config"
-      - "./package.json:/app/package.json"
+      - ./frontend:/app
+      - /app/node_modules/

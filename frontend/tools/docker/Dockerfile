@@ -8,7 +8,10 @@ WORKDIR /app
 RUN apk --update --no-cache add \
      # 1. \/
      util-linux \
-     bash
+     bash \
+     curl \
+  && curl -sL https://taskfile.dev/install.sh | BINDIR=/bin sh
+
 
 ENV ENTRYPOINT_TASKS_DIR=/entrypoint.d/
 
@@ -22,7 +25,7 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 #
 #
 #
-FROM base as install
+FROM base as builder
 
 WORKDIR /build
 
@@ -37,14 +40,19 @@ RUN yarn install
 #
 FROM base as prod
 
-COPY --from=install /build/node_modules /app/node_modules
+COPY --from=builder /build/node_modules /app/node_modules
 
 COPY ./.browserslistrc \
      ./.eslintrc.json \
      ./cssnano.config.js \
      ./jest.config.js \
      ./postcss.config.js \
+     ./.babelrc \
      ./tsconfig.json \
+     ./yarn.lock \
+     ./package.json \
+     ./static.config.js \
+     ./Taskfile.yml \
      ./src \
      ./tools \
      ./

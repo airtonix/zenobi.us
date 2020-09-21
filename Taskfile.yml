@@ -1,0 +1,61 @@
+# code: language=yaml
+version: '3'
+
+vars:
+  GIT_REPO: github.com/airtonix/zenobi.us
+  DOCKER_REGISTRY: docker.pkg.github.com/airtonix/zenobi.us
+  SERVICE: frontend
+  STAGE: local
+  VERSION:
+    sh: git rev-parse --short HEAD
+
+includes:
+  docker: ./tools/tasks/docker.yml
+
+tasks:
+
+  default:
+    - task: setup
+
+  setup:
+    - task: setup-install
+
+  create:
+    - task: docker:build
+      vars:
+        SERVICE: frontend
+        TAG: '{{.VERSION}}'
+    - task: docker:templates
+
+  setup-install: >-
+    npm i -g
+    gh-pages
+
+  frontend.build:
+    - task: docker:run
+      vars:
+        SERVICE: frontend
+        COMMAND: task prod
+
+  frontend.deploy:
+    deps: [ frontend.build ]
+    cmds:
+      - >-
+        npx gh-pages \
+        --add \
+        --dist frontend/dist \
+        --repo={{.GIT_REPO}}
+
+  frontend.test:
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: task test
+
+  frontend.lint:
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: task lint
