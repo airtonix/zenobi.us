@@ -19,6 +19,7 @@ export type ButtonProps = {
     isHover?: boolean,
     isFocus?: boolean,
     isActive?: boolean,
+    className?: string,
     as?: React.ElementType
 } 
 
@@ -59,6 +60,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   isHover,
   as,
   children,
+  className,
   ...props
 }) => {
   const ProxyElement = as || 'button'
@@ -70,6 +72,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
     <ProxyElement
       className={classnames(
         'button',
+        className,
         isActive && 'button--is-active',
         isFocus && 'button--is-focused',
         isHover && 'button--is-hovered',

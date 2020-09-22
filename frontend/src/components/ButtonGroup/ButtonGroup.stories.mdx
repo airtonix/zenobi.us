@@ -1,94 +1,93 @@
 import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+import { Button, ButtonPrimary, ButtonSecondary, ButtonTertiary } from '../Button/Button'
+import { ButtonGroup, ButtonGroupDirections, ButtonGroupSeparatorStyles } from './ButtonGroup'
 
-import { ButtonGroup } from './ButtonGroup'
 
 <Meta title="Components/ButtonGroup" component={ButtonGroup} />
 
 # ButtonGroup
 
-A ButtonGroup holds buttons in an arrangement to suit spacing within and between its neigbours
+A ButtonGroup holds Buttons in an arrangement to suit spacing within and between its neigbours
 
-<Preview>
+
+<Canvas>
     <Story name="basic">
-    <footer>
-        <ButtonGroup>
-            <PrimaryButton label='one' />
-            <SecondaryButton label='two' />
-            <TertiaryButton label='three' />
+        <ButtonGroup joined direction={ButtonGroupDirections.Horizontal}>
+            <Button label='one' />
+            <Button label='two' />
+            <Button label='three' />
         </ButtonGroup>
-        <ButtonGroup>
-            <PrimaryButton label='one' size='small' />
-            <SecondaryButton label='two' size='small' />
-            <TertiaryButton label='three' size='small' />
-        </ButtonGroup>
-        <ButtonGroup>
-            <PrimaryButton label='one' size='tiny' />
-            <SecondaryButton label='two' size='tiny' />
-            <TertiaryButton label='three' size='tiny' />
-        </ButtonGroup>
-    </footer>
     </Story>
-</Preview>
+</Canvas>
 
-<Props of={ButtonGroup} />
-
+<ArgsTable of={ButtonGroup} />
 
 ## Direction
 
 A ButtonGroup can have a `direction`
 
-<Preview>
-    <Story name="direction row">
-        <ButtonGroup direction="row">
-            <PrimaryButton label='one' size='tiny' />
-            <SecondaryButton label='two' size='tiny' />
-            <TertiaryButton label='three' size='tiny' />
+<Canvas>
+    <Story name="vertical">
+        <ButtonGroup direction={ButtonGroupDirections.Vertical}>
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
         </ButtonGroup>
     </Story>
-    <Story name="direction column">
-        <ButtonGroup direction="column">
-            <PrimaryButton label='one' size='tiny' />
-            <SecondaryButton label='two' size='tiny' />
-            <TertiaryButton label='three' size='tiny' />
-        </ButtonGroup>
-    </Story>
-</Preview>
-
+</Canvas>
 
 ## Separators
 
 A ButtonGroup can have a `separators`
 
-<Preview>
+<Canvas>
     <Story name="separator dots row">
-        <ButtonGroup separators='dot' direction="row">
-            <PrimaryButton label='one' size='tiny' />
-            <SecondaryButton label='two' size='tiny' />
-            <TertiaryButton label='three' size='tiny' />
+        <ButtonGroup 
+            direction={ButtonGroupDirections.Horizontal}
+            separator={ButtonGroupSeparatorStyles.Dots}
+        >
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
         </ButtonGroup>
     </Story>
-    <Story name="separator dots column">
-        <ButtonGroup separators='dot' direction="column">
-            <PrimaryButton label='one' size='tiny' />
-            <SecondaryButton label='two' size='tiny' />
-            <TertiaryButton label='three' size='tiny' />
-        </ButtonGroup>
-    </Story>
-</Preview>
+</Canvas>
 
-<Preview>
+<Canvas>
+    <Story name="separator dots column">
+        <ButtonGroup 
+            direction={ButtonGroupDirections.Vertical}
+            separator={ButtonGroupSeparatorStyles.Dots}
+        >
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
+        </ButtonGroup>
+    </Story>
+</Canvas>
+
+<Canvas>
     <Story name="separator lines row">
-        <ButtonGroup separators='line' direction="row">
-            <PrimaryButton label='one' size='tiny' />
-            <SecondaryButton label='two' size='tiny' />
-            <TertiaryButton label='three' size='tiny' />
+        <ButtonGroup 
+            direction={ButtonGroupDirections.Horizontal}
+            separator={ButtonGroupSeparatorStyles.Lines}
+        >
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
         </ButtonGroup>
     </Story>
+</Canvas>
+
+<Canvas>
     <Story name="separator lines column">
-        <ButtonGroup separators='line' direction="column">
-            <PrimaryButton label='one' size='tiny' />
-            <SecondaryButton label='two' size='tiny' />
-            <TertiaryButton label='three' size='tiny' />
+        <ButtonGroup 
+            direction={ButtonGroupDirections.Vertical}
+            separator={ButtonGroupSeparatorStyles.Lines}
+        >
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
         </ButtonGroup>
     </Story>
-</Preview>
+</Canvas>

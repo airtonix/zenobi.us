@@ -1,0 +1,16 @@
+import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+import { Hero } from './Hero'
+
+export const Template = (args) => <Hero {...args } />;
+
+<Meta
+  title="Components/Hero"
+  component={Hero} />
+
+# Hero
+
+<Canvas>
+    <Story name="basic">
+        <Hero />
+    </Story>
+</Canvas>

@@ -24,8 +24,15 @@ tasks:
     --cache
   
   site.dev:
-    - npx react-static start
+    deps:
+      - site.clean
+    cmds:
+      - npx react-static start
   
+  site.clean:
+    - npx rimraf ./tmp
+    - npx rimraf ./artifacts
+
   site.stage:
     - npx react-static build --staging
   

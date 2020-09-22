@@ -16,8 +16,8 @@ then
     declare task_ref="ENTRYPOINT_TASK_${task^^}"
 
     # if it's not executable
-    if [[ ! -x $part ]] &&
-    # if it's not enabled
+    if [[ ! -x $part ]] ||
+    #  or if it's not enabled
     [[ -z "${!task_ref}" ]]; then
       echo "[ENTRYPOINT]: x $part"
       continue

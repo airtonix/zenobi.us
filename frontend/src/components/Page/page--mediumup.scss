@@ -4,5 +4,5 @@
 }
 
 .page--hero .page__container {
-    max-width: (layout-get(card-size) + layout-get(spacing) ) * 2;
+    max-width: #{get-layout(card-size) + get-spacing(medium)} * 2;
 }

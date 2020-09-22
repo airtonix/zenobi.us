@@ -10,6 +10,7 @@ export default {
   }),
 
   plugins: [
+    ['react-svg-plugin', { }],
     ['react-static-plugin-typescript', { }],
     ['react-static-plugin-mdx', {
       mdxOptions: {
@@ -19,12 +20,9 @@ export default {
       },
     }],
     ['react-static-plugin-sass', { }],
-    [
-      'react-static-plugin-source-filesystem',
-      {
-        location: path.resolve('./src/pages'),
-      },
-    ],
+    ['react-static-plugin-source-filesystem', {
+      location: path.resolve('./src/pages')
+    }],
     ['react-static-plugin-reach-router', { }],
   ],
 }

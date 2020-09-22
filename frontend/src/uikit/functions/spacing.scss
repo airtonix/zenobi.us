@@ -12,7 +12,7 @@ Styleguide UiKit.Functions.Spacing
 */
 @function get-spacing($name) {
   @if map-has-key($settings__spacing, $name) != true {
-    @return "#{$name}";
+    @warn "'#{$name}' not in #{$settings__spacing}";
   }
 
   @return #{map-get($settings__spacing, $name)};

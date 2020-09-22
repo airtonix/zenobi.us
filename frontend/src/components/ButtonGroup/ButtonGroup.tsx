@@ -16,12 +16,13 @@ export enum ButtonGroupDirections {
 }
 
 export type ButtonGroupProps = {
-  className: string,
-  itemClassName: string,
-  separatorClassName: string,
-  separators: ButtonGroupSeparatorStyles,
-  direction: ButtonGroupDirections,
-  wraps: boolean,
+  className?: string,
+  itemClassName?: string,
+  separatorClassName?: string,
+  separators?: ButtonGroupSeparatorStyles,
+  direction?: ButtonGroupDirections,
+  wraps?: boolean,
+  joined?: boolean,
   children?: React.ReactElement[],
 }
 
@@ -33,6 +34,7 @@ export const ButtonGroup:React.FC<ButtonGroupProps> = (props) => {
     separators,
     direction,
     wraps,
+    joined,
     children
   } = props
 
@@ -42,13 +44,14 @@ export const ButtonGroup:React.FC<ButtonGroupProps> = (props) => {
   return (
     <div className={classnames(
       'button-group',
-      wraps && 'button-groups--wraps',
-      directionName === ButtonGroupDirections.Column && 'button-groups--is-column',
-      directionName === ButtonGroupDirections.Vertical && 'button-groups--is-column',
-      directionName === ButtonGroupDirections.Row && 'button-groups--is-row',
-      directionName === ButtonGroupDirections.Horizontal && 'button-groups--is-row',
-      separatorName === ButtonGroupSeparatorStyles.Dot && 'button-groups--separated-by-dots',
-      separatorName === ButtonGroupSeparatorStyles.Line && 'button-groups--separated-by-lines',
+      wraps && 'button-group--wraps',
+      joined && 'button-group--joined',
+      directionName === ButtonGroupDirections.Column && 'button-group--column',
+      directionName === ButtonGroupDirections.Vertical && 'button-group--column',
+      directionName === ButtonGroupDirections.Row && 'button-group--row',
+      directionName === ButtonGroupDirections.Horizontal && 'button-group--row',
+      separatorName === ButtonGroupSeparatorStyles.Dot && 'button-group--separated-by-dots',
+      separatorName === ButtonGroupSeparatorStyles.Line && 'button-group--separated-by-lines',
       className
     )}>
       {React.Children.map(children, (child) => child)
@@ -59,7 +62,10 @@ export const ButtonGroup:React.FC<ButtonGroupProps> = (props) => {
             separatorClassName
           )}>
             {React.cloneElement(child, {
-              className: classnames('button-group__item', itemClassName)
+              className: classnames(
+                'button-group__item',
+                itemClassName
+              )
             })}
           </span>
         ))}
@@ -70,4 +76,5 @@ export const ButtonGroup:React.FC<ButtonGroupProps> = (props) => {
 
 ButtonGroup.defaultProps = {
   wraps: true,
+  joined: true
 }
