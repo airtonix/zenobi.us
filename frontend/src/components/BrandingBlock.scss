@@ -1,0 +1,7 @@
+@import "~/uikit/index";
+
+@import "./BrandingBlock--smallup";
+
+@media #{breakpoint-gt(small)} {
+    @import "./BrandingBlock--mediumup";
+}

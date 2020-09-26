@@ -1,0 +1,35 @@
+.branding-block--is-badge,
+.branding-block--is-badge.branding-block--is-open  {
+    position: inherit;
+    margin: 0;
+    margin-left: 0;
+    border: 0;
+    width: auto;
+}
+
+.branding-block--is-badge .block__container {
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+}
+
+.branding-block--is-badge .branding-block__hamburger {
+    display: none;
+}
+
+.branding-block--is-badge .branding-block__image {
+    margin: 0;
+    margin-bottom: get-spacing-px(normal);
+
+    position: inherit;
+
+    transform: none;
+    filter: opacity(1);
+
+    width: calc(#{get-spacing-px(massive)} * 2);
+
+}
+
+.branding-block--is-badge .site-navigation {
+    align-items: flex-end;
+}

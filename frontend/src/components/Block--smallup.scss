@@ -1,0 +1,22 @@
+.block {
+	display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  padding: 0;
+  margin: 0;
+}
+
+.block__container {
+	flex-grow: 1;
+
+  max-width: get-layout-px(page-width);
+
+  padding-left: get-spacing-px(normal);
+  padding-right: get-spacing-px(normal);
+
+  margin: 0 auto;
+
+}
+

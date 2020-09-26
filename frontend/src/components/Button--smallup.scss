@@ -1,0 +1,154 @@
+/**
+ * Style: Normal
+ */
+$BUTTON_BOXSHADOW_BORDER_HOVERFOCUS: 0 0 0 2px get-colour(skyblue, lightest);
+.button {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    border-radius: get-spacing-px(tiny);
+    padding: get-spacing-px(small) get-spacing-px(normal);
+
+    border: 0;
+    background: get-colour(skyblue, lightest);
+    color: get-colour(queenblue, light);
+
+    @include get-typeface(button);
+
+    cursor: pointer;
+}
+.button:focus, .button--is-focused,
+.button:hover, .button--is-hovered {
+    outline: 0;
+    box-shadow: $BUTTON_BOXSHADOW_BORDER_HOVERFOCUS;
+}
+.button:active, .button--is-active {
+    background: get-colour(skyblue, lighter);
+    color: get-colour(queenblue);
+    top: 1px;
+}
+
+/**
+ * Style: Primary
+ */
+ $BUTTON_PRIMARY_FOCUSHOVER_BOXSHADOW: 0 0 0 2px get-colour(queenblue);
+ $BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW: inset 0 0 0 2px rgba(get-colour(queenblue, lightest), 0.75);
+
+.button--primary {
+    color: get-colour(white);
+    border: 0;
+    background-color: get-colour(queenblue);
+}
+.button--primary:focus, .button--primary.button--is-focused,
+.button--primary:hover, .button--primary.button--is-hovered {
+    box-shadow:
+        $BUTTON_PRIMARY_FOCUSHOVER_BOXSHADOW,
+        $BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW
+    ;
+}
+.button--primary:active {
+    background-color: get-colour(queenblue, dark);
+    color: get-colour(white);
+}
+
+
+/**
+ * Style: Secondary
+ */
+$BUTTON_SECONDARY_BOXSHADOW: inset 0 0 0 2px currentColor;
+$BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW: inset 0 0 0 4px get-colour(skyblue, lighter);
+.button--secondary {
+    color: get-colour(queenblue);
+    background-color: transparent;
+    box-shadow: $BUTTON_SECONDARY_BOXSHADOW;
+}
+.button--secondary:focus, .button--secondary.button--is-focused,
+.button--secondary:hover, .button--secondary.button--is-focused {
+    box-shadow:
+        $BUTTON_SECONDARY_BOXSHADOW,
+        $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW
+    ;
+}
+.button--secondary:active {
+    background-color: transparent;
+    box-shadow:
+        $BUTTON_SECONDARY_BOXSHADOW,
+        $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW,
+    ;
+}
+
+
+/**
+ * Style: Link
+ */
+$BUTTON_LINK_BOXSHADOW: 0 -2px 0 2px rgba(get-colour(queenblue), 0.2);
+$BUTTON_LINK_HOVERFOCUS_BOXSHADOW: 0 2px 0 2px rgba(get-colour(queenblue), 0.6);
+$BUTTON_LINK_ACTIVE_BOXSHADOW: 0 3px 0 2px get-colour(queenblue);
+
+.button--link {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    position: relative;
+    padding: 0;
+
+    text-decoration: none;
+}
+.button--link .button__label {
+    position: relative;
+}
+.button--link .button__label:after {
+    content: " ";
+    box-shadow: $BUTTON_LINK_BOXSHADOW;
+    height: 0;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+.button--link:focus, .button--link.button--is-focused,
+.button--link:hover, .button--link.button--is-focused {
+    box-shadow: none;
+    background-color: transparent;
+}
+.button--link:focus .button__label:after ,
+.button--link.button--is-focused .button__label:after ,
+.button--link:hover .button__label:after ,
+.button--link.button--is-focused .button__label :after {
+    box-shadow: $BUTTON_LINK_HOVERFOCUS_BOXSHADOW;
+}
+.button--link:active .button__label:after {
+    box-shadow:
+        $BUTTON_LINK_ACTIVE_BOXSHADOW
+    ;
+}
+
+/**
+ * Shapes
+ */
+.button--shape-square {
+    border-radius: 0;
+}
+.button--shape-round {
+    border-radius: get-spacing-px(tiny);
+}
+.button--shape-circular {
+    border-radius: get-spacing-px(massive);
+}
+
+.button__icon {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.button__icon.button__icon--suffix {
+    right: -#{get-spacing-px(tiny)};
+}
+
+.button__icon.button__icon--prefix {
+    left: -#{get-spacing-px(tiny)};
+}

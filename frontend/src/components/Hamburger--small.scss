@@ -1,0 +1,67 @@
+
+.hamburger {
+  position: relative;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hamburger:focus {
+  outline: 0
+}
+
+.hamburger__symbol,
+.hamburger__symbol:before,
+.hamburger__symbol:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 3px;
+  width: 100%;
+  background: currentColor;
+  display: block;
+  content: "";
+}
+
+.hamburger__symbol:before,
+.hamburger__symbol:after {
+  position: absolute;
+}
+.hamburger__symbol:before {
+  top: 0;
+}
+.hamburger__symbol:after {
+  bottom: 0;
+}
+
+.hamburger__symbol,
+.hamburger__symbol:before,
+.hamburger__symbol:after {
+  transition: all 500ms ease-in-out;
+}
+
+// active
+.hamburger--is-open .hamburger__symbol {
+  transform: rotate(180deg);
+  background: transparent;
+}
+.hamburger--is-open .hamburger__symbol:before,
+.hamburger--is-open .hamburger__symbol:after {
+  top: 0;
+}
+.hamburger--is-open .hamburger__symbol:before {
+  transform: rotate(45deg);
+  background: currentColor;
+}
+.hamburger--is-open .hamburger__symbol:after {
+  transform: rotate(-45deg);
+  background: currentColor;
+}
+
+
+@each $name, $size in $settings__spacing {
+  .hamburger--size-#{$name} {
+    width: get-spacing-px($name);
+    height: get-spacing-px($name);
+  }
+}

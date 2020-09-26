@@ -1,16 +1,13 @@
-  
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 
+import { Site } from './components/Site'
+
 import './index.scss'
 
-// Your top level component
-import { Site } from '~/components/Site/Site'
-// Export your top level component as JSX (for static rendering)
-export default Site
-
-// Render your app
+// Render your Site
 if (typeof document !== 'undefined') {
   const target = document.querySelector('#root')
 
@@ -32,7 +29,7 @@ if (typeof document !== 'undefined') {
 
   // Hot Module Replacement
   if (module && module.hot) {
-    module.hot.accept('./components/Site/Site', () => {
+    module.hot.accept('./components/Site', () => {
       render(Site)
     })
   }
