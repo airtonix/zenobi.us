@@ -1,0 +1,13 @@
+import { FileList } from '~/components/FileList'
+
+# THoughts
+
+<FileList query={`{ children { title, path } }`}>
+  {({ children }) => (
+    children.map(file => (
+        <article key={file.path}>
+            <h3><a href={file.path}>{file.title}</a></h3>
+        </article>
+    ))
+  )}
+</FileList>

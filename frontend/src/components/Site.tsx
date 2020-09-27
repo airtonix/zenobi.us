@@ -1,6 +1,8 @@
 import React from 'react'
+import { MDXProvider } from '@mdx-js/react'
 import { Routes, useRouteData } from 'react-static'
 import { Router } from '@reach/router'
+import {Helmet} from 'react-helmet'
 // import { Transition, animated } from 'react-spring/renderprops'
 import classnames from 'classnames'
 
@@ -9,6 +11,7 @@ import { BrandingBlock } from './BrandingBlock'
 import './Site.scss'
 import { Block } from './Block'
 import { BrandingBlockStyles } from './BrandingBlock'
+import { CodeBlock } from './CodeBlock'
 
 interface RoutesRenderProp {
   routePath: string
@@ -33,9 +36,13 @@ export const Site:React.FC = () => {
 
   return (
     <React.Suspense fallback={<em>Loading...</em>}>
-      <Router>
-        <Routes path='*' render={renderPath} />
-      </Router>
+      <MDXProvider components={{
+        code: CodeBlock
+      }}>
+        <Router>
+          <Routes path='*' render={renderPath} />
+        </Router>
+      </MDXProvider>
     </React.Suspense>
   )
 }
@@ -55,22 +62,28 @@ export const SiteLayout:React.FC<SiteLayoutProps> = ({
   } = useRouteData()
 
   return (
-    <Block
-      className={classnames(
-        'site',
-        isLanding && 'site--is-landing'
-      )}
-    >
-      <main className='site__content'>
-        <BrandingBlock style={
-          isLanding
-            ? BrandingBlockStyles.Hero
-            : BrandingBlockStyles.Badge
-        } />
-        {children || contentSlot}
-      </main>
-      <footer className='site__footer'>
-      </footer>
-    </Block>
+    <React.Fragment>
+      <Helmet>
+        <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.2.0/build/styles/atom-one-dark.min.css' />
+      </Helmet>
+      <Block
+        className={classnames(
+          'site',
+          isLanding && 'site--is-landing'
+        )}
+      >
+        <main className='site__content'>
+          <BrandingBlock style={
+            isLanding
+              ? BrandingBlockStyles.Hero
+              : BrandingBlockStyles.Badge
+          } />
+          {children || contentSlot}
+        </main>
+        <footer className='site__footer'>
+        </footer>
+      </Block>
+    </React.Fragment>
+
   )
 }

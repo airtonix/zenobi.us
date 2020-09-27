@@ -62,7 +62,7 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   className,
   ...props
 }) => {
-  const ProxyElement = as || 'button'
+  const ProxyElement = as
 
   return (
     <ProxyElement

@@ -11,11 +11,11 @@ $name - The logical name
 Styleguide Core.Functions.Layout
 */
 @function get-layout($name) {
-  @if map-has-key($settings__layout, $name) != true {
+  @if map-has-key($settings--layout, $name) != true {
     @return $name;
   }
 
-  @return map-get($settings__layout, $name);
+  @return map-get($settings--layout, $name);
 }
 
 @function get-layout-px($name) {

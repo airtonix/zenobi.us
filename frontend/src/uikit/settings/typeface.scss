@@ -3,40 +3,35 @@ Typeface Map
 
 Styleguide Core.Settings.Typeface
 */
-$settings__typface__family--ROBOTOSLAB: 'Roboto Slab', serif;
-$settings__typface__family--OPENSANS: 'Open Sans', sans-serif;
-
-$settings__typeface: (
-  "page-heading": (
-    font-family: $settings__typface__family--ROBOTOSLAB,
+$settings--typeface-family--robotoslab: 'Roboto Slab', serif;
+$settings--typeface-family--opensans: 'Open Sans', sans-serif;
+$settings--typeface: (
+  'page-heading': (
+    font-family: $settings--typeface-family--robotoslab,
     font-weight: 700,
     font-style: normal,
     font-size: 22
   ),
-
-  "section-heading": (
-    font-family: $settings__typface__family--ROBOTOSLAB,
+  'section-heading': (
+    font-family: $settings--typeface-family--robotoslab,
     font-weight: 700,
     font-style: normal,
     font-size: 18
   ),
-
-  "section-description" : (
-    font-family: $settings__typface__family--OPENSANS,
+  'section-description' : (
+    font-family: $settings--typeface-family--opensans,
     font-weight: 400,
     font-style: normal,
     font-size: 18,
   ),
-
-  "button" : (
-    font-family: $settings__typface__family--OPENSANS,
+  'button' : (
+    font-family: $settings--typeface-family--opensans,
     font-weight: 700,
     font-style: normal,
     text-transform: uppercase
   ),
-
-  "paragraph" : (
-    font-family: $settings__typface__family--OPENSANS,
+  'paragraph' : (
+    font-family: $settings--typeface-family--opensans,
     font-weight: 400,
     font-style: normal
   ),

@@ -16,24 +16,27 @@ $icon_badge_padding_multiplier: 1.2;
 
 .icon.icon--is-badge {
   position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
 }
+
 .icon.icon--is-badge::before {
-  display: block;
   content: "";
+  position: absolute;
+  z-index: -1;
+  display: block;
   width: 100%;
   height: 100%;
   border-radius: 1000px;
-  position: absolute;
-  z-index: -1;
 }
+
 .icon.icon--is-solid-badge::before {
-  opacity: 0.2;
   background: currentColor;
+  opacity: .2;
 }
+
 .icon.icon--is-outline-badge::before {
   box-shadow: 0 0 0 4px currentColor;
 }
@@ -50,8 +53,8 @@ $icon_badge_padding_multiplier: 1.2;
 
 @each $name, $size in $icon_sizes {
   .icon.icon--size-#{$name} {
-    font-size: #{$size}px;
     height: #{$size}px;
+    font-size: #{$size}px;
   }
   .icon.icon--size-#{$name}.icon--is-badge {
     width: #{$size + $size / $icon_badge_padding_multiplier}px;
@@ -60,13 +63,13 @@ $icon_badge_padding_multiplier: 1.2;
 }
 
 
-
-.icon.icon--tone-dark { color: rgba(0, 0, 0, 0.54); }
-.icon.icon--tone-dark.icon--inactive { color: rgba(0, 0, 0, 0.54); }
+.icon.icon--tone-dark { color: rgba(0, 0, 0, .54); }
+.icon.icon--tone-dark.icon--inactive { color: rgba(0, 0, 0, .54); }
 
 .icon.icon--tone-light {
   filter: contrast(4) invert(1);
 }
+
 .icon.icon--tone-light.icon--inactive {
-  filter: contrast(4) invert(1) alpha(0.5);
+  filter: contrast(4) invert(1) alpha(.5);
 }

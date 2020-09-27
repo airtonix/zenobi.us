@@ -1,11 +1,33 @@
 import React from 'react'
+import classnames from 'classnames'
 
 import './Card.scss'
 
-export const Card:React.FC = ({
-  children
+export type CardProps = {
+  children?: React.ReactChild | React.ReactChild[],
+  className?: string,
+  as?: React.ElementType
+}
+
+export const Card:React.FC<CardProps> = ({
+  children,
+  className,
+  as
 }) => {
+  const ProxyElement = as
+
   return (
-    <pre>{children}</pre>
+    <ProxyElement
+      className={classnames(
+        'card',
+        className
+      )}
+    >
+      {children}
+    </ProxyElement>
   )
+}
+
+Card.defaultProps = {
+  as: 'div'
 }

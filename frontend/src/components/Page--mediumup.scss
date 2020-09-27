@@ -1,8 +1,8 @@
 .page {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .page--hero .page__container {
-    max-width: #{get-layout(card-size) + get-spacing(medium)} * 2;
+  max-width: #{get-layout(card-size) + get-spacing(normal)} * 2;
 }

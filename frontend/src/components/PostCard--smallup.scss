@@ -1,0 +1,37 @@
+// .post-card {}
+// .post-card__container {}
+.post-card__header {
+  @include get-typeface(section-heading);
+  display: flex;
+  flex-direction: row;
+}
+
+.post-card__heading {
+  margin-top: 0;
+  margin-left: .45rem;
+}
+
+.post-card__meta {
+  @include get-typeface(section-description);
+  font-size: rems(16px);
+  color: get-colour(grey);
+
+}
+
+.post-card__link {
+  color: get-colour(queenblue);
+  text-decoration: none;
+}
+
+.post-card__link:visited {
+  color: get-colour(queenblue, dark);
+}
+
+.post-card__link:hover {
+  text-decoration: underline;
+  color: get-colour(queenblue, light);
+}
+
+.post-card__link-icon {
+  color: get-colour(grey);
+}

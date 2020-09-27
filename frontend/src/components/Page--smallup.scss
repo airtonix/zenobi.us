@@ -1,15 +1,16 @@
+
 .page {
-    display: flex;
-    flex-direction: column;
-    
-    width: 100%;
-    min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  min-height: 100%;
 }
 
-    .page__container {
-        width: 100%;
-        min-height: 100%;
+.page__container {
+  width: 100%;
+  min-height: 100%;
 
-        display: flex;
-        flex-direction: column;
-    }
+  display: flex;
+  flex-direction: column;
+}

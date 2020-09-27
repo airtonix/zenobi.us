@@ -125,7 +125,7 @@ export default class App extends React.Component {
           value={this.state.password}
           type="password"/>
 
-        <div class="form-field-group form-field-group--horizontal login-form__form-field-group">
+        <div className="form-field-group form-field-group--horizontal login-form__form-field-group">
           <FormAction type="submit">login</FormAction>
         </div>
 

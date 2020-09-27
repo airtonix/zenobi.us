@@ -6,11 +6,13 @@
 !docker-compose*
 !package.json
 !yarn.lock
+!.nvmrc
 !.releaserc.json
 !Taskfile.yml
 
 !static.config.js
 !.babelrc
+!.stylelintrc.json
 !.eslintrc.json
 !tsconfig.json
 !.browserslistrc
@@ -20,5 +22,7 @@
 
 !tools/
 !tools/**
+!plugins/
+!plugins/**
 !src/
 !src/**

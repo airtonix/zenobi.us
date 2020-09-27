@@ -10,7 +10,7 @@ So I've just created a plugin for wintersmith, aimed at utilising my `bower_comp
 my contents directory. Really though, you could use any directory as an additional source of content for wintersmiths `content tree`.
 
 
-```bash
+```sh
 me@machine:~/Projects/this/one $ mythical-ls
 	bower_components
 	node_modules

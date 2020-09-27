@@ -2,56 +2,60 @@
  * Style: Normal
  */
 $BUTTON_BOXSHADOW_BORDER_HOVERFOCUS: 0 0 0 2px get-colour(skyblue, lightest);
+
 .button {
-    position: relative;
+  position: relative;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: get-spacing-px(small) get-spacing-px(normal);
 
-    border-radius: get-spacing-px(tiny);
-    padding: get-spacing-px(small) get-spacing-px(normal);
+  border: 0;
 
-    border: 0;
-    background: get-colour(skyblue, lightest);
-    color: get-colour(queenblue, light);
+  border-radius: get-spacing-px(tiny);
+  background: get-colour(skyblue, lightest);
+  color: get-colour(queenblue, light);
 
-    @include get-typeface(button);
+  cursor: pointer;
 
-    cursor: pointer;
+  @include get-typeface(button);
 }
+
 .button:focus, .button--is-focused,
 .button:hover, .button--is-hovered {
-    outline: 0;
-    box-shadow: $BUTTON_BOXSHADOW_BORDER_HOVERFOCUS;
+  outline: 0;
+  box-shadow: $BUTTON_BOXSHADOW_BORDER_HOVERFOCUS;
 }
+
 .button:active, .button--is-active {
-    background: get-colour(skyblue, lighter);
-    color: get-colour(queenblue);
-    top: 1px;
+  top: 1px;
+  background: get-colour(skyblue, lighter);
+  color: get-colour(queenblue);
 }
 
 /**
  * Style: Primary
  */
- $BUTTON_PRIMARY_FOCUSHOVER_BOXSHADOW: 0 0 0 2px get-colour(queenblue);
- $BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW: inset 0 0 0 2px rgba(get-colour(queenblue, lightest), 0.75);
+$BUTTON_PRIMARY_FOCUSHOVER_BOXSHADOW: 0 0 0 2px get-colour(queenblue);
+$BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW: inset 0 0 0 2px rgba(get-colour(queenblue, lightest), .75);
 
 .button--primary {
-    color: get-colour(white);
-    border: 0;
-    background-color: get-colour(queenblue);
+  border: 0;
+  background-color: get-colour(queenblue);
+  color: get-colour(white);
 }
+
 .button--primary:focus, .button--primary.button--is-focused,
 .button--primary:hover, .button--primary.button--is-hovered {
-    box-shadow:
-        $BUTTON_PRIMARY_FOCUSHOVER_BOXSHADOW,
-        $BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW
-    ;
+  box-shadow:
+    $BUTTON_PRIMARY_FOCUSHOVER_BOXSHADOW,
+    $BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW;
 }
+
 .button--primary:active {
-    background-color: get-colour(queenblue, dark);
-    color: get-colour(white);
+  background-color: get-colour(queenblue, dark);
+  color: get-colour(white);
 }
 
 
@@ -60,95 +64,102 @@ $BUTTON_BOXSHADOW_BORDER_HOVERFOCUS: 0 0 0 2px get-colour(skyblue, lightest);
  */
 $BUTTON_SECONDARY_BOXSHADOW: inset 0 0 0 2px currentColor;
 $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW: inset 0 0 0 4px get-colour(skyblue, lighter);
+
 .button--secondary {
-    color: get-colour(queenblue);
-    background-color: transparent;
-    box-shadow: $BUTTON_SECONDARY_BOXSHADOW;
+  background-color: transparent;
+  box-shadow: $BUTTON_SECONDARY_BOXSHADOW;
+  color: get-colour(queenblue);
 }
+
 .button--secondary:focus, .button--secondary.button--is-focused,
 .button--secondary:hover, .button--secondary.button--is-focused {
-    box-shadow:
-        $BUTTON_SECONDARY_BOXSHADOW,
-        $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW
-    ;
+  box-shadow:
+    $BUTTON_SECONDARY_BOXSHADOW,
+    $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW;
 }
+
 .button--secondary:active {
-    background-color: transparent;
-    box-shadow:
-        $BUTTON_SECONDARY_BOXSHADOW,
-        $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW,
-    ;
+  background-color: transparent;
+  box-shadow:
+    $BUTTON_SECONDARY_BOXSHADOW,
+    $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW,;
 }
 
 
 /**
  * Style: Link
  */
-$BUTTON_LINK_BOXSHADOW: 0 -2px 0 2px rgba(get-colour(queenblue), 0.2);
-$BUTTON_LINK_HOVERFOCUS_BOXSHADOW: 0 2px 0 2px rgba(get-colour(queenblue), 0.6);
+$BUTTON_LINK_BOXSHADOW: 0 -2px 0 2px rgba(get-colour(queenblue), .2);
+$BUTTON_LINK_HOVERFOCUS_BOXSHADOW: 0 2px 0 2px rgba(get-colour(queenblue), .6);
 $BUTTON_LINK_ACTIVE_BOXSHADOW: 0 3px 0 2px get-colour(queenblue);
 
 .button--link {
-    background-color: transparent;
-    border: 0;
-    box-shadow: none;
-    position: relative;
-    padding: 0;
+  position: relative;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  box-shadow: none;
 
-    text-decoration: none;
+  text-decoration: none;
 }
+
 .button--link .button__label {
-    position: relative;
+  position: relative;
 }
-.button--link .button__label:after {
-    content: " ";
-    box-shadow: $BUTTON_LINK_BOXSHADOW;
-    height: 0;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    position: absolute;
+
+.button--link .button__label::after {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  box-shadow: $BUTTON_LINK_BOXSHADOW;
 }
+
 .button--link:focus, .button--link.button--is-focused,
 .button--link:hover, .button--link.button--is-focused {
-    box-shadow: none;
-    background-color: transparent;
+  box-shadow: none;
+  background-color: transparent;
 }
-.button--link:focus .button__label:after ,
-.button--link.button--is-focused .button__label:after ,
-.button--link:hover .button__label:after ,
-.button--link.button--is-focused .button__label :after {
-    box-shadow: $BUTTON_LINK_HOVERFOCUS_BOXSHADOW;
+
+.button--link:focus .button__label::after,
+.button--link.button--is-focused .button__label::after,
+.button--link:hover .button__label::after,
+.button--link.button--is-focused .button__label ::after {
+  box-shadow: $BUTTON_LINK_HOVERFOCUS_BOXSHADOW;
 }
-.button--link:active .button__label:after {
-    box-shadow:
-        $BUTTON_LINK_ACTIVE_BOXSHADOW
-    ;
+
+.button--link:active .button__label::after {
+  box-shadow: $BUTTON_LINK_ACTIVE_BOXSHADOW;
 }
 
 /**
  * Shapes
  */
+
 .button--shape-square {
-    border-radius: 0;
+  border-radius: 0;
 }
+
 .button--shape-round {
-    border-radius: get-spacing-px(tiny);
+  border-radius: get-spacing-px(tiny);
 }
+
 .button--shape-circular {
-    border-radius: get-spacing-px(massive);
+  border-radius: get-spacing-px(massive);
 }
 
 .button__icon {
-    display: flex;
-    justify-content: center;
-    position: relative;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .button__icon.button__icon--suffix {
-    right: -#{get-spacing-px(tiny)};
+  right: -#{get-spacing-px(tiny)};
 }
 
 .button__icon.button__icon--prefix {
-    left: -#{get-spacing-px(tiny)};
+  left: -#{get-spacing-px(tiny)};
 }

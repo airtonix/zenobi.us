@@ -1,67 +1,67 @@
 .branding-block {
-    height: auto;
-    width: auto;
-    padding: 0;
+  height: auto;
+  width: auto;
+  padding: 0;
 }
 
 .block__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .block__content {
-    padding: get-spacing-px(small);
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
+  padding: get-spacing-px(small);
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
 }
 
 .branding-block__image {
-    display: block;
+  display: block;
 
-    margin: auto;
+  margin: auto;
 }
 
 
 /**
  * As a Small Block
  */
+
 .branding-block--is-badge {
-    position: fixed;
-    left: calc(100vw - #{get-spacing-px(massive)});
-    top: 0;
+  position: fixed;
+  left: calc(100vw - #{get-spacing-px(massive)});
+  top: 0;
 
-    display: flex;
+  display: flex;
 
-    height: 100vh;
-    width: 100%;
-    max-width: 100%;
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
 
-    padding: 0;
-    justify-content: start;
+  padding: 0;
+  justify-content: start;
 
-    background-image: radial-gradient(circle at 100% 10px, white 32px, transparent 75%);
+  background-image: radial-gradient(circle at 100% 10px, white 32px, transparent 75%);
 
-    transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .branding-block--is-badge.branding-block--is-open {
-    margin-left: -85vw;
-    background-image: radial-gradient(circle at 100% 10px, white 100%, transparent 75%);
+  margin-left: -85vw;
+  background-image: radial-gradient(circle at 100% 10px, white 100%, transparent 75%);
 }
 
-.branding-block--is-badge
-.branding-block__image {
-    margin-top: get-spacing-px(huge);
+.branding-block--is-badge .branding-block__image {
+  position: absolute;
+  top: 65vh;
+  left: 50%;
 
-    width: 100%;
-    position: absolute;
-    top: 65vh;
-    left: 50%;
-    transform: translateX(-12.5%);
-    filter: opacity(0.2);
+  width: 100%;
+  margin-top: get-spacing-px(huge);
+  transform: translateX(-12.5%);
+  filter: opacity(.2);
 
 }
 
@@ -69,15 +69,14 @@
 /**
  * The Hamburger
  */
- .branding-block
- .branding-block__hamburger {
-     display: none;
- }
 
-.branding-block--is-badge
-.branding-block__hamburger {
-    display: flex;
-    position: absolute;
-    left: get-spacing-px(normal);
-    top: get-spacing-px(normal);
+.branding-block .branding-block__hamburger {
+  display: none;
+}
+
+.branding-block--is-badge .branding-block__hamburger {
+  position: absolute;
+  top: get-spacing-px(normal);
+  left: get-spacing-px(normal);
+  display: flex;
 }

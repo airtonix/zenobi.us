@@ -11,14 +11,15 @@ $name - The logical name
 Styleguide UiKit.Functions.Spacing
 */
 @function get-spacing($name) {
-  @if map-has-key($settings__spacing, $name) != true {
-    @warn "'#{$name}' not in #{$settings__spacing}";
+  @if map-has-key($settings--spacing, $name) != true {
+    @warn "'#{$name}' not in #{$settings--spacing}";
   }
 
-  @return #{map-get($settings__spacing, $name)};
+  @return #{map-get($settings--spacing, $name)};
 }
 
 @function get-spacing-px($name) {
   $value: get-spacing($name);
+
   @return #{$value}px;
 }

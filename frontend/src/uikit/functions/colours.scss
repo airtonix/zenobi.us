@@ -12,10 +12,10 @@ $tone   - options shade.
 Styleguide Core.Functions.Colour
 */
 @function get-colour($scheme, $tone: default) {
-  @if map-has-key($settings__colours, $scheme) != true {
+  @if map-has-key($settings--colours, $scheme) != true {
     @return $scheme;
   }
-  $group: map-get($settings__colours, $scheme);
+  $group: map-get($settings--colours, $scheme);
 
   @if map-has-key($group, $tone) != true and map-has-key($group, default) != true {
     @return $scheme;
@@ -28,12 +28,10 @@ Styleguide Core.Functions.Colour
   @return map-get($group, $tone);
 }
 
-
 @function contrast-colour ($color, $dark: black, $light: white, $threshold: 75) {
   @if (saturation($color) < $threshold) {
     @return $light;
-  }
-  @else  {
+  } @else {
     @return $dark;
   }
 }

@@ -1,6 +1,4 @@
-.page {
-}
 .page--hero .page__container {
-    display: flex;
-    max-width: #{get-layout(card-size) + get-spacing(medium)}  * 3;
+  display: flex;
+  max-width: #{get-layout(card-size) + get-spacing(normal)} * 3;
 }

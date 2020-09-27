@@ -12,10 +12,8 @@ Turn a map into a series of css `attribute: value;`
   }
 }
 
-
 @mixin get-typeface($style) {
-  $attribute-map: map-get($settings__typeface, $style);
+  $attribute-map: map-get($settings--typeface, $style);
   // print out a list of attributes.
   @include map-as-attributes($attribute-map);
 }
-

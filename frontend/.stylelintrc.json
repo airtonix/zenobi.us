@@ -1,0 +1,21 @@
+{
+    "extends": [
+        "@considonet/stylelint-config-bem",
+        "@considonet/stylelint-config-scss",
+        "@considonet/stylelint-config-order"
+    ],
+    "rules": {
+        "color-named": null,
+        "selector-class-pattern": null,
+        "max-nesting-depth": 0,
+        "at-rule-disallowed-list": [ "extend" ],
+        "plugin/selector-bem-pattern": {
+            "componentName": "[A-Za-z-]+",
+            "componentSelectors": {
+              "initial": "^\\.{componentName}(?:-[a-z]+)?$",
+              "combined": "^\\.combined-{componentName}-[a-z]+$"
+            },
+            "utilitySelectors": "^\\.util-[a-z]+$"
+        }
+    }
+}

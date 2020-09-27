@@ -7,6 +7,7 @@ export type BlockComponent = typeof Block
 
 export type BlockProps = {
     className?: string,
+    as?: React.ElementType,
     footerSlot?: React.ReactChildren
 }
 
@@ -31,3 +32,6 @@ export const Block:React.FC<BlockProps> = ({
     </div>
   </div>
 )
+Block.defaultProps = {
+  as: 'div',
+}
