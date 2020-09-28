@@ -40,29 +40,10 @@
   }
 }
 
-
-$settings--mediaqueries: (
-  smallup: '#{$settings--media--screen}',
-  smallup--portrait: '#{$settings--media--screen} and #{$settings--orientations--portrait}',
-  smallup--landscape: '#{$settings--media--screen} and #{$settings--orientations--landscape}',
-  mediumup: '#{$settings--media--screen} and #{breakpoint(small)}',
-  mediumup--portrait: '#{$settings--media--screen} and #{breakpoint(small)} and #{$settings--orientations--portrait}',
-  mediumup--landscape: '#{$settings--media--screen} and #{breakpoint(small)} and #{$settings--orientations--landscape}',
-  largeup: '#{$settings--media--screen} and #{breakpoint(medium)}',
-  largeup--portrait: '#{$settings--media--screen} and #{breakpoint(medium)} and #{$settings--orientations--portrait}',
-  largeup--landscape: #{breakpoint(medium)} and #{$settings--orientations--landscape},
-  xlargeup: '#{$settings--media--screen} and #{breakpoint(large)}',
-  xlargeup--portrait: '#{$settings--media--screen} and #{breakpoint(large)} and #{$settings--orientations--portrait}',
-  xlargeup--landscape: '#{$settings--media--screen} and #{breakpoint(large)} and #{$settings--orientations--landscape}',
-  xxlargeup: '#{$settings--media--screen} and #{breakpoint(xlarge)}',
-  xxlargeup--portrait: '#{$settings--media--screen} and #{breakpoint(xlarge)} and #{$settings--orientations--portrait}',
-  xxlargeup--landscape: '#{$settings--media--screen} and #{breakpoint(xlarge)} and #{$settings--orientations--landscape}',
-);
-
-@function mq($name) {
-  @if (map-has-key($settings--mediaqueries, $name) != true) {
+@function orientation($name) {
+  @if map-has-key($settings--orientations, $name ) {
+    @return map-get($settings--orientations, $name);
+  } @else {
     @return '';
   }
-
-  @return map-get($settings--mediaqueries, $name);
 }

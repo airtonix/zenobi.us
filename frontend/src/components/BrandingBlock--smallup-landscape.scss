@@ -4,11 +4,16 @@
 
 .branding-block .branding-block__image {
   width: 50%;
+  margin-right: get-spacing-px(normal);
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .branding-block .branding-block__nav {
-  width: 100%;
-  flex-grow: 1;
+  width: 50%;
   align-items: flex-start;
   margin-left: get-spacing-px(normal);
+  margin-top: auto;
+  margin-bottom: auto;
 }

@@ -17,3 +17,7 @@ $settings--media--prinit: 'print';
 $settings--orientations--portrait: '(orientation: portrait)';
 $settings--orientations--landscape: '(orientation: landscape)';
 
+$settings--orientations: (
+  portrait: $settings--orientations--portrait,
+  landscape: $settings--orientations--landscape,
+);

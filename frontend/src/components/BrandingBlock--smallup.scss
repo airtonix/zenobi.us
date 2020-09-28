@@ -4,14 +4,14 @@
   padding: 0;
 }
 
-.block__container {
+.branding-block .block__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.block__content {
+.branding-block .block__content {
   padding: get-spacing-px(small);
   display: flex;
   flex-direction: column;
@@ -23,5 +23,15 @@
   display: block;
   max-width: 196px;
   margin: auto;
+  margin-bottom: get-spacing-px(normal);
 }
 
+.branding-block__nav {
+  margin-top: get-spacing-px(normal);
+  margin-bottom: auto;
+}
+
+.branding-block--is-badge .block__content {
+  height: 100vh;
+  padding: 0;
+}

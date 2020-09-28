@@ -1,13 +1,9 @@
-// .branding-block > .block__container {
-//   align-items: flex-start;
-// }
-
-.branding-block > * > .block__content {
-  flex-direction: column;
-//   height: 100%;
-//   align-items: flex-start;
+.branding-block > .block__content {
+  align-items: flex-start;
 }
-
+// .branding-block > * > .block__content {
+//   flex-direction: column;
+// }
 .branding-block--is-badge .branding-block__image {
   width: calc(#{get-spacing-px(massive)} * 2);
   margin: 0;
