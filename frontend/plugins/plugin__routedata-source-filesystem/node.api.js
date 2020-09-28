@@ -10,32 +10,36 @@ function expandRouteData (data) {
 
 export default (config) => ({
   getRoutes: async (routes, state) => {
-    return routes
-      .map(route => {
-        const silo = config.find(silo => minimatch(route.path, silo.target))
-        if (!silo) return route
+    const handle = () => (
+      routes
+        .map(route => {
+          const silo = config.find(silo => minimatch(route.path, silo.target))
+          if (!silo) return route
 
-        console.log(`${silo.target} matched ${route.path} for ${silo.source}`)
+          console.log(`${silo.target} matched ${route.path} for ${silo.source}`)
 
-        const children = silo.source && routes
-          .filter(route => {
-            return minimatch(route.path, silo.source)
-          })
-          .map(child => ({
-            ...child,
-            ...expandRouteData(child.getData)
-          }))
-        if (!children) return route
+          const files = silo.source && routes
+            .filter(route => {
+              return minimatch(route.path, silo.source)
+            })
+            .map(file => ({
+              ...file,
+              ...expandRouteData(file.getData)
+            }))
+          if (!files) return route
 
-        console.log(`${silo.target} found ${children.length} items`)
+          console.log(`${silo.target} found ${files.length} items`)
 
-        return {
-          ...route,
-          getData: () => ({
-            ...expandRouteData(route.getData),
-            children
-          })
-        }
-      })
+          return {
+            ...route,
+            getData: () => ({
+              ...expandRouteData(route.getData),
+              files
+            })
+          }
+        })
+    )
+
+    return handle()
   },
 })

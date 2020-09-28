@@ -2,10 +2,10 @@
 
 @import "./Page--smallup";
 
-@media #{breakpoint-gt(small)} {
-  @import "./Page--mediumup";
+@media #{mq(smallup--landscape)} {
+  @import "./Page--smallup-landscape";
 }
 
-@media #{breakpoint-gt(medium)} {
-  @import "./Page--largeup";
+@media #{mq(mediumup)} {
+  @import "./Page--mediumup";
 }

@@ -2,6 +2,7 @@ import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
 import { Block } from './Block'
 import { ButtonGroup, ButtonGroupDirections, ButtonGroupSeparatorStyles } from './ButtonGroup'
 
+export const Template = (args) => (<Block {...args} className='block--debug' /> )
 
 <Meta title="Components/Block" component={Block} />
 
@@ -10,11 +11,8 @@ import { ButtonGroup, ButtonGroupDirections, ButtonGroupSeparatorStyles } from '
 A is primarily a layout component.
 
 <Canvas>
-  <Story name="basic">
-    <Block>
-      <p>Lorem ipsum dolor sit amet, nulla exercitation minim ipsum deserunt sunt aliqua nisi consequat aliqua non dolore nostrud do fugiat veniam esse et. Lorem dolor nulla voluptate magna pariatur elit laboris. Ea sunt laborum enim fugiat occaecat ad amet aliqua magna anim. Tempor irure sunt ut officia labore irure. Esse quis nulla occaecat qui aliqua ut ullamco anim nisi consectetur qui minim Lorem reprehenderit mollit.</p>
-      <p>Esse in mollit nostrud do duis duis ut do duis quis enim deserunt minim nulla irure commodo. Nisi ea elit qui proident laboris incididunt tempor proident anim cillum. Non enim qui magna ullamco laboris ad ex consequat qui dolore amet eu irure ad labore id. Dolore aute ipsum et velit adipisicing ad mollit deserunt commodo proident. Esse fugiat adipisicing anim et in magna pariatur cillum do nostrud culpa magna in. Quis consectetur reprehenderit elit fugiat exercitation ex esse eiusmod quis laborum enim anim aliqua aute quis cillum consequat adipisicing cillum. Commodo fugiat nulla aliqua reprehenderit cupidatat ipsum eiusmod Lorem enim ad eu aliqua laboris. Nulla aute velit minim eiusmod consectetur sint Lorem amet consectetur amet velit ipsum minim esse officia eiusmod.</p>
-    </Block>
+  <Story name="basic" args={{ children: 'Lorem ipsum dolor sit amet, nulla exercitation minim ipsum deserunt sunt aliqua nisi consequat aliqua non dolore nostrud do fugiat veniam esse et. Lorem dolor nulla voluptate magna pariatur elit laboris. Ea sunt laborum enim fugiat occaecat ad amet aliqua magna anim. Tempor irure sunt ut officia labore irure. Esse quis nulla occaecat qui aliqua ut ullamco anim nisi consectetur qui minim Lorem reprehenderit mollit.'}}>
+    {Template.bind({})}
   </Story>
 </Canvas>
 

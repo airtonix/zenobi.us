@@ -1,38 +1,52 @@
 import React from 'react'
 import classnames from 'classnames'
-import { useRouteData } from 'react-static'
-import graphql from 'graphql-anywhere'
-import gql from 'graphql-tag'
-import { get } from 'lodash'
+import jsonata from 'jsonata'
+
+import { Card } from './Card'
 
 export type FileListProps = {
     className?: string,
     query: string,
-    children: (data: any) => React.ReactNode
+    data: any,
+    debug?: boolean,
+    component?: React.ElementType
 }
 
 export const FileList:React.FC<FileListProps> = ({
   className,
   query,
-  children,
+  data,
+  debug = false,
+  component: Component,
 }) => {
-  const resolve = (fieldName:string, root: any) => {
-    return get(root, fieldName)
+  let result:any[] = []
+  try {
+    const expression = jsonata(query)
+    result = expression.evaluate(data)
+  } catch (err) {
+
+    return (
+      <Card>
+        <pre>
+          code: {err.code}
+          message: {err.message}
+          ---
+        </pre>
+      </Card>
+    )
   }
-  const data = useRouteData()
-  const makeQuery = (query: string) => gql`${query}`
-  const result = graphql(
-    resolve,
-    makeQuery(query),
-    data
-  )
 
   return (
     <div className={classnames(
       'file-list',
       className
     )}>
-      {children(result)}
+      {result.map((item:any) => (
+        <Component {...item} />
+      ))}
+      {debug && (
+        <pre>{JSON.stringify(result, null, 2)}</pre>
+      )}
     </div>
   )
 }

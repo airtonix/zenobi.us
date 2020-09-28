@@ -12,7 +12,8 @@ export type CardProps = {
 export const Card:React.FC<CardProps> = ({
   children,
   className,
-  as
+  as,
+  ...props
 }) => {
   const ProxyElement = as
 
@@ -22,8 +23,11 @@ export const Card:React.FC<CardProps> = ({
         'card',
         className
       )}
+      {...props}
     >
-      {children}
+      <span className='card__container'>
+        {children}
+      </span>
     </ProxyElement>
   )
 }

@@ -1,8 +1,14 @@
-.page {
-  display: flex;
-  justify-content: center;
+.page__aside,
+.page--is-open .page__aside {
+  position: inherit;
+  width: auto;
+  height: 100%;
+  max-width: auto;
+  margin: 0;
+  margin-left: 0;
+  border: 0;
 }
 
-.page--hero .page__container {
-  max-width: #{get-layout(card-size) + get-spacing(normal)} * 2;
+.page__hamburger {
+  display: none;
 }

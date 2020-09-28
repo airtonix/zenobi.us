@@ -17,18 +17,3 @@ $settings--media--prinit: 'print';
 $settings--orientations--portrait: '(orientation: portrait)';
 $settings--orientations--landscape: '(orientation: landscape)';
 
-$settings--mediaqueries: (
-  smallup: '#{$settings--media--screen} and #{breakpoint(small)}',
-  smallup--portrait: '#{$settings--media--screen} and #{breakpoint(small)} and #{$settings--orientations--portrait}',
-  smallup--landscape: '#{$settings--media--screen} and #{breakpoint(small)} and #{$settings--orientations--landscape}',
-  mediumup: '#{$settings--media--screen} and #{breakpoint(medium)}',
-  mediumup-minus-one: '#{$settings--media--screen} and #{breakpoint(medium)}',
-  mediumup--portrait: '#{$settings--media--screen} and #{breakpoint(medium)} and #{$settings--orientations--portrait}',
-  mediumup--landscape: #{breakpoint(medium)} and #{$settings--orientations--landscape},
-  largeup: '#{$settings--media--screen} and #{breakpoint(large)}',
-  largeup--portrait: '#{$settings--media--screen} and #{breakpoint(large)} and #{$settings--orientations--portrait}',
-  largeup--landscape: '#{$settings--media--screen} and #{breakpoint(large)} and #{$settings--orientations--landscape}',
-  xlargeup: '#{$settings--media--screen} and #{breakpoint(xlarge)}',
-  xlargeup--portrait: '#{$settings--media--screen} and #{breakpoint(xlarge)} and #{$settings--orientations--portrait}',
-  xlargeup--landscape: '#{$settings--media--screen} and #{breakpoint(xlarge)} and #{$settings--orientations--landscape}',
-);

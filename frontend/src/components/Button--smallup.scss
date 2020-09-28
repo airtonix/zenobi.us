@@ -40,20 +40,20 @@ $BUTTON_BOXSHADOW_BORDER_HOVERFOCUS: 0 0 0 2px get-colour(skyblue, lightest);
 $BUTTON_PRIMARY_FOCUSHOVER_BOXSHADOW: 0 0 0 2px get-colour(queenblue);
 $BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW: inset 0 0 0 2px rgba(get-colour(queenblue, lightest), .75);
 
-.button--primary {
+.button--style-primary {
   border: 0;
   background-color: get-colour(queenblue);
   color: get-colour(white);
 }
 
-.button--primary:focus, .button--primary.button--is-focused,
-.button--primary:hover, .button--primary.button--is-hovered {
+.button--style-primary:focus, .button--style-primary.button--is-focused,
+.button--style-primary:hover, .button--style-primary.button--is-hovered {
   box-shadow:
     $BUTTON_PRIMARY_FOCUSHOVER_BOXSHADOW,
     $BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW;
 }
 
-.button--primary:active {
+.button--style-primary:active {
   background-color: get-colour(queenblue, dark);
   color: get-colour(white);
 }
@@ -65,20 +65,20 @@ $BUTTON_PRIMARY_FOCUSHOVER_INNER_BOXSHADOW: inset 0 0 0 2px rgba(get-colour(quee
 $BUTTON_SECONDARY_BOXSHADOW: inset 0 0 0 2px currentColor;
 $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW: inset 0 0 0 4px get-colour(skyblue, lighter);
 
-.button--secondary {
+.button--style-secondary {
   background-color: transparent;
   box-shadow: $BUTTON_SECONDARY_BOXSHADOW;
   color: get-colour(queenblue);
 }
 
-.button--secondary:focus, .button--secondary.button--is-focused,
-.button--secondary:hover, .button--secondary.button--is-focused {
+.button--style-secondary:focus, .button--style-secondary.button--is-focused,
+.button--style-secondary:hover, .button--style-secondary.button--is-focused {
   box-shadow:
     $BUTTON_SECONDARY_BOXSHADOW,
     $BUTTON_SECONDARY_FOCUSHOVER_BOXSHADOW;
 }
 
-.button--secondary:active {
+.button--style-secondary:active {
   background-color: transparent;
   box-shadow:
     $BUTTON_SECONDARY_BOXSHADOW,
@@ -93,7 +93,7 @@ $BUTTON_LINK_BOXSHADOW: 0 -2px 0 2px rgba(get-colour(queenblue), .2);
 $BUTTON_LINK_HOVERFOCUS_BOXSHADOW: 0 2px 0 2px rgba(get-colour(queenblue), .6);
 $BUTTON_LINK_ACTIVE_BOXSHADOW: 0 3px 0 2px get-colour(queenblue);
 
-.button--link {
+.button--style-link {
   position: relative;
   padding: 0;
   border: 0;
@@ -103,11 +103,11 @@ $BUTTON_LINK_ACTIVE_BOXSHADOW: 0 3px 0 2px get-colour(queenblue);
   text-decoration: none;
 }
 
-.button--link .button__label {
+.button--style-link .button__label {
   position: relative;
 }
 
-.button--link .button__label::after {
+.button--style-link .button__label::after {
   content: " ";
   position: absolute;
   bottom: 0;
@@ -117,20 +117,20 @@ $BUTTON_LINK_ACTIVE_BOXSHADOW: 0 3px 0 2px get-colour(queenblue);
   box-shadow: $BUTTON_LINK_BOXSHADOW;
 }
 
-.button--link:focus, .button--link.button--is-focused,
-.button--link:hover, .button--link.button--is-focused {
+.button--style-link:focus, .button--style-link.button--is-focused,
+.button--style-link:hover, .button--style-link.button--is-focused {
   box-shadow: none;
   background-color: transparent;
 }
 
-.button--link:focus .button__label::after,
-.button--link.button--is-focused .button__label::after,
-.button--link:hover .button__label::after,
-.button--link.button--is-focused .button__label ::after {
+.button--style-link:focus .button__label::after,
+.button--style-link.button--is-focused .button__label::after,
+.button--style-link:hover .button__label::after,
+.button--style-link.button--is-focused .button__label ::after {
   box-shadow: $BUTTON_LINK_HOVERFOCUS_BOXSHADOW;
 }
 
-.button--link:active .button__label::after {
+.button--style-link:active .button__label::after {
   box-shadow: $BUTTON_LINK_ACTIVE_BOXSHADOW;
 }
 
@@ -162,4 +162,11 @@ $BUTTON_LINK_ACTIVE_BOXSHADOW: 0 3px 0 2px get-colour(queenblue);
 
 .button__icon.button__icon--prefix {
   left: -#{get-spacing-px(tiny)};
+}
+
+@each $name, $size in $settings--spacing {
+  .button.button--size-#{$name} {
+    height: #{$size}px;
+    font-size: #{$size}px;
+  }
 }

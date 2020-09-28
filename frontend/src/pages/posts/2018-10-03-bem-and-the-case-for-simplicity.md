@@ -1,12 +1,12 @@
 ---
 title: BEM and the case for simplicity
 tags: BEM, architecture
+date: 2018-10-03
 comments: true
 theme: orange
 banner:
   url: https://source.unsplash.com/qNEv1SVkOnk/1600x900
   credit: https://unsplash.com/@briantagalog
-
 ---
 
 ## Where we came from
@@ -37,11 +37,22 @@ So you end up with something like:
 .hero {
   background-color: $lightblue;
 }
-.hero-image {}
-.hero-content {}
 
-.body.home-page .hero {}
-.body.home-page .hero .hero-image {}
+.hero-image {
+  margin: 0 auto;
+}
+
+.hero-content {
+  padding: 1rem;
+}
+
+.body.home-page .hero {
+  background-color: $lightyellow;
+}
+
+.body.home-page .hero .hero-image {
+  margin-top: 10rem;
+}
 ```
 
 It works. you ship it. deadline is near or just passed by.
@@ -139,9 +150,17 @@ export default class App extends React.Component {
 Then to style it you need to write:
 
 ```css
-.login-form .form-field {}
-.login-form .form-field__input {}
-.login-form .form-field__label {}
+.login-form .form-field {
+  margin-bottom: 1rem;
+}
+
+.login-form .form-field__input {
+  border-color: grey;
+}
+
+.login-form .form-field__label {
+  color: grey;
+}
 ```
 
 Instead lets use BEM mixes:
@@ -246,14 +265,33 @@ export default class App extends React.Component {
 Now our css can minimise the specificity score of our css.
 
 ```css
-.login-form {}
-  .login-form__form-field {}
-    .login-form__form-field__input {}
-    .login-form__form-field__label {}
+.login-form {
+  border: 1px dashed silver;
+}
 
-  .login-form__email-form-field {}
-  .login-form__password-form-field {}
-  .login-form__submit-form-action {}
+.login-form__form-field {
+  margin-bottom: 1rem;
+}
+
+.login-form__form-field__input {
+  border: 1px dashed silver;
+}
+
+.login-form__form-field__label {
+  color: darkgrey;
+}
+
+.login-form__email-form-field {
+  /* some inspiring css */
+}
+
+.login-form__password-form-field {
+  /* some inspiring css */
+}
+
+.login-form__submit-form-action {
+  /* some inspiring css */
+}
 ```
 
 ### Caveats

@@ -1,5 +1,4 @@
 import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
-import { Icon, IconSizes, IconStyles, IconTones, IconBadgeStyles } from './Icon'
 import { Card } from './Card'
 
 export const Template = (args) => <Card {...args } />;
@@ -12,8 +11,26 @@ A special block of small information
 
 <Canvas>
   <Story name="basic">
-    <Card />
+    <Card>
+      <h1>A title</h1>
+      <p>Some content</p>
+    </Card>
   </Story>
 </Canvas>
 
 <ArgsTable of={Card} />
+
+
+## Custom Element
+
+A card can be rendered as a element of your choice
+
+
+<Canvas>
+  <Story name="custom element">
+    <Card as='a' href='#something'>
+      <h1>A title</h1>
+      <p>Some content</p>
+    </Card>
+  </Story>
+</Canvas>

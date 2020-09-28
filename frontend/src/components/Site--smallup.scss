@@ -1,33 +1,22 @@
 .site {
   display: flex;
+  flex-direction: column;
+  min-height: 100%;
+
+  @include get-typeface(base);
 }
 
-.site__container {
+.site__contents {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   transition: all ease-in-out 200ms;
 }
 
-.site__header {
-  align-items: flex-start;
-  display: flex;
-  flex-grow: 0;
-}
-
-.site__content {
-  align-items: stretch;
-  display: flex;
-  flex-grow: 1;
-}
 
 .site__footer {
   width: 100%;
-}
-
-.site--is-landing .site__container {
-  flex-direction: column;
 }
 
 .site--is-landing .site__content {

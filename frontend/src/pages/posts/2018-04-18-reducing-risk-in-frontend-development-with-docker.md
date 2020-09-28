@@ -4,6 +4,7 @@ tags: nodejs, docker, frontend
 comments: true
 theme: queenblue
 draft: true
+date: 2018-04-18
 ---
 
 You and your team have been working on a website for the last couple of weeks, everything is good. But now there's a new team member and they need to get their machine setup.

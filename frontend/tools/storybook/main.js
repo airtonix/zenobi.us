@@ -1,5 +1,6 @@
 const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default
-const { set, get } = require('lodash')
+const { set, get, flow, merge } = require('lodash')
+const ReactStaticPluginSvg = require('react-static-plugin-svg').default
 
 module.exports = {
   'stories': [
@@ -12,11 +13,22 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
   ],
-  webpackFinal: async (config) => {
-    set(config, 'resolve.alias', {
-      ...get(config, 'resolve.alias', {}),
-      ...convertPathsToAliases(require(`${process.cwd()}/tsconfig.json`))
-    })
-    return config
+  webpackFinal: async (StorybookWebpackConfig) => {
+    return flow([
+      // layer the tsconfig paths
+      (config) => {
+        set(config, 'resolve.alias', {
+          ...get(config, 'resolve.alias', {}),
+          ...convertPathsToAliases(require(`${process.cwd()}/tsconfig.json`))
+        })
+        return config
+      },
+      // inject the svgr
+      (config) => {
+        const configurator = ReactStaticPluginSvg().webpack
+        config.module.rules = [{ oneOf: config.module.rules }]
+        return configurator(config)
+      }
+    ])(StorybookWebpackConfig)
   }
 }

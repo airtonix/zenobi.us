@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 
-import { Site } from './components/Site'
+import { App } from './App'
 
 import './index.scss'
 
@@ -25,12 +25,12 @@ if (typeof document !== 'undefined') {
   }
 
   // Render!
-  render(Site)
+  render(App)
 
   // Hot Module Replacement
   if (module && module.hot) {
-    module.hot.accept('./components/Site', () => {
-      render(Site)
+    module.hot.accept('./App', () => {
+      render(App)
     })
   }
 }

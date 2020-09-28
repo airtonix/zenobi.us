@@ -2,6 +2,10 @@
 
 @import "./BrandingBlock--smallup";
 
-@media #{breakpoint-gt(small)} {
+@media #{mq(smallup--landscape)} {
+  @import "./BrandingBlock--smallup-landscape";
+}
+
+@media #{mq(mediumup)} {
   @import "./BrandingBlock--mediumup";
 }

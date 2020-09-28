@@ -2,6 +2,7 @@
 title: How I use NPM
 draft: true
 tags: nodejs, architecture, npm
+date: 2018-05-24
 ---
 
 # How I use the npm lifecycle

@@ -8,9 +8,8 @@ import RemarkLintNoDeadUrls  from 'remark-lint-no-dead-urls'
 import RemarkLintRelativeUrls from 'remark-validate-links'
 import RemarkFootnotes from 'remark-footnotes'
 import RemarkBibliography from 'remark-bibliography'
-import RemarkGithub from 'remark-github'
 import RemarkHighlight from 'remark-highlight.js'
-import RehypeDocument from 'rehype-document'
+import RemarkMermaid from 'remark-mermaid'
 
 export default {
   entry: path.join(__dirname, 'src', 'index.tsx'),
@@ -18,6 +17,10 @@ export default {
   getSiteData: () => ({
     title: 'Zenobi.us',
   }),
+
+  devServer: {
+    disableHostCheck: true
+  },
 
   plugins: [
     ['react-static-plugin-typescript', { }],
@@ -34,7 +37,9 @@ export default {
           RemarkLintNoDeadUrls,
           RemarkLintRelativeUrls,
           RemarkFootnotes,
-          RemarkHighlight
+          RemarkHighlight,
+          RemarkMermaid,
+          RemarkBibliography
         ]
       },
     }],

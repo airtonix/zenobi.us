@@ -1,13 +1,14 @@
-import { FileList } from '~/components/FileList'
+import Sugar from 'sugar'
+import { FileListWithRouteData } from '~/components/FileListWithRouteData'
+import { PostCard } from '~/components/PostCard'
 
-# THoughts
+# Thoughts
 
-<FileList query={`{ children { title, path } }`}>
-  {({ children }) => (
-    children.map(file => (
-        <article key={file.path}>
-            <h3><a href={file.path}>{file.title}</a></h3>
-        </article>
-    ))
-  )}
-</FileList>
+<FileListWithRouteData
+  query={`files^(>date).{
+    'title': title,
+    'path': path,
+    'date': date
+  }`}
+  component={PostCard}
+/>

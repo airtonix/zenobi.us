@@ -1,37 +1,60 @@
-// .post-card {}
-// .post-card__container {}
+.post-card {
+  margin: get-spacing-px(normal) 0;
+  box-shadow: none;
+
+  line-height: calc(1em + 1ex);
+
+  transition: color 250ms ease-in-out;
+
+  cursor: pointer;
+}
+
+.post-card .card__container {
+  padding: get-spacing-px(normal) 0;
+}
+
 .post-card__header {
+  margin-bottom: get-spacing(small);
+}
+
+.post-card__title {
   @include get-typeface(section-heading);
+  filter: brightness(.65);
+}
+
+.post-card__summary {
+  color: get-colour(grey);
+  filter: brightness(.75);
+}
+
+.post-card__tags {
   display: flex;
   flex-direction: row;
-}
-
-.post-card__heading {
-  margin-top: 0;
-  margin-left: .45rem;
-}
-
-.post-card__meta {
+  margin-top: get-spacing-px(small);
   @include get-typeface(section-description);
-  font-size: rems(16px);
   color: get-colour(grey);
+}
+
+.post-card__tag {
+  margin-right: get-spacing-px(small);
+  background-color: white;
+  color: get-colour(skyblue);
+}
+
+.post-card:hover {
+  text-decoration: underline;
+  color: get-colour(skyblue);
 
 }
 
-.post-card__link {
-  color: get-colour(queenblue);
+.post-card * {
   text-decoration: none;
 }
 
-.post-card__link:visited {
+.post-card:visited {
   color: get-colour(queenblue, dark);
 }
 
-.post-card__link:hover {
-  text-decoration: underline;
+.post-card:hover {
   color: get-colour(queenblue, light);
-}
-
-.post-card__link-icon {
-  color: get-colour(grey);
 }

@@ -3,6 +3,7 @@ title: Wintersmith Plugin. Mounter
 stage: published
 tags: nodejs, wintersmith, plugin
 icon: extension
+date: 2014-05-11
 comments: true
 ---
 

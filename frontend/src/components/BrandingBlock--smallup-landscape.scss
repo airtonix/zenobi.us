@@ -1,0 +1,14 @@
+.branding-block .block__content {
+  flex-direction: row;
+}
+
+.branding-block .branding-block__image {
+  width: 50%;
+}
+
+.branding-block .branding-block__nav {
+  width: 100%;
+  flex-grow: 1;
+  align-items: flex-start;
+  margin-left: get-spacing-px(normal);
+}

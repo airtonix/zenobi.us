@@ -15,68 +15,13 @@
   padding: get-spacing-px(small);
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 80vh;
 }
 
 .branding-block__image {
   display: block;
-
+  max-width: 196px;
   margin: auto;
 }
 
-
-/**
- * As a Small Block
- */
-
-.branding-block--is-badge {
-  position: fixed;
-  left: calc(100vw - #{get-spacing-px(massive)});
-  top: 0;
-
-  display: flex;
-
-  height: 100vh;
-  width: 100%;
-  max-width: 100%;
-
-  padding: 0;
-  justify-content: start;
-
-  background-image: radial-gradient(circle at 100% 10px, white 32px, transparent 75%);
-
-  transition: all 200ms ease-in-out;
-}
-
-.branding-block--is-badge.branding-block--is-open {
-  margin-left: -85vw;
-  background-image: radial-gradient(circle at 100% 10px, white 100%, transparent 75%);
-}
-
-.branding-block--is-badge .branding-block__image {
-  position: absolute;
-  top: 65vh;
-  left: 50%;
-
-  width: 100%;
-  margin-top: get-spacing-px(huge);
-  transform: translateX(-12.5%);
-  filter: opacity(.2);
-
-}
-
-
-/**
- * The Hamburger
- */
-
-.branding-block .branding-block__hamburger {
-  display: none;
-}
-
-.branding-block--is-badge .branding-block__hamburger {
-  position: absolute;
-  top: get-spacing-px(normal);
-  left: get-spacing-px(normal);
-  display: flex;
-}
