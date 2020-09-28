@@ -1,5 +1,6 @@
 import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
 import { Hamburger } from './Hamburger'
+import { Spacings } from '~/uikit/settings/spacing'
 
 export const Template = (args) => <Hamburger {...args} />
 
@@ -10,8 +11,8 @@ export const Template = (args) => <Hamburger {...args} />
 A Control that allows to opening and closing a menu
 
 <Canvas>
-    <Story name="basic" args={{ size: 32, color: 'red' }}>
-      {Template.bind({ onClick: () => {} })}
+    <Story name="basic" args={{ size: Spacings.Big, color: 'red' }}>
+      {Template.bind({})}
     </Story>
 </Canvas>
 
