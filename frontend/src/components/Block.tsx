@@ -7,6 +7,7 @@ export type BlockComponent = typeof Block
 
 export type BlockProps = {
     className?: string,
+    debug?: boolean,
     as?: React.ElementType,
     footerSlot?: React.ReactChildren
 }
@@ -14,10 +15,12 @@ export type BlockProps = {
 export const Block:React.FC<BlockProps> = ({
   className,
   footerSlot,
-  children
+  children,
+  debug = false
 }) => (
   <div className={classnames(
     'block',
+    debug && 'block--debug',
     className
   )}>
     <div className='block__container'>

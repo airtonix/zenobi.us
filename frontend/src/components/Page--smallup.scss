@@ -29,7 +29,7 @@
 
   background-color: get-colour(white);
 
-  transition: all 200ms ease-in-out;
+  transition: all 200ms cubic-bezier(1, 0, 0, 1);
 }
 
 .page--is-open .page__aside {
@@ -42,7 +42,7 @@
 
 .page__hamburger {
   z-index: $zindex-9--nav-overlay-touch;
-  position: absolute;
+  position: fixed;
   top: get-spacing-px(normal);
   right: get-spacing-px(normal);
 }
