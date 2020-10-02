@@ -23,9 +23,9 @@
       "lib": ["dom", "es2015", "es2016"]
     },
     "exclude": [
-      "artifacts/**/*",
-      "dist/**/*",
+      ".cache/**/*",
       "public/**/*",
+      "dist/**/*",
       "tools/**/*",
       "node_modules"
     ]

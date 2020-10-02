@@ -3,7 +3,7 @@ version: '3'
 tasks:
 
   dev:
-    deps: 
+    deps:
       - site.dev
       - storybook.dev
 
@@ -22,43 +22,36 @@ tasks:
     ./src
     --ext .ts
     --cache
-  
+
   site.dev:
     deps:
       - site.clean
     cmds:
-      - npx react-static start
-  
-  site.clean:
-    - npx rimraf ./tmp
-    - npx rimraf ./artifacts
+      - >-
+        npx gatsby develop
+        --host 0.0.0.0
+        --port 8000
 
-  site.stage:
-    - npx react-static build --staging
-  
-  site.bundle:
-    - npx react-static bundle
-  
-  site.export:
-    - npx react-static export
-  
+  site.clean:
+    - npx rimraf ./.cache
+    - npx rimraf ./public
+
   site.prod:
-    - npx react-static build
-  
+    - npx gatsby build
+
   storybook.dev: >-
     npx start-storybook
     -p 9001
     --ci
     -c ./tools/storybook
-  
+
   storybook.serve: >-
     npx serve dist
     -p 9001
     -s
     -c ./tools/storybook
-  
+
   storybook.prod: >-
     npx build-storybook
     --config-dir ./tools/storybook
     --output-dir ./dist/storybook
-    

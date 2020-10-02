@@ -1,0 +1,7 @@
+.page-header {
+  @include get-typeface(page-heading);
+}
+
+.page-header__title {
+  color: get-colour(grey);
+}

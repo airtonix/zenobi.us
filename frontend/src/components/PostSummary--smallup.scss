@@ -1,4 +1,4 @@
-.post-card {
+.post-summary {
   margin: get-spacing-px(normal) 0;
   box-shadow: none;
 
@@ -9,25 +9,25 @@
   cursor: pointer;
 }
 
-.post-card .card__container {
-  padding: get-spacing-px(normal) 0;
+.post-summary .card__container {
+  padding: get-spacing-px(normal);
 }
 
-.post-card__header {
+.post-summary__header {
   margin-bottom: get-spacing(small);
 }
 
-.post-card__title {
+.post-summary__title {
   @include get-typeface(section-heading);
   filter: brightness(.65);
 }
 
-.post-card__summary {
+.post-summary__summary {
   color: get-colour(grey);
   filter: brightness(.75);
 }
 
-.post-card__tags {
+.post-summary__tags {
   display: flex;
   flex-direction: row;
   margin-top: get-spacing-px(small);
@@ -35,26 +35,26 @@
   color: get-colour(grey);
 }
 
-.post-card__tag {
+.post-summary__tag {
   margin-right: get-spacing-px(small);
   background-color: white;
   color: get-colour(skyblue);
 }
 
-.post-card:hover {
+.post-summary:hover {
   text-decoration: underline;
   color: get-colour(skyblue);
 
 }
 
-.post-card * {
+.post-summary * {
   text-decoration: none;
 }
 
-.post-card:visited {
+.post-summary:visited {
   color: get-colour(queenblue, dark);
 }
 
-.post-card:hover {
+.post-summary:hover {
   color: get-colour(queenblue, light);
 }

@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 import './Hamburger.scss'
 import { Spacings } from '~/uikit/settings/spacing'
+import { useStateFromProp } from '~/services/useStateFromProp'
 
 export type HamburgerProps = {
   className?: string,
@@ -18,7 +19,7 @@ export const Hamburger:React.FC<HamburgerProps> = ({
   size,
   ...props
 }) => {
-  const [ menuIsOpen, setMenuIsOpen ] = useState(isOpen)
+  const [ menuIsOpen, setMenuIsOpen ] = useStateFromProp(isOpen)
 
   const handleClick:React.MouseEventHandler = () => {
     setMenuIsOpen(!menuIsOpen)
@@ -53,5 +54,3 @@ export const Hamburger:React.FC<HamburgerProps> = ({
 Hamburger.defaultProps = {
   size: Spacings.Big
 }
-
-

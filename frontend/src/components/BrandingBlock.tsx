@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 
 import { Block, BlockProps } from './Block'
 import { ButtonGroupDirections } from './ButtonGroup'
 import { SiteNavigation } from './Navigation'
-import BrandingLogo from './BrandingLogo.svg'
+import { ReactComponent as BrandingLogo } from './BrandingLogo.svg'
+
 import './BrandingBlock.scss'
 
 export type BrandingProps = BlockProps & {

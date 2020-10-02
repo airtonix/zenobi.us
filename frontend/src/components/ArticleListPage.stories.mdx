@@ -1,0 +1,23 @@
+import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+import { ArticleListPage } from './ArticleListPage'
+import { LoremIpsum, Avatar, name, surname, username } from 'react-lorem-ipsum'
+
+export const Template = (args) => <ArticleListPage {...args } />;
+
+<Meta
+  title="Pages/ArticleListPage"
+  component={ArticleListPage} />
+
+# ArticleListPage
+
+<Canvas>
+  <Story name="basic" args={{
+      title: 'A Page Title',
+      posts: [
+          { id: 1, title: 'Post title', summary: (<LoremIpsum p={1} />)},
+          { id: 2, title: 'Post title', summary: (<LoremIpsum p={1} />)},
+      ]
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

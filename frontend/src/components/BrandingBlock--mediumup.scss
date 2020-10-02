@@ -5,8 +5,10 @@
 //   flex-direction: column;
 // }
 .branding-block--is-badge .branding-block__image {
-  width: calc(#{get-spacing-px(massive)} * 2);
+  width: calc(#{get-spacing-px(large)} * 2);
   margin: 0;
+  margin-top: get-spacing-px(huge);
+  margin-left: auto;
   margin-bottom: get-spacing-px(normal);
 }
 
@@ -14,5 +16,5 @@
   width: auto;
   align-items: flex-end;
   flex-grow: 0;
-  margin-left: 0;
+  margin-right: get-spacing-px(tiny);
 }
