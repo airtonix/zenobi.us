@@ -27,13 +27,9 @@ tasks:
         TAG: '{{.VERSION}}'
     - task: docker:templates
 
-  setup-install: >-
-    npm i -g
-    gh-pages
-
   dev:
     - task: docker:up
-  
+
   frontend.build:
     - task: docker:run
       vars:
