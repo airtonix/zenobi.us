@@ -10,7 +10,7 @@ tasks:
   prod:
     deps:
       - site.prod
-      # - storybook.prod
+      - storybook.prod
 
   test: >-
     npx jest

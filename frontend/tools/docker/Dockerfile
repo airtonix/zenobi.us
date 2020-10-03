@@ -57,7 +57,6 @@ COPY ./.browserslistrc \
      ./Taskfile.yml \
      ./.nvmrc \
      ./src \
-     ./content \
      ./tools \
      ./
 
