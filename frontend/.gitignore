@@ -3,6 +3,7 @@
 !.gitignore
 
 !.devcontainer.json
+!.dockerignore
 !docker-compose*
 !package.json
 !yarn.lock
@@ -10,7 +11,8 @@
 !.releaserc.json
 !Taskfile.yml
 
-!static.config.js
+!gatsby-config.js
+!gatsby-node.js
 !.babelrc
 !.stylelintrc.json
 !.eslintrc.json

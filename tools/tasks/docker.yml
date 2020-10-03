@@ -1,16 +1,15 @@
 # code: language=yaml
 version: '3'
 
-
 tasks:
-  
+
   run: >-
     docker-compose
     -f docker-compose.yml
     -f docker-compose--{{.STAGE}}.yml
     run --rm
     {{.SERVICE}} {{.COMMAND}}
-  
+
   templates:
     deps:
       - templates.base
@@ -21,22 +20,22 @@ tasks:
 
   templates.base:
     - task: template
-      vars: 
+      vars:
         INFILE: ./tools/docker/docker-compose.yml
         OUTFILE: ./docker-compose.yml
-  
+
   templates.local:
     - task: template
-      vars: 
+      vars:
         INFILE: ./tools/docker/docker-compose--local.yml
         OUTFILE: ./docker-compose--local.yml
-  
+
   templates.ci:
     - task: template
-      vars: 
+      vars:
         INFILE: /tools/docker/docker-compose--ci.yml
         OUTFILE: /docker-compose--ci.yml
-  
+
   up:
     docker-compose
     -f docker-compose.yml
@@ -69,9 +68,9 @@ tasks:
           - things that shouldn't change much, the OS and your packages.
           - the things that would, your source code.
 
-        This works by pulling and using the builder and latest tags 
-        as a layer cache.        
-        
+        This works by pulling and using the builder and latest tags
+        as a layer cache.
+
         - builder tag is updated on pr/merge into develop.
         - latest tag is created on develop/merge into master.
 
@@ -79,7 +78,7 @@ tasks:
         You will be exected to have at least these targets:
           - base
           - prod
-        
+
         Although I'd recommend you actually have something like:
           - base
           - builder
@@ -89,7 +88,7 @@ tasks:
       sources:
         - ${SERVICE}/**/*
       cmds:
-        # pull the cached layers 
+        # pull the cached layers
         - docker pull {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder || true
 
         # rebuild it. if nothing in these layers
@@ -101,10 +100,10 @@ tasks:
             --tag {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder
             --target builder
             ./{{.SERVICE}}
-  
+
         # # pull the latest image
         - docker pull {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest || true
-  
+
         # rebuild it using cache layers from:
         # - builder
         # - latest

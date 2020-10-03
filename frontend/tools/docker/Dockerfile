@@ -44,16 +44,19 @@ COPY --from=builder /build/node_modules /app/node_modules
 
 COPY ./.browserslistrc \
      ./.eslintrc.json \
+     ./.stylelintrc.json \
      ./cssnano.config.js \
      ./jest.config.js \
      ./postcss.config.js \
-     ./.babelrc \
      ./tsconfig.json \
      ./yarn.lock \
      ./package.json \
-     ./static.config.js \
+     ./gatsby-config.js \
+     ./gatsby-node.js \
      ./Taskfile.yml \
+     ./.nvmrc \
      ./src \
+     ./content \
      ./tools \
      ./
 
