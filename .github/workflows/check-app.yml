@@ -21,8 +21,8 @@ jobs:
       - name: Build Docker Assets
         run: >-
           task setup
-          REPO=${{ CI_SETTINGS__APP_DOCKER_REPO }}/site
-          VERSION=${{ GITHUB_SHA }}
+          REPO=$CI_SETTINGS__APP_DOCKER_REPO/site
+          VERSION=$GITHUB_SHA
 
       - name: Deploy Branch Preview
         run: >-
@@ -31,7 +31,7 @@ jobs:
 
           task frontend.deploy
           TOKEN=${{ secrets.GITHUB_TOKEN }}
-  
+
       - name: Run linting
         run: >-
           task app.lint
@@ -39,4 +39,3 @@ jobs:
       - name: Run tests
         run: >-
           task app.test
-
