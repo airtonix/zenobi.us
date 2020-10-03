@@ -1,8 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
-import Sugar from 'sugar'
+import { Link } from '@reach/router'
 
 import './PostSummary.scss'
+
 import { Button, ButtonSizes } from './Button'
 
 export type PostSummaryProps = {
@@ -23,7 +24,7 @@ export const PostSummary:React.FC<PostSummaryProps> = ({
   className,
 }) => {
 
-  const format = (format: string):string => Sugar.Date(date).format(format).raw
+  // const format = (format: string):string => Sugar.Date(date).format(format).raw
 
   return (
     <div
@@ -34,18 +35,18 @@ export const PostSummary:React.FC<PostSummaryProps> = ({
     >
       <header className='post-summary__header'>
         {url && (
-          <a
-            href={url}
+          <Link
+            to={url}
             className='post-summary__title'
           >
             {title}
-          </a>
+          </Link>
         )}
         {!url && (
           <div className='post-summary__title'>{title}</div>
         )}
         {date && (
-          <div className='post-summary__date'>{format('%e %B')}</div>
+          <div className='post-summary__date'>{date}</div>
         )}
       </header>
       {summary && (

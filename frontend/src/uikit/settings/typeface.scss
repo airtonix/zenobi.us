@@ -18,6 +18,12 @@ $settings--typeface: (
     font-style: normal,
     font-size: 22px
   ),
+  'page-meta': (
+    font-family: $settings--typeface-family--robotoslab,
+    font-weight: 400,
+    font-style: normal,
+    font-size: 16px
+  ),
   'section-heading': (
     font-family: $settings--typeface-family--robotoslab,
     font-weight: 700,

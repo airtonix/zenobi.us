@@ -5,3 +5,25 @@
 .page-header__title {
   color: get-colour(grey);
 }
+
+.page-header__date {
+
+  display: flex;
+  margin: 0 get-spacing-px(small);
+
+  width: 100%;
+  padding: get-spacing-px(small) 0;
+
+  border-top: 2px solid get-colour(grey, lighter);
+  color: get-colour(grey);
+
+  @include get-typeface(page-meta);
+}
+
+.page-header__tags {
+  display: flex;
+  margin: 0 get-spacing-px(small);
+  padding: get-spacing-px(small) 0;
+
+  @include get-typeface(page-meta);
+}

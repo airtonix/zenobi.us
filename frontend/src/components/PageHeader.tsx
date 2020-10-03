@@ -2,16 +2,20 @@ import React from 'react'
 import classnames from 'classnames'
 
 import './PageHeader.scss'
+import { TagList } from './TagList'
 
 export type PageHeaderProps = {
   className?: string,
-  title: string
+  title: string,
+  date?: string,
+  tags?: string[],
 }
 
 export const PageHeader:React.FC<PageHeaderProps> = ({
   className,
   title,
-  children,
+  date,
+  tags
 }) => {
   return (
     <header
@@ -21,7 +25,15 @@ export const PageHeader:React.FC<PageHeaderProps> = ({
       )}
     >
       <h1 className='page-header__title'>{title}</h1>
-      {children}
+      {tags && (
+        <TagList
+          className='page-header__tags'
+          tags={tags}
+        />
+      )}
+      {date && (
+        <small className='page-header__date'>{date}</small>
+      )}
     </header>
   )
 }

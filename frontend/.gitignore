@@ -26,3 +26,5 @@
 !plugins/**
 !src/
 !src/**
+!content/
+!content/**

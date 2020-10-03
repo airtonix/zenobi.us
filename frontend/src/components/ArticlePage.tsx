@@ -1,9 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
+import Sugar from 'sugar'
 
 import { PageWithAside } from './PageWithAside'
 import { PageHeader } from './PageHeader'
-import { TagList } from './TagList'
 
 export type ArticlePageProps = {
   className?: string,
@@ -27,14 +27,9 @@ export const ArticlePage:React.FC<ArticlePageProps> = ({
   >
     <PageHeader
       title={title}
-    >
-      {date && (
-        <small>{date}</small>
-      )}
-      {tags && (
-        <TagList tags={tags} />
-      )}
-    </PageHeader>
+      date={Sugar.Date(date).short().raw}
+      tags={tags}
+    />
 
     <div className='article-page__content'>
       {children}

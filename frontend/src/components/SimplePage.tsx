@@ -3,34 +3,30 @@ import classnames from 'classnames'
 
 import { PageWithAside } from './PageWithAside'
 import { PageHeader } from './PageHeader'
-import { PostSummary, PostSummaryProps } from './PostSummary'
 
-export type ArticleListPageProps = {
+export type SimplePageProps = {
   className?: string,
   title: string,
-  posts: PostSummaryProps[]
+  tags?: string[],
+  date?: string,
 }
 
-export const ArticleListPage:React.FC<ArticleListPageProps> = ({
+export const SimplePage:React.FC<SimplePageProps> = ({
   className,
   title,
-  posts,
   children
 }) => (
   <PageWithAside
     className={classnames(
-      'article-list-page',
+      'simple-page',
       className
     )}
   >
     <PageHeader
       title={title}
     />
-
-    {children}
-
-    <div className='article-list-page__content'>
-      {posts.map(PostSummary)}
+    <div className='article-page__content'>
+      {children}
     </div>
   </PageWithAside>
 )

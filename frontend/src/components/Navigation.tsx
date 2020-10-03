@@ -39,8 +39,8 @@ export const SiteNavigation:React.FC<SiteNavigationProps> = ({
       direction={direction}
     >
       <NavigationButton key='/' to='/'>Home</NavigationButton>
-      <NavigationButton key='/about/' to='/about/'>Resume</NavigationButton>
-      <NavigationButton key='/thoughts/' to='/thoughts/'>Thoughts</NavigationButton>
+      <NavigationButton key='/about/me' to='/about/me/'>Resume</NavigationButton>
+      <NavigationButton key='/posts/' to='/posts/'>Thoughts</NavigationButton>
     </ButtonGroup>
   )
 }

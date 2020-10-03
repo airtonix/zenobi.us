@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import './ButtonGroup.scss'
 
 export enum ButtonGroupSeparatorStyles {
+  Space = 'space',
   Dot = 'dot',
   Line = 'line'
 }
@@ -52,6 +53,7 @@ export const ButtonGroup:React.FC<ButtonGroupProps> = (props) => {
       directionName === ButtonGroupDirections.Horizontal && 'button-group--row',
       separatorName === ButtonGroupSeparatorStyles.Dot && 'button-group--separated-by-dots',
       separatorName === ButtonGroupSeparatorStyles.Line && 'button-group--separated-by-lines',
+      separatorName === ButtonGroupSeparatorStyles.Space && 'button-group--separated-by-space',
       className
     )}>
       {React.Children.map(children, (child) => child)

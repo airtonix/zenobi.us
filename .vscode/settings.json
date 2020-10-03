@@ -1,5 +1,6 @@
 {
     "eslint.enable": true,
     "terminal.integrated.shellArgs.osx": [],
-    "terminal.integrated.shellArgs.linux": []
+    "terminal.integrated.shellArgs.linux": [],
+    "remote.WSL.fileWatcher.polling": true
 }

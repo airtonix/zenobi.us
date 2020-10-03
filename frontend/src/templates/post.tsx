@@ -28,8 +28,8 @@ export const BlogDetailPage:React.FC<BlogDetailPageProps> = ({ data }) => {
         title,
         date,
         tags
-      }
-    }
+      } = {}
+    } = {}
   } = data
   return (
     <ArticlePage
@@ -45,20 +45,14 @@ export const BlogDetailPage:React.FC<BlogDetailPageProps> = ({ data }) => {
 export default BlogDetailPage
 
 export const query = graphql`
-  query ($id: String) {
-    mdx(id: {eq: $id}) {
+  query PostPageNodeQuery($id: String!) {
+    mdx(id: { eq: $id }) {
+      body
       frontmatter {
         title
-        date
         tags
-        stage
-        banner {
-          url
-          credit
-        }
-        comments
+        date
       }
-      body
     }
   }
 `
