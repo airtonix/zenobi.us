@@ -9,6 +9,7 @@ RUN apk --update --no-cache add \
      # 1. \/
      util-linux \
      bash \
+     git \
      curl \
   && curl -sL https://taskfile.dev/install.sh | BINDIR=/bin sh
 

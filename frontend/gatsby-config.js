@@ -47,7 +47,8 @@ module.exports = {
           require('remark-autolink-headings'),
           require('remark-slug'),
           require('remark-lint-no-dead-urls'),
-          require('remark-validate-links'),
+          // eslint-disable-next-line @typescript-eslint/no-var-requires
+          [require('remark-validate-links'), { repository: false }],
           require('remark-footnotes'),
           require('remark-bibliography'),
           require('remark-highlight.js'),

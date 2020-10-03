@@ -20,7 +20,6 @@ export type BlogDetailPageProps = {
 }
 
 export const BlogDetailPage:React.FC<BlogDetailPageProps> = ({ data }) => {
-  console.log(data)
   const {
     mdx: {
       body,

@@ -26,9 +26,12 @@ jobs:
 
       - name: Deploy Branch Preview
         run: >-
-          task frontend.build
+          task frontend.build \
+          STAGE=ci \
           PUBLIC_URL=https://zenobi.us/pr/$GITHUB_SHA
 
+      - name: Deploy Branch Preview
+        run: >-
           task frontend.deploy
           TOKEN=${{ secrets.GITHUB_TOKEN }}
 
