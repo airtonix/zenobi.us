@@ -25,9 +25,10 @@ jobs:
           VERSION=$GITHUB_SHA
 
       - name: Deploy Branch Preview
+        env:
+          FRONTEND__SITE__DOMAIN: https://airtonix.github.io/
+          FRONTEND__SITE__PATH: /zenobi.us/pr/$GITHUB_SHA
         run: >-
-          FRONTEND__SITE__DOMAIN=https://airtonix.github.io/ \
-          FRONTEND__SITE__PATH=/zenobi.us/pr/$GITHUB_SHA \
           task frontend.build STAGE=ci
 
       - name: Deploy Branch Preview
