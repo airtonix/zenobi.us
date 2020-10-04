@@ -5,6 +5,7 @@
         "site": {
             "type": "object",
             "properties": {
+
                 "title": {
                     "type": "string",
                     "default": "zenobi.us"
@@ -13,11 +14,15 @@
                     "type": "string",
                     "default": "zenobi.us"
                 },
+                "root": {
+                    "type": "string"
+                },
                 "path": {
-                    "type": "string",
-                    "default": "/"
+                    "type": "string"
                 }
+
             }
         }
+
     }
 }

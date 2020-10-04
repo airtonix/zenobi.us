@@ -43,22 +43,7 @@ FROM base as prod
 
 COPY --from=builder /build/node_modules /app/node_modules
 
-COPY ./.browserslistrc \
-     ./.eslintrc.json \
-     ./.stylelintrc.json \
-     ./cssnano.config.js \
-     ./jest.config.js \
-     ./postcss.config.js \
-     ./tsconfig.json \
-     ./yarn.lock \
-     ./package.json \
-     ./gatsby-config.js \
-     ./gatsby-node.js \
-     ./Taskfile.yml \
-     ./.nvmrc \
-     ./src \
-     ./tools \
-     ./
+COPY . ./
 
 ARG COMMIT
 ENV COMMIT=${COMMIT}

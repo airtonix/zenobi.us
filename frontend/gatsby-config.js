@@ -7,11 +7,18 @@ const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases
 const Config = require('./tools/config')
 
 module.exports = {
-  pathPrefix: get(Config, 'site.path'),
+  pathPrefix: [
+    get(Config, 'site.root'),
+    get(Config, 'site.path'),
+  ].join('/'),
 
   siteMetadata: {
     title: get(Config, 'site.title'),
-    siteUrl: `https://${get(Config, 'site.domain')}/`,
+    siteUrl: [
+      'https:/',
+      get(Config, 'site.domain'),
+      get(Config, 'site.root'),
+    ].join('/'),
   },
 
   plugins: [

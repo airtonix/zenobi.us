@@ -5,5 +5,10 @@ services:
   frontend:
     image: ${repo}/frontend:${version}
     environment:
+      # These variables can be overriden
+      # by either the .env file or settings them as envs
+      # on the host where you run docker-compose
       - DUMP
       - FRONTEND__SITE__PATH
+      - FRONTEND__SITE__ROOT
+      - FRONTEND__SITE__DOMAIN

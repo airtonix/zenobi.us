@@ -3,12 +3,13 @@ version: '3'
 
 tasks:
 
-  run: >-
-    docker-compose
-    -f docker-compose.yml
-    -f docker-compose--{{.STAGE}}.yml
-    run --rm
-    {{.SERVICE}} {{.COMMAND}}
+  run:
+    - >-
+      docker-compose
+      -f docker-compose.yml
+      -f docker-compose--{{.STAGE}}.yml
+      run --rm
+      {{.SERVICE}} {{.COMMAND}}
 
   templates:
     deps:
@@ -19,22 +20,31 @@ tasks:
       - tools/docker/**/docker-compose*.yml
 
   templates.base:
-    - task: template
-      vars:
-        INFILE: ./tools/docker/docker-compose.yml
-        OUTFILE: ./docker-compose.yml
+    cmds:
+      - task: template
+        vars:
+          INFILE: ./tools/docker/docker-compose.yml
+          OUTFILE: ./docker-compose.yml
+    generates:
+      - ./docker-compose.yml
 
   templates.local:
-    - task: template
-      vars:
-        INFILE: ./tools/docker/docker-compose--local.yml
-        OUTFILE: ./docker-compose--local.yml
+    cmds:
+      - task: template
+        vars:
+          INFILE: ./tools/docker/docker-compose--local.yml
+          OUTFILE: ./docker-compose--local.yml
+    generates:
+      - ./docker-compose--local.yml
 
   templates.ci:
-    - task: template
-      vars:
-        INFILE: /tools/docker/docker-compose--ci.yml
-        OUTFILE: /docker-compose--ci.yml
+    cmds:
+      - task: template
+        vars:
+          INFILE: /tools/docker/docker-compose--ci.yml
+          OUTFILE: /docker-compose--ci.yml
+    generates:
+      - ./docker-compose--ci.yml
 
   up:
     docker-compose
@@ -85,8 +95,8 @@ tasks:
           - prod
           - dev
           - test
-      sources:
-        - ${SERVICE}/**/*
+      status:
+        - docker images {{.DOCKER_REGISTRY}}/{{.SERVICE}} | grep {{.TAG}}
       cmds:
         # pull the cached layers
         - docker pull {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder || true

@@ -23,6 +23,10 @@ tasks:
     --ext .ts
     --cache
 
+  site.clean:
+    - npx rimraf ./.cache
+    - npx rimraf ./public
+
   site.dev:
     deps:
       - site.clean
@@ -32,13 +36,9 @@ tasks:
         --host 0.0.0.0
         --port 8000
 
-  site.clean:
-    - npx rimraf ./.cache
-    - npx rimraf ./public
-
   site.prod:
     - npx gatsby build
-    - mv ./public/* ./dist${FRONTEND__SITE__PATH}
+    - mv ./public/* ./dist/${FRONTEND__SITE__PATH}
 
   storybook.dev: >-
     npx start-storybook
@@ -46,13 +46,7 @@ tasks:
     --ci
     -c ./tools/storybook
 
-  storybook.serve: >-
-    npx serve dist
-    -p 9001
-    -s
-    -c ./tools/storybook
-
   storybook.prod: >-
     npx build-storybook
     --config-dir ./tools/storybook
-    --output-dir ./dist${FRONTEND__SITE__PATH}/storybook
+    --output-dir ./dist/${FRONTEND__SITE__PATH}/storybook
