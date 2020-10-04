@@ -47,11 +47,12 @@ tasks:
     env:
       NODE_DEBUG: gh-pages
     cmds:
+      - ls -al frontend/dist/{{.}}
       - touch package.json
       - >-
         npx gh-pages
         --add
-        --dist=frontend/dist
+        --dist=frontend/dist/{{.}}
         --repo={{.GIT_REPO}}
       - npx rimraf package.json
 
