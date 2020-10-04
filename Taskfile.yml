@@ -52,7 +52,6 @@ tasks:
         npx gh-pages
         --add
         --dist=frontend/dist
-        --branch=master
         --repo={{.GIT_REPO}}
       - npx rimraf package.json
 
