@@ -2,7 +2,7 @@
 version: '3'
 
 vars:
-  GIT_REPO: github.com/airtonix/zenobi.us
+  GIT_REPO: ssh://git@github.com/airtonix/zenobi.us.git
   DOCKER_REGISTRY: docker.pkg.github.com/airtonix/zenobi.us
   SERVICE: frontend
   STAGE: local
@@ -44,13 +44,17 @@ tasks:
           COMMAND: /bin/sh
 
   frontend.deploy:
-    deps: [ frontend.build ]
+    env:
+      NODE_DEBUG: gh-pages
     cmds:
+      - touch package.json
       - >-
         npx gh-pages
         --add
         --dist=frontend/dist
+        --branch=master
         --repo={{.GIT_REPO}}
+      - npx rimraf package.json
 
   frontend.test:
     cmds:

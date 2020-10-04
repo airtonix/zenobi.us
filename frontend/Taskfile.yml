@@ -9,6 +9,7 @@ tasks:
 
   prod:
     deps:
+      - site.clean
       - site.prod
       - storybook.prod
 
@@ -24,6 +25,7 @@ tasks:
     --cache
 
   site.clean:
+    - npx rimraf ./dist
     - npx rimraf ./.cache
     - npx rimraf ./public
 
