@@ -18,7 +18,7 @@ tasks:
     - task: setup
 
   setup:
-    - task: setup-install
+    - task: create
 
   create:
     - task: docker:build
@@ -26,10 +26,6 @@ tasks:
         SERVICE: frontend
         TAG: '{{.VERSION}}'
     - task: docker:templates
-
-  setup-install: >-
-    npm i -g
-    gh-pages
 
   dev:
     - task: docker:up
@@ -39,6 +35,13 @@ tasks:
       vars:
         SERVICE: frontend
         COMMAND: task prod
+
+  frontend.shell:
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: /bin/sh
 
   frontend.deploy:
     deps: [ frontend.build ]

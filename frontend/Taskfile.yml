@@ -38,6 +38,7 @@ tasks:
 
   site.prod:
     - npx gatsby build
+    - mv ./public/* ./dist${FRONTEND__SITE__PATH}
 
   storybook.dev: >-
     npx start-storybook
@@ -54,4 +55,4 @@ tasks:
   storybook.prod: >-
     npx build-storybook
     --config-dir ./tools/storybook
-    --output-dir ./dist/storybook
+    --output-dir ./dist${FRONTEND__SITE__PATH}/storybook

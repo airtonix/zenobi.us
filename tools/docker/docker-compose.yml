@@ -4,3 +4,6 @@ services:
 
   frontend:
     image: ${repo}/frontend:${version}
+    environment:
+      - DUMP
+      - FRONTEND__SITE__PATH

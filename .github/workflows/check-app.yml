@@ -26,9 +26,9 @@ jobs:
 
       - name: Deploy Branch Preview
         run: >-
-          task frontend.build \
-          STAGE=ci \
-          PUBLIC_URL=https://zenobi.us/pr/$GITHUB_SHA
+          FRONTEND__SITE__DOMAIN=https://airtonix.github.io/ \
+          FRONTEND__SITE__PATH=/zenobi.us/pr/$GITHUB_SHA \
+          task frontend.build STAGE=ci
 
       - name: Deploy Branch Preview
         run: >-

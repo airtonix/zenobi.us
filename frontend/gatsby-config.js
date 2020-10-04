@@ -1,12 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { kebabCase } = require('lodash')
+const { kebabCase, get } = require('lodash')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const Config = require('./tools/config')
+
 module.exports = {
+  pathPrefix: get(Config, 'site.path'),
+
   siteMetadata: {
-    title: 'zenobi.us',
-    siteUrl: 'https://zenobi.us',
+    title: get(Config, 'site.title'),
+    siteUrl: `https://${get(Config, 'site.domain')}/`,
   },
 
   plugins: [
