@@ -47,9 +47,9 @@ tasks:
     deps: [ frontend.build ]
     cmds:
       - >-
-        npx gh-pages \
-        --add \
-        --dist=frontend/dist \
+        npx gh-pages
+        --add
+        --dist=frontend/dist
         --repo={{.GIT_REPO}}
 
   frontend.test:
