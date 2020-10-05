@@ -44,7 +44,6 @@ RUN yarn install
 FROM base as prod
 
 COPY --from=builder /build/node_modules /app/node_modules
-
 COPY . ./
 
 ARG COMMIT
