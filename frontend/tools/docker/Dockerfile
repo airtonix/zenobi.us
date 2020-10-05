@@ -49,5 +49,3 @@ COPY . ./
 
 ARG COMMIT
 ENV COMMIT=${COMMIT}
-
-CMD ["yarn", "build", "site.build"]
