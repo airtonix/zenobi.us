@@ -25,9 +25,9 @@ tasks:
     --cache
 
   site.clean:
-    - npx del -p del-cli ./dist/**/*
-    - npx del -p del-cli ./.cache/**/*
-    - npx del -p del-cli ./public/**/*
+    - npx del-cli ./dist
+    - npx del-cli ./.cache
+    - npx del-cli ./public
 
   site.dev:
     deps:
