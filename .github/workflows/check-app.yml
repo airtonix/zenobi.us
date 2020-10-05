@@ -35,7 +35,7 @@ jobs:
       - name: Deploy Branch Preview
         run: >-
           task frontend.deploy
-          DEPLOY_SOURCE=pr/$GITHUB_SHA/**/*
+          DEPLOY_SOURCE=pr/$GITHUB_SHA
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Run linting

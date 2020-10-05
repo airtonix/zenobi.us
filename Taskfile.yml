@@ -30,6 +30,10 @@ tasks:
   dev:
     - task: docker:up
 
+  prod:
+    - task: frontend.build
+    - task: frontend.deploy
+
   frontend.shell:
     desc: Open a shell session in the frontend container
     cmds:
@@ -118,11 +122,14 @@ tasks:
       NODE_DEBUG: gh-pages
     cmds:
       - ls -al frontend/dist
+      - ls -al frontend/public
+      - mv ./frontend/public/* ./frontend/dist/{{.DEPLOY_SOURCE}}
+      # create a fake package.json, because https://github.com/tschaub/gh-pages/issues/354
       - touch package.json
       - >-
         npx gh-pages
         --add
-        --source={{.DEPLOY_SOURCE}}
+        --source={{.DEPLOY_SOURCE}}/**/*
         --dist=frontend/dist
         --repo={{.GIT_REPO}}
       - npx rimraf package.json

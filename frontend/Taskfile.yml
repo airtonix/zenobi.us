@@ -9,7 +9,6 @@ tasks:
 
   prod:
     cmds:
-      - task: site.clean
       - task: site.prod
       - task: storybook.prod
 
@@ -25,9 +24,9 @@ tasks:
     --cache
 
   site.clean:
-    - npx del-cli ./dist
-    - npx del-cli ./.cache
-    - npx del-cli ./public
+    - rm -rf ./dist/**/*
+    - rm -rf ./.cache/**/*
+    - rm -rf ./public/**/*
 
   site.dev:
     deps:
@@ -56,8 +55,6 @@ tasks:
       FRONTEND__SITE__PATH: "{{.SITE_PATH}}"
     cmds:
       - npx gatsby build
-      - ls -al ./public
-      - mv ./public/* ./dist/{{.SITE_PATH}}
 
   env.dump:
     env:
