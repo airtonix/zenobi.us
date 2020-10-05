@@ -121,9 +121,6 @@ tasks:
     env:
       NODE_DEBUG: gh-pages
     cmds:
-      - ls -al frontend/dist
-      - ls -al frontend/public
-      - mv ./frontend/public/* ./frontend/dist/{{.DEPLOY_SOURCE}}
       # create a fake package.json, because https://github.com/tschaub/gh-pages/issues/354
       - touch package.json
       - >-

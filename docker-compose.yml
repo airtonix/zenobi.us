@@ -3,7 +3,7 @@ version: "2.3"
 services:
 
   frontend:
-    image: docker.pkg.github.com/airtonix/zenobi.us/frontend:c8b5f61
+    image: docker.pkg.github.com/airtonix/zenobi.us/frontend:2146933
     environment:
       # These variables can be overriden
       # by either the .env file or settings them as envs

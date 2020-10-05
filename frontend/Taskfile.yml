@@ -24,9 +24,9 @@ tasks:
     --cache
 
   site.clean:
-    - rm -rf ./dist/**/*
-    - rm -rf ./.cache/**/*
-    - rm -rf ./public/**/*
+    - npx rimraf ./dist/**/*
+    - npx rimraf ./.cache/**/*
+    - npx rimraf ./public/**/*
 
   site.dev:
     deps:
@@ -38,6 +38,8 @@ tasks:
         --port 8000
 
   site.prod:
+    deps:
+      - site.clean
     description: |
       Create a production build of the site.
 
@@ -55,6 +57,7 @@ tasks:
       FRONTEND__SITE__PATH: "{{.SITE_PATH}}"
     cmds:
       - npx gatsby build
+      - npx cpy-cli ./public/**/* ./dist/{{.SITE_PATH}}
 
   env.dump:
     env:

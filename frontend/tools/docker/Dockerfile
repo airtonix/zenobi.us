@@ -11,10 +11,12 @@ RUN apk --update --no-cache add \
      bash \
      git \
      curl \
+     su-exec \
   && curl -sL https://taskfile.dev/install.sh | BINDIR=/bin sh
 
 
 ENV ENTRYPOINT_TASKS_DIR=/entrypoint.d/
+ENV ENTRYPOINT_TASK_01_USER=1
 
 COPY ./tools/docker/entrypoint.sh /entrypoint.sh
 COPY ./tools/docker/entrypoint.d/* /entrypoint.d/
