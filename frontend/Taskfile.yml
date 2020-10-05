@@ -8,10 +8,10 @@ tasks:
       - storybook.dev
 
   prod:
-    deps:
-      - site.clean
-      - site.prod
-      - storybook.prod
+    cmds:
+      - task: site.clean
+      - task: site.prod
+      - task: storybook.prod
 
   test: >-
     npx jest
@@ -39,16 +39,40 @@ tasks:
         --port 8000
 
   site.prod:
-    - npx gatsby build
-    - mv ./public/* ./dist/${FRONTEND__SITE__PATH}
+    description: |
+      Create a production build of the site.
+
+      Takes in two parameters (that have defaults) to control
+      how links within the site are generated.
+
+      - uses `<SITE_ROOT><SITE_PATH>` to prefix all the links generated
+      - uses `https://<SITE_DOMAIN>` to configure siteMetaData
+      - builds into `./public`
+      - then gets moved to `./dist/<SITE_PATH>/`
+
+    env:
+      FRONTEND__SITE__DOMAIN: "{{.SITE_DOMAIN}}"
+      FRONTEND__SITE__ROOT: "{{.SITE_ROOT}}"
+      FRONTEND__SITE__PATH: "{{.SITE_PATH}}"
+    cmds:
+      - npx gatsby build
+      - mv ./public/* ./dist/{{.SITE_PATH}}
+
+  env.dump:
+    env:
+      FRONTEND__SITE__DOMAIN: "{{.SITE_DOMAIN}}"
+      FRONTEND__SITE__ROOT: "{{.SITE_ROOT}}"
+      FRONTEND__SITE__PATH: "{{.SITE_PATH}}"
+    cmds:
+      - env
 
   storybook.dev: >-
     npx start-storybook
     -p 9001
     --ci
-    -c ./tools/storybook
+    --config-dir ./tools/storybook
 
   storybook.prod: >-
     npx build-storybook
     --config-dir ./tools/storybook
-    --output-dir ./dist/${FRONTEND__SITE__PATH}/storybook
+    --output-dir ./dist/{{.SITE_PATH}}/storybook

@@ -30,29 +30,100 @@ tasks:
   dev:
     - task: docker:up
 
-  frontend.build:
-    - task: docker:run
-      vars:
-        SERVICE: frontend
-        COMMAND: task prod
-
   frontend.shell:
+    desc: Open a shell session in the frontend container
     cmds:
       - task: docker:run
         vars:
           SERVICE: frontend
           COMMAND: /bin/sh
 
+  frontend.envdump:
+    desc: Tests the passing of env vars to container task
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: >-
+            task env.dump
+            SITE_DOMAIN={{.SITE_DOMAIN}}
+            SITE_ROOT={{.SITE_ROOT}}
+            SITE_PATH={{.SITE_PATH}}
+
+  frontend.build:
+    desc: Build the frontend using its container
+    summary: |
+      Uses docker-compose to build the site.
+
+      See: prod task in ./frontend/Taskfile.yml
+
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: >-
+            task prod
+            SITE_DOMAIN={{.SITE_DOMAIN}}
+            SITE_ROOT={{.SITE_ROOT}}
+            SITE_PATH={{.SITE_PATH}}
+
   frontend.deploy:
+    desc: Deploy the site.
+    summary: |
+      Takes in three parameters (that have defaults) to control
+      how links within the site are generated and how gh-pages deploys.
+
+      **End result**
+
+      ```
+      <SITE_DOMAIN><SITE_ROOT><SITE_PATH>
+        /index.html     <- gatsby site
+        /**             <- other gatsby pages/folders
+        /storybook
+          /index.html   <- storybook
+          /**           <- storybook files
+      ```
+
+      **Storybook**
+      - builds into: `./dist/<SITE_PATH>/storybook`
+
+      **Gatsby**
+      - uses `https://<SITE_ROOT><SITE_PATH>` to prefix all the links generated
+      - builds into `./public`
+      - then gets moved to `./dist/<SITE_PATH>/`
+
+      **GHPages**
+      - adds `./dist/<SITE_PATH>/**/*` to branch `gh-pages`
+
+      **SITE_DOMAIN**
+
+      default: zenobi.us
+      usedby:
+        - gatsby
+        - creating CNAME file
+
+      **SITE_ROOT**
+
+      default: blank string
+      used by:
+        - gatsby
+
+      **SITE_PATH**
+
+      default: blank string
+      used by:
+        - gatsby
+        - storybook
     env:
       NODE_DEBUG: gh-pages
     cmds:
-      - ls -al frontend/dist/{{.}}
+      - ls -al frontend/dist
       - touch package.json
       - >-
         npx gh-pages
         --add
-        --dist=frontend/dist/{{.}}
+        --source={{.DEPLOY_SOURCE}}
+        --dist=frontend/dist
         --repo={{.GIT_REPO}}
       - npx rimraf package.json
 

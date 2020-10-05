@@ -8,7 +8,7 @@ env:
 
 jobs:
 
-  test:
+  deploy-preview:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -24,18 +24,19 @@ jobs:
           REPO=$CI_SETTINGS__APP_DOCKER_REPO/site
           VERSION=$GITHUB_SHA
 
-      - name: Deploy Branch Preview
-        env:
-          FRONTEND__SITE__DOMAIN: https://airtonix.github.io
-          FRONTEND__SITE__ROOT: zenobi.us
-          FRONTEND__SITE__PATH: pr/$GITHUB_SHA
+      - name: Build Site
         run: >-
-          task frontend.build STAGE=ci
+          task frontend.build
+          STAGE=ci
+          SITE_DOMAIN=airtonix.github.io
+          SITE_ROOT=zenobi.us
+          SITE_PATH=pr/$GITHUB_SHA
 
       - name: Deploy Branch Preview
         run: >-
           task frontend.deploy
-          TOKEN=${{ secrets.GITHUB_TOKEN }}
+          DEPLOY_SOURCE=pr/$GITHUB_SHA/**/*
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Run linting
         run: >-

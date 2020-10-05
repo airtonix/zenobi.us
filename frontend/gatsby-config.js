@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { kebabCase, get } = require('lodash')
+const { get } = require('lodash')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default
 
