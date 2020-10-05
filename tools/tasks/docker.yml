@@ -3,14 +3,6 @@ version: '3'
 
 tasks:
 
-  run:
-    - >-
-      docker-compose
-      -f docker-compose.yml
-      -f docker-compose--{{.STAGE}}.yml
-      run --rm
-      {{.SERVICE}} {{.COMMAND}}
-
   templates:
     deps:
       - templates.base
@@ -45,6 +37,19 @@ tasks:
           OUTFILE: /docker-compose--ci.yml
     generates:
       - ./docker-compose--ci.yml
+
+  run:
+    - >-
+      docker-compose
+      -f docker-compose.yml
+      {{if .STAGE}}-f docker-compose--{{.STAGE}}.yml{{end}}
+      {{if .USER_ID}}
+      -u {{.USER_ID}}
+      -e FRONTEND__USER__ID={{.USER_ID}}
+      -e FRONTEND__USER__NAME={{.USER_NAME}}
+      {{end}}
+      run --rm
+      {{.SERVICE}} {{.COMMAND}}
 
   up:
     docker-compose

@@ -18,9 +18,9 @@ tasks:
     - task: setup
 
   setup:
-    - task: create
+    - task: setup.docker
 
-  create:
+  setup.docker:
     - task: docker:build
       vars:
         SERVICE: frontend

@@ -7,8 +7,8 @@ log () {
     echo "[ENTRYPOINT -> USER]: $@"
 }
 
-USER_ID=${LOCAL_USER_ID:-9001}
-USER_NAME=${LOCAL_USER_NAME:-user}
+USER_ID=${FRONTEND__USER_ID:-9001}
+USER_NAME=${FRONTEND__USER_NAME:-user}
 
 log "UID : $USER_ID"
 log "UNAME : $USER_NAME"
