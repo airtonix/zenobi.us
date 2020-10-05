@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { get } = require('lodash')
+const urljoin = require('url-join')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default
 
@@ -14,11 +15,11 @@ module.exports = {
 
   siteMetadata: {
     title: get(Config, 'site.title'),
-    siteUrl: [
-      'https:/',
+    siteUrl: urljoin(
+      get(Config, 'site.proto'),
       get(Config, 'site.domain'),
       get(Config, 'site.root'),
-    ].join('/'),
+    ),
   },
 
   plugins: [

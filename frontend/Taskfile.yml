@@ -25,9 +25,9 @@ tasks:
     --cache
 
   site.clean:
-    - npx rimraf ./dist
-    - npx rimraf ./.cache
-    - npx rimraf ./public
+    - npx del -p del-cli ./dist/**/*
+    - npx del -p del-cli ./.cache/**/*
+    - npx del -p del-cli ./public/**/*
 
   site.dev:
     deps:
@@ -56,6 +56,7 @@ tasks:
       FRONTEND__SITE__PATH: "{{.SITE_PATH}}"
     cmds:
       - npx gatsby build
+      - ls -al ./public
       - mv ./public/* ./dist/{{.SITE_PATH}}
 
   env.dump:
