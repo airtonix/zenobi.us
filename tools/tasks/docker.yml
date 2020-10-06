@@ -47,12 +47,6 @@ tasks:
       -f docker-compose.yml
       {{if .STAGE}}-f docker-compose--{{.STAGE}}.yml{{end}}
       run --rm
-      {{if .USER_ID}}
-      -e FRONTEND__USER_ID={{.USER_ID}}
-      {{end}}
-      {{if .USER_NAME}}
-      -e FRONTEND__USER_NAME={{.USER_NAME}}
-      {{end}}
       {{.SERVICE}} {{.COMMAND}}
 
   up:

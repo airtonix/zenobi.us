@@ -16,7 +16,6 @@ RUN apk --update --no-cache add \
 
 
 ENV ENTRYPOINT_TASKS_DIR=/entrypoint.d/
-ENV ENTRYPOINT_TASK_01_USER=1
 
 COPY ./tools/docker/entrypoint.sh /entrypoint.sh
 COPY ./tools/docker/entrypoint.d/* /entrypoint.d/
@@ -31,6 +30,9 @@ ENTRYPOINT [ "/entrypoint.sh" ]
 FROM base as builder
 
 WORKDIR /build
+
+ARG USER_NAME=user
+USER $USER_NAME
 
 COPY ./package.json \
      ./yarn.lock \
