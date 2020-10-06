@@ -17,7 +17,7 @@ adduser -s /bin/bash -D -u $USER_ID -g "" $USER_NAME
 export HOME=/home/$USER_NAME
 log "HOME : $HOME"
 log "CHOWN : ${PWD} > ${USER_NAME}:${USER_NAME}"
-chown -R $USER_NAME:$USER_NAME ${PWD}
+chown -R $USER_NAME:$USER_NAME $(ls -A | grep -v 'node_modules/*')
 log "CHOWN : Done"
 
 exec su-exec $USER_NAME "$@"

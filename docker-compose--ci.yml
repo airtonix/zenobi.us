@@ -3,7 +3,7 @@ version: "2.3"
 services:
 
   frontend:
-    image: docker.pkg.github.com/airtonix/zenobi.us/frontend:e72cbe3
+    image: docker.pkg.github.com/airtonix/zenobi.us/frontend:0d48e52
     volumes:
       - ./frontend/public:/app/public
       - ./frontend/dist:/app/dist
