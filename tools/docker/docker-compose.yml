@@ -12,3 +12,5 @@ services:
       - FRONTEND__SITE__PATH
       - FRONTEND__SITE__ROOT
       - FRONTEND__SITE__DOMAIN
+      - FRONTEND__USER_ID
+      - FRONTEND__USER_NAME

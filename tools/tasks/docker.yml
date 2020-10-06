@@ -1,6 +1,9 @@
 # code: language=yaml
 version: '3'
 
+vars:
+  USER_ID: 1001
+
 tasks:
 
   templates:
@@ -43,12 +46,13 @@ tasks:
       docker-compose
       -f docker-compose.yml
       {{if .STAGE}}-f docker-compose--{{.STAGE}}.yml{{end}}
-      {{if .USER_ID}}
-      -u {{.USER_ID}}
-      -e FRONTEND__USER__ID={{.USER_ID}}
-      -e FRONTEND__USER__NAME={{.USER_NAME}}
-      {{end}}
       run --rm
+      {{if .USER_ID}}
+      -e FRONTEND__USER_ID={{.USER_ID}}
+      {{end}}
+      {{if .USER_NAME}}
+      -e FRONTEND__USER_NAME={{.USER_NAME}}
+      {{end}}
       {{.SERVICE}} {{.COMMAND}}
 
   up:

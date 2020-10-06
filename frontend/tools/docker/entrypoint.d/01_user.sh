@@ -16,5 +16,6 @@ adduser -s /bin/bash -D -u $USER_ID -g "" $USER_NAME
 
 export HOME=/home/$USER_NAME
 echo "HOME : $HOME"
+chown -R $USER_NAME:$USER_NAME ./
 
 exec su-exec $USER_NAME "$@"
