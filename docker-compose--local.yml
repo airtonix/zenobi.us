@@ -3,7 +3,7 @@ version: "2.3"
 services:
 
   frontend:
-    image: docker.pkg.github.com/airtonix/zenobi.us/frontend:fd723ec
+    image: docker.pkg.github.com/airtonix/zenobi.us/frontend:e72cbe3
     ports:
       - 3000:3000
       - 9001:9001
