@@ -98,8 +98,9 @@ tasks:
           - prod
           - dev
           - test
-      status:
-        - docker images {{.DOCKER_REGISTRY}}/{{.SERVICE}} | grep {{.TAG}}
+      sources:
+        - ./{{.SERVICE}}/tools/docker/Dockerfile
+        - ./{{.SERVICE}}/**/*
       cmds:
         # pull the cached layers
         - docker pull {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder || true

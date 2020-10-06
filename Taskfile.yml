@@ -10,7 +10,7 @@ vars:
     sh: git rev-parse --short HEAD
 
 includes:
-  docker: ./tools/tasks/docker.yml
+  docker: ./tools/docker/Taskfile.yml
 
 tasks:
 
@@ -18,14 +18,38 @@ tasks:
     - task: setup
 
   setup:
-    - task: setup.docker
+    desc: Project setup starts here
+    summary: |
+      If you're in any doubt about the correctness
+      of your project setup, just run this.
+
+      See the related tasks for more info.
+    cmds:
+      - task: setup.docker
 
   setup.docker:
-    - task: docker:build
-      vars:
-        SERVICE: frontend
-        TAG: '{{.VERSION}}'
-    - task: docker:templates
+    desc: recreates the docker images locally
+    summary: |
+      ## Docker Images
+
+      !> By default this project should have ready to rock
+      images stored on Github Packages, the docker-compose
+      files should be up to date by virtue of going through
+      the `pr/branch > master` actions.
+
+      If you need to generate new images localy though, this
+      task will generate new images and update the
+      docker-compose files
+
+      To see what these `docker:*` tasks do, look in
+      `tools/docker/tasks.yml`
+
+    cmds:
+      - task: docker:build
+        vars:
+          SERVICE: frontend
+          TAG: '{{.VERSION}}'
+      - task: docker:templates
 
   dev:
     - task: docker:up

@@ -31,9 +31,6 @@ FROM base as builder
 
 WORKDIR /build
 
-ARG USER_NAME=user
-USER $USER_NAME
-
 COPY ./package.json \
      ./yarn.lock \
      ./
@@ -45,8 +42,18 @@ RUN yarn install
 #
 FROM base as prod
 
-COPY --from=builder /build/node_modules /app/node_modules
-COPY . ./
+ARG USER_NAME=user
+ARG USER_ID=1001
+RUN adduser -D \
+     -h /home/$USER_NAME \
+     -s /bin/bash \
+     -u $USER_ID \
+     $USER_NAME
 
+
+COPY --from=builder --chown=$USER_NAME /build/node_modules /app/node_modules
+COPY --chown=${USER_NAME} . ./
+RUN chown ${USER_ID}:${USER_ID} ./
 ARG COMMIT
 ENV COMMIT=${COMMIT}
+USER ${USER_NAME}

@@ -50,14 +50,18 @@ tasks:
       - uses `https://<SITE_DOMAIN>` to configure siteMetaData
       - builds into `./public`
       - then gets moved to `./dist/<SITE_PATH>/`
-
     env:
       FRONTEND__SITE__DOMAIN: "{{.SITE_DOMAIN}}"
       FRONTEND__SITE__ROOT: "{{.SITE_ROOT}}"
       FRONTEND__SITE__PATH: "{{.SITE_PATH}}"
     cmds:
       - npx gatsby build
-      - npx cpy-cli ./public/**/* ./dist/{{.SITE_PATH}}
+      - >-
+        npx cpy-cli
+        '**/*'
+        '../dist/{{.SITE_PATH}}'
+        --cwd=./public
+        --parents
 
   env.dump:
     env:
