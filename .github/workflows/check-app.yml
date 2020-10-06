@@ -20,7 +20,7 @@ jobs:
 
       - name: Build Docker Assets
         run: >-
-          task create
+          task setup.docker
           REPO=$CI_SETTINGS__APP_DOCKER_REPO/site
           VERSION=$GITHUB_SHA
 
