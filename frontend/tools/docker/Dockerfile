@@ -49,11 +49,9 @@ RUN adduser -D \
      -s /bin/bash \
      -u $USER_ID \
      $USER_NAME
-
-
 COPY --from=builder --chown=$USER_NAME /build/node_modules /app/node_modules
 COPY --chown=${USER_NAME} . ./
-RUN chown ${USER_ID}:${USER_ID} ./
+
 ARG COMMIT
 ENV COMMIT=${COMMIT}
 USER ${USER_NAME}
