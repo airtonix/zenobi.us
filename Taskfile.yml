@@ -2,7 +2,7 @@
 version: '3'
 
 vars:
-  GIT_REPO: ssh://git@github.com/airtonix/zenobi.us.git
+  GIT_REPO: github.com/airtonix/zenobi.us.git
   DOCKER_REGISTRY: docker.pkg.github.com/airtonix/zenobi.us
   SERVICE: frontend
   STAGE: local
@@ -25,7 +25,12 @@ tasks:
 
       See the related tasks for more info.
     cmds:
+      - task: setup.commands
       - task: setup.docker
+
+  setup.commands: >-
+    npm install -g
+      gh-pages
 
   setup.docker:
     desc: recreates the docker images locally
@@ -152,7 +157,8 @@ tasks:
         --add
         --src={{.DEPLOY_SOURCE}}/**/*
         --dist=frontend/dist
-        --repo={{.GIT_REPO}}
+        --user="github-actions-bot <support+actions@github.com>"
+        --repo=https://git:{{.GITHUB_TOKEN}}@{{.GIT_REPO}}
       - npx rimraf package.json
 
   frontend.test:
