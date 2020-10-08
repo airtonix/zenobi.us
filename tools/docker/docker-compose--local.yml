@@ -14,6 +14,5 @@ services:
       - DEBUG=project*,config*
     volumes:
       - ./frontend:/app
-      - ./frontend/tools/docker/entrypoint.d/:./entrypoint.d/
       - /app/node_modules/
     command: task dev
