@@ -5,5 +5,4 @@ services:
   frontend:
     image: ${repo}/frontend:${version}
     volumes:
-      - ./frontend/public:/app/public
       - ./frontend/dist:/app/dist

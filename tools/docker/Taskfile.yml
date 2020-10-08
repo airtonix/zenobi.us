@@ -47,7 +47,6 @@ tasks:
       -f docker-compose.yml
       {{if .STAGE}}-f docker-compose--{{.STAGE}}.yml{{end}}
       run --rm
-      -u node
       {{.SERVICE}} {{.COMMAND}}
 
   up:

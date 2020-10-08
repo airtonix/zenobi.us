@@ -32,4 +32,4 @@ fi
 # Launch CMD
 #
 echo "[ENTRYPOINT]: -> $@"
-exec "$@"
+exec su-exec ${USER:-node} "$@"

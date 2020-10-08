@@ -40,11 +40,14 @@ RUN yarn install
 FROM base as prod
 
 RUN mkdir /app && chown node:node /app
+
 WORKDIR /app
-ENV PROJECT_DIR=/app
 
 COPY --from=builder --chown=node /build/node_modules /app/node_modules
 COPY --chown=node . ./
 
 ARG COMMIT
+
 ENV COMMIT=${COMMIT}
+ENV PROJECT_DIR=/app
+ENV USER=node
