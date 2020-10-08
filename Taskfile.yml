@@ -28,8 +28,9 @@ tasks:
       - task: setup.commands
       - task: setup.docker
 
-  setup.commands: >-
-    npm install -g
+  setup.commands:
+    - >-
+      npm install -g
       gh-pages
 
   setup.docker:
