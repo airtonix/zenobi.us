@@ -47,6 +47,7 @@ tasks:
       -f docker-compose.yml
       {{if .STAGE}}-f docker-compose--{{.STAGE}}.yml{{end}}
       run --rm
+      -e ENTRYPOINT_TASK_SET_USER_FILESYSTEM_PERMISSIONS=1
       {{.SERVICE}} {{.COMMAND}}
 
   up:

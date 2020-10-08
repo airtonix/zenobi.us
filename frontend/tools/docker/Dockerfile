@@ -15,9 +15,7 @@ RUN apk --update --no-cache add \
 ENV ENTRYPOINT_TASKS_DIR=/entrypoint.d/
 
 COPY ./tools/docker/entrypoint.sh /entrypoint.sh
-COPY ./tools/docker/entrypoint.d/* /entrypoint.d/
 RUN chmod +x /entrypoint.sh
-RUN chmod +x /entrypoint.d/*
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 
@@ -38,6 +36,9 @@ RUN yarn install
 #
 #
 FROM base as prod
+
+COPY ./tools/docker/entrypoint.d/* /entrypoint.d/
+RUN chmod +x /entrypoint.d/*
 
 ARG USER_NAME=node
 
