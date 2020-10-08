@@ -25,13 +25,7 @@ tasks:
 
       See the related tasks for more info.
     cmds:
-      - task: setup.commands
       - task: setup.docker
-
-  setup.commands:
-    - >-
-      npm install -g
-      gh-pages
 
   setup.docker:
     desc: recreates the docker images locally
