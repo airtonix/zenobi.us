@@ -54,8 +54,8 @@ jobs:
 
       - name: Run linting
         run: >-
-          task app.lint
+          task frontend.lint
 
       - name: Run tests
         run: >-
-          task app.test
+          task frontend.test
