@@ -1,0 +1,174 @@
+# code: language=yaml
+version: '3'
+
+vars:
+  GIT_REPO: github.com/airtonix/zenobi.us.git
+  DOCKER_REGISTRY: docker.pkg.github.com/airtonix/zenobi.us
+  SERVICE: frontend
+  STAGE: local
+  VERSION:
+    sh: git rev-parse --short HEAD
+
+includes:
+  docker: ./tools/docker/Taskfile.yml
+
+tasks:
+
+  default:
+    - task: setup
+
+  setup:
+    desc: Project setup starts here
+    summary: |
+      If you're in any doubt about the correctness
+      of your project setup, just run this.
+
+      See the related tasks for more info.
+    cmds:
+      - task: setup.docker
+
+  setup.docker:
+    desc: recreates the docker images locally
+    summary: |
+      ## Docker Images
+
+      !> By default this project should have ready to rock
+      images stored on Github Packages, the docker-compose
+      files should be up to date by virtue of going through
+      the `pr/branch > master` actions.
+
+      If you need to generate new images localy though, this
+      task will generate new images and update the
+      docker-compose files
+
+      To see what these `docker:*` tasks do, look in
+      `tools/docker/tasks.yml`
+
+    cmds:
+      - task: docker:build
+        vars:
+          SERVICE: frontend
+          TAG: '{{.VERSION}}'
+      - task: docker:templates
+
+  dev:
+    - task: docker:up
+
+  prod:
+    - task: frontend.build
+    - task: frontend.deploy
+
+  frontend.shell:
+    desc: Open a shell session in the frontend container
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: /bin/sh
+
+  frontend.envdump:
+    desc: Tests the passing of env vars to container task
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: >-
+            task env.dump
+            SITE_DOMAIN={{.SITE_DOMAIN}}
+            SITE_ROOT={{.SITE_ROOT}}
+            SITE_PATH={{.SITE_PATH}}
+
+  frontend.build:
+    desc: Build the frontend using its container
+    summary: |
+      Uses docker-compose to build the site.
+
+      See: prod task in ./frontend/Taskfile.yml
+
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: >-
+            task prod
+            SITE_DOMAIN={{.SITE_DOMAIN}}
+            SITE_ROOT={{.SITE_ROOT}}
+            SITE_PATH={{.SITE_PATH}}
+
+  frontend.deploy:
+    desc: Deploy the site.
+    summary: |
+      Takes in three parameters (that have defaults) to control
+      how links within the site are generated and how gh-pages deploys.
+
+      **End result**
+
+      ```
+      <SITE_DOMAIN><SITE_ROOT><SITE_PATH>
+        /index.html     <- gatsby site
+        /**             <- other gatsby pages/folders
+        /storybook
+          /index.html   <- storybook
+          /**           <- storybook files
+      ```
+
+      **Storybook**
+      - builds into: `./dist/<SITE_PATH>/storybook`
+
+      **Gatsby**
+      - uses `https://<SITE_ROOT><SITE_PATH>` to prefix all the links generated
+      - builds into `./public`
+      - then gets moved to `./dist/<SITE_PATH>/`
+
+      **GHPages**
+      - adds `./dist/<SITE_PATH>/**/*` to branch `gh-pages`
+
+      **SITE_DOMAIN**
+
+      default: zenobi.us
+      usedby:
+        - gatsby
+        - creating CNAME file
+
+      **SITE_ROOT**
+
+      default: blank string
+      used by:
+        - gatsby
+
+      **SITE_PATH**
+
+      default: blank string
+      used by:
+        - gatsby
+        - storybook
+    env:
+      NODE_DEBUG: gh-pages
+    cmds:
+      # create a fake package.json, because https://github.com/tschaub/gh-pages/issues/354
+      - touch package.json
+      - >-
+        npx gh-pages
+        --add
+        --src={{.DEPLOY_SOURCE}}/**/*
+        --dist=frontend/dist
+        --user="github-actions-bot <support+actions@github.com>"
+        --repo=https://git:{{.GITHUB_TOKEN}}@{{.GIT_REPO}}
+        {{if .PRE_DEPLOY_TASK}}
+        --before-add={{.PRE_DEPLOY_TASK}}
+        {{end}}
+      - npx rimraf package.json
+
+  frontend.test:
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: task test
+
+  frontend.lint:
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: task lint

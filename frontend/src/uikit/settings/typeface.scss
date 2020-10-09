@@ -1,0 +1,50 @@
+/*
+Typeface Map
+
+Styleguide Core.Settings.Typeface
+*/
+$settings--typeface-family--robotoslab: 'Roboto Slab', serif;
+$settings--typeface-family--opensans: 'Open Sans', sans-serif;
+$settings--typeface: (
+  'base' : (
+    font-family: $settings--typeface-family--opensans,
+    font-weight: 400,
+    font-style: normal,
+    font-size: 16px
+  ),
+  'page-heading': (
+    font-family: $settings--typeface-family--robotoslab,
+    font-weight: 700,
+    font-style: normal,
+    font-size: 22px
+  ),
+  'page-meta': (
+    font-family: $settings--typeface-family--robotoslab,
+    font-weight: 400,
+    font-style: normal,
+    font-size: 16px
+  ),
+  'section-heading': (
+    font-family: $settings--typeface-family--robotoslab,
+    font-weight: 700,
+    font-style: normal,
+    font-size: 18px
+  ),
+  'section-description' : (
+    font-family: $settings--typeface-family--opensans,
+    font-weight: 400,
+    font-style: normal,
+    font-size: 18px,
+  ),
+  'button' : (
+    font-family: $settings--typeface-family--opensans,
+    font-weight: 700,
+    font-style: normal,
+    text-transform: uppercase
+  ),
+  'paragraph' : (
+    font-family: $settings--typeface-family--opensans,
+    font-weight: 400,
+    font-style: normal
+  ),
+);

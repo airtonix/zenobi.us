@@ -1,0 +1,336 @@
+import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+import { Button, ButtonStyles, ButtonShapes, ButtonSizes } from './Button';
+import { Icon } from './Icon'
+
+export const Template = (args) => <Button {...args } />;
+
+<Meta
+  title="Components/Button"
+  component={Button} />
+
+# Button
+
+<Canvas>
+    <Story name="basic" args={{ label: 'A button' }}>
+        {Template.bind({})}
+    </Story>
+    <Story name="primary" args={{
+        label: 'A button',
+        style: ButtonStyles.Primary
+    }}>
+        {Template.bind({})}
+    </Story>
+    <Story name="secondary" args={{
+        label: 'A button',
+        style: ButtonStyles.Secondary
+    }}>
+        {Template.bind({})}
+    </Story>
+    <Story name="link" args={{
+        label: 'A button link',
+        style: ButtonStyles.Link
+    }}>
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+<Description of={Button} />
+
+<ArgsTable of={Button} />
+
+## Interactions
+
+A button reacts to users mouse or touches.
+
+normal
+<Canvas>
+    <Story
+        name="hover"
+        args={{
+            label: 'hover',
+            isHover: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="focus"
+        args={{
+            label: 'focus',
+            isFocus: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="active"
+        args={{
+            label: 'active',
+            isActive: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+primary
+<Canvas>
+    <Story
+        name="primary hover"
+        args={{
+            label: 'primary hover',
+            style: ButtonStyles.Primary,
+            isHover: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="primary focus"
+        args={{
+            label: 'primary focus',
+            style: ButtonStyles.Primary,
+            isFocus: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="primary active"
+        args={{
+            label: 'primary active',
+            style: ButtonStyles.Primary,
+            isActive: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+secondary
+<Canvas>
+    <Story
+        name="secondary hover"
+        args={{
+            label: 'secondary hover',
+            style: ButtonStyles.Secondary,
+            isHover: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="secondary focus"
+        args={{
+            label: 'secondary focus',
+            style: ButtonStyles.Secondary,
+            isFocus: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="secondary active"
+        args={{
+            label: 'secondary active',
+            style: ButtonStyles.Secondary,
+            isActive: true
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+## Shape
+
+normal
+<Canvas>
+    <Story
+        name="shape sqaure"
+        args={{
+            label: 'sqaure',
+            shape: ButtonShapes.Square,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="shape round"
+        args={{
+            label: 'round',
+            shape: ButtonShapes.Round,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="shape circular"
+        args={{
+            label: 'circular',
+            shape: ButtonShapes.Circular,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+primary
+<Canvas>
+    <Story
+        name="primary: shape sqaure"
+        args={{
+            label: 'sqaure',
+            style: ButtonStyles.Primary,
+            shape: ButtonShapes.Square,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="primary: shape round"
+        args={{
+            label: 'round',
+            style: ButtonStyles.Primary,
+            shape: ButtonShapes.Round,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="primary: shape circular"
+        args={{
+            label: 'circular',
+            style: ButtonStyles.Primary,
+            shape: ButtonShapes.Circular,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+secondary
+<Canvas>
+    <Story
+        name="secondary: shape sqaure"
+        args={{
+            label: 'sqaure',
+            style: ButtonStyles.Secondary,
+            shape: ButtonShapes.Square,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="secondary: shape round"
+        args={{
+            label: 'round',
+            style: ButtonStyles.Secondary,
+            shape: ButtonShapes.Round,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="secondary: shape circular"
+        args={{
+            label: 'circular',
+            style: ButtonStyles.Secondary,
+            shape: ButtonShapes.Circular,
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>
+
+
+## With Icons
+
+A button can have a prefix or a suffix icon.
+
+if a string is provided, then a simple instance of `<Icon />` is used.
+
+<Canvas>
+    <Story name="simple prefix icon" args={{ label: 'Help', prefixIcon: 'help' }}>
+        {Template.bind({})}
+    </Story>
+    <Story name="simple suffix icon" args={{ label: 'Next', suffixIcon: 'keyboard_arrow_right' }}>
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="simple suffix icon"
+        args={{
+            label: 'Next',
+            suffixIcon: 'keyboard_arrow_right',
+            shape: ButtonShapes.Circular,
+        }}>
+        {Template.bind({})}
+    </Story>
+    <Story name="custom suffix icon">
+        <Button
+            label={'custom suffix icon'}
+            suffixIcon={(
+                <Icon
+                    badge='solid'
+                    size='big'
+                    name='comment'
+                />
+            )}
+        />
+    </Story>
+    <Story name="custom prefix icon">
+        <Button
+            label={'custom prefix icon'}
+            prefixIcon={(
+                <Icon
+                    badge='solid'
+                    size='big'
+                    name='comment'
+                />
+            )}
+        />
+    </Story>
+    <Story name="link button with icon">
+        <Button
+            style={ButtonStyles.Link}
+            label={'link button'}
+            prefixIcon={'help'}
+        />
+    </Story>
+</Canvas>
+
+## Custom elements
+
+A button can be made out of another element
+
+<Canvas>
+    <Story
+        name="custom element: <a>"
+        args={{
+            label: 'as a link',
+            suffixIcon: 'link',
+            as: 'a'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="custom element: <div>"
+        args={{
+            label: 'as a div',
+            suffixIcon: 'markup',
+            as: 'div'
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+    <Story
+        name="custom element: another react component"
+        args={{
+            label: 'Another Component',
+            suffixIcon: 'react',
+            as: ({ children, className }) => <div className={`${className} something`}>{children}</div>
+        }}
+    >
+        {Template.bind({})}
+    </Story>
+</Canvas>

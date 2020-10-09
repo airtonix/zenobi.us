@@ -1,0 +1,153 @@
+# code: language=yaml
+version: '3'
+
+vars:
+  USER_ID: 1001
+
+tasks:
+
+  templates:
+    deps:
+      - templates.base
+      - templates.local
+      - templates.ci
+    sources:
+      - tools/docker/**/docker-compose*.yml
+
+  templates.base:
+    cmds:
+      - task: template
+        vars:
+          INFILE: ./tools/docker/docker-compose.yml
+          OUTFILE: ./docker-compose.yml
+    generates:
+      - ./docker-compose.yml
+
+  templates.local:
+    cmds:
+      - task: template
+        vars:
+          INFILE: ./tools/docker/docker-compose--local.yml
+          OUTFILE: ./docker-compose--local.yml
+    generates:
+      - ./docker-compose--local.yml
+
+  templates.ci:
+    cmds:
+      - task: template
+        vars:
+          INFILE: /tools/docker/docker-compose--ci.yml
+          OUTFILE: /docker-compose--ci.yml
+    generates:
+      - ./docker-compose--ci.yml
+
+  run:
+    - >-
+      docker-compose
+      -f docker-compose.yml
+      {{if .STAGE}}-f docker-compose--{{.STAGE}}.yml{{end}}
+      run --rm
+      -e ENTRYPOINT_TASK_SET_USER_FILESYSTEM_PERMISSIONS=1
+      {{.SERVICE}} {{.COMMAND}}
+
+  up:
+    docker-compose
+    -f docker-compose.yml
+    -f docker-compose--{{.STAGE}}.yml
+    up {{.SERVICES}}
+
+  template: >-
+    docker run --rm
+    -v "${PWD}:/tmp"
+    -e repo={{.DOCKER_REGISTRY}}
+    -e version={{.VERSION}}
+    supinf/envsubst
+    /tmp/{{.INFILE}} > ./{{.OUTFILE}}
+
+  publish:
+    help: Publish a docker Image
+    summary: |
+      Retags an image and pushes it to a registry.
+    cmds:
+      - docker tag {{.IMAGE}} {{.TAG}}
+      - docker push {{.TAG}}
+
+  build:
+      desc: Build Docker Image
+      summary: |
+        Optimised docker image builder.
+
+        This process works by keeping your image contents separated
+        into two groups:
+          - things that shouldn't change much, the OS and your packages.
+          - the things that would, your source code.
+
+        This works by pulling and using the builder and latest tags
+        as a layer cache.
+
+        - builder tag is updated on pr/merge into develop.
+        - latest tag is created on develop/merge into master.
+
+        To acheieve this, your Dockerfile(s) should use multistage builds.
+        You will be exected to have at least these targets:
+          - base
+          - prod
+
+        Although I'd recommend you actually have something like:
+          - base
+          - builder
+          - prod
+          - dev
+          - test
+      # sources:
+      #   - ./{{.SERVICE}}/tools/docker/Dockerfile
+      #   - ./{{.SERVICE}}/**/*
+      cmds:
+        # pull the cached layers
+        - docker pull {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder || true
+
+        # rebuild it. if nothing in these layers
+        # have changes, this should be very fast.
+        - >-
+            docker build
+            --cache-from {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder
+            --file ./{{.SERVICE}}/tools/docker/Dockerfile
+            --tag {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder
+            --target builder
+            ./{{.SERVICE}}
+        - >-
+          {{if .PUBLISH_BUILDER}}
+          docker push
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder
+          {{end}}
+        # # pull the latest image
+        - docker pull {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest || true
+
+        # rebuild it using cache layers from:
+        # - builder
+        # - latest
+        - >-
+            docker build
+            --build-arg COMMIT={{.VERSION}}
+            --cache-from {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder
+            --cache-from {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest
+            --file ./{{.SERVICE}}/tools/docker/Dockerfile
+            --tag {{.DOCKER_REGISTRY}}/{{.SERVICE}}:{{.TAG}}
+            --target prod
+            ./{{.SERVICE}}
+        - >-
+          {{if .PUBLISH_TAG}}
+          docker push
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:{{.TAG}}
+          {{end}}
+        - >-
+          {{if .PUBLISH_LATEST}}
+          docker tag
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:{{.TAG}}
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest
+          {{end}}
+        - >-
+          {{if .PUBLISH_LATEST}}
+          docker push
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest
+          {{end}}

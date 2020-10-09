@@ -1,0 +1,23 @@
+/*
+Breakpoint Map
+
+Styleguide Core.Settings.Breakpoints
+*/
+$settings--breakpoints: (
+  small: 425px,
+  medium: 768px,
+  large: 1024px,
+  xlarge: 1190px,
+  xxlarge: 1440px,
+);
+
+$settings--media--screen: 'screen';
+$settings--media--prinit: 'print';
+
+$settings--orientations--portrait: '(orientation: portrait)';
+$settings--orientations--landscape: '(orientation: landscape)';
+
+$settings--orientations: (
+  portrait: $settings--orientations--portrait,
+  landscape: $settings--orientations--landscape,
+);

@@ -1,4 +1,12 @@
-node_modules
 .git
-.nuxt
 .vscode
+tmp/
+node_modules
+.cache/
+dist/
+public/
+
+docker-compose.yml
+docker-compose--ci.yml
+docker-compose--local.yml
+Dockerfile

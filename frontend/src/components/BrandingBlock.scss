@@ -1,0 +1,11 @@
+@import "~/uikit/index";
+
+@import "./BrandingBlock--smallup";
+
+@media #{breakpoint-lte(medium)} and #{orientation(landscape)} {
+  @import "./BrandingBlock--smallup-landscape";
+}
+
+@media #{breakpoint-gt(medium)} {
+  @import "./BrandingBlock--mediumup";
+}

@@ -1,0 +1,34 @@
+import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+import { PostSummary } from './PostSummary'
+import { LoremIpsum, Avatar, name, surname, username } from 'react-lorem-ipsum'
+
+export const Template = (args) => <PostSummary {...args } />;
+
+<Meta title="Components/PostSummary" component={PostSummary} />
+
+# PostSummary
+
+A special block of small information
+
+<Canvas>
+  <Story name="basic" args={{
+    title: 'A Title',
+    summary: (<LoremIpsum p={1} />)
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable of={PostSummary} />
+
+## With Tags
+
+<Canvas>
+  <Story name="tags" args={{
+    title: 'A Title',
+    summary: (<LoremIpsum p={1} />),
+    tags: ['one', 'two']
+  }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

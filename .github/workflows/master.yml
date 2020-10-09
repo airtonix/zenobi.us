@@ -1,0 +1,53 @@
+name: Prod
+
+on:
+  push:
+    branches:
+      -  master
+
+env:
+  CI_SETTINGS__APP_DOCKER_REPO: docker.pkg.github.com/airtonix/zenobi.us
+
+jobs:
+
+  ProdBuildSite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+      - name: Install Taskfile
+        uses: Arduino/actions/setup-taskfile@master
+        with:
+          version: '3.0.0'
+
+      - name: Build Docker Assets
+        run: >-
+          task setup.docker
+          REPO=$CI_SETTINGS__APP_DOCKER_REPO/site
+          VERSION=${{ github.sha }}
+          PUBLISH_LATEST=true
+          PUBLISH_TAG=true
+          PUBLISH_BUILDER=true
+
+      - uses: EndBug/add-and-commit@v4 # You can change this to use a specific version
+        with:
+          add: docker-compose*
+        env:
+          # This is necessary in order to push a commit to the repo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+
+      - name: Build Site
+        run: >-
+          task frontend.build
+          STAGE=ci
+          SITE_DOMAIN=airtonix.github.io
+          SITE_ROOT=zenobi.us
+
+      - name: Deploy Branch Preview
+        run: >-
+          task frontend.deploy
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          PRE_DEPLOY_TASK=./tools/deploy/cleanup-production.js

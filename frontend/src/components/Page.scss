@@ -1,0 +1,11 @@
+@import "~/uikit/index";
+
+@import "./Page--smallup";
+
+@media #{breakpoint-lte(medium)} and #{orientation(landscape)} {
+  @import "./Page--smallup-landscape";
+}
+
+@media #{breakpoint-gt(medium)} {
+  @import "./Page--mediumup";
+}

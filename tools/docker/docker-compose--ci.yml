@@ -1,0 +1,8 @@
+version: "2.3"
+
+services:
+
+  frontend:
+    image: ${repo}/frontend:${version}
+    volumes:
+      - ./frontend/dist:/app/dist

@@ -1,0 +1,60 @@
+.post-summary {
+  margin: get-spacing-px(normal) 0;
+  box-shadow: none;
+
+  line-height: calc(1em + 1ex);
+
+  transition: color 250ms ease-in-out;
+
+  cursor: pointer;
+}
+
+.post-summary .card__container {
+  padding: get-spacing-px(normal);
+}
+
+.post-summary__header {
+  margin-bottom: get-spacing(small);
+}
+
+.post-summary__title {
+  @include get-typeface(section-heading);
+  filter: brightness(.65);
+}
+
+.post-summary__summary {
+  color: get-colour(grey);
+  filter: brightness(.75);
+}
+
+.post-summary__tags {
+  display: flex;
+  flex-direction: row;
+  margin-top: get-spacing-px(small);
+  @include get-typeface(section-description);
+  color: get-colour(grey);
+}
+
+.post-summary__tag {
+  margin-right: get-spacing-px(small);
+  background-color: white;
+  color: get-colour(skyblue);
+}
+
+.post-summary:hover {
+  text-decoration: underline;
+  color: get-colour(skyblue);
+
+}
+
+.post-summary * {
+  text-decoration: none;
+}
+
+.post-summary:visited {
+  color: get-colour(queenblue, dark);
+}
+
+.post-summary:hover {
+  color: get-colour(queenblue, light);
+}

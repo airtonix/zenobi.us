@@ -1,0 +1,86 @@
+name: Review
+
+on:
+  pull_request:
+
+env:
+  CI_SETTINGS__APP_DOCKER_REPO: docker.pkg.github.com/airtonix/zenobi.us
+
+jobs:
+
+  BranchPreviewBuildSite:
+    runs-on: ubuntu-latest
+    if: ${{ !github.event.pull_request.merged }}
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+
+      - name: Install Taskfile
+        uses: Arduino/actions/setup-taskfile@master
+        with:
+          version: '3.0.0'
+
+      - name: Build Docker Assets
+        run: >-
+          task setup.docker
+          REPO=$CI_SETTINGS__APP_DOCKER_REPO/site
+          VERSION=${{ github.sha }}
+
+      - name: Build Site
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: >-
+          task frontend.build
+          STAGE=ci
+          SITE_DOMAIN=airtonix.github.io
+          SITE_ROOT=zenobi.us
+          SITE_PATH=pr/${PR_NUMBER}
+
+      - name: Deploy Branch Preview
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: >-
+          task frontend.deploy
+          DEPLOY_SOURCE=pr/${PR_NUMBER}
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on PR
+        uses: unsplash/comment-on-pr@master
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: |
+            🚢 Branch Preview Deployed:
+            - https://airtonix.github.io/zenobi.us/pr/${{ github.event.pull_request.number }}
+
+      - name: Run linting
+        run: >-
+          task frontend.lint
+          STAGE=ci
+
+      - name: Run tests
+        run: >-
+          task frontend.test
+          STAGE=ci
+
+  BranchPreviewCleanup:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged }}
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install Taskfile
+        uses: Arduino/actions/setup-taskfile@master
+        with:
+          version: '3.0.0'
+
+      - name: Remove Branch Preview
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: >-
+          task frontend.deploy
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          PRE_DEPLOY_TASK=./tools/deploy/remove-branch-preview.js

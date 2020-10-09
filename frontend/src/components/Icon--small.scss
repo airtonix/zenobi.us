@@ -1,0 +1,75 @@
+$icon_sizes: (
+  small: 12,
+  normal: 16,
+  big: 18,
+  large: 24,
+  huge: 48,
+  massive: 64,
+  enormous: 96
+);
+$icon_badge_padding_multiplier: 1.2;
+
+.icon {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.icon.icon--is-badge {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon.icon--is-badge::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 1000px;
+}
+
+.icon.icon--is-solid-badge::before {
+  background: currentColor;
+  opacity: .2;
+}
+
+.icon.icon--is-outline-badge::before {
+  box-shadow: 0 0 0 4px currentColor;
+}
+
+.icon.icon--is-badge::after { /* to clear float */
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.icon.icon--is-clickable {
+  cursor: pointer;
+}
+
+@each $name, $size in $icon_sizes {
+  .icon.icon--size-#{$name} {
+    height: #{$size}px;
+    font-size: #{$size}px;
+  }
+  .icon.icon--size-#{$name}.icon--is-badge {
+    width: #{$size + $size / $icon_badge_padding_multiplier}px;
+    height: #{$size + $size / $icon_badge_padding_multiplier}px;
+  }
+}
+
+
+.icon.icon--tone-dark { color: rgba(0, 0, 0, .54); }
+.icon.icon--tone-dark.icon--inactive { color: rgba(0, 0, 0, .54); }
+
+.icon.icon--tone-light {
+  filter: contrast(4) invert(1);
+}
+
+.icon.icon--tone-light.icon--inactive {
+  filter: contrast(4) invert(1) alpha(.5);
+}

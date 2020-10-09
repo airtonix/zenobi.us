@@ -1,0 +1,93 @@
+import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+import { Button, ButtonPrimary, ButtonSecondary, ButtonTertiary } from './Button'
+import { ButtonGroup, ButtonGroupDirections, ButtonGroupSeparatorStyles } from './ButtonGroup'
+
+
+<Meta title="Components/ButtonGroup" component={ButtonGroup} />
+
+# ButtonGroup
+
+A ButtonGroup holds Buttons in an arrangement to suit spacing within and between its neigbours
+
+
+<Canvas>
+    <Story name="basic">
+        <ButtonGroup joined direction={ButtonGroupDirections.Horizontal}>
+            <Button label='one' />
+            <Button label='two' />
+            <Button label='three' />
+        </ButtonGroup>
+    </Story>
+</Canvas>
+
+<ArgsTable of={ButtonGroup} />
+
+## Direction
+
+A ButtonGroup can have a `direction`
+
+<Canvas>
+    <Story name="vertical">
+        <ButtonGroup direction={ButtonGroupDirections.Vertical}>
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
+        </ButtonGroup>
+    </Story>
+</Canvas>
+
+## Separators
+
+A ButtonGroup can have a `separators`
+
+<Canvas>
+    <Story name="separator dots row">
+        <ButtonGroup 
+            direction={ButtonGroupDirections.Horizontal}
+            separator={ButtonGroupSeparatorStyles.Dots}
+        >
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
+        </ButtonGroup>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="separator dots column">
+        <ButtonGroup 
+            direction={ButtonGroupDirections.Vertical}
+            separator={ButtonGroupSeparatorStyles.Dots}
+        >
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
+        </ButtonGroup>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="separator lines row">
+        <ButtonGroup 
+            direction={ButtonGroupDirections.Horizontal}
+            separator={ButtonGroupSeparatorStyles.Lines}
+        >
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
+        </ButtonGroup>
+    </Story>
+</Canvas>
+
+<Canvas>
+    <Story name="separator lines column">
+        <ButtonGroup 
+            direction={ButtonGroupDirections.Vertical}
+            separator={ButtonGroupSeparatorStyles.Lines}
+        >
+            <ButtonPrimary label='one' />
+            <ButtonSecondary label='two' />
+            <ButtonTertiary label='three' />
+        </ButtonGroup>
+    </Story>
+</Canvas>
