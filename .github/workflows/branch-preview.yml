@@ -20,6 +20,7 @@ jobs:
 
   BuildSite:
     needs: Setup
+    runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.merged }}
     steps:
       - name: Build Docker Assets
@@ -58,6 +59,7 @@ jobs:
 
   RunChecks:
     needs: BuildSite
+    runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.merged }}
     steps:
       - name: Run linting
