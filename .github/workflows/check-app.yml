@@ -12,10 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: jwalton/gh-find-current-pr@b4cdaa6
-        id: findPr
+      - uses: 8BitJonny/gh-get-current-pr@9189110
+        id: PR
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          filterOutClosed: true
       - name: Install Taskfile
         uses: Arduino/actions/setup-taskfile@master
         with:
@@ -28,31 +29,38 @@ jobs:
           VERSION=${{ github.sha }}
 
       - name: Build Site
+        env:
+          PR_NUMBER: ${{ steps.PR.outputs.number }}
         run: >-
           task frontend.build
           STAGE=ci
           SITE_DOMAIN=airtonix.github.io
           SITE_ROOT=zenobi.us
-          SITE_PATH=pr/${{ steps.findPr.outputs.pr }}
+          SITE_PATH=pr/${PR_NUMBER}
 
       - name: Deploy Branch Preview
+        env:
+          PR_NUMBER: ${PR_NUMBER}
         run: >-
           task frontend.deploy
-          DEPLOY_SOURCE=pr/${{ steps.findPr.outputs.pr }}
+          DEPLOY_SOURCE=pr/${PR_NUMBER}
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Comment on PR
         uses: unsplash/comment-on-pr@master
         env:
+          PR_NUMBER: ${PR_NUMBER}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           msg: |
             🚢 Branch Preview Deployed:
-            - https://airtonix.github.io/zenobi.us/pr/${{ steps.findPr.outputs.pr }}/
+            - https://airtonix.github.io/zenobi.us/pr/${PR_NUMBER}/
 
       - name: Run linting
         run: >-
           task app.lint
+
+      - name: Report Linting Errors
 
       - name: Run tests
         run: >-
