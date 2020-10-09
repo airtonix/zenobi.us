@@ -55,7 +55,9 @@ tasks:
       FRONTEND__SITE__ROOT: "{{.SITE_ROOT}}"
       FRONTEND__SITE__PATH: "{{.SITE_PATH}}"
     cmds:
-      - npx gatsby build
+      - >-
+        npx gatsby build
+        --prefix-paths
       - whoami
       - ls -al ./dist
       - >-
