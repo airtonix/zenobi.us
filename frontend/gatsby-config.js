@@ -8,7 +8,7 @@ const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases
 const Config = require('./tools/config')
 
 module.exports = {
-  pathPrefix: [
+  pathPrefix: '/' + [
     get(Config, 'site.root'),
     get(Config, 'site.path'),
   ].join('/'),
