@@ -46,8 +46,8 @@ jobs:
           SITE_DOMAIN=airtonix.github.io
           SITE_ROOT=zenobi.us
 
-        - name: Deploy Branch Preview
-          run: >-
-            task frontend.deploy
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-            PRE_DEPLOY_TASK=./tools/deploy/cleanup-production.js
+      - name: Deploy Branch Preview
+        run: >-
+          task frontend.deploy
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          PRE_DEPLOY_TASK=./tools/deploy/cleanup-production.js
