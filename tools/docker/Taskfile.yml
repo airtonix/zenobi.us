@@ -115,7 +115,11 @@ tasks:
             --tag {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder
             --target builder
             ./{{.SERVICE}}
-
+        - >-
+          {{if .PUBLISH_BUILDER}}
+          docker push
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder
+          {{end}}
         # # pull the latest image
         - docker pull {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest || true
 
@@ -128,10 +132,22 @@ tasks:
             --cache-from {{.DOCKER_REGISTRY}}/{{.SERVICE}}:builder
             --cache-from {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest
             --file ./{{.SERVICE}}/tools/docker/Dockerfile
-            --tag {{.DOCKER_REGISTRY}}/{{.SERVICE}}
+            --tag {{.DOCKER_REGISTRY}}/{{.SERVICE}}:{{.TAG}}
             --target prod
             ./{{.SERVICE}}
         - >-
-          docker tag
-          {{.DOCKER_REGISTRY}}/{{.SERVICE}}
+          {{if .PUBLISH_TAG}}
+          docker push
           {{.DOCKER_REGISTRY}}/{{.SERVICE}}:{{.TAG}}
+          {{end}}
+        - >-
+          {{if .PUBLISH_LATEST}}
+          docker tag
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:{{.TAG}}
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest
+          {{end}}
+        - >-
+          {{if .PUBLISH_LATEST}}
+          docker push
+          {{.DOCKER_REGISTRY}}/{{.SERVICE}}:latest
+          {{end}}

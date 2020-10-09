@@ -8,11 +8,14 @@ env:
 
 jobs:
 
-  BuildSite:
+  BranchPreviewBuildSite:
     runs-on: ubuntu-latest
     if: ${{ !github.event.pull_request.merged }}
     steps:
       - uses: actions/checkout@v1
+
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
       - name: Install Taskfile
         uses: Arduino/actions/setup-taskfile@master
@@ -21,7 +24,7 @@ jobs:
 
       - name: Build Docker Assets
         run: >-
-          task setup
+          task setup.docker
           REPO=$CI_SETTINGS__APP_DOCKER_REPO/site
           VERSION=${{ github.sha }}
 
@@ -63,7 +66,7 @@ jobs:
           task frontend.test
           STAGE=ci
 
-  Cleanup:
+  BranchPreviewCleanup:
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.merged }}
     steps:
@@ -78,4 +81,6 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: >-
-          echo "would have removed gh-pages:pr/${PR_NUMBER}/**/*"
+          task frontend.deploy
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          PRE_DEPLOY_TASK=./tools/deploy/remove-branch-preview.js
