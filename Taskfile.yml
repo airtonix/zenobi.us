@@ -159,7 +159,7 @@ tasks:
         {{end}}
       - npx rimraf package.json
 
-      frontend.test:
+  frontend.test:
     cmds:
       - task: docker:run
         vars:
