@@ -55,7 +55,9 @@ jobs:
       - name: Run linting
         run: >-
           task frontend.lint
+          STAGE=ci
 
-      - name: Run tests
+        - name: Run tests
         run: >-
           task frontend.test
+          STAGE=ci
