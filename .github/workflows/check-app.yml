@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: 8BitJonny/gh-get-current-pr@9189110
-        id: PR
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          filterOutClosed: true
+
       - name: Install Taskfile
         uses: Arduino/actions/setup-taskfile@master
         with:
