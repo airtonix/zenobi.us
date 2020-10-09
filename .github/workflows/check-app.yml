@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-
+      - uses: jwalton/gh-find-current-pr@b4cdaa6
+        id: findPr
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install Taskfile
         uses: Arduino/actions/setup-taskfile@master
         with:
@@ -22,7 +25,7 @@ jobs:
         run: >-
           task setup
           REPO=$CI_SETTINGS__APP_DOCKER_REPO/site
-          VERSION=$GITHUB_SHA
+          VERSION=${{ github.sha }}
 
       - name: Build Site
         run: >-
@@ -30,12 +33,12 @@ jobs:
           STAGE=ci
           SITE_DOMAIN=airtonix.github.io
           SITE_ROOT=zenobi.us
-          SITE_PATH=pr/$GITHUB_SHA
+          SITE_PATH=pr/${{ steps.findPr.outputs.pr }}
 
       - name: Deploy Branch Preview
         run: >-
           task frontend.deploy
-          DEPLOY_SOURCE=pr/$GITHUB_SHA
+          DEPLOY_SOURCE=pr/${{ steps.findPr.outputs.pr }}
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Comment on PR
@@ -44,8 +47,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           msg: |
-            Branch Preview Deployed:
-              [https://airtonix.github.io/zenobi.us/pr/$GITHUB_SHA/](https://airtonix.github.io/zenobi.us/pr/$GITHUB_SHA/)
+            🚢 Branch Preview Deployed:
+            - https://airtonix.github.io/zenobi.us/pr/${{ steps.findPr.outputs.pr }}/
 
       - name: Run linting
         run: >-
