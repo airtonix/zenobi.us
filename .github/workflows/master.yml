@@ -1,9 +1,8 @@
-name: Deploy
+name: prod
 
 on:
   push:
     branches:
-      -  develop
       -  master
 
 env:
@@ -11,7 +10,7 @@ env:
 
 jobs:
 
-  MasterBuildSite:
+  ProdBuildSite:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
