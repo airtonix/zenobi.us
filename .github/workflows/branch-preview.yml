@@ -8,7 +8,7 @@ env:
 
 jobs:
 
-  deploy-preview:
+  Setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -18,6 +18,10 @@ jobs:
         with:
           version: '3.0.0'
 
+  BuildSite:
+    needs: Setup
+    if: ${{ !github.event.pull_request.merged }}
+    steps:
       - name: Build Docker Assets
         run: >-
           task setup
@@ -50,14 +54,24 @@ jobs:
         with:
           msg: |
             🚢 Branch Preview Deployed:
-            - https://airtonix.github.io/zenobi.us/pr/${PR_NUMBER}/
+            - https://airtonix.github.io/zenobi.us/pr/${{ github.event.pull_request.number }}
 
+  RunChecks:
+    needs: BuildSite
+    if: ${{ !github.event.pull_request.merged }}
+    steps:
       - name: Run linting
         run: >-
           task frontend.lint
           STAGE=ci
-
-        - name: Run tests
+      - name: Run tests
         run: >-
           task frontend.test
           STAGE=ci
+
+  # Cleanup:
+  #   needs: Setup
+  #   if: ${{ github.event.pull_request.merged }}
+  #   steps:
+  #     - name: Remove Branch Preview
+  #       run: >-

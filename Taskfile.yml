@@ -154,9 +154,12 @@ tasks:
         --dist=frontend/dist
         --user="github-actions-bot <support+actions@github.com>"
         --repo=https://git:{{.GITHUB_TOKEN}}@{{.GIT_REPO}}
+        {{if .DEPLOY_TASK}}
+        --before-add=./tools/deploy/{{.DEPLOY_TASK}}.js
+        {{end}}
       - npx rimraf package.json
 
-  frontend.test:
+      frontend.test:
     cmds:
       - task: docker:run
         vars:
