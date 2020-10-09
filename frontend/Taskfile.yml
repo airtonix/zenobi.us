@@ -31,6 +31,10 @@ tasks:
   site.dev:
     deps:
       - site.clean
+    env:
+      FRONTEND__SITE__DOMAIN: '{{ default "localhost" .SITE_DOMAIN}}'
+      FRONTEND__SITE__ROOT: '{{ default "" .SITE_ROOT}}'
+      FRONTEND__SITE__PATH: '{{ default "" .SITE_PATH}}'
     cmds:
       - >-
         npx gatsby develop
