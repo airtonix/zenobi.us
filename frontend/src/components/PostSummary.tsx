@@ -1,6 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
-import { Link } from '@reach/router'
+// TODO: work out how to abstract this gracefully
+import { Link } from 'gatsby'
 
 import './PostSummary.scss'
 

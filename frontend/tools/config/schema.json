@@ -16,13 +16,15 @@
                 },
                 "domain": {
                     "type": "string",
-                    "default": "zenobi.us"
+                    "default": "airtonix.github.io"
                 },
                 "root": {
-                    "type": "string"
+                    "type": "string",
+                    "default": "/zenobi.us"
                 },
                 "path": {
-                    "type": "string"
+                    "type": "string",
+                    "default": "/pr/test"
                 }
 
             }

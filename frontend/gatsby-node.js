@@ -6,18 +6,6 @@ const { createFilePath } = require('gatsby-source-filesystem')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { get } = require('lodash')
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === 'Mdx') {
-    const urlSuffixIdea = createFilePath({ node, getNode, basePath: 'pages' })
-    createNodeField({
-      node,
-      name: 'suggestedURLSuffix',
-      value: urlSuffixIdea,
-    })
-  }
-}
-
 exports.createPages = async ({ graphql, getNode, actions }) => {
   const { createPage } = actions
   const queryResult = await graphql(`
@@ -26,9 +14,7 @@ exports.createPages = async ({ graphql, getNode, actions }) => {
         edges {
           node {
             id
-            fields {
-              suggestedURLSuffix
-            },
+            slug,
           }
         }
       }
@@ -43,7 +29,7 @@ exports.createPages = async ({ graphql, getNode, actions }) => {
     node.component = path.resolve(`./src/templates/${template}.tsx`)
 
     createPage({
-      path: node.fields.suggestedURLSuffix,
+      path: node.slug || '/',
       component: node.component,
       context: {
         id: node.id,

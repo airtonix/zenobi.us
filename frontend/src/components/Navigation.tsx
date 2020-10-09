@@ -1,13 +1,13 @@
 import React from 'react'
 import classnames from 'classnames'
-import { Link, LinkProps } from '@reach/router'
+import { Link, GatsbyLinkProps } from 'gatsby'
 
 import { ButtonLink, ButtonProps } from './Button'
 import { ButtonGroup, ButtonGroupDirections } from './ButtonGroup'
 
 import './Navigation.scss'
 
-export type NavigationButtonProps = ButtonProps & LinkProps<any>
+export type NavigationButtonProps = ButtonProps & GatsbyLinkProps<any>
 
 export const NavigationButton:React.FC<NavigationButtonProps> = ({
   children,
