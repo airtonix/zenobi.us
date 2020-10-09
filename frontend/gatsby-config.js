@@ -51,6 +51,8 @@ module.exports = {
       },
     },
 
+    'gatsby-plugin-cname',
+
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
