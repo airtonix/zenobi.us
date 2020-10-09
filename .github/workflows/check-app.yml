@@ -12,10 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: jwalton/gh-find-current-pr@v1
-        id: PR
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install Taskfile
         uses: Arduino/actions/setup-taskfile@master
@@ -30,7 +26,7 @@ jobs:
 
       - name: Build Site
         env:
-          PR_NUMBER: ${{ steps.PR.outputs.number }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: >-
           task frontend.build
           STAGE=ci
@@ -40,7 +36,7 @@ jobs:
 
       - name: Deploy Branch Preview
         env:
-          PR_NUMBER: ${PR_NUMBER}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: >-
           task frontend.deploy
           DEPLOY_SOURCE=pr/${PR_NUMBER}
@@ -49,7 +45,7 @@ jobs:
       - name: Comment on PR
         uses: unsplash/comment-on-pr@master
         env:
-          PR_NUMBER: ${PR_NUMBER}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           msg: |
