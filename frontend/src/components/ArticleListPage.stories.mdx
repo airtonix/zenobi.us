@@ -2,7 +2,7 @@ import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
 import { ArticleListPage } from './ArticleListPage'
 import { LoremIpsum, Avatar, name, surname, username } from 'react-lorem-ipsum'
 
-export const Template = (args) => <ArticleListPage {...args } />;
+export const Template = (args) => <ArticleListPage postLink='a' {...args } />;
 
 <Meta
   title="Pages/ArticleListPage"

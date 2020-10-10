@@ -8,6 +8,7 @@ import { PostSummary, PostSummaryProps } from './PostSummary'
 export type ArticleListPageProps = {
   className?: string,
   title: string,
+  postLink: React.ElementType,
   posts: PostSummaryProps[]
 }
 
@@ -15,6 +16,7 @@ export const ArticleListPage:React.FC<ArticleListPageProps> = ({
   className,
   title,
   posts,
+  postLink,
   children
 }) => (
   <PageWithAside
@@ -30,7 +32,9 @@ export const ArticleListPage:React.FC<ArticleListPageProps> = ({
     {children}
 
     <div className='article-list-page__content'>
-      {posts.map(PostSummary)}
+      {posts.map(post => (
+        <PostSummary link={postLink} {...post} />
+      ))}
     </div>
   </PageWithAside>
 )

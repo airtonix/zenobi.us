@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import { ArticleListPage } from '~/components/ArticleListPage'
@@ -52,6 +52,7 @@ export const Page:React.FC<PageProps> = (props) => {
     <ArticleListPage
       title='Thoughts'
       posts={posts}
+      postLink={Link}
     >
       <MDXRenderer>{body}</MDXRenderer>
     </ArticleListPage>

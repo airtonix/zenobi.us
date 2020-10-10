@@ -2,7 +2,7 @@ import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
 import { PostSummary } from './PostSummary'
 import { LoremIpsum, Avatar, name, surname, username } from 'react-lorem-ipsum'
 
-export const Template = (args) => <PostSummary {...args } />;
+export const Template = (args) => <PostSummary link='a' {...args } />;
 
 <Meta title="Components/PostSummary" component={PostSummary} />
 

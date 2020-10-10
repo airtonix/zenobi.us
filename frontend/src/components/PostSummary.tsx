@@ -1,7 +1,5 @@
 import React from 'react'
 import classnames from 'classnames'
-// TODO: work out how to abstract this gracefully
-import { Link } from 'gatsby'
 
 import './PostSummary.scss'
 
@@ -12,7 +10,7 @@ export type PostSummaryProps = {
   summary?: string,
   date?: string,
   tags?: string[],
-  url: string,
+  link?: React.ElementType,
   className?: string
 }
 
@@ -20,9 +18,9 @@ export const PostSummary:React.FC<PostSummaryProps> = ({
   title,
   summary,
   tags,
-  url,
   date,
   className,
+  link: LinkComponent,
 }) => {
 
   // const format = (format: string):string => Sugar.Date(date).format(format).raw
@@ -35,16 +33,8 @@ export const PostSummary:React.FC<PostSummaryProps> = ({
       )}
     >
       <header className='post-summary__header'>
-        {url && (
-          <Link
-            to={url}
-            className='post-summary__title'
-          >
-            {title}
-          </Link>
-        )}
-        {!url && (
-          <div className='post-summary__title'>{title}</div>
+        {!LinkComponent && (
+          <LinkComponent className='post-summary__title'>{title}</LinkComponent>
         )}
         {date && (
           <div className='post-summary__date'>{date}</div>
