@@ -20,11 +20,11 @@
                 },
                 "root": {
                     "type": "string",
-                    "default": "/zenobi.us"
+                    "default": "zenobi.us"
                 },
                 "path": {
                     "type": "string",
-                    "default": "/pr/test"
+                    "default": "pr/test"
                 }
 
             }
