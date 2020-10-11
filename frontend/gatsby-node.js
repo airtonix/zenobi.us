@@ -1,10 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { createFilePath } = require('gatsby-source-filesystem')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { get } = require('lodash')
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 exports.createPages = async ({ graphql, getNode, actions }) => {
   const { createPage } = actions

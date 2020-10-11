@@ -1,15 +1,17 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { PageWithAside } from './PageWithAside'
 import { PageHeader } from './PageHeader'
 import { PostSummary, PostSummaryProps } from './PostSummary'
+import { Page } from './Page'
+import { BrandingBlock, BrandingBlockStyles } from './BrandingBlock'
 
 export type ArticleListPageProps = {
   className?: string,
   title: string,
   postLink: React.ElementType,
-  posts: PostSummaryProps[]
+  posts: PostSummaryProps[],
+  branding?: React.ElementType
 }
 
 export const ArticleListPage:React.FC<ArticleListPageProps> = ({
@@ -17,18 +19,23 @@ export const ArticleListPage:React.FC<ArticleListPageProps> = ({
   title,
   posts,
   postLink,
+  branding: Branding = BrandingBlock,
   children
 }) => (
-  <PageWithAside
+  <Page
     className={classnames(
       'article-list-page',
       className
+    )}
+    asideSlot={(
+      <Branding
+        style={BrandingBlockStyles.Badge}
+      />
     )}
   >
     <PageHeader
       title={title}
     />
-
     {children}
 
     <div className='article-list-page__content'>
@@ -36,5 +43,5 @@ export const ArticleListPage:React.FC<ArticleListPageProps> = ({
         <PostSummary link={postLink} {...post} />
       ))}
     </div>
-  </PageWithAside>
+  </Page>
 )

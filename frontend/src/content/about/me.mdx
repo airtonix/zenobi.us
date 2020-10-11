@@ -1,6 +1,10 @@
 ---
 date: 2020-09-29
 template: page
+navs:
+    - global
+    - landing
+title: Me
 ---
 
 # Zenobius Jiricek (Zeno)
@@ -26,11 +30,39 @@ template: page
 
 ## Experience
 
-### 2017-Present
+### 2018-Present
+
+**Senior Developer at Studylink Connect**
+
+Lead, Build, Design, Develop Studylinks core products:
+
++ FormCore: JsonSchema core business logic
+    - uses AJV, JsonRulesEngine
++ FormRuntime: Custom Implementation of ReactJsonSchemaForm
+    - Publicly themeable with Jss
+    - component Driven Development with Storybook
+    - Release cycle using CodeBuild, CodePipeline, S3 and Slack
++ FormServer: NestJs and Typescript server
+    - Implements FormCore server side to provide a Validation Api
+    - Using Puppetter, turns FormRuntime display into pdf
+    - Release cycle using CodeBuild, CodePipeline, Elastic Container Service and Slack
++ StudentPortal: React Application for Students to Apply for Courses delivered by Education Providers
+    - uses React (with hooks), Mobx & Axios, ReachRouter, Scss
+    - Component Driven Development with Storybook
+    - Full unit and integration tests with Jest, Enzyme and React Testing Library
+    - Component Driven Design with Figma
+
+### 2017-2018
 
 **Senior Frontend Developer at Fusion**
-
-+ Mitigate risk from inconsistent node module installations through use of docker and yarn.
++ Large scale project for [Australian Architects Institute][project-acument-practice-notes]
+    - Implemented BEM Scss
+    - Implemented Behaviour Framework with Jquery Plugins driven by data attributes
+    - Component Driven using Knyles Simple Styleguide (Kss) and .NET Razor Templates
+    - Collaborated with .NET 4.x EpiServer Developer
++ Universal Frontend Development Environment using Docker
+    - Mitigate risk from inconsistent node module installations with yarn offline packages.
+    - Consistent developer interface tasks with npm scripts.
 + Create versatile webpack based frontend build tool.
 
 ### 2016-2017
@@ -187,7 +219,7 @@ template: page
 ## Projects
 
 ### Websites
- - [Acumen Practice Notes](http://acumen.architects.com.au)
+ - [Acumen Practice Notes][project-acumen-practice-notes]
      + Large reference site for architectural students and aia members.
  - [Queensland Country Health Fund Membership Form](http://acumen.architects.com.au)
      + Vuejs powered membership application form (get a quote, choose a product and apply)
@@ -298,3 +330,5 @@ template: page
 [project-ansibledjango]: http://github.com/airtonix/ansible-django/
 [project-namedroutes]: http://github.com/airtonix/angular-named-routes
 [project-mounter]: http://github.com/airtonix/wintersmith-mounter/
+
+[project-acument-practice-notes]: http://acumen.architects.com.au

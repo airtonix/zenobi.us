@@ -1,22 +1,19 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { SimplePage } from '~/components/SimplePage'
 
-type PageTemplateProps = {
-  data: {
-    mdx: {
-      body: string,
-      frontmatter: {
-        title: string
-      }
-    }
-  }
-}
+import { SimplePage } from '~/components/SimplePage'
+import { transformGatsbyGlobalLink } from '~/services/GatsbyDtoTransforms'
+import { GlobalLinksProvider } from '~/services/GlobalLinksContext'
+import { PageTemplateProps } from '~/types/content'
+import { GatsbyGlobalBrandingBlockContainer } from '~/containers/GatsbyBrandingBlockContainer'
 
 const PageTemplate = (props: PageTemplateProps) => {
   const {
     data: {
+      allSitePage: {
+        nodes
+      },
       mdx: {
         body,
         frontmatter: {
@@ -25,17 +22,31 @@ const PageTemplate = (props: PageTemplateProps) => {
       }
     } = {}
   } = props
+  const globalLinks = transformGatsbyGlobalLink(nodes)
   return (
-    <SimplePage title={title}>
-      <MDXRenderer>
-        {body}
-      </MDXRenderer>
-    </SimplePage>
+    <GlobalLinksProvider value={globalLinks}>
+      <SimplePage
+        title={title}
+        branding={GatsbyGlobalBrandingBlockContainer}
+      >
+        <MDXRenderer>{body}</MDXRenderer>
+      </SimplePage>
+    </GlobalLinksProvider>
   )
 }
 
 export const query = graphql`
   query SimplePageNodeQuery($id: String!) {
+    allSitePage {
+      nodes {
+        id
+        path
+        context {
+          navs
+          title
+        }
+      }
+    }
     mdx(id: { eq: $id }) {
       body
       frontmatter {

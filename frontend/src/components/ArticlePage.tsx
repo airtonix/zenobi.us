@@ -2,14 +2,17 @@ import React from 'react'
 import classnames from 'classnames'
 import Sugar from 'sugar'
 
-import { PageWithAside } from './PageWithAside'
 import { PageHeader } from './PageHeader'
+import { BrandingBlock, BrandingBlockStyles } from './BrandingBlock'
+import { Page } from './Page'
+
 
 export type ArticlePageProps = {
   className?: string,
   title: string,
   tags?: string[],
   date?: string,
+  branding?: React.ElementType
 }
 
 export const ArticlePage:React.FC<ArticlePageProps> = ({
@@ -17,12 +20,18 @@ export const ArticlePage:React.FC<ArticlePageProps> = ({
   title,
   tags,
   date,
+  branding: Branding = BrandingBlock,
   children
 }) => (
-  <PageWithAside
+  <Page
     className={classnames(
       'article-page',
       className
+    )}
+    asideSlot={(
+      <Branding
+        style={BrandingBlockStyles.Badge}
+      />
     )}
   >
     <PageHeader
@@ -34,5 +43,5 @@ export const ArticlePage:React.FC<ArticlePageProps> = ({
     <div className='article-page__content'>
       {children}
     </div>
-  </PageWithAside>
+  </Page>
 )

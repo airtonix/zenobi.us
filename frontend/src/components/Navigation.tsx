@@ -1,34 +1,21 @@
 import React from 'react'
 import classnames from 'classnames'
-import { Link, GatsbyLinkProps } from 'gatsby'
 
-import { ButtonLink, ButtonProps } from './Button'
 import { ButtonGroup, ButtonGroupDirections } from './ButtonGroup'
+import { ButtonLink, ButtonProps } from './Button'
 
 import './Navigation.scss'
 
-export type NavigationButtonProps = ButtonProps & GatsbyLinkProps<any>
-
-export const NavigationButton:React.FC<NavigationButtonProps> = ({
-  children,
-  ...props
-}) => (
-  <ButtonLink
-    as={Link}
-    {...props}
-  >
-    {children}
-  </ButtonLink>
-)
-
 export type SiteNavigationProps = {
   className?: string,
-  direction?: ButtonGroupDirections
+  direction?: ButtonGroupDirections,
+  links?: ButtonProps[]
 }
 
 export const SiteNavigation:React.FC<SiteNavigationProps> = ({
   className,
-  direction = ButtonGroupDirections.Horizontal
+  direction = ButtonGroupDirections.Horizontal,
+  links = []
 }) => {
   return (
     <ButtonGroup
@@ -38,9 +25,9 @@ export const SiteNavigation:React.FC<SiteNavigationProps> = ({
       )}
       direction={direction}
     >
-      <NavigationButton key='/' to='/'>Home</NavigationButton>
-      <NavigationButton key='/about/me' to='/about/me/'>Resume</NavigationButton>
-      <NavigationButton key='/posts/' to='/posts/'>Thoughts</NavigationButton>
+      {links && links.map(({ label, ...link}) => (
+        <ButtonLink {...link}>{label}</ButtonLink>
+      ))}
     </ButtonGroup>
   )
 }
