@@ -1,4 +1,5 @@
 import { navigate } from 'gatsby'
+import { get } from 'lodash'
 
 import { GatsbyGlobalLinkDto } from '~/types/content'
 
@@ -8,15 +9,12 @@ export function transformGatsbyGlobalLink (links: GatsbyGlobalLinkDto[]): Global
   return links.map(({
     id,
     path,
-    context: {
-      title,
-      navs
-    }
+    context
   }) => {
     return {
       id,
-      label: title,
-      groups: navs,
+      label: get(context, 'title'),
+      groups: get(context, 'navs', []),
       onClick: () => navigate(path),
     }
   })
