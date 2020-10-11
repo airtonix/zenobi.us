@@ -162,11 +162,10 @@ tasks:
     cmds:
       # create a fake package.json, because https://github.com/tschaub/gh-pages/issues/354
       - touch package.json
-      - echo {{default .DEPLOY_SOURCE '.'}}
       - >-
         npx gh-pages
         --add
-        --src={{default .DEPLOY_SOURCE '.'}}/**/*
+        --src={{.DEPLOY_SOURCE}}/**/*
         --dist=frontend/dist
         --user="github-actions-bot <support+actions@github.com>"
         --repo=https://git:{{.GITHUB_TOKEN}}@{{.GIT_REPO}}
