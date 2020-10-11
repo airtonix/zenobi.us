@@ -23,6 +23,9 @@ jobs:
         with:
           version: '3.0.0'
 
+      - name: Print env
+        run: env
+
       - name: Build Docker Assets
         run: >-
           task setup.docker
@@ -49,5 +52,6 @@ jobs:
       - name: Deploy Branch Preview
         run: >-
           task frontend.deploy
+          DEPLOY_SOURCE=.
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           PRE_DEPLOY_TASK=./tools/deploy/cleanup-production.js
