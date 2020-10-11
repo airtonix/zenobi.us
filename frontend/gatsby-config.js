@@ -14,7 +14,7 @@ const pathPrefix = urljoin(
   '/',
   get(Config, 'site.root'),
   get(Config, 'site.path'),
-)
+).replace(/\/$/, '')
 
 const siteUrl = urljoin(
   get(Config, 'site.proto'),
