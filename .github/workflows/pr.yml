@@ -83,4 +83,4 @@ jobs:
         run: >-
           task frontend.deploy
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          PRE_DEPLOY_TASK=./tools/deploy/remove-branch-preview.js
+          REMOVE=pr/${PR_NUMBER}/**

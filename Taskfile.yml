@@ -164,14 +164,15 @@ tasks:
       - touch package.json
       - >-
         npx gh-pages
+        {{if .REMOVE}}
+        --remove={{.REMOVE}}
+        {{else}}
         --add
+        {{end}}
         --src={{.DEPLOY_SOURCE}}/**/*
         --dist=frontend/dist
         --user="github-actions-bot <support+actions@github.com>"
         --repo=https://git:{{.GITHUB_TOKEN}}@{{.GIT_REPO}}
-        {{if .PRE_DEPLOY_TASK}}
-        --before-add={{.PRE_DEPLOY_TASK}}
-        {{end}}
       - npx rimraf package.json
 
   frontend.test:
