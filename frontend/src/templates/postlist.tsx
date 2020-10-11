@@ -1,44 +1,29 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 
 import { ArticleListPage } from '~/components/ArticleListPage'
+import { transformGatsbyGlobalLink } from '~/services/GatsbyDtoTransforms'
+import { GlobalLinksProvider } from '~/services/GlobalLinksContext'
+import { BlogListPageProps } from '~/types/content'
+import { GatsbyGlobalBrandingBlockContainer } from '~/containers/GatsbyBrandingBlockContainer'
 
-export type MdxFrontmatter = {
-  title: string,
-  tags: string,
-  date: string
-}
-
-export type MdxContentPage = {
-  id: string,
-  slug?: string,
-  body: string,
-  frontmatter?: MdxFrontmatter
-}
-
-export type PageProps = {
-  data: {
-    mdx: MdxContentPage,
-    allMdx: {
-      nodes: MdxContentPage[]
-    }
-  }
-}
-
-export const Page:React.FC<PageProps> = (props) => {
+export const PostListPage:React.FC<BlogListPageProps> = (props) => {
   const {
     data: {
+      allSitePage: {
+        nodes
+      },
       mdx: {
         body = ''
       } = {},
       allMdx: {
-        nodes = []
+        nodes: allMdxNodes = []
       } = {}
     } = {}
-  } = props || {}
+  } = props
 
-  const posts = nodes.reduce((result, node) => ([
+  const posts = allMdxNodes.reduce((result, node) => ([
     ...result,
     {
       ...node,
@@ -47,21 +32,36 @@ export const Page:React.FC<PageProps> = (props) => {
       tags: (node.frontmatter.tags || '').split(',').map((tag) => tag.trim()),
     },
   ]), [])
+  const globalLinks = transformGatsbyGlobalLink(nodes)
 
   return (
-    <ArticleListPage
-      title='Thoughts'
-      posts={posts}
-    >
-      <MDXRenderer>{body}</MDXRenderer>
-    </ArticleListPage>
+    <GlobalLinksProvider value={globalLinks}>
+      <ArticleListPage
+        title='Thoughts'
+        posts={posts}
+        postLink={Link}
+        branding={GatsbyGlobalBrandingBlockContainer}
+      >
+        <MDXRenderer>{body}</MDXRenderer>
+      </ArticleListPage>
+    </GlobalLinksProvider>
   )
 }
 
-export default Page
+export default PostListPage
 
 export const query = graphql`
-query PostPageCollectionNodeQuery($id: String!, $match: String!, $stage: String) {
+query PostListPageNodeQuery($id: String!, $match: String!, $stage: String) {
+  allSitePage {
+    nodes {
+      id
+      path
+      context {
+        navs
+        title
+      }
+    }
+  }
   mdx(id: { eq: $id }) {
     id
     body

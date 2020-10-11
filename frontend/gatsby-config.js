@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { get } = require('lodash')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const urljoin = require('url-join')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default
@@ -7,19 +8,27 @@ const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Config = require('./tools/config')
 
+// 1. Must start with a slash
+// 2. Must not end with a slash
+const pathPrefix = urljoin(
+  '/',
+  get(Config, 'site.root'),
+  get(Config, 'site.path'),
+)
+
+const siteUrl = urljoin(
+  get(Config, 'site.proto'),
+  get(Config, 'site.domain'),
+  get(Config, 'site.root'),
+)
+console.log(siteUrl, pathPrefix)
+
 module.exports = {
-  pathPrefix: [
-    get(Config, 'site.root'),
-    get(Config, 'site.path'),
-  ].join('/'),
+  pathPrefix,
 
   siteMetadata: {
     title: get(Config, 'site.title'),
-    siteUrl: urljoin(
-      get(Config, 'site.proto'),
-      get(Config, 'site.domain'),
-      get(Config, 'site.root'),
-    ),
+    siteUrl,
   },
 
   plugins: [

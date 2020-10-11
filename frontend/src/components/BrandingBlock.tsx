@@ -5,11 +5,15 @@ import { Block, BlockProps } from './Block'
 import { ButtonGroupDirections } from './ButtonGroup'
 import { SiteNavigation } from './Navigation'
 import { ReactComponent as BrandingLogo } from './BrandingLogo.svg'
-
+import { ButtonProps } from './Button'
 import './BrandingBlock.scss'
 
-export type BrandingProps = BlockProps & {
-  style: BrandingBlockStyles
+
+export type BrandingBlockLinkProps = ButtonProps
+
+export type BrandingBlockProps = BlockProps & {
+  style: BrandingBlockStyles,
+  links?: BrandingBlockLinkProps[]
 }
 
 export enum BrandingBlockStyles {
@@ -17,9 +21,10 @@ export enum BrandingBlockStyles {
   Hero = 'hero'
 }
 
-export const BrandingBlock:React.FC<BrandingProps> = ({
+export const BrandingBlock:React.FC<BrandingBlockProps> = ({
   style,
   className,
+  links,
   ...props
 }) => {
   const styleName = (style || '').toLowerCase()
@@ -33,11 +38,14 @@ export const BrandingBlock:React.FC<BrandingProps> = ({
         className
       )}
     >
-      <BrandingLogo
-        className='branding-block__image'
-      />
+      {BrandingLogo && (
+        <BrandingLogo
+          className='branding-block__image'
+        />
+      )}
       <SiteNavigation
         className='branding-block__nav'
+        links={links}
         direction={(
           styleName === BrandingBlockStyles.Hero
             ? ButtonGroupDirections.Horizontal

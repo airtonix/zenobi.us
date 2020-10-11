@@ -6,6 +6,9 @@ vars:
   DOCKER_REGISTRY: docker.pkg.github.com/airtonix/zenobi.us
   SERVICE: frontend
   STAGE: local
+  SITE_DOMAIN: airtonix.github.io
+  SITE_ROOT: zenobi.us
+  SITE_PATH: /
   VERSION:
     sh: git rev-parse --short HEAD
 
@@ -91,6 +94,18 @@ tasks:
           SERVICE: frontend
           COMMAND: >-
             task prod
+            SITE_DOMAIN={{.SITE_DOMAIN}}
+            SITE_ROOT={{.SITE_ROOT}}
+            SITE_PATH={{.SITE_PATH}}
+
+  frontend.serve:
+    desc: Serve the frontend using its container
+    cmds:
+      - task: docker:run
+        vars:
+          SERVICE: frontend
+          COMMAND: >-
+            task serve
             SITE_DOMAIN={{.SITE_DOMAIN}}
             SITE_ROOT={{.SITE_ROOT}}
             SITE_PATH={{.SITE_PATH}}

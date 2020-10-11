@@ -12,6 +12,10 @@ tasks:
       - task: site.prod
       - task: storybook.prod
 
+  serve:
+    cmds:
+      - task: site.serve
+
   test: >-
     npx jest
     --config ./jest.config.js
@@ -31,11 +35,15 @@ tasks:
   site.dev:
     deps:
       - site.clean
+    env:
+      FRONTEND__SITE__DOMAIN: '{{ default "localhost" .SITE_DOMAIN}}'
+      FRONTEND__SITE__ROOT: '{{ default "" .SITE_ROOT}}'
+      FRONTEND__SITE__PATH: '{{ default "" .SITE_PATH}}'
     cmds:
       - >-
         npx gatsby develop
-        --host 0.0.0.0
-        --port 8000
+        --host $HOST
+        --port $PORT
 
   site.prod:
     deps:
@@ -66,6 +74,18 @@ tasks:
         '../dist/{{.SITE_PATH}}'
         --cwd=./public
         --parents
+
+  site.serve:
+    env:
+      FRONTEND__SITE__DOMAIN: "{{.SITE_DOMAIN}}"
+      FRONTEND__SITE__ROOT: "{{.SITE_ROOT}}"
+      FRONTEND__SITE__PATH: "{{.SITE_PATH}}"
+    cmds:
+      - >-
+        npx gatsby serve
+        --prefix-paths
+        --host $HOST
+        --port $PORT
 
   env.dump:
     env:

@@ -1,25 +1,33 @@
 import React from 'react'
 import classnames from 'classnames'
 
-import { PageWithAside } from './PageWithAside'
 import { PageHeader } from './PageHeader'
+import { BrandingBlock, BrandingBlockStyles } from './BrandingBlock'
+import { Page } from './Page'
 
 export type SimplePageProps = {
   className?: string,
   title: string,
   tags?: string[],
   date?: string,
+  branding?: React.ElementType
 }
 
 export const SimplePage:React.FC<SimplePageProps> = ({
   className,
   title,
+  branding: Branding = BrandingBlock,
   children
 }) => (
-  <PageWithAside
+  <Page
     className={classnames(
       'simple-page',
       className
+    )}
+    asideSlot={(
+      <Branding
+        style={BrandingBlockStyles.Badge}
+      />
     )}
   >
     <PageHeader
@@ -28,5 +36,5 @@ export const SimplePage:React.FC<SimplePageProps> = ({
     <div className='article-page__content'>
       {children}
     </div>
-  </PageWithAside>
+  </Page>
 )

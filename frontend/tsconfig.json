@@ -6,6 +6,8 @@
       "jsx": "preserve",
       "allowJs": false,
       "moduleResolution": "node",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
       "allowSyntheticDefaultImports": true,
       "noImplicitAny": true,
       "noUnusedLocals": true,
