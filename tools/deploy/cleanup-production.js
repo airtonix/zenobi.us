@@ -1,5 +1,8 @@
-module.exports = function (git) {
-    return Promise.resolve().then(() => {
-        return git.rm('**/*', ':(exclude)pr/**/*');
-    });
+const del = require('del')
+
+module.exports = async function (git) {
+  await del(
+    '**/*',
+    '!pr/**/*'
+  )
 }
