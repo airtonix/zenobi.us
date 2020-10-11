@@ -165,7 +165,7 @@ tasks:
       - >-
         npx gh-pages
         --add
-        --src={{.DEPLOY_SOURCE}}/**/*
+        --src={{default .DEPLOY_SOURCE '.'}}/**/*
         --dist=frontend/dist
         --user="github-actions-bot <support+actions@github.com>"
         --repo=https://git:{{.GITHUB_TOKEN}}@{{.GIT_REPO}}
