@@ -2,6 +2,21 @@ name: Review
 
 on:
   pull_request:
+    types:
+      - assigned
+      - unassigned
+      - labeled
+      - unlabeled
+      - opened
+      - edited
+      - closed
+      - reopened
+      - synchronize
+      - ready_for_review
+      - locked
+      - unlocked
+      - review_requested
+      - review_request_removed
 
 env:
   CI_SETTINGS__APP_DOCKER_REPO: docker.pkg.github.com/airtonix/zenobi.us
