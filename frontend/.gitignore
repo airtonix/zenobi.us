@@ -13,6 +13,7 @@
 
 !gatsby-config.js
 !gatsby-node.js
+!gatsby-browser.js
 !.babelrc
 !.stylelintrc.json
 !.eslintrc.json
