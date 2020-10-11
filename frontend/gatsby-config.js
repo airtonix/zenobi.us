@@ -8,7 +8,11 @@ const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const Config = require('./tools/config')
 
+// 1. Must start with a slash
+// 2. Must not end with a slash
 const pathPrefix = urljoin(
+  '/',
+  get(Config, 'site.root'),
   get(Config, 'site.path'),
 )
 
