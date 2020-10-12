@@ -54,4 +54,4 @@ jobs:
           task frontend.deploy
           DEPLOY_SOURCE=.
           GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
-          REMOVE='./!(pr/)**'
+          REMOVE='./!(pr){/**,}/*'
