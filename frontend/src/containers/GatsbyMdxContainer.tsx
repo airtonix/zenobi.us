@@ -1,10 +1,10 @@
 import React from 'react'
 import { MDXProvider } from '@mdx-js/react'
 
-import { GatsbyBrandingBlockContainer } from '~/containers/GatsbyBrandingBlockContainer'
+import { GatsbySiteNavigationContainer } from '~/containers/GatsbySiteNavigationContainer'
 
 const components = {
-  BrandingBlock: GatsbyBrandingBlockContainer
+  SiteNavigation: GatsbySiteNavigationContainer
 }
 
 export const GatsbyMdxContainer:React.FC = ({

@@ -1,8 +1,6 @@
 import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
 import { Site } from './Site'
 import { Page } from './Page'
-import { BrandingBlock, BrandingBlockStyles } from './BrandingBlock'
-
 
 export const Template = (args) => <Site {...args } />;
 
@@ -16,27 +14,11 @@ has a top area and a footer area
 
 <Canvas>
   <Story name="basic" args={{
-      contentSlot: (<BrandingBlock style={BrandingBlockStyles.Hero} />)
+      contentSlot: (<div style={{backgroundColor: 'skyblue', minHeight: '320px'}} />),
+      footerSlot: (<div style={{backgroundColor: 'pink', minHeight: '128px'}} />)
   }}>
     {Template.bind({})}
   </Story>
 </Canvas>
 
 <ArgsTable of={Site} />
-
-# With Page Layout
-
-
-<Canvas>
-  <Story name="page layout" args={{
-      contentSlot: (
-        <Page
-            asideSlot={( <BrandingBlock style={BrandingBlockStyles.Badge} /> )}
-        >
-            Some content
-        </Page>
-      )
-  }}>
-    {Template.bind({})}
-  </Story>
-</Canvas>

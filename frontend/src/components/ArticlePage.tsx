@@ -3,8 +3,8 @@ import classnames from 'classnames'
 import Sugar from 'sugar'
 
 import { PageHeader } from './PageHeader'
-import { BrandingBlock, BrandingBlockStyles } from './BrandingBlock'
 import { Page } from './Page'
+import { SiteNavigation } from './Navigation'
 
 
 export type ArticlePageProps = {
@@ -12,7 +12,7 @@ export type ArticlePageProps = {
   title: string,
   tags?: string[],
   date?: string,
-  branding?: React.ElementType
+  navigation?: React.ElementType
 }
 
 export const ArticlePage:React.FC<ArticlePageProps> = ({
@@ -20,7 +20,7 @@ export const ArticlePage:React.FC<ArticlePageProps> = ({
   title,
   tags,
   date,
-  branding: Branding = BrandingBlock,
+  navigation: Navigation = SiteNavigation,
   children
 }) => (
   <Page
@@ -29,9 +29,7 @@ export const ArticlePage:React.FC<ArticlePageProps> = ({
       className
     )}
     asideSlot={(
-      <Branding
-        style={BrandingBlockStyles.Badge}
-      />
+      <Navigation />
     )}
   >
     <PageHeader

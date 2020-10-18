@@ -6,7 +6,7 @@ import { SimplePage } from '~/components/SimplePage'
 import { transformGatsbyGlobalLink } from '~/services/GatsbyDtoTransforms'
 import { GlobalLinksProvider } from '~/services/GlobalLinksContext'
 import { PageTemplateProps } from '~/types/content'
-import { GatsbyGlobalBrandingBlockContainer } from '~/containers/GatsbyBrandingBlockContainer'
+import { GatsbySiteNavigationContainer } from '~/containers/GatsbySiteNavigationContainer'
 
 const PageTemplate = (props: PageTemplateProps) => {
   const {
@@ -27,7 +27,7 @@ const PageTemplate = (props: PageTemplateProps) => {
     <GlobalLinksProvider value={globalLinks}>
       <SimplePage
         title={title}
-        branding={GatsbyGlobalBrandingBlockContainer}
+        navigation={GatsbySiteNavigationContainer}
       >
         <MDXRenderer>{body}</MDXRenderer>
       </SimplePage>

@@ -6,7 +6,7 @@ import { ArticleListPage } from '~/components/ArticleListPage'
 import { transformGatsbyGlobalLink } from '~/services/GatsbyDtoTransforms'
 import { GlobalLinksProvider } from '~/services/GlobalLinksContext'
 import { BlogListPageProps } from '~/types/content'
-import { GatsbyGlobalBrandingBlockContainer } from '~/containers/GatsbyBrandingBlockContainer'
+import { GatsbySiteNavigationContainer } from '~/containers/GatsbySiteNavigationContainer'
 
 export const PostListPage:React.FC<BlogListPageProps> = (props) => {
   const {
@@ -40,7 +40,7 @@ export const PostListPage:React.FC<BlogListPageProps> = (props) => {
         title='Thoughts'
         posts={posts}
         postLink={Link}
-        branding={GatsbyGlobalBrandingBlockContainer}
+        navigation={GatsbySiteNavigationContainer}
       >
         <MDXRenderer>{body}</MDXRenderer>
       </ArticleListPage>

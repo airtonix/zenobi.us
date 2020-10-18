@@ -6,7 +6,7 @@ import { ArticlePage } from '~/components/ArticlePage'
 import { transformGatsbyGlobalLink } from '~/services/GatsbyDtoTransforms'
 import { GlobalLinksProvider } from '~/services/GlobalLinksContext'
 import { BlogDetailPageProps } from '~/types/content'
-import { GatsbyGlobalBrandingBlockContainer } from '~/containers/GatsbyBrandingBlockContainer'
+import { GatsbySiteNavigationContainer } from '~/containers/GatsbySiteNavigationContainer'
 
 export const BlogDetailPage:React.FC<BlogDetailPageProps> = (props) => {
   const {
@@ -31,7 +31,7 @@ export const BlogDetailPage:React.FC<BlogDetailPageProps> = (props) => {
         title={title}
         date={date}
         tags={(tags || '').split(',').map((tag: string) => tag.trim())}
-        branding={GatsbyGlobalBrandingBlockContainer}
+        navigation={GatsbySiteNavigationContainer}
       >
         <MDXRenderer>{body}</MDXRenderer>
       </ArticlePage>

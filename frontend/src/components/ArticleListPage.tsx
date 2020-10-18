@@ -4,14 +4,14 @@ import classnames from 'classnames'
 import { PageHeader } from './PageHeader'
 import { PostSummary, PostSummaryProps } from './PostSummary'
 import { Page } from './Page'
-import { BrandingBlock, BrandingBlockStyles } from './BrandingBlock'
+import { SiteNavigation } from './Navigation'
 
 export type ArticleListPageProps = {
   className?: string,
   title: string,
   postLink: React.ElementType,
   posts: PostSummaryProps[],
-  branding?: React.ElementType
+  navigation?: React.ElementType
 }
 
 export const ArticleListPage:React.FC<ArticleListPageProps> = ({
@@ -19,7 +19,7 @@ export const ArticleListPage:React.FC<ArticleListPageProps> = ({
   title,
   posts,
   postLink,
-  branding: Branding = BrandingBlock,
+  navigation: Navigation = SiteNavigation,
   children
 }) => (
   <Page
@@ -28,9 +28,7 @@ export const ArticleListPage:React.FC<ArticleListPageProps> = ({
       className
     )}
     asideSlot={(
-      <Branding
-        style={BrandingBlockStyles.Badge}
-      />
+      <Navigation />
     )}
   >
     <PageHeader

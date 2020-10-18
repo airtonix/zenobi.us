@@ -2,21 +2,21 @@ import React from 'react'
 import classnames from 'classnames'
 
 import { PageHeader } from './PageHeader'
-import { BrandingBlock, BrandingBlockStyles } from './BrandingBlock'
 import { Page } from './Page'
+import { SiteNavigation } from './Navigation'
 
 export type SimplePageProps = {
   className?: string,
   title: string,
   tags?: string[],
   date?: string,
-  branding?: React.ElementType
+  navigation?: React.ElementType
 }
 
 export const SimplePage:React.FC<SimplePageProps> = ({
   className,
   title,
-  branding: Branding = BrandingBlock,
+  navigation: Navigation = SiteNavigation,
   children
 }) => (
   <Page
@@ -25,9 +25,7 @@ export const SimplePage:React.FC<SimplePageProps> = ({
       className
     )}
     asideSlot={(
-      <Branding
-        style={BrandingBlockStyles.Badge}
-      />
+      <Navigation />
     )}
   >
     <PageHeader
