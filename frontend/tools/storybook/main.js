@@ -24,6 +24,15 @@ module.exports = {
       },
       // inject the svgr
       (config) => {
+        config.module.rules
+          .filter(rule => rule.test.toString().includes('svg'))
+          .forEach(rule => {
+              rule.test = new RegExp(rule.test
+                .toString()
+                .replace('svg|', '')
+                .replace(/\//g, ''))
+          });
+
         config.module.rules.unshift({
           test: /\.svg$/,
           use: [{

@@ -1,37 +1,53 @@
 .landing-block {
-    display: flex;
-    min-height: 80vh;
+  display: flex;
+  min-height: 80vh;
 
 }
 
 .landing-block .block__container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .landing-block .block__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .landing-block__heading {
-    @include get-typeface(landing-heading);
-    margin-bottom: get-spacing-px(huge);
+  @include get-typeface(landing-heading);
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  margin-bottom: get-spacing-px(huge);
+  text-align: center;
+  transform: translate(-50%, -200%);
 }
 
 .landing-block__logo {
-    max-width: calc(#{get-spacing-px(massive)} * 2);
-    filter: drop-shadow(10px);
-    width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 192px;
+  transform: translate(-50%, -100%);
 }
 
 .landing-block__logo .BrandingLogo_svg__outline {
-    fill: red;
+  // fill: ;
 }
 
 .landing-block__logo .BrandingLogo_svg__border {
-    fill: red;
+  // fill: red;
+}
+
+.landing-block__separator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: get-layout-px(page-width);
+  transform: translate(-50%, 0%);
 }
