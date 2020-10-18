@@ -1,0 +1,16 @@
+import { ArgsTable, Meta, Story, Canvas  } from '@storybook/addon-docs/blocks';
+import { LandingBlock } from './LandingBlock'
+
+export const Template = (args) => <LandingBlock {...args } />;
+
+<Meta
+  title="Components/LandingBlock"
+  component={LandingBlock} />
+
+# LandingBlock
+
+<Canvas>
+  <Story name="basic">
+    <LandingBlock />
+  </Story>
+</Canvas>

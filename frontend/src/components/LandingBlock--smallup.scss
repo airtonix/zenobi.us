@@ -1,0 +1,37 @@
+.landing-block {
+    display: flex;
+    min-height: 80vh;
+
+}
+
+.landing-block .block__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.landing-block .block__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-block__heading {
+    @include get-typeface(landing-heading);
+    margin-bottom: get-spacing-px(huge);
+}
+
+.landing-block__logo {
+    max-width: calc(#{get-spacing-px(massive)} * 2);
+    filter: drop-shadow(10px);
+    width: 100%;
+}
+
+.landing-block__logo .BrandingLogo_svg__outline {
+    fill: red;
+}
+
+.landing-block__logo .BrandingLogo_svg__border {
+    fill: red;
+}

@@ -1,5 +1,5 @@
 const convertPathsToAliases = require('convert-tsconfig-paths-to-webpack-aliases').default
-const { set, get, flow, merge } = require('lodash')
+const { set, get, flow } = require('lodash')
 
 module.exports = {
   'stories': [
@@ -25,7 +25,7 @@ module.exports = {
       // inject the svgr
       (config) => {
         config.module.rules.unshift({
-          test: /\.inline.svg$/,
+          test: /\.svg$/,
           use: [{
             loader: '@svgr/webpack',
             options: {

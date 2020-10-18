@@ -14,6 +14,7 @@ const pathPrefix = urljoin(
   '/',
   get(Config, 'site.root'),
   get(Config, 'site.path'),
+  // removes any trailing slash
 ).replace(/\/$/, '')
 
 const siteUrl = urljoin(
