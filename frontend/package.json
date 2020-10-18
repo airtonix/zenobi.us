@@ -112,6 +112,7 @@
     "retext-indefinite-article": "^2.0.1",
     "sass-loader": "^10.0.2",
     "serve": "^11.1.0",
+    "style-dictionary": "^2.10.2",
     "style-loader": "^1.2.1",
     "stylelint": "^13.7.2",
     "sugar": "^2.0.6",
